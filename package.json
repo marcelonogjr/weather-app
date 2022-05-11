@@ -1,0 +1,27 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "build": "cd react-app && npm install && npm run build",
+    "react": "cd react-app && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "canvas": "^2.9.1",
+    "express": "^4.18.0",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "engines": {
+    "node": "^16.13.2"
+  }
+}
