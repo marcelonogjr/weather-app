@@ -1,17 +1,17 @@
 const { createCanvas, loadImage } = require('canvas');
 const calculateCoordinates = require('./calculateCoordinates');
-// const {geocodeToken, openWeatherToken} = require('../tokens');
+const {geocodeToken, openWeatherToken} = require('../tokens');
 
 const assembleMap = async (lat, lon, zoom) => {
-  const geocodeToken = process.env.GEOCODE_TOKEN;
-  const openWeatherToken = process.env.OPENWEATHER_TOKEN;
+  // const geocodeToken = process.env.GEOCODE_TOKEN;
+  // const openWeatherToken = process.env.OPENWEATHER_TOKEN;
 
   const height = 512;
   const width = 512;
   const canvas = createCanvas(height, width);
   const context = canvas.getContext('2d');
 
-  console.log('I\'m running!');
+  // console.log('I\'m running!');
   
   const [tilesCoordinates, offsetCoordinates] = calculateCoordinates(lat, lon, zoom);
   const xLow = tilesCoordinates[0][0] < tilesCoordinates[3][0] ? tilesCoordinates[0][0] : tilesCoordinates[3][0];
@@ -24,7 +24,7 @@ const assembleMap = async (lat, lon, zoom) => {
   const xOffset = tileOffset[0] - offsetCoordinates[0];
   const yOffset = tileOffset[1] - offsetCoordinates[1];
 
-  console.log(xOffset, yOffset);
+  // console.log(xOffset, yOffset);
 
   const mainImage = await loadImage(`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/${lon},${lat},${zoom}/512x512?access_token=${geocodeToken}`);
   const topLeftImage = await loadImage(`https://tile.openweathermap.org/map/temp_new/${zoom}/${xLow}/${yLow}.png?appid=${openWeatherToken}`);

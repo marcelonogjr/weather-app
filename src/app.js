@@ -47,7 +47,7 @@ app.get('/api/weather-map', async (req, res) => {
   const [lat, lon] = await geocode(req.query.address);
   const zoom = +req.query.zoom;
   const mapType = req.query.map__type;
-  console.log(lat, lon, zoom, mapType);
+  // console.log(lat, lon, zoom, mapType);
 
   if (lat && lon && zoom && mapType) {
     const response = await assembleMap(lat, lon, zoom);
@@ -67,5 +67,5 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is up on port ${port} moda foca.`);
+  console.log(`Server is up on port ${port}.`);
 });

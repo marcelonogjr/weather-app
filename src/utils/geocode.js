@@ -1,9 +1,9 @@
 const axios = require('axios').default;
-// const tokens = require('./tokens');
+const tokens = require('./tokens');
 
 const geocode = async (address) => {
-  // const apiToken = tokens.geocodeToken;
-  const apiToken = process.env.GEOCODE_TOKEN;
+  const apiToken = tokens.geocodeToken;
+  // const apiToken = process.env.GEOCODE_TOKEN;
 
   const mapBoxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${apiToken}&limit=1`;
 

@@ -1,38 +1,49 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
+import WeatherInfo from "../components/WeatherInfo";
 import WeatherMap from "../components/WeatherMap";
-import Data from "../models/Data";
 
 const Weather: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [dataIsReady, setDataIsReady] = useState<boolean>(false);
   const addressInputRef = useRef<HTMLInputElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [newData, setNewData] = useState<Data>();
   const navigate = useNavigate();
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
-
   const address = searchParams.get('address');
-  useEffect( () => {
-
-    if (address){
-      fetch(`${serverUrl}/api/weather?address=${address}`)
-      .then(response => response.json())
-      .then(response => setNewData(response))
-    }
-
-  }, [address]);
   
-  const submitAddressHandler = async(event: React.FormEvent) => {
+  const submitAddressHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const address = addressInputRef.current?.value.trim().replace(/[/.,;]/g,'');
 
     if (address){
       setSearchParams(address);
       navigate(`?address=${address}`);
+      setIsLoading(true);
+      setDataIsReady(false);
     }
   };
+
+  let arrDataIsReady = [false, false];
+
+  const infoIsReadyHandler = (info: boolean) => {
+    if (info){
+      arrDataIsReady[0]=true;
+    }
+  };
+  const mapIsReadyHandler = (map: boolean) => {
+    if (map){
+      arrDataIsReady[1]=true;
+    }
+  };
+
+  if (arrDataIsReady[0] && arrDataIsReady[1]){
+    setDataIsReady(true);
+    arrDataIsReady = [false, false];
+  }
+
+  console.log(isLoading, dataIsReady);
 
   return (
     <div className='main-content'>
@@ -42,9 +53,9 @@ const Weather: React.FC = () => {
         <input ref={addressInputRef} />
         <button>Search!</button>
       </form>
-
-      {newData && <p>The temperature at {newData.location} is {newData.temperature}°C.</p>}
-      <WeatherMap address={address} />
+      {isLoading && !dataIsReady && <p>Loading...</p>}
+      {!isLoading && dataIsReady && <WeatherInfo address={address} onReady={infoIsReadyHandler}/>}
+      {!isLoading && dataIsReady && <WeatherMap address={address} onReady={mapIsReadyHandler}/>}
     </div>
   );
 };
