@@ -1,17 +1,16 @@
-const { createCanvas, loadImage } = require('canvas');
-const calculateCoordinates = require('./calculateCoordinates');
-// const {geocodeToken, openWeatherToken} = require('../tokens');
+import { createCanvas, loadImage } from 'canvas';
 
-const assembleMap = async (lat, lon, zoom) => {
-  const geocodeToken = process.env.GEOCODE_TOKEN;
-  const openWeatherToken = process.env.OPENWEATHER_TOKEN;
+import calculateCoordinates from './calculateCoordinates';
+// import {geocodeToken, openWeatherToken} from '../tokens';
+
+const assembleMap = async (lat: number, lon: number, zoom: number) => {
+  const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
+  const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
   const height = 512;
   const width = 512;
   const canvas = createCanvas(height, width);
   const context = canvas.getContext('2d');
-
-  // console.log('I\'m running!');
   
   const [tilesCoordinates, offsetCoordinates] = calculateCoordinates(lat, lon, zoom);
   const xLow = tilesCoordinates[0][0] < tilesCoordinates[3][0] ? tilesCoordinates[0][0] : tilesCoordinates[3][0];
@@ -43,4 +42,4 @@ const assembleMap = async (lat, lon, zoom) => {
   return buffer;
 };
 
-module.exports = assembleMap;
+export default assembleMap;

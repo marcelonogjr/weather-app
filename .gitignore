@@ -1,3 +1,5 @@
 node_modules/
 
-/src/utils/tokens.js
+/src/utils/tokens.ts
+
+/dist

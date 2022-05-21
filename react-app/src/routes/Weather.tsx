@@ -17,7 +17,6 @@ const Weather: React.FC = () => {
     if (address) {
       changeAddress(address);
     }
-
   }, [searchParams, changeAddress])
 
   
