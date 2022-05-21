@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
-const WeatherMap = (props: { address: string | null ; onReady: (data: boolean) => void}) => {
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+import WeatherContext from '../store/weather-context';
 
+const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
+  const {address, statusIsReady, isReady} = useContext(WeatherContext);
+
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapType = 'Anything for now';
   const zoom = 9;
-  const mapUrl = `${serverUrl}/api/weather-map?address=${props.address}&zoom=${zoom}&map__type=${mapType}`;
+  const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapType}`;
 
   useEffect(() => {
     const fetchMap = async () => {
@@ -16,21 +19,22 @@ const WeatherMap = (props: { address: string | null ; onReady: (data: boolean) =
       const imageBlob = await res.blob();
       const imageObjectURL = URL.createObjectURL(imageBlob);
       setMapImage(imageObjectURL);
-      props.onReady(true);
+      statusIsReady({
+        mapIsReady: true
+      });
     };
-    if (props.address) {
-      console.log('useEffect fetch running');
+    if (address) {
       fetchMap();
     }
-  }, [mapUrl, props.address]);
+  }, [mapUrl, address, statusIsReady]);
 
   return (
     <>
-      {props.address && (
+      {isReady && (
         <img className='map' src={mapImage} alt='Weather Map' />
       )}
     </>
   );
 };
 
-export default React.memo(WeatherMap);
+export default WeatherMap;

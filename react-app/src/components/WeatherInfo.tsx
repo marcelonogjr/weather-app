@@ -1,28 +1,44 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 
 import Data from "../models/Data";
+import WeatherContext from '../store/weather-context';
 
-const WeatherInfo = (props: { address: string | null ; onReady: (data: boolean) => void}) => {
+const WeatherInfo = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [newData, setNewData] = useState<Data>();
+  
+  const {address, statusIsReady, isReady} = useContext(WeatherContext);
+  
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
-
-  console.log('WeatherInfo worked');
   useEffect( () => {
-
-    if (props.address){
-      fetch(`${serverUrl}/api/weather?address=${props.address}`)
+    const fetchInfo = () => {      
+      fetch(`${serverUrl}/api/weather?address=${address}`)
       .then(response => response.json())
-      .then(response => setNewData(response))
-      props.onReady(true); 
+      .then(response => {
+        statusIsReady({
+          infoIsReady: true
+        });
+        setNewData(response)
+      });
     }
 
-  }, [props.address]);
+    if (address){
+      setIsLoading(true);
+      fetchInfo();      
+    }
+
+  }, [address, statusIsReady]);
+
+  if (isLoading && isReady) {
+    setIsLoading(false);
+  }
 
   return (
     <>
-      {newData && <p>The temperature at {newData.location} is {newData.temperature}°C.</p>}
+      {isLoading && !isReady && <p>Loading...</p>}
+      {!isLoading && newData && isReady && <p>The temperature at {newData.location} is {newData.temperature}°C.</p>}
     </>
   )
 }

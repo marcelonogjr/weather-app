@@ -6,6 +6,7 @@ import About from './routes/About';
 import Help from './routes/Help';
 import Error404 from './routes/Error404';
 import Weather from './routes/Weather';
+import WeatherContextProvider from './store/WeatherContextProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,13 +14,18 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="*" element={<App />}>
-        <Route path="weather" element={<Weather />}>
-          <Route path=":address" />
+      <Route path='*' element={<App />}>
+        <Route path='weather' element={
+            <WeatherContextProvider>
+              <Weather />
+            </WeatherContextProvider>
+          }
+        >
+          <Route path=':address' />
         </Route>
-        <Route path="about" element={<About />} />
-        <Route path="help" element={<Help />} />
-        <Route path="*" element={<Error404 />} />
+        <Route path='about' element={<About />} />
+        <Route path='help' element={<Help />} />
+        <Route path='*' element={<Error404 />} />
       </Route>
     </Routes>
   </BrowserRouter>

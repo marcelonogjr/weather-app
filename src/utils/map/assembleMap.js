@@ -1,10 +1,10 @@
 const { createCanvas, loadImage } = require('canvas');
 const calculateCoordinates = require('./calculateCoordinates');
-const {geocodeToken, openWeatherToken} = require('../tokens');
+// const {geocodeToken, openWeatherToken} = require('../tokens');
 
 const assembleMap = async (lat, lon, zoom) => {
-  // const geocodeToken = process.env.GEOCODE_TOKEN;
-  // const openWeatherToken = process.env.OPENWEATHER_TOKEN;
+  const geocodeToken = process.env.GEOCODE_TOKEN;
+  const openWeatherToken = process.env.OPENWEATHER_TOKEN;
 
   const height = 512;
   const width = 512;
