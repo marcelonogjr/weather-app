@@ -16,7 +16,6 @@ const geocode: geocodeType = async (address: string) => {
     const placeName: string = response.data.features[0].place_name;
     return [lat, lon, placeName];
   }
-  // console.log([lat, lon, placeName]);
 
   return response;
 };

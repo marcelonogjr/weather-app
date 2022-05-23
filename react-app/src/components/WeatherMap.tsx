@@ -10,7 +10,7 @@ const WeatherMap = () => {
   const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapType = 'Anything for now';
-  const zoom = 9;
+  const zoom = 'small';
   const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapType}`;
 
   useEffect(() => {

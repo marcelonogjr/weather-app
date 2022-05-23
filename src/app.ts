@@ -4,10 +4,7 @@ import path from "path";
 import geocode from "./utils/geocode";
 import getWeather from "./utils/getWeather";
 import assembleMap from "./utils/map/assembleMap";
-
-// const geocode = require('./utils/geocode');
-// const getWeather = require('./utils/getWeather');
-// const assembleMap = require('./utils/map/assembleMap');
+import {zoomConversion} from "./utils/support/inputConversion";
 
 const app: Application = express();
 const port = process.env.PORT || 5000;
@@ -59,12 +56,12 @@ app.get('/api/weather-map', async (req:Request, res:Response) => {
     });
   }
 
-  if (typeof req.query.address === 'string') {
+  if (typeof req.query.address === 'string' && (req.query.zoom === 'small' || req.query.zoom === 'medium' || req.query.zoom === 'large') && typeof req.query.map__type === 'string') {
     const geocodeResponse = await geocode(req.query.address);
 
     if (geocodeResponse) {
       const [lat, lon] = geocodeResponse;
-      const zoom = +req.query.zoom;
+      const zoom = zoomConversion(req.query.zoom);
       // const mapType = req.query.map__type;
       // console.log(lat, lon, zoom, mapType);
     
