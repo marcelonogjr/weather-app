@@ -2,15 +2,15 @@ import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 
-const WeatherMap = () => {
+const WeatherMap = (props: {zoom: string}) => {
   const [mapImage, setMapImage] = useState<undefined | string>();
   const {address, statusIsReady, isReady} = useContext(WeatherContext);
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5000';
+  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapType = 'Anything for now';
-  const zoom = 'small';
+  const zoom = props.zoom;
   const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapType}`;
 
   useEffect(() => {

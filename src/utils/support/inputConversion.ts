@@ -9,9 +9,9 @@ export const zoomConversion = (zoomQuery: ZoomQueryType) => {
   ]
 
   const zoomNumber = [
-    12,
+    11,
     8,
-    4
+    5
   ]
 
   return zoomNumber[zoomDesignation.indexOf(zoomQuery)];

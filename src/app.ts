@@ -50,7 +50,7 @@ app.get('/api/weather', async (req:Request, res:Response) => {
 app.get('/api/weather-map', async (req:Request, res:Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  if (!req.query.address || !req.query.zoom || !req.query.map__type) {
+  if (!req.query.address || (req.query.zoom !== 'small' && req.query.zoom !== 'medium' && req.query.zoom !== 'large') || !req.query.map__type) {
     return res.send({
       error: 'ERROR: something went wrong!',
     });
