@@ -3,7 +3,7 @@ import { createCanvas, loadImage } from 'canvas';
 import calculateCoordinates from './calculateCoordinates';
 import {geocodeToken, openWeatherToken} from '../tokens';
 
-const assembleMap = async (lat: number, lon: number, zoom: number) => {
+const assembleMap = async (lat: number, lon: number, zoom: number, mapType: string) => {
   // const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
   // const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
@@ -26,10 +26,10 @@ const assembleMap = async (lat: number, lon: number, zoom: number) => {
   // console.log(xOffset, yOffset);
 
   const mainImage = await loadImage(`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/${lon},${lat},${zoom}/512x512?access_token=${geocodeToken}`);
-  const topLeftImage = await loadImage(`https://tile.openweathermap.org/map/temp_new/${zoom}/${xLow}/${yLow}.png?appid=${openWeatherToken}`);
-  const topRightImage = await loadImage(`https://tile.openweathermap.org/map/temp_new/${zoom}/${xHigh}/${yLow}.png?appid=${openWeatherToken}`);
-  const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/temp_new/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
-  const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/temp_new/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
+  const topLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yLow}.png?appid=${openWeatherToken}`);
+  const topRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yLow}.png?appid=${openWeatherToken}`);
+  const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
+  const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
 
   context.drawImage(mainImage,0, 0, width, height);
   // context.globalAlpha = 0.8;

@@ -16,8 +16,6 @@ const WeatherForm = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  console.log('The selected zoom is: ', selectedZoom);
-
   useEffect(() => {
     const address = searchParams.get('address');
     const zoom = searchParams.get('zoom_level');

@@ -28,8 +28,6 @@ const WeatherMap = () => {
       });
     };
     if (address && zoom) {
-      console.log('The zoom inside the context is: ', zoom);
-      console.log('The map fetch is running by the way...')
       fetchMap();
     }
   }, [mapUrl, address, zoom, statusIsReady]);
