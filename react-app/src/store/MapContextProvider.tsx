@@ -11,7 +11,7 @@ const MapContextProvider: React.FC<ChildrenProps> = (props) => {
     setZoomLevel(newZoom);
   }, [])
 
-  const changeMapTypeHandler = useCallback((newMapLayer: MapLayerType) => {
+  const changeMapLayerHandler = useCallback((newMapLayer: MapLayerType) => {
     setMapLayer(newMapLayer);
   }, [])
 
@@ -19,7 +19,7 @@ const MapContextProvider: React.FC<ChildrenProps> = (props) => {
     zoom: zoomLevel,
     changeZoomLevel: changeZoomHandler,
     mapLayer: mapLayer,
-    changeMapLayer: changeMapTypeHandler
+    changeMapLayer: changeMapLayerHandler
   };
 
   return (

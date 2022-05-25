@@ -1,11 +1,11 @@
 import { createCanvas, loadImage } from 'canvas';
 
 import calculateCoordinates from './calculateCoordinates';
-import {geocodeToken, openWeatherToken} from '../tokens';
+// import {geocodeToken, openWeatherToken} from '../tokens';
 
 const assembleMap = async (lat: number, lon: number, zoom: number, mapType: string) => {
-  // const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
-  // const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
+  const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
+  const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
   const height = 512;
   const width = 512;
