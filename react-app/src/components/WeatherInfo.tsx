@@ -1,13 +1,15 @@
 import {useState, useEffect, useContext} from 'react';
 
-import Data from "../models/Data";
 import WeatherContext from '../store/weather-context';
+import MapContext from '../store/map-context';
+import Data from "../models/Data";
 
 const WeatherInfo = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [newData, setNewData] = useState<Data>();
   
   const {address, statusIsReady, isReady} = useContext(WeatherContext);
+  const {zoom, mapLayer} = useContext(MapContext);
   
   const serverUrl = 'http://localhost:5000';
   // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
@@ -24,12 +26,12 @@ const WeatherInfo = () => {
       });
     }
 
-    if (address){
+    if (address && zoom && mapLayer){
       setIsLoading(true);
       fetchInfo();      
     }
 
-  }, [address, statusIsReady]);
+  }, [address, statusIsReady, zoom, mapLayer]);
 
   if (isLoading && isReady) {
     setIsLoading(false);

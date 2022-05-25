@@ -52,7 +52,11 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
     (req.query.zoom !== 'small' &&
       req.query.zoom !== 'medium' &&
       req.query.zoom !== 'large') ||
-    !req.query.map__type
+      (req.query.map__type !== 'clouds' &&
+      req.query.map__type !== 'precipitation' &&
+      req.query.map__type !== 'pressure' &&
+      req.query.map__type !== 'wind' &&
+      req.query.map__type !== 'temperature')
   ) {
     return res.send({
       error: 'ERROR: something went wrong!',

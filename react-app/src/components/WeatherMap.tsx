@@ -7,15 +7,12 @@ const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
 
   const {address, statusIsReady, isReady} = useContext(WeatherContext);
-  const {zoom} = useContext(MapContext);
+  const {zoom, mapLayer} = useContext(MapContext);
 
   const serverUrl = 'http://localhost:5000';
   // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
-  
-  const mapType = 'Anything for now';
-  // const zoom = 'small';
-  const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapType}`;
+  const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapLayer}`;
   
   useEffect(() => {
     const fetchMap = async () => {
@@ -27,10 +24,10 @@ const WeatherMap = () => {
         mapIsReady: true
       });
     };
-    if (address && zoom) {
+    if (address && zoom && mapLayer) {
       fetchMap();
     }
-  }, [mapUrl, address, zoom, statusIsReady]);
+  }, [mapUrl, address, zoom, mapLayer, statusIsReady]);
 
   return (
     <>
