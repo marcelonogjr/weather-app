@@ -5,6 +5,9 @@ import { useSearchParams } from 'react-router-dom';
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
 
+import WeatherMapLayers from './WeatherForm/WeatherMapLayers';
+import WeatherMapZoom from './WeatherForm/WeatherMapZoom';
+
 const WeatherForm = () => {
   const [selectedZoom, changeSelectedZoom] = useState('small');
   const [selectedMapLayer, setSelectedMapLayer] = useState('temperature');
@@ -77,61 +80,9 @@ const WeatherForm = () => {
       <input ref={addressInputRef} className='address-input' />
       <button type='submit'>Search!</button>
 
-      <ul className='zoom-level'>
-        <p>Map Zoom Level:</p>
-        <li>
-          <label>
-            <input
-              type='radio'
-              name='zoom-level'
-              value='large'
-              checked={selectedZoom === 'large'}
-              onChange={zoomLevelHandler}
-            />
-            <span>Far Away</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type='radio'
-              name='zoom-level'
-              value='medium'
-              checked={selectedZoom === 'medium'}
-              onChange={zoomLevelHandler}
-            />
-            <span>Medium</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type='radio'
-              name='zoom-level'
-              value='small'
-              checked={selectedZoom === 'small'}
-              onChange={zoomLevelHandler}
-            />
-            <span>Close</span>
-          </label>
-        </li>
-      </ul>
+      <WeatherMapZoom selectedZoom={selectedZoom} onChange={zoomLevelHandler}/>
+      <WeatherMapLayers selectedLayer={selectedMapLayer} onChange={mapLayerHandler}/>
 
-      <label htmlFor='weather-layer'>
-        <p>Choose a weather layer:</p>
-      </label>
-
-      <select
-        id='weather-layer'
-        value={selectedMapLayer}
-        onChange={mapLayerHandler}
-      >
-        <option value='clouds'>Clouds</option>
-        <option value='precipitation'>Precipitation</option>
-        <option value='pressure'>Sea Level Pressure</option>
-        <option value='temperature'>Temperature</option>
-        <option value='wind'>Wind Speed</option>
-      </select>
     </form>
   );
 };
