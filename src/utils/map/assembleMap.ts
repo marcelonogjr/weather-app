@@ -32,7 +32,7 @@ const assembleMap = async (lat: number, lon: number, zoom: number, mapType: mapL
   const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
   const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
 
-  console.log(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
+  // console.log(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
 
   context.drawImage(mainImage,0, 0, width, height);
   context2.drawImage(topLeftImage, -width/2 + xOffset, -height/2 + yOffset, width, height);

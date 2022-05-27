@@ -111,7 +111,10 @@ const windColorTransformation = (imgData: ImageData) => {
       imgData.data[i + 2] = 75;
     }
     // Alpha
-    imgData.data[i + 3] *= 0.9;
+    if(alpha <= 5) {
+      imgData.data[i + 3] =0;
+    }
+    imgData.data[i + 3] *= 0.6;
   }
 
   return imgData;
