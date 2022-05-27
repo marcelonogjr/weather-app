@@ -11,8 +11,8 @@ const WeatherInfo = () => {
   const {address, statusIsReady, isReady} = useContext(WeatherContext);
   const {zoom, mapLayer} = useContext(MapContext);
   
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect( () => {
     const fetchInfo = () => {      
