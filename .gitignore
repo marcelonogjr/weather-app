@@ -2,4 +2,8 @@ node_modules/
 
 /src/utils/tokens.ts
 
+/react-app/src/others/map-legend.ts
+/react-app/src/components/WeatherMap.module.css
+/react-app/src/components/WeatherMap.tsx
+
 /dist

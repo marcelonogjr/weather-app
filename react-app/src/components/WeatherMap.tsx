@@ -6,14 +6,14 @@ import MapContext from '../store/map-context';
 const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
 
-  const {address, statusIsReady, isReady} = useContext(WeatherContext);
-  const {zoom, mapLayer} = useContext(MapContext);
+  const { address, statusIsReady, isReady } = useContext(WeatherContext);
+  const { zoom, mapLayer } = useContext(MapContext);
 
   const serverUrl = 'http://localhost:5000';
   // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapLayer}`;
-  
+
   useEffect(() => {
     const fetchMap = async () => {
       const res = await fetch(mapUrl);
@@ -21,7 +21,7 @@ const WeatherMap = () => {
       const imageObjectURL = URL.createObjectURL(imageBlob);
       setMapImage(imageObjectURL);
       statusIsReady({
-        mapIsReady: true
+        mapIsReady: true,
       });
     };
     if (address && zoom && mapLayer) {
@@ -32,7 +32,10 @@ const WeatherMap = () => {
   return (
     <>
       {isReady && (
-        <img className='map' src={mapImage} alt='Weather Map' />
+        <>
+          <img className='map' src={mapImage} alt='Weather Map' />
+          <div></div>
+        </>
       )}
     </>
   );

@@ -1,9 +1,10 @@
 import { createCanvas, loadImage } from 'canvas';
 
 import calculateCoordinates from './calculateCoordinates';
+import conversionColorTransformation, {mapLayerType} from './color-change/conversionColorTransformation';
 import {geocodeToken, openWeatherToken} from '../tokens';
 
-const assembleMap = async (lat: number, lon: number, zoom: number, mapType: string) => {
+const assembleMap = async (lat: number, lon: number, zoom: number, mapType: mapLayerType) => {
   // const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
   // const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
@@ -31,6 +32,8 @@ const assembleMap = async (lat: number, lon: number, zoom: number, mapType: stri
   const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
   const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
 
+  console.log(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
+
   context.drawImage(mainImage,0, 0, width, height);
   context2.drawImage(topLeftImage, -width/2 + xOffset, -height/2 + yOffset, width, height);
   context2.drawImage(topRightImage,width/2 + xOffset, -height/2 + yOffset, width, height);
@@ -39,15 +42,9 @@ const assembleMap = async (lat: number, lon: number, zoom: number, mapType: stri
   
   const imageData = context2.getImageData(0, 0, width, height);
   
-  if (mapType === 'clouds_new'){
-    for (let i=0; i < imageData.data.length; i +=4) {
-      imageData.data[i] = 255 - imageData.data[i];
-      imageData.data[i+1] = 255 - imageData.data[i+1];
-      imageData.data[i+2] = 255 - imageData.data[i+2];
-    }
-  }
+  const finalImageData = conversionColorTransformation(mapType, imageData);
 
-  context2.putImageData(imageData, 0, 0);
+  context2.putImageData(finalImageData, 0, 0);
   context.drawImage(canvas2, 0, 0);
   
   const buffer = canvas.toBuffer('image/png');
