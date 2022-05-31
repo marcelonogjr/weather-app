@@ -25,13 +25,13 @@ const precipitationColorTransformation = (imgData: ImageData) => {
       imgData.data[i] = 255;
     }
     // Green
-    if (green < 110 && green >= 97) {
+    if (green >= 97) {
       imgData.data[i + 1] = (-145 * green) / 13 + 17380 / 13;
-    } else if (green < 97 && green >= 80) {
+    } else if (green >= 80) {
       imgData.data[i + 1] = 255;
-    } else if (green < 80 && green >= 75) {
+    } else if (green >= 75) {
       imgData.data[i + 1] = (128 * green) / 5 - 1793;
-    } else if (green < 75 && green >= 66) {
+    } else if (green >= 66) {
       imgData.data[i + 1] = (127 * green) / 9 - 2794 / 3;
     } else if (green < 66) {
       imgData.data[i + 1] = 0;
@@ -56,12 +56,6 @@ const pressureColorTransformation = (imgData: ImageData) => {
 };
 
 const temperatureColorTransformation = (imgData: ImageData) => {
-  for (let i = 0; i < imgData.data.length; i += 4) {
-    imgData.data[i] = 255 - imgData.data[i];
-    imgData.data[i + 1] = 255 - imgData.data[i + 1];
-    imgData.data[i + 2] = 255 - imgData.data[i + 2];
-  }
-
   return imgData;
 };
 
