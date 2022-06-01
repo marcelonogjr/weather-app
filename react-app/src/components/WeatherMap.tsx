@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
+import styles from './WeatherMap.module.css';
+import MapLegendProperties from './WeatherMap/MapLegendProperties';
 
 const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
@@ -29,13 +31,36 @@ const WeatherMap = () => {
     }
   }, [mapUrl, address, zoom, mapLayer, statusIsReady]);
 
+  const MapLegend = mapLayer ? MapLegendProperties[mapLayer].values.map((value) => {
+    return (
+      <span>
+        {value}
+      </span>
+    )
+    ;
+  }) : '';
+
   return (
     <>
-      {isReady && (
-        <>
-          <img className='map' src={mapImage} alt='Weather Map' />
-          <div></div>
-        </>
+      {isReady && mapLayer && (
+        <div className={styles['map-bundle']}>
+          <img
+            className={styles['map-bundle__map']}
+            src={mapImage}
+            alt='Weather Map'
+          />
+          <div className={styles['map-bundle__legend--bar']}>
+            <div className={styles['map-bundle__legend--background']}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties[mapLayer].gradient}></div>
+            {MapLegend}
+          </div>
+          <div className={styles['map-bundle__legend--units']}>
+            <div className={styles['map-bundle__legend--background']}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties[mapLayer].gradient}></div>
+            <span>Unit: </span>
+            <span>{MapLegendProperties[mapLayer].unit}</span>
+          </div>
+        </div>
       )}
     </>
   );

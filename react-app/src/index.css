@@ -16,6 +16,7 @@ body {
 
 .main-content {
   flex-grow: 1;
+  height: fit-content;
 }
 
 footer {
@@ -58,10 +59,6 @@ button {
   background: #888888;
   color: white;
   padding: 8px;
-}
-
-.map {
-  height: 300px;
 }
 
 .zoom-level {
