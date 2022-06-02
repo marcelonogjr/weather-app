@@ -1,31 +1,17 @@
 import React from "react";
 
-type MapLegendPropertiesType = {
-  clouds: {
-    unit: string;
-    values: string[];
-    gradient: React.CSSProperties
-  };
-  precipitation: {
-    unit: string;
-    values: string[];
-    gradient: React.CSSProperties
-  };
-  pressure: {
-    unit: string;
-    values: string[];
-    gradient: React.CSSProperties
-  };
-  temperature: {
-    unit: string;
-    values: string[];
-    gradient: React.CSSProperties
-  };
-  wind: {
-    unit: string;
-    values: string[];
-    gradient: React.CSSProperties
-  };
+interface MapLayerPropertyType {
+  unit: string;
+  values: string[];
+  gradient: React.CSSProperties
+};
+
+interface MapLegendPropertiesType {
+  clouds: MapLayerPropertyType;
+  precipitation: MapLayerPropertyType;
+  pressure: MapLayerPropertyType;
+  temperature: MapLayerPropertyType;
+  wind: MapLayerPropertyType;
 }
 
 const MapLegendProperties: MapLegendPropertiesType = {

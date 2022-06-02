@@ -30,16 +30,24 @@ app.get('/api/weather', async (req: Request, res: Response) => {
     if (geocodeResponse) {
       const [lat, lon, placeName] = geocodeResponse;
 
-      const temperature = await getWeather(lat, lon);
+      const weather = await getWeather(lat, lon);
 
-      if (temperature) {
+      if (weather) {
         const finalResponse = {
-          temperature,
-          location: placeName,
+          weather,
+          location: {
+            city: placeName[placeName.length-3],
+            state: placeName[placeName.length-2],
+            country: placeName[placeName.length-1],
+          },
         };
 
         res.send(finalResponse);
       }
+    } else {
+      return res.send({
+        error: 'ERROR: something went wrong!',
+      })
     }
   }
 });
@@ -80,7 +88,6 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
       const [lat, lon] = geocodeResponse;
       const zoom = zoomConversion(req.query.zoom);
       const mapType = weatherLayerConversion(req.query.map__type);
-      // console.log(lat, lon, zoom, mapType);
 
       const response = await assembleMap(lat, lon, zoom, mapType);
 
