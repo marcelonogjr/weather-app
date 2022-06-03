@@ -33,7 +33,7 @@ const MapLegendProperties: MapLegendPropertiesType = {
       `},
   },
   precipitation: {
-    unit: 'mm/?',
+    unit: 'mm/3h',
     values: ['0.5', '1', '5', '10', '20', '40', '140'],
     gradient: {background: `linear-gradient(90deg, 
       rgba(120,120,190,0) 3.33333%, 

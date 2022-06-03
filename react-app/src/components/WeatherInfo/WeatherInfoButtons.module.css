@@ -1,0 +1,16 @@
+.info-buttons{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.info-buttons button:hover{
+  background-color: white;
+  color: black;
+}
+
+.info-buttons button:active{
+  background-color: black;
+  color: white;
+}
+

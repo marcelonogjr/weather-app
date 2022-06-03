@@ -11,10 +11,12 @@ interface CurrentLocationDatePropsType {
 
 const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   const timeInfo = (timeConversorObject: timeConversorObjectType) => {
+    
     return (
       <h4>
-        {timeConversorObject.hour}:{timeConversorObject.minute}:
-        {timeConversorObject.second}
+        {timeConversorObject.hour > 9 ? timeConversorObject.hour : '0'+timeConversorObject.hour}:
+        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0'+timeConversorObject.minute}:
+        {timeConversorObject.second > 9 ? timeConversorObject.second : '0'+timeConversorObject.second}
       </h4>
     );
   };
