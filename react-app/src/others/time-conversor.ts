@@ -13,7 +13,8 @@ export interface dateConversorObjectType {
 }
 
 const TimeConversor = (currentDate: number) => {
-  const currentLocalDate = new Date(currentDate * 1000);
+  const currentTimezoneOffset = new Date().getTimezoneOffset();
+  const currentLocalDate = new Date((currentDate + currentTimezoneOffset*60) * 1000);
 
   const dayOfTheMonth = (dayNumber: number) => {
     if (dayNumber === 1 || dayNumber === 21 || dayNumber === 31){

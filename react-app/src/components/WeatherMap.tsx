@@ -33,7 +33,7 @@ const WeatherMap = () => {
 
   const MapLegend = mapLayer ? MapLegendProperties[mapLayer].values.map((value) => {
     return (
-      <span>
+      <span key={Math.random()}>
         {value}
       </span>
     )
