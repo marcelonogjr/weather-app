@@ -1,0 +1,6 @@
+.current-bundle {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border: 2px solid black; 
+}
