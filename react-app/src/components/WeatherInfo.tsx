@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, ReactEventHandler } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
@@ -8,6 +8,7 @@ import WeatherInfoButtons from './WeatherInfo/WeatherInfoButtons';
 import styles from './WeatherInfo.module.css';
 
 import WeatherAPIDataType from '../models/WeatherAPIDataType';
+import HourlyWeatherInfo from './WeatherInfo/HourlyWeatherInfo';
 
 type currentInfoType = 'current' | 'hourly' | 'daily';
 
@@ -65,7 +66,9 @@ const WeatherInfo = () => {
         <div className={styles['info-bundle']}>
           <CurrentLocationDate data={newData} />
           <div className={styles['weather-bundle']}>
-            <CurrentWeatherInfo currentData={newData.weather.current} />
+            {currentInfo === 'current' && <CurrentWeatherInfo currentData={newData.weather.current} />}
+            {currentInfo === 'hourly' && <HourlyWeatherInfo hourlyData={newData.weather.hourly} />}
+            {currentInfo === 'daily' && <><p>FUTURE DAILY</p></>}
             <WeatherInfoButtons
               onCurrentClick={onClickCurrentButtonHandler}
               onHourlyClick={onClickHourlyButtonHandler}

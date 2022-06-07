@@ -8,9 +8,9 @@ interface WeatherInfoButtonsProps {
 
 const WeatherInfoButtons = (props: WeatherInfoButtonsProps) => {
   return <div className={styles['info-buttons']}>
-    <button value='current' onClick={props.onCurrentClick}>Current</button>
-    <button value='hourly' onClick={props.onHourlyClick}>Hourly</button>
-    <button value='daily' onClick={props.onDailyClick}>Daily</button>
+    <button onClick={props.onCurrentClick}>Current</button>
+    <button onClick={props.onHourlyClick}>Hourly</button>
+    <button  onClick={props.onDailyClick}>Daily</button>
   </div>
 };
 

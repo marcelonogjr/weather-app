@@ -1,0 +1,75 @@
+.hourly-bundle {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 90%;
+  border: 2px solid black; 
+}
+
+.hourly-bundle ul{
+  display: flex;
+  padding: 0;
+  list-style-type: none;
+  height: 25rem;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.hourly-bundle ul::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hourly-bundle ul::-webkit-scrollbar-track {
+  background: white;
+}
+
+.hourly-bundle ul::-webkit-scrollbar-thumb {
+  background-color: black;    /* color of the scroll thumb */
+  border-radius: 2px;       /* roundness of the scroll thumb */
+}
+
+#hourly-graph {
+  display: flex;
+  padding: 0;
+  height: 250px;
+  width: 100%;
+  position: relative;
+}
+
+#hourly-graph > li {
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.hourly-temperature {
+  /* display: block; */
+  font-size: 14px;
+  text-align: center;
+  width: 40px;
+  height: 20px;
+  color: white;
+  position: absolute;
+}
+
+.hourly-graph__dots {
+  /* display: block; */
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  position: absolute;
+  clip-path: circle(50%);
+}
+
+.hourly-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+}
+
+.hourly-info p{
+  margin: 0;
+}
+

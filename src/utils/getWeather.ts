@@ -12,12 +12,21 @@ const getWeather: getWeatherType = async (lat: number, lon: number) => {
     error: 'An error has occurred when fetching the forecast.';
   });
   if (response) {
-    const newDT = (response.data.current.dt + response.data.timezone_offset);
-    const newSunrise = (response.data.current.sunrise + response.data.timezone_offset);
-    const newSunset = (response.data.current.sunset + response.data.timezone_offset);
+    const newCurrentDT = (response.data.current.dt + response.data.timezone_offset);
+    const newCurrentSunrise = (response.data.current.sunrise + response.data.timezone_offset);
+    const newCurrentSunset = (response.data.current.sunset + response.data.timezone_offset);    
     
-    const current = {...response.data.current, dt: newDT, sunrise: newSunrise, sunset: newSunset};
-    const hourly =  response.data.hourly;
+    const current = {...response.data.current, dt: newCurrentDT, sunrise: newCurrentSunrise, sunset: newCurrentSunset};
+    const hourly =  response.data.hourly.map((element: any) => {
+      return {
+        dt: element.dt + response.data.timezone_offset,
+        temp: element.temp,
+        uv: element.uvi,
+        humidity: element.humidity,
+        weather: element.weather,
+        pop: element.pop,
+      }
+    });
     const daily =  response.data.daily;
     
     const weather = {current, hourly, daily};
