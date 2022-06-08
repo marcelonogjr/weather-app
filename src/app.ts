@@ -15,12 +15,12 @@ const reactPath = path.join(__dirname, '../react-app/build');
 // Setup static directory to serve
 app.use(express.static(reactPath));
 
-app.get('/api/weather', async (req: Request, res: Response) => {
+app.get('/api/find-location', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   if (!req.query.address) {
     return res.send({
-      error: 'ERROR: something went wrong!',
+      error: 'Please type a location for the search.',
     });
   }
 
@@ -28,27 +28,33 @@ app.get('/api/weather', async (req: Request, res: Response) => {
     const geocodeResponse = await geocode(req.query.address);
 
     if (geocodeResponse) {
-      const [lat, lon, placeName] = geocodeResponse;
-
-      const weather = await getWeather(lat, lon);
-
-      if (weather) {
-        const finalResponse = {
-          weather,
-          location: {
-            city: placeName[placeName.length-3],
-            state: placeName[placeName.length-2],
-            country: placeName[placeName.length-1],
-          },
-        };
-
-        res.send(finalResponse);
-      }
-    } else {
-      return res.send({
-        error: 'ERROR: something went wrong!',
-      })
+      return res.send(geocodeResponse);
     }
+  }
+});
+
+app.get('/api/weather', async (req: Request, res: Response) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+  if (!req.query.lat || !req.query.lon) {
+    return res.send({
+      error: 'ERROR: Please choose a valid location.',
+    });
+  } 
+  if (typeof req.query.lat === 'string' && typeof req.query.lon === 'string'){
+    const lat = parseFloat(req.query.lat);
+    const lon = parseFloat(req.query.lon);
+    
+    const weather = await getWeather(lat, lon);
+  
+    if (weather) {
+      return res.send(weather);
+    }
+  } else {
+    return res.send({
+      error: 'ERROR: something went wrong!',
+    })
+
   }
 });
 
@@ -56,7 +62,8 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   if (
-    !req.query.address ||
+    !req.query.lat ||
+    !req.query.lon ||
     (req.query.zoom !== 'small' &&
       req.query.zoom !== 'medium' &&
       req.query.zoom !== 'large') ||
@@ -72,7 +79,8 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
   }
 
   if (
-    typeof req.query.address === 'string' &&
+    typeof req.query.lat === 'string' &&
+    typeof req.query.lon === 'string' &&
     (req.query.zoom === 'small' ||
       req.query.zoom === 'medium' ||
       req.query.zoom === 'large') &&
@@ -82,22 +90,20 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
     req.query.map__type === 'wind' ||
     req.query.map__type === 'temperature')
   ) {
-    const geocodeResponse = await geocode(req.query.address);
 
-    if (geocodeResponse) {
-      const [lat, lon] = geocodeResponse;
-      const zoom = zoomConversion(req.query.zoom);
-      const mapType = weatherLayerConversion(req.query.map__type);
+    const lat = parseFloat(req.query.lat);
+    const lon = parseFloat(req.query.lon);
+    const zoom = zoomConversion(req.query.zoom);
+    const mapType = weatherLayerConversion(req.query.map__type);
 
-      const response = await assembleMap(lat, lon, zoom, mapType);
+    const response = await assembleMap(lat, lon, zoom, mapType);
 
-      if (response) {
-        res.writeHead(200, {
-          'Content-Type': 'image/png',
-          'Content-Length': response.length,
-        });
-        res.end(response);
-      }
+    if (response) {
+      res.writeHead(200, {
+        'Content-Type': 'image/png',
+        'Content-Length': response.length,
+      });
+      res.end(response);
     }
   }
 });
