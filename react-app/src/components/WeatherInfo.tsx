@@ -4,6 +4,7 @@ import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
 import CurrentLocationDate from './WeatherInfo/CurrentLocationDate';
 import CurrentWeatherInfo from './WeatherInfo/CurrentWeatherInfo';
+import LoadingSpinner from './UI/LoadingSpinner';
 import WeatherInfoButtons from './WeatherInfo/WeatherInfoButtons';
 import styles from './WeatherInfo.module.css';
 
@@ -61,7 +62,7 @@ const WeatherInfo = () => {
 
   return (
     <>
-      {isLoading && !isReady && <p>Loading...</p>}
+      {isLoading && !isReady && <LoadingSpinner />}
       {!isLoading && newData && isReady && (
         <div className={styles['info-bundle']}>
           <CurrentLocationDate data={newData} />
