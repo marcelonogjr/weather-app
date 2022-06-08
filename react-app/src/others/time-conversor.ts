@@ -6,7 +6,10 @@ export interface timeConversorObjectType {
 
 export interface dateConversorObjectType {
   weekDay: string;
-  month: string;
+  month: {
+    spelled: string;
+    numb: number;
+  };
   day: number;
   ordinal: string;
   year: number;
@@ -52,7 +55,10 @@ const TimeConversor = (currentDate: number) => {
   ];
 
   const currentYear = currentLocalDate.getFullYear();
-  const currentMonth = monthOfTheYear[currentLocalDate.getMonth()];
+  const currentMonth = {
+    spelled: monthOfTheYear[currentLocalDate.getMonth()],
+    numb: currentLocalDate.getMonth() + 1
+  };
   const currentDay = currentLocalDate.getDate();
   const currentDayOrdinal = dayOfTheMonth(currentLocalDate.getDate());
   const currentWeekDay = dayOfTheWeek[currentLocalDate.getDay()];

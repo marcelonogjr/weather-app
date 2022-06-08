@@ -1,7 +1,8 @@
 import { HourlyAPIDataType } from '../../models/WeatherAPIDataType';
 import styles from './HourlyWeatherInfo.module.css';
 import TimeConversor, {
-  timeConversorObjectType
+  timeConversorObjectType,
+  dateConversorObjectType
 } from '../../others/time-conversor';
 
 interface HourlyWeatherInfoProps {
@@ -16,6 +17,15 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
         {timeConversorObject.hour > 9 ? timeConversorObject.hour : '0'+timeConversorObject.hour}:
         {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0'+timeConversorObject.minute}
       </b>
+    );
+  };
+  const dateInfo = (dateConversorObject: dateConversorObjectType) => {
+    return (
+      <>
+        {dateConversorObject.month.numb > 9 ? dateConversorObject.month.numb : '0'+dateConversorObject.month.numb}/
+        {dateConversorObject.day > 9 ? dateConversorObject.day : '0' + dateConversorObject.day}/
+        {dateConversorObject.year > 9 ? dateConversorObject.year : '0' + dateConversorObject.year}
+      </>
     );
   };
 
@@ -36,7 +46,8 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     }
     const widthCorrection = 1 * Math.sqrt((100*styleLiWidth/styleLiHeight) ** 2 + (( 95 - (80 * (Math.round(hourlyArray[index-1].temp) - minTemperatureHourly) / rangeTemperatureHourly)) - (95 - (80* (Math.round(hourElement.temp) - minTemperatureHourly) / rangeTemperatureHourly))) ** 2) / (100*styleLiWidth/styleLiHeight);
     
-    const hourlyDT = timeInfo(TimeConversor(hourElement.dt).time);
+    const hourlyTime = timeInfo(TimeConversor(hourElement.dt).time);
+    const hourlyDate = dateInfo(TimeConversor(hourElement.dt).date);
     const graphLiStyle: React.CSSProperties = {
       width: `${styleLiWidth}px`,
       height: `${styleLiHeight}px`,
@@ -61,21 +72,20 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     };
 
     return (
-      <>
-        <div id={styles['hourly-graph']}>
-          <li key={`li-key_${hourElement.dt}`} style={graphLiStyle}>
+        <div id={styles['hourly-graph']} key={`li-key_${hourElement.dt}`}>
+          <li style={graphLiStyle}>
           </li>
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
           <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}°C</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
-            <p><b>{hourlyDT}</b></p>
+            <p>{hourlyTime}</p>
+            <p>{hourlyDate}</p>
             <p>Weather: {hourElement.weather[0].main}</p>
             <p>UVI: {Math.round(hourElement.uv)}</p>
             <p>Humidity: {Math.round(hourElement.humidity)}%</p>
             <p>POP: {Math.round(hourElement.pop * 100)}%</p>
           </div>
         </div>
-      </>
     )
   });
 

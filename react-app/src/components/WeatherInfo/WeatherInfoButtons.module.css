@@ -9,7 +9,7 @@
   color: black;
 }
 
-.info-buttons button:active{
+.info-buttons button:active, .active{
   background-color: black;
   color: white;
 }

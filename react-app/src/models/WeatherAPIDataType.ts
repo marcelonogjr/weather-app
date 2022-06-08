@@ -2,7 +2,7 @@ interface WeatherAPIDataType {
   weather: {
     current: CurrentAPIDataType;
     hourly: HourlyAPIDataType;
-    daily: object;
+    daily: DailyAPIDataType;
   };
   location: {
     city: string;
@@ -32,7 +32,7 @@ export interface CurrentAPIDataType {
       description: string;
       icon: string;
     }
-  ]
+  ];
 }
 
 export type HourlyAPIDataType = {
@@ -47,8 +47,26 @@ export type HourlyAPIDataType = {
       description: string;
       icon: string;
     }
-  ],
-  pop: number
-}[]
+  ];
+  pop: number;
+}[];
+
+export type DailyAPIDataType = {
+  dt: number;
+  temp: {
+    min: number;
+    max: number;
+  };
+  humidity: number;
+  weather: [
+    {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }
+  ];
+  pop: number;
+}[];
 
 export default WeatherAPIDataType;

@@ -23,7 +23,7 @@ const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   const dateInfo = (dateConversorObject: dateConversorObjectType) => {
     return (
       <h5>
-        {dateConversorObject.weekDay}, {dateConversorObject.month}{' '}
+        {dateConversorObject.weekDay}, {dateConversorObject.month.spelled}{' '}
         {dateConversorObject.day}
         <sup>{dateConversorObject.ordinal}</sup> {dateConversorObject.year}
       </h5>
