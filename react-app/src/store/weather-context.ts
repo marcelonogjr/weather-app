@@ -1,12 +1,14 @@
 import React from "react";
 
-import WeatherContextType from '../models/WeatherContextType';
+import WeatherContextType, {NewLocationType} from '../models/WeatherContextType';
 
 const WeatherContext = React.createContext<WeatherContextType>({
   address: null,
-  changeAddress: (newAddress: string | null) => {},
+  changeLocation: (newALocation: NewLocationType) => {},
+  lat: null,
+  lon: null,
   isReady: false,
-  statusIsReady: ({}) => {}
+  statusIsReady: (someObject: {}) => {},
 });
 
 export default WeatherContext;

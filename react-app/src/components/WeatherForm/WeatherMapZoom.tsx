@@ -1,3 +1,5 @@
+import styles from './WeatherMapZoom.module.css';
+
 interface WeatherMapZoomProps {
   selectedZoom: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -7,7 +9,7 @@ const WeatherMapZoom = (props : WeatherMapZoomProps) => {
 
   
   return (
-    <ul className='zoom-level'>
+    <ul className={styles['zoom-level']}>
       <p>Map Zoom Level:</p>
       <li>
         <label>

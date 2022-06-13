@@ -8,13 +8,13 @@ import MapLegendProperties from './WeatherMap/MapLegendProperties';
 const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
 
-  const { address, statusIsReady, isReady } = useContext(WeatherContext);
+  const { address, lat, lon, statusIsReady, isReady } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
   // const serverUrl = 'http://localhost:5000';
   const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
-  const mapUrl = `${serverUrl}/api/weather-map?address=${address}&zoom=${zoom}&map__type=${mapLayer}`;
+  const mapUrl = `${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`;
 
   useEffect(() => {
     const fetchMap = async () => {
@@ -26,10 +26,10 @@ const WeatherMap = () => {
         mapIsReady: true,
       });
     };
-    if (address && zoom && mapLayer) {
+    if (address && lat && lon && zoom && mapLayer) {
       fetchMap();
     }
-  }, [mapUrl, address, zoom, mapLayer, statusIsReady]);
+  }, [mapUrl, address, lat, lon, zoom, mapLayer, statusIsReady]);
 
   const MapLegend = mapLayer ? MapLegendProperties[mapLayer].values.map((value) => {
     return (

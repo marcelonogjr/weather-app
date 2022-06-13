@@ -60,7 +60,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         console.log('I\'m running')
         return element = minGradientStop + (element - filteredStops[0]) / (filteredStops[1] - filteredStops[0]) * (maxGradientStop - minGradientStop);
       }
-    })
+    });
     
     return (`linear-gradient(0deg, 
       rgb(130,22,146) ${gradientStops[0]}%,

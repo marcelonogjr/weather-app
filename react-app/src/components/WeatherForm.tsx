@@ -1,48 +1,58 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
 
+import WeatherSearchBar from './WeatherForm/WeatherSearchBar';
 import WeatherMapLayers from './WeatherForm/WeatherMapLayers';
 import WeatherMapZoom from './WeatherForm/WeatherMapZoom';
+import styles from './WeatherForm.module.css';
 
 const WeatherForm = () => {
-  const [selectedZoom, changeSelectedZoom] = useState('small');
+  const [selectedZoom, setSelectedZoom] = useState('small');
   const [selectedMapLayer, setSelectedMapLayer] = useState('temperature');
 
-  const { changeAddress } = useContext(WeatherContext);
+  const { address, lat, lon, changeLocation } = useContext(WeatherContext);
   const { changeZoomLevel, changeMapLayer } = useContext(MapContext);
 
-  const addressInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams()[0];
   const navigate = useNavigate();
 
+  // change url
   useEffect(() => {
-    const address = searchParams.get('address');
-    const zoom = searchParams.get('zoom_level');
-    const mapLayer = searchParams.get('weather_layer');
+    const addressParam = searchParams.get('address');
+    const latParam = searchParams.get('lat');
+    const lonParam = searchParams.get('lon');
+    const zoomParam = searchParams.get('zoom_level');
+    const mapLayerParam = searchParams.get('weather_layer');
 
     if (
-      address &&
-      (zoom === 'small' || zoom === 'medium' || zoom === 'large') &&
-      (mapLayer === 'clouds' ||
-        mapLayer === 'precipitation' ||
-        mapLayer === 'pressure' ||
-        mapLayer === 'wind' ||
-        mapLayer === 'temperature')
+      addressParam &&
+      latParam &&
+      lonParam &&
+      (zoomParam === 'small' || zoomParam === 'medium' || zoomParam === 'large') &&
+      (mapLayerParam === 'clouds' ||
+        mapLayerParam === 'precipitation' ||
+        mapLayerParam === 'pressure' ||
+        mapLayerParam === 'wind' ||
+        mapLayerParam === 'temperature')
     ) {
-      changeAddress(address);
-      changeZoomLevel(zoom);
-      changeMapLayer(mapLayer);
+      changeLocation({address: addressParam, lat: parseFloat(latParam), lon: parseFloat(lonParam)});
+      changeZoomLevel(zoomParam);
+      changeMapLayer(mapLayerParam);
     } else {
       navigate('');
     }
-  }, [searchParams, changeAddress, changeZoomLevel, changeMapLayer, navigate]);
+  }, [searchParams, changeLocation, changeZoomLevel, changeMapLayer, navigate]);
+
+  // const addressChangeHandler = (inputAddress: string) => {
+  //   setSelectedAddress(inputAddress);
+  // };
 
   const zoomLevelHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    changeSelectedZoom(event.target.value);
+    setSelectedZoom(event.target.value);
   };
 
   const mapLayerHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -51,12 +61,11 @@ const WeatherForm = () => {
 
   const submitFormHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const searchAddress = addressInputRef.current?.value
-      .trim()
-      .replace(/[/.,;]/g, '');
 
     if (
-      searchAddress &&
+      address &&
+      lat &&
+      lon &&
       (selectedZoom === 'small' ||
         selectedZoom === 'medium' ||
         selectedZoom === 'large') &&
@@ -66,19 +75,20 @@ const WeatherForm = () => {
         selectedMapLayer === 'wind' ||
         selectedMapLayer === 'temperature')
     ) {
-      changeAddress(searchAddress);
       changeZoomLevel(selectedZoom);
       changeMapLayer(selectedMapLayer);
       navigate(
-        `?address=${searchAddress}&zoom_level=${selectedZoom}&weather_layer=${selectedMapLayer}`
+        `?address=${address}&lat=${lat}&lon=${lon}&zoom_level=${selectedZoom}&weather_layer=${selectedMapLayer}`
       );
     }
   };
 
   return (
     <form onSubmit={submitFormHandler}>
-      <input ref={addressInputRef} className='address-input' />
-      <button type='submit'>Search!</button>
+
+      <div className={styles['input-button-bundle']}>
+        <WeatherSearchBar zoom={selectedZoom} mapLayer={selectedMapLayer}/>
+      </div>
 
       <WeatherMapZoom selectedZoom={selectedZoom} onChange={zoomLevelHandler}/>
       <WeatherMapLayers selectedLayer={selectedMapLayer} onChange={mapLayerHandler}/>

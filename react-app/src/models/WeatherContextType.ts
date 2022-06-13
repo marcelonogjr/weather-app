@@ -3,7 +3,9 @@ export interface ChildrenProps {
 };
 
 export interface DefaultWeatherStatusType {
-  address: null | string;
+  address: string | null;
+  lat: number | null;
+  lon: number | null;
   isReady: boolean;
   dataIsReady: {
     infoIsReady: boolean;
@@ -16,20 +18,28 @@ export interface StatusIsReadyType {
   mapIsReady?: boolean;
 };
 
-interface actionReducerType {
+export type NewLocationType = {
+  address: string;
+  lat: number;
+  lon: number;
+}
+
+interface ActionReducerType {
   type: string;
-  newAddress: string;
+  location: NewLocationType;
   dataIsReady: StatusIsReadyType;
 };
 
 export type ReducerType = (
   state: DefaultWeatherStatusType,
-  action: actionReducerType
+  action: ActionReducerType
 ) => DefaultWeatherStatusType;
 
 type WeatherContextType = {
   address: string | null;
-  changeAddress: (newAddress: string) => void;
+  lat: number | null;
+  lon: number | null;
+  changeLocation: (newlocation: NewLocationType) => void;
   isReady: boolean;
   statusIsReady: (object: StatusIsReadyType) => void;
 };

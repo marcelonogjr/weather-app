@@ -17,32 +17,32 @@ type currentInfoType = 'current' | 'hourly' | 'daily';
 
 const WeatherInfo = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [newData, setNewData] = useState<WeatherAPIDataType>();
+  const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
-  const { address, statusIsReady, isReady } = useContext(WeatherContext);
+  const { address, lat, lon, statusIsReady, isReady } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
   // const serverUrl = 'http://localhost:5000';
   const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
-    const fetchInfo = () => {
-      fetch(`${serverUrl}/api/weather?address=${address}`)
+    const fetchWeatherInfo = () => {
+      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}`)
         .then((response) => response.json())
         .then((response) => {
           statusIsReady({
             infoIsReady: true,
           });
-          setNewData(response);
+          setWeatherData(response);
         });
     };
 
-    if (address && zoom && mapLayer) {
+    if (lat && lon && zoom && mapLayer) {
       setIsLoading(true);
-      fetchInfo();
+      fetchWeatherInfo();
     }
-  }, [address, statusIsReady, zoom, mapLayer]);
+  }, [lat, lon, statusIsReady, zoom, mapLayer]);
 
   if (isLoading && isReady) {
     setIsLoading(false);
@@ -63,13 +63,13 @@ const WeatherInfo = () => {
   return (
     <>
       {isLoading && !isReady && <LoadingSpinner />}
-      {!isLoading && newData && isReady && (
+      {!isLoading && weatherData && address && isReady && (
         <div className={styles['info-bundle']}>
-          <CurrentLocationDate data={newData} />
+          <CurrentLocationDate locationData={address} weatherData={weatherData} />
           <div className={styles['weather-bundle']}>
-            {currentInfo === 'current' && <CurrentWeatherInfo currentData={newData.weather.current} />}
-            {currentInfo === 'hourly' && <HourlyWeatherInfo hourlyData={newData.weather.hourly} />}
-            {currentInfo === 'daily' && <DailyWeatherInfo dailyData={newData.weather.daily}/>}
+            {currentInfo === 'current' && <CurrentWeatherInfo currentData={weatherData.current} />}
+            {currentInfo === 'hourly' && <HourlyWeatherInfo hourlyData={weatherData.hourly} />}
+            {currentInfo === 'daily' && <DailyWeatherInfo dailyData={weatherData.daily}/>}
             <WeatherInfoButtons
               onCurrentClick={onClickCurrentButtonHandler}
               onHourlyClick={onClickHourlyButtonHandler}

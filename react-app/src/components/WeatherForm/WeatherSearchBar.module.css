@@ -1,0 +1,76 @@
+.address-input {
+  border: 1px solid #cccccc;
+  padding: 8px;
+  width: 300px;
+  z-index: 10;
+}
+
+.location-list{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-height: 26.2px;
+  max-height: 209.6px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #cccccc;
+  background-color: white;
+  position: absolute;
+  overflow: auto;
+  z-index: 8;
+}
+
+.location-list:focus {
+  background-color: red;
+}
+
+/* scrool bar (all but firefox)*/
+.location-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.location-list::-webkit-scrollbar-track {
+  background: white;
+}
+
+.location-list::-webkit-scrollbar-thumb {
+  background-color: black;    /* color of the scroll thumb */
+  border-radius: 2px;       /* roundness of the scroll thumb */
+}
+.location-list::-webkit-resizer {
+  background-color: black;    /* color of the scroll thumb */
+  border-radius: 2px;       /* roundness of the scroll thumb */
+}
+
+.location-list__address{
+  width: 100%;
+  cursor: pointer;
+}
+
+.location-list__address:hover{
+  background-color: rgb(216, 216, 216);
+  color: black;
+}
+.location-list__address--selected {
+  background-color: grey;
+  color: white;
+}
+
+.location-list__address--selected p,
+.location-list__address p{
+  font-size: 13px;
+  margin: 0;
+  padding: 5px 8px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.backdrop{
+  background-color: rbga(0, 0, 0, 0.2);
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}

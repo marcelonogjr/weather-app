@@ -6,10 +6,13 @@ import TimeConversor, {
 } from '../../others/time-conversor';
 
 interface CurrentLocationDatePropsType {
-  data: WeatherAPIDataType;
+  locationData: string;
+  weatherData: WeatherAPIDataType;
 }
 
 const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
+  const [city, state, country] = props.locationData.split(',');
+  
   const timeInfo = (timeConversorObject: timeConversorObjectType) => {
     
     return (
@@ -32,13 +35,13 @@ const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   
   return (
     <div className={styles['location_date-bundle']}>
-      <h3>{props.data.location.city}</h3>
+      <h3>{city}</h3>
       <h4>
-        {props.data.location.state}, {props.data.location.country}
+        {state}, {country}
       </h4>
       <span>
-        {timeInfo(TimeConversor(props.data.weather.current.dt).time)}
-        {dateInfo(TimeConversor(props.data.weather.current.dt).date)}
+        {timeInfo(TimeConversor(props.weatherData.current.dt).time)}
+        {dateInfo(TimeConversor(props.weatherData.current.dt).date)}
       </span>
     </div>
   );

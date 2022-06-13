@@ -1,15 +1,10 @@
-interface WeatherAPIDataType {
-  weather: {
-    current: CurrentAPIDataType;
-    hourly: HourlyAPIDataType;
-    daily: DailyAPIDataType;
-  };
-  location: {
-    city: string;
-    state: string;
-    country: string;
-  };
-}
+export type GeocodeAPIDataType = {
+  placeName: string;
+  center: {
+    lat: number;
+    lon: number;
+  }
+}[];
 
 export interface CurrentAPIDataType {
   dt: number;
@@ -33,7 +28,7 @@ export interface CurrentAPIDataType {
       icon: string;
     }
   ];
-}
+};
 
 export type HourlyAPIDataType = {
   dt: number;
@@ -68,5 +63,11 @@ export type DailyAPIDataType = {
   ];
   pop: number;
 }[];
+
+interface WeatherAPIDataType {
+  current: CurrentAPIDataType;
+  hourly: HourlyAPIDataType;
+  daily: DailyAPIDataType;
+}
 
 export default WeatherAPIDataType;

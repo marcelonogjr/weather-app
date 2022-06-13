@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { geocodeToken } from './tokens';
+// import { geocodeToken } from './tokens';
 
 // type geocodeDataType = {
 //   placeName: string;
@@ -14,7 +14,7 @@ type geocodeType = (
 ) => Promise<string[] | void>;
 
 const geocode: geocodeType = async (address: string) => {
-  // const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
+  const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
 
   const mapBoxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${geocodeToken}&limit=10&types=country,region,postcode,district,place,locality`;
 

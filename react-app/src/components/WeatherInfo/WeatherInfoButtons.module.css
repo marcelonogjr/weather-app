@@ -1,7 +1,16 @@
-.info-buttons{
+.info-buttons {
   display: flex;
   flex-direction: column;
   width: fit-content;
+}
+
+.info-buttons button{
+  cursor: pointer;
+  border: 1px solid #888888;
+  background: #888888;
+  color: white;
+  padding: 8px;
+  height: 34px;
 }
 
 .info-buttons button:hover{

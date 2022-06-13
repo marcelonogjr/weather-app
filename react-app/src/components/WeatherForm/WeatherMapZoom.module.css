@@ -1,0 +1,32 @@
+.zoom-level {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  align-items: center;
+}
+
+.zoom-level p {
+  padding-right: 0.5rem;
+}
+
+.zoom-level li label {
+  cursor:pointer;
+  width: auto;
+  height: auto;
+  
+}
+
+.zoom-level li label span {
+  padding: 0.1rem;
+  border: 1px solid black;
+}
+
+.zoom-level li label input{
+  display:none;
+} 
+
+.zoom-level li label input[type="radio"]:checked + span {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}

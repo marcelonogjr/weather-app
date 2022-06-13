@@ -1,0 +1,18 @@
+.input-button-bundle {
+  display: flex;
+  flex-grow: 0;
+}
+
+.input-button-bundle button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background: #888888;
+  color: white;
+  padding: 8px;
+  height: 34px;
+}
+
+.input-button-bundle button:hover {
+  font-weight:600;
+  text-decoration: underline 2px;
+}

@@ -6,10 +6,13 @@ import {
   ChildrenProps,
   DefaultWeatherStatusType,
   ReducerType,
+  NewLocationType,
 } from '../models/WeatherContextType';
 
 const defaultWeatherStatus: DefaultWeatherStatusType = {
   address: null,
+  lat: null,
+  lon: null,
   isReady: false,
   dataIsReady: {
     infoIsReady: false,
@@ -19,9 +22,11 @@ const defaultWeatherStatus: DefaultWeatherStatusType = {
 
 const weatherReducer: ReducerType = (state, action) => {
   if (action.type === 'CHANGE_ADDRESS') {
-    const newAddress = action.newAddress;
+    const location = action.location;
     return {
-      address: newAddress,
+      address: location.address,
+      lat: location.lat,
+      lon: location.lon,
       isReady: false,
       dataIsReady: {
         infoIsReady: false,
@@ -66,10 +71,14 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
     defaultWeatherStatus
   );
 
-  const changeAddressHandler = useCallback((newAddress: string) => {
+  const changeLocationHandler = useCallback((location: NewLocationType) => {
     dispatchWeatherAction({
       type: 'CHANGE_ADDRESS',
-      newAddress,
+      location: {
+        address: location.address,
+        lat: location.lat,
+        lon: location.lon,
+      },
       dataIsReady: {
         infoIsReady: false,
         mapIsReady: false,
@@ -81,13 +90,19 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
     dispatchWeatherAction({
       type: 'CHANGE_STATUS',
       dataIsReady: newStatus,
-      newAddress: 'this is useless code, but can\' get it out for now...', //figure out a better logic later...
+      location: {
+        address: '',
+        lat: 0,
+        lon: 0,
+      }, //figure out a better logic later...
     });
   }, []);
 
   const contextValue = {
     address: weatherState.address,
-    changeAddress: changeAddressHandler,
+    changeLocation: changeLocationHandler,
+    lat: weatherState.lat,
+    lon: weatherState.lon,
     isReady: weatherState.isReady,
     statusIsReady: changeStatusHandler,
   };
