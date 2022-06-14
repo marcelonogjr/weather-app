@@ -17,9 +17,9 @@ const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
     
     return (
       <h4>
-        {timeConversorObject.hour > 9 ? timeConversorObject.hour : '0'+timeConversorObject.hour}:
-        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0'+timeConversorObject.minute}:
-        {timeConversorObject.second > 9 ? timeConversorObject.second : '0'+timeConversorObject.second}
+        {timeConversorObject.hour.hour > 9 ? timeConversorObject.hour.hour : '0' + timeConversorObject.hour.hour}:
+        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0' + timeConversorObject.minute}:
+        {timeConversorObject.second > 9 ? timeConversorObject.second : '0' + timeConversorObject.second} {timeConversorObject.hour.period}
       </h4>
     );
   };

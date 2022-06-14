@@ -44,8 +44,6 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     };
 
     const timer = setTimeout(() => {
-      // if (!pressedEnterEarly){
-      // }
       if (addressInput.length >= 3 && !usedListForInput) {
         setSelectedAddress(-1);
         fetchLocation(addressInput);
@@ -54,7 +52,6 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     return () => {
       if (!usedListForInput){
         clearTimeout(timer);
-        // setAddressList([]);
       }
     };
   }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, setAddressList]);
@@ -63,10 +60,12 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     const inputQuery = event.currentTarget.value;
     inputQuery.trim().replace(/[/@!#$%*()'"=+§]/g, '');
     setAddressInput(inputQuery);
+    setAddressList([]);
     if (usedListForInput) {
-      setAddressList([]);
       setSelectedAddress(-1);
       setUsedListForInput(false);
+    } else {
+      setShowList(true);
     }
   };
 
@@ -98,14 +97,6 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
       if (selectedAddress > -1){
         setUsedListForInput(true);
         setAddressInput(addressList[selectedAddress].placeName);
-        changeLocation({
-          address: addressList[selectedAddress].placeName,
-          lat: addressList[selectedAddress].center.lat,
-          lon: addressList[selectedAddress].center.lon,
-        });
-        navigate(
-          `?address=${addressList[selectedAddress].placeName}&lat=${addressList[selectedAddress].center.lat}&lon=${addressList[selectedAddress].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
-        );
       } else {
         setPressedEnterEarly(true);
       }

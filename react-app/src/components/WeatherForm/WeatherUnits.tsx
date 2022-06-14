@@ -2,16 +2,12 @@ import { useContext } from 'react';
 import WeatherContext from '../../store/weather-context';
 import styles from './WeatherUnits.module.css';
 
-const WeatherUnits = () => {
-  const {units, changeUnits} = useContext(WeatherContext);
+interface WeatherUnitsProps {
+  selectedUnits: 'metric' | 'imperial',
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const changeUnitsHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedUnits = event.target.value;
-
-    if (selectedUnits === 'imperial' || selectedUnits === 'metric'){
-      changeUnits(selectedUnits);
-    }
-  }
+const WeatherUnits = (props: WeatherUnitsProps) => {
   
   return (
     <ul className={styles['units']}>
@@ -22,8 +18,8 @@ const WeatherUnits = () => {
             type='radio'
             name='units'
             value='imperial'
-            checked={units === 'imperial'}
-            onChange={changeUnitsHandler}
+            checked={props.selectedUnits === 'imperial'}
+            onChange={props.onChange}
           />
           <span>Imperial</span>
         </label>
@@ -34,8 +30,8 @@ const WeatherUnits = () => {
             type='radio'
             name='units'
             value='metric'
-            checked={units === 'metric'}
-            onChange={changeUnitsHandler}
+            checked={props.selectedUnits === 'metric'}
+            onChange={props.onChange}
           />
           <span>Metric</span>
         </label>

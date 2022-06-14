@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+
+import WeatherContext from '../../store/weather-context';
 import { HourlyAPIDataType } from '../../models/WeatherAPIDataType';
 import styles from './HourlyWeatherInfo.module.css';
 import TimeConversor, {
@@ -10,12 +13,13 @@ interface HourlyWeatherInfoProps {
 };
 
 const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
+  const { units } = useContext(WeatherContext);
 
   const timeInfo = (timeConversorObject: timeConversorObjectType) => {
     return (
       <b>
-        {timeConversorObject.hour > 9 ? timeConversorObject.hour : '0'+timeConversorObject.hour}:
-        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0'+timeConversorObject.minute}
+        {timeConversorObject.hour.hour > 9 ? timeConversorObject.hour.hour : '0'+timeConversorObject.hour.hour}:
+        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0'+timeConversorObject.minute} {timeConversorObject.hour.period}
       </b>
     );
   };
@@ -76,7 +80,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           <div className={styles['graph-lines']} style={graphLiStyle}>
           </div>
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
-          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}°C</p>
+          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}{units === 'metric' ? '°C' : '°F'}</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>

@@ -1,5 +1,11 @@
+import { useContext } from "react";
+import WeatherContext from "../store/weather-context";
+
 export interface timeConversorObjectType {
-  hour: number;
+  hour: {
+    hour: number,
+    period: string
+  };
   minute: number;
   second: number;
 }
@@ -16,6 +22,8 @@ export interface dateConversorObjectType {
 }
 
 const TimeConversor = (currentDate: number) => {
+  const { units } = useContext(WeatherContext);
+  
   const currentTimezoneOffset = new Date().getTimezoneOffset();
   const currentLocalDate = new Date((currentDate + currentTimezoneOffset*60) * 1000);
 
@@ -63,7 +71,19 @@ const TimeConversor = (currentDate: number) => {
   const currentDayOrdinal = dayOfTheMonth(currentLocalDate.getDate());
   const currentWeekDay = dayOfTheWeek[currentLocalDate.getDay()];
 
-  const currentHour = currentLocalDate.getHours();
+  const imperialHours = (hour: number) => {
+    if (hour === 0){
+      return {hour: 12, period:'AM'};
+    } else if (hour === 12) {
+      return {hour: 12, period:'PM'};
+    } else if (hour > 12) {
+      return {hour: hour - 12, period:'PM'};
+    } else{
+      return {hour: hour, period:'AM'}
+    }
+  };
+
+  const currentHour = units === 'imperial' ? imperialHours(currentLocalDate.getHours()) : {hour: currentLocalDate.getHours(), period: ''};
   const currentMinute = currentLocalDate.getMinutes();
   const currentSecond = currentLocalDate.getSeconds();
 

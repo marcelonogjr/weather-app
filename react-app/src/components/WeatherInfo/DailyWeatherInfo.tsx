@@ -1,14 +1,20 @@
+import { useContext } from 'react';
+
+import WeatherContext from '../../store/weather-context';
 import { DailyAPIDataType } from '../../models/WeatherAPIDataType';
 import styles from './DailyWeatherInfo.module.css';
 import TimeConversor, {
   dateConversorObjectType
 } from '../../others/time-conversor';
+import { NewUnitsType } from '../../models/WeatherContextType';
 
 interface DailyWeatherInfoProps {
   dailyData: DailyAPIDataType;
 };
 
 const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
+  const { units } = useContext(WeatherContext);
+  
   const dateInfo = (dateConversorObject: dateConversorObjectType) => {
     return (
       <b>
@@ -31,20 +37,26 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   const styleLiHeight =250;
   
   const liGradientBackground = () => {
-    const temperatureStops = [-40, -30, -20, -10, 0, 10, 20, 25, 30, 50];
+    const temperatureStops = (unit: NewUnitsType | null) => {
+      if (unit === 'metric'){
+        return [-40, -30, -20, -10, 0, 10, 20, 25, 30, 50];
+      } else {
+        return [-40, -22, -4, 14, 32, 50, 68, 77, 86, 122];
+      }
+    };
 
-    const filteredStops = temperatureStops.filter((element, index, array) => {
+    const filteredStops = temperatureStops(units).filter((element, index, array) => {
       if ((element >= minTemperatureDaily && array[index - 1] < minTemperatureDaily) || (element <= maxTemperatureDaily && array[index + 1] > maxTemperatureDaily)) {
         return true;
       }
       return false
     });
-    const indexFilteredStops = [temperatureStops.indexOf(filteredStops[0]), temperatureStops.indexOf(filteredStops[1])]
+    const indexFilteredStops = [temperatureStops(units).indexOf(filteredStops[0]), temperatureStops(units).indexOf(filteredStops[1])]
 
     const minGradientStop = 15 * filteredStops[0] / minTemperatureDaily ;
-    const maxGradientStop = 100 - (5 * (temperatureStops[indexFilteredStops[1] + 1] - filteredStops[1]) / (temperatureStops[indexFilteredStops[1] + 1] - maxTemperatureDaily)) ;
+    const maxGradientStop = 100 - (5 * (temperatureStops(units)[indexFilteredStops[1] + 1] - filteredStops[1]) / (temperatureStops(units)[indexFilteredStops[1] + 1] - maxTemperatureDaily)) ;
 
-    const gradientStops = temperatureStops.map((element, index, array) => {
+    const gradientStops = temperatureStops(units).map((element, index, array) => {
       if (element < minTemperatureDaily) {
         return element = 0;
       }
@@ -129,9 +141,9 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         <div style={graphLiStyle}>
         </div>
         <div className={styles['daily-graph__dots']} style={divMaxCircleStyle}></div>
-        <p className = {styles['daily-temperature']} style={pMaxTemperatureStyle}>{Math.round(dayElement.temp.max)}°C</p>
+        <p className = {styles['daily-temperature']} style={pMaxTemperatureStyle}>{Math.round(dayElement.temp.max)}{units === 'metric' ? '°C' : '°F'}</p>
         <div className={styles['daily-graph__dots']} style={divMinCircleStyle}></div>
-        <p className = {styles['daily-temperature']} style={pMinTemperatureStyle}>{Math.round(dayElement.temp.min)}°C</p>
+        <p className = {styles['daily-temperature']} style={pMinTemperatureStyle}>{Math.round(dayElement.temp.min)}{units === 'metric' ? '°C' : '°F'}</p>
         <div className= {styles['daily-info']} style={divInfoStyle}>
           <p>{dailyDate}</p>
           <p>Weather: {dayElement.weather[0].main}</p>

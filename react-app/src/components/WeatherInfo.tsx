@@ -20,15 +20,15 @@ const WeatherInfo = () => {
   const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
-  const { address, lat, lon, statusIsReady, isReady } = useContext(WeatherContext);
+  const { address, lat, lon, statusIsReady, isReady, units } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5000';
+  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
     const fetchWeatherInfo = () => {
-      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}`)
+      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}&units=${units}`)
         .then((response) => response.json())
         .then((response) => {
           statusIsReady({
@@ -38,11 +38,11 @@ const WeatherInfo = () => {
         });
     };
 
-    if (lat && lon && zoom && mapLayer) {
+    if (lat && lon && zoom && mapLayer && units) {
       setIsLoading(true);
       fetchWeatherInfo();
     }
-  }, [lat, lon, statusIsReady, zoom, mapLayer]);
+  }, [lat, lon, statusIsReady, zoom, mapLayer, units]);
 
   if (isLoading && isReady) {
     setIsLoading(false);
