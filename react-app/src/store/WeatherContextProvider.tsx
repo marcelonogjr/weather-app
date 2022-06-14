@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useState } from 'react';
 
 import WeatherContext from './weather-context';
 import {
@@ -7,6 +7,7 @@ import {
   DefaultWeatherStatusType,
   ReducerType,
   NewLocationType,
+  NewUnitsType
 } from '../models/WeatherContextType';
 
 const defaultWeatherStatus: DefaultWeatherStatusType = {
@@ -66,6 +67,7 @@ const weatherReducer: ReducerType = (state, action) => {
 };
 
 const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
+  const [currentUnits, setCurrentUnits] = useState<NewUnitsType>('imperial');
   const [weatherState, dispatchWeatherAction] = useReducer(
     weatherReducer,
     defaultWeatherStatus
@@ -98,11 +100,17 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
     });
   }, []);
 
+  const changeUnitsHandler = useCallback((newUnits: NewUnitsType) => {
+    setCurrentUnits(newUnits);
+  }, [])
+
   const contextValue = {
     address: weatherState.address,
     changeLocation: changeLocationHandler,
     lat: weatherState.lat,
     lon: weatherState.lon,
+    units: currentUnits,
+    changeUnits: changeUnitsHandler,
     isReady: weatherState.isReady,
     statusIsReady: changeStatusHandler,
   };

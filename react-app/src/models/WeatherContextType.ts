@@ -24,6 +24,8 @@ export type NewLocationType = {
   lon: number;
 }
 
+export type NewUnitsType = 'imperial' | 'metric';
+
 interface ActionReducerType {
   type: string;
   location: NewLocationType;
@@ -37,9 +39,11 @@ export type ReducerType = (
 
 type WeatherContextType = {
   address: string | null;
+  changeLocation: (newlocation: NewLocationType) => void;
   lat: number | null;
   lon: number | null;
-  changeLocation: (newlocation: NewLocationType) => void;
+  units: NewUnitsType | null;
+  changeUnits: (newUnits: NewUnitsType) => void;
   isReady: boolean;
   statusIsReady: (object: StatusIsReadyType) => void;
 };
