@@ -8,6 +8,7 @@ import MapContext from '../store/map-context';
 import WeatherSearchBar from './WeatherForm/WeatherSearchBar';
 import WeatherMapLayers from './WeatherForm/WeatherMapLayers';
 import WeatherMapZoom from './WeatherForm/WeatherMapZoom';
+import WeatherUnits from './WeatherForm/WeatherUnits';
 import styles from './WeatherForm.module.css';
 
 const WeatherForm = () => {
@@ -90,8 +91,11 @@ const WeatherForm = () => {
         <WeatherSearchBar zoom={selectedZoom} mapLayer={selectedMapLayer}/>
       </div>
 
-      <WeatherMapZoom selectedZoom={selectedZoom} onChange={zoomLevelHandler}/>
-      <WeatherMapLayers selectedLayer={selectedMapLayer} onChange={mapLayerHandler}/>
+      <div className={styles['other-inputs-bundle']}>
+        <WeatherMapZoom selectedZoom={selectedZoom} onChange={zoomLevelHandler}/>
+        <WeatherUnits />
+      </div>
+        <WeatherMapLayers selectedLayer={selectedMapLayer} onChange={mapLayerHandler}/>
 
     </form>
   );

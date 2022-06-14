@@ -24,8 +24,8 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   const { changeLocation } = useContext(WeatherContext);
   const navigate = useNavigate();
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5000';
+  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
     const fetchLocation = (addressQuery: string) => {

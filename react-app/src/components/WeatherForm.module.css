@@ -16,3 +16,8 @@
   font-weight:600;
   text-decoration: underline 2px;
 }
+
+.other-inputs-bundle {
+  display: flex;
+  flex-direction: row;
+}

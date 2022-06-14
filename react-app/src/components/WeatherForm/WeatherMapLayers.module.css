@@ -1,0 +1,10 @@
+.weather-layer-bundle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.weather-layer-bundle select{
+  margin-left: 20px;
+  height: fit-content;
+}

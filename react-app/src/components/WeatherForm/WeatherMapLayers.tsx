@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from './WeatherMapLayers.module.css';
+import styles from './WeatherMapLayers.module.css';
 
 interface WeatherMapLayersProps{
   selectedLayer: string;
@@ -9,7 +9,7 @@ interface WeatherMapLayersProps{
 const WeatherMapLayers = (props: WeatherMapLayersProps) => {
   
   return (
-    <div>
+    <div className={styles['weather-layer-bundle']}>
       <label htmlFor='weather-layer'>
         <p>Choose a weather layer:</p>
       </label>
