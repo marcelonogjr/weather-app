@@ -1,12 +1,12 @@
 import axios from "axios";
 // import {openWeatherToken} from "./tokens";
 
-type getWeatherType = (lat: number, lon: number) => (Promise<unknown | void>);
+type getWeatherType = (lat: number, lon: number, units: ('metric' | 'imperial')) => (Promise<unknown | void>);
 
-const getWeather: getWeatherType = async (lat: number, lon: number) => {
+const getWeather: getWeatherType = async (lat: number, lon: number, units: ('metric' | 'imperial')) => {
   const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
-  const urlByCoordinates = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=metric`;
+  const urlByCoordinates = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=${units}`;
   const response = await axios.get(urlByCoordinates);
   if (response) {
     const newCurrentDT = (response.data.current.dt + response.data.timezone_offset);

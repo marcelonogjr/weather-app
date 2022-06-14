@@ -36,16 +36,17 @@ app.get('/api/find-location', async (req: Request, res: Response) => {
 app.get('/api/weather', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  if (!req.query.lat || !req.query.lon) {
+  if (!req.query.lat || !req.query.lon || !req.query.units) {
     return res.send({
-      error: 'ERROR: Please choose a valid location.',
+      error: 'ERROR: Please choose a valid location and units system.',
     });
   } 
-  if (typeof req.query.lat === 'string' && typeof req.query.lon === 'string'){
+  if (typeof req.query.lat === 'string' && typeof req.query.lon === 'string' && (req.query.units === 'metric' || req.query.units === 'imperial')){
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
+    const units = req.query.units;
     
-    const weather = await getWeather(lat, lon);
+    const weather = await getWeather(lat, lon, units);
   
     if (weather) {
       return res.send(weather);
