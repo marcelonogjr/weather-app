@@ -38,9 +38,6 @@
   position: relative;
 }
 
-#daily-graph > li {
-  background-color: white;
-}
 
 .daily-temperature {
   /* display: block; */

@@ -38,7 +38,7 @@
   position: relative;
 }
 
-#hourly-graph > li {
+.graph-lines {
   background-color: white;
   flex-shrink: 0;
 }

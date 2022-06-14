@@ -16,8 +16,8 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   const [showList, setShowList] = useState(false);
   const [addressList, setAddressList] = useState<GeocodeAPIDataType>([]);
   const [selectedAddress, setSelectedAddress] = useState(-1);
-  const [newSearch, setNewSearch] = useState(true);
   const [pressedEnterEarly, setPressedEnterEarly] = useState(false);
+  const [usedListForInput, setUsedListForInput] = useState(false);
 
   const addressListRef = useRef<HTMLParagraphElement [] | null[]>([]);
 
@@ -36,7 +36,6 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         setAddressList(response);
         if (pressedEnterEarly) {
           setPressedEnterEarly(false);
-          setNewSearch(false);
           navigate(
             `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
           );
@@ -45,25 +44,30 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     };
 
     const timer = setTimeout(() => {
-      if (addressInput.length >= 3 && newSearch) {
+      // if (!pressedEnterEarly){
+      // }
+      if (addressInput.length >= 3 && !usedListForInput) {
         setSelectedAddress(-1);
-        if (!pressedEnterEarly){
-          setShowList(true);
-        }
         fetchLocation(addressInput);
       }
     }, 1500);
     return () => {
-      clearTimeout(timer);
-      setAddressList([]);
+      if (!usedListForInput){
+        clearTimeout(timer);
+        // setAddressList([]);
+      }
     };
-  }, [addressInput, newSearch, pressedEnterEarly, navigate, props.mapLayer, props.zoom, setAddressList]);
+  }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, setAddressList]);
 
   const searchInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputQuery = event.currentTarget.value;
     inputQuery.trim().replace(/[/@!#$%*()'"=+§]/g, '');
     setAddressInput(inputQuery);
-    setNewSearch(true);
+    if (usedListForInput) {
+      setAddressList([]);
+      setSelectedAddress(-1);
+      setUsedListForInput(false);
+    }
   };
 
   const inputKeyboardEventHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -71,19 +75,28 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
       setShowList(true);
       setSelectedAddress(selectedAddress + 1);
       if(selectedAddress > 1){
-        addressListRef.current[selectedAddress - 1]?.scrollIntoView();
+        addressListRef.current[selectedAddress + 3]?.scrollIntoView(false);
       }
     }
     if (event.key === 'ArrowUp' && selectedAddress > 0) {
       setSelectedAddress(selectedAddress - 1);
-      if(selectedAddress < 5){
-        addressListRef.current[selectedAddress - 2]?.scrollIntoView();
+      if(selectedAddress > 0){
+        addressListRef.current[selectedAddress + 1]?.scrollIntoView(false);
       }
     }
-    if (event.key === 'Enter' || event.key === 'Tab') {
+    if (event.key === 'Tab') {
       if (selectedAddress > -1){
-        setNewSearch(false);
         setShowList(false);
+        setUsedListForInput(true);
+        setAddressInput(addressList[selectedAddress].placeName);
+      } else {
+        setShowList(false);
+      }
+    }
+    if (event.key === 'Enter') {
+      setShowList(false);
+      if (selectedAddress > -1){
+        setUsedListForInput(true);
         setAddressInput(addressList[selectedAddress].placeName);
         changeLocation({
           address: addressList[selectedAddress].placeName,
@@ -94,35 +107,25 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
           `?address=${addressList[selectedAddress].placeName}&lat=${addressList[selectedAddress].center.lat}&lon=${addressList[selectedAddress].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
         );
       } else {
-        setShowList(false);
         setPressedEnterEarly(true);
       }
     }
   }
-
+  
   const addressClickHandler = (event: React.MouseEvent<HTMLParagraphElement>) => {
     const selectedName = event.currentTarget.textContent;
     if (selectedName) {
-      setNewSearch(false);
       setShowList(false);
+      setUsedListForInput(true);
       setAddressInput(selectedName);
-      const selectedLocation = addressList.filter(element => element.placeName === selectedName)[0];
-      changeLocation({
-        address: selectedLocation.placeName,
-        lat: selectedLocation.center.lat,
-        lon: selectedLocation.center.lon,
-      })
-      navigate(
-        `?address=${selectedLocation.placeName}&lat=${selectedLocation.center.lat}&lon=${selectedLocation.center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
-      );
+      const selectedLocation = [...addressList].findIndex(element => element.placeName === selectedName);
+      setSelectedAddress(selectedLocation);
     }
   }
-
+  
   const searchButtonClickHandler = () => {
     if (selectedAddress > -1){
-      setNewSearch(false);
       setShowList(false);
-      setAddressInput(addressList[selectedAddress].placeName);
       changeLocation({
         address: addressList[selectedAddress].placeName,
         lat: addressList[selectedAddress].center.lat,

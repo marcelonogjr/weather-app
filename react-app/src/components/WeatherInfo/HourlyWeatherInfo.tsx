@@ -42,7 +42,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
   
   const hourlyList = props.hourlyData.map((hourElement, index, hourlyArray) => {
     if (index === 0) {
-      return <></>
+      return <li key={hourElement.dt+'null'}></li>
     }
     const widthCorrection = 1 * Math.sqrt((100*styleLiWidth/styleLiHeight) ** 2 + (( 95 - (80 * (Math.round(hourlyArray[index-1].temp) - minTemperatureHourly) / rangeTemperatureHourly)) - (95 - (80* (Math.round(hourElement.temp) - minTemperatureHourly) / rangeTemperatureHourly))) ** 2) / (100*styleLiWidth/styleLiHeight);
     
@@ -72,9 +72,9 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     };
 
     return (
-        <div id={styles['hourly-graph']} key={`li-key_${hourElement.dt}`}>
-          <li style={graphLiStyle}>
-          </li>
+        <li id={styles['hourly-graph']} key={`li-key_${hourElement.dt}`}>
+          <div className={styles['graph-lines']} style={graphLiStyle}>
+          </div>
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
           <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}°C</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
@@ -85,7 +85,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
             <p>Humidity: {Math.round(hourElement.humidity)}%</p>
             <p>POP: {Math.round(hourElement.pop * 100)}%</p>
           </div>
-        </div>
+        </li>
     )
   });
 

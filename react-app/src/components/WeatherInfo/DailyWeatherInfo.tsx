@@ -57,7 +57,6 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
       if (element <= maxTemperatureDaily && array[index + 1] > maxTemperatureDaily) {
         return element = maxGradientStop;
       } else {
-        console.log('I\'m running')
         return element = minGradientStop + (element - filteredStops[0]) / (filteredStops[1] - filteredStops[0]) * (maxGradientStop - minGradientStop);
       }
     });
@@ -78,7 +77,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   
   const dailyList = props.dailyData.map((dayElement, index, dailyArray) => {
     if (index === 0) {
-      return <></>
+      return <li key={dayElement.dt+'null'}></li>
     }
     
     const dailyDate = dateInfo(TimeConversor(dayElement.dt).date);
@@ -126,9 +125,9 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     };
 
     return (
-      <div id={styles['daily-graph']} key={`li-key_${index}`}>
-        <li style={graphLiStyle}>
-        </li>
+      <li id={styles['daily-graph']} key={`li-key_${dayElement.dt}`}>
+        <div style={graphLiStyle}>
+        </div>
         <div className={styles['daily-graph__dots']} style={divMaxCircleStyle}></div>
         <p className = {styles['daily-temperature']} style={pMaxTemperatureStyle}>{Math.round(dayElement.temp.max)}°C</p>
         <div className={styles['daily-graph__dots']} style={divMinCircleStyle}></div>
@@ -139,7 +138,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
           <p>Humidity: {Math.round(dayElement.humidity)}%</p>
           <p>POP: {Math.round(dayElement.pop * 100)}%</p>
         </div>
-      </div>
+      </li>
     )
   });
 
