@@ -25,8 +25,8 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   const { changeLocation } = useContext(WeatherContext);
   const navigate = useNavigate();
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
     const fetchLocation = (addressQuery: string) => {
@@ -55,7 +55,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         clearTimeout(timer);
       }
     };
-  }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, setAddressList]);
+  }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, props.units, setAddressList]);
 
   const searchInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputQuery = event.currentTarget.value;

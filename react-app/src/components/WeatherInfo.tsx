@@ -23,8 +23,8 @@ const WeatherInfo = () => {
   const { address, lat, lon, statusIsReady, isReady, units } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
     const fetchWeatherInfo = () => {

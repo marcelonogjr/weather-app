@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import useHorizontalScroll from '../custom-hooks/useSideScroll';
 
 import WeatherContext from '../../store/weather-context';
 import { HourlyAPIDataType } from '../../models/WeatherAPIDataType';
@@ -14,6 +15,7 @@ interface HourlyWeatherInfoProps {
 
 const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
   const { units } = useContext(WeatherContext);
+  const scrollRef = useHorizontalScroll();
 
   const timeInfo = (timeConversorObject: timeConversorObjectType) => {
     return (
@@ -95,7 +97,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
 
   return (
     <div className={styles['hourly-bundle']}>
-      <ul >
+      <ul ref={scrollRef}>
       {hourlyList}
       </ul>
     </div>

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import useHorizontalScroll from '../custom-hooks/useSideScroll';
 
 import WeatherContext from '../../store/weather-context';
 import { DailyAPIDataType } from '../../models/WeatherAPIDataType';
@@ -14,6 +15,7 @@ interface DailyWeatherInfoProps {
 
 const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   const { units } = useContext(WeatherContext);
+  const scrollRef = useHorizontalScroll();
   
   const dateInfo = (dateConversorObject: dateConversorObjectType) => {
     return (
@@ -156,7 +158,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
 
   return (
     <div className={styles['daily-bundle']}>
-      <ul >
+      <ul ref={scrollRef}>
       {dailyList}
       </ul>
     </div>
