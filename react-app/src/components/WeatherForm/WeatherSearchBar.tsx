@@ -7,8 +7,9 @@ import styles from './WeatherSearchBar.module.css';
 import { GeocodeAPIDataType } from '../../models/WeatherAPIDataType';
 
 type WeatherSearchBarPropsType = {
-  zoom: string,
-  mapLayer: string,
+  zoom: string;
+  mapLayer: string;
+  units: string;
 };
 
 const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
@@ -35,10 +36,10 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         addressListRef.current = [];
         setAddressList(response);
         if (pressedEnterEarly) {
-          setPressedEnterEarly(false);
           navigate(
-            `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
+            `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}&units=${props.units}`
           );
+          setPressedEnterEarly(false);
         }
       });
     };
@@ -169,4 +170,4 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   );
 };
 
-export default React.memo(WeatherSearchBar);
+export default WeatherSearchBar;

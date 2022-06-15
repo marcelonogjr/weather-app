@@ -96,7 +96,7 @@ const WeatherForm = () => {
     <form onSubmit={submitFormHandler}>
 
       <div className={styles['input-button-bundle']}>
-        <WeatherSearchBar zoom={selectedZoom} mapLayer={selectedMapLayer}/>
+        <WeatherSearchBar zoom={selectedZoom} mapLayer={selectedMapLayer} units={selectedUnits}/>
       </div>
 
       <div className={styles['other-inputs-bundle']}>

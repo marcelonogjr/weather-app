@@ -31,7 +31,7 @@ const WeatherMap = () => {
     }
   }, [mapUrl, address, lat, lon, zoom, mapLayer, units, statusIsReady]);
 
-  const MapLegend = mapLayer ? MapLegendProperties[mapLayer].values.map((value) => {
+  const MapLegend = mapLayer ? MapLegendProperties()[mapLayer].values.map((value) => {
     return (
       <span key={`legend-key_${value}`}>
         {value}
@@ -51,14 +51,14 @@ const WeatherMap = () => {
           />
           <div className={styles['map-bundle__legend--bar']}>
             <div className={styles['map-bundle__legend--background']}></div>
-            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties[mapLayer].gradient}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties()[mapLayer].gradient}></div>
             {MapLegend}
           </div>
           <div className={styles['map-bundle__legend--units']}>
             <div className={styles['map-bundle__legend--background']}></div>
-            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties[mapLayer].gradient}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties()[mapLayer].gradient}></div>
             <span>Unit: </span>
-            <span>{MapLegendProperties[mapLayer].unit}</span>
+            <span>{MapLegendProperties()[mapLayer].unit}</span>
           </div>
         </div>
       )}
