@@ -11,8 +11,8 @@ const WeatherMap = () => {
   const { address, lat, lon, statusIsReady, isReady, units } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5000';
+  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapUrl = `${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`;
 
@@ -27,11 +27,14 @@ const WeatherMap = () => {
       });
     };
     if (address && lat && lon && zoom && mapLayer && units) {
+      statusIsReady({
+        mapIsReady: false,
+      });
       fetchMap();
     }
   }, [mapUrl, address, lat, lon, zoom, mapLayer, units, statusIsReady]);
 
-  const MapLegend = mapLayer ? MapLegendProperties()[mapLayer].values.map((value) => {
+  const MapLegend = (mapLayer && units) ? MapLegendProperties(units)[mapLayer].values.map((value) => {
     return (
       <span key={`legend-key_${value}`}>
         {value}
@@ -42,7 +45,7 @@ const WeatherMap = () => {
 
   return (
     <>
-      {isReady && mapLayer && (
+      {isReady && mapLayer && units && (
         <div className={styles['map-bundle']}>
           <img
             className={styles['map-bundle__map']}
@@ -51,14 +54,14 @@ const WeatherMap = () => {
           />
           <div className={styles['map-bundle__legend--bar']}>
             <div className={styles['map-bundle__legend--background']}></div>
-            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties()[mapLayer].gradient}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties(units)[mapLayer].gradient}></div>
             {MapLegend}
           </div>
           <div className={styles['map-bundle__legend--units']}>
             <div className={styles['map-bundle__legend--background']}></div>
-            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties()[mapLayer].gradient}></div>
+            <div className={styles['map-bundle__legend--gradient']} style={MapLegendProperties(units)[mapLayer].gradient}></div>
             <span>Unit: </span>
-            <span>{MapLegendProperties()[mapLayer].unit}</span>
+            <span>{MapLegendProperties(units)[mapLayer].unit}</span>
           </div>
         </div>
       )}

@@ -1,6 +1,3 @@
-import React, { useContext } from 'react';
-import WeatherContext from '../../store/weather-context';
-
 interface MapLayerPropertyType {
   unit: string;
   values: string[];
@@ -15,8 +12,7 @@ interface MapLegendPropertiesReturnType {
   wind: MapLayerPropertyType;
 }
 
-const MapLegendProperties: () => MapLegendPropertiesReturnType = () => {
-  const { units } = useContext(WeatherContext);
+const MapLegendProperties: (units: 'imperial' | 'metric') => MapLegendPropertiesReturnType = (units: 'imperial' | 'metric') => {
 
   const metricValues: MapLegendPropertiesReturnType = {
     clouds: {
