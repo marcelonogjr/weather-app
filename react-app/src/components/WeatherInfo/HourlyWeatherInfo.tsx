@@ -54,6 +54,18 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     
     const hourlyTime = timeInfo(TimeConversor(hourElement.dt).time);
     const hourlyDate = dateInfo(TimeConversor(hourElement.dt).date);
+
+    const iconSource = (icon: string) => {
+      const iconNumber = icon.slice(0, 2);
+      const iconPeriod = icon.slice(2);
+      
+      if (iconPeriod === 'n' && iconNumber !== '01' && iconNumber !== '02' && iconNumber !== '10'){
+        return `${iconNumber}d`;
+      }
+      
+      return icon;
+    };
+
     const graphLiStyle: React.CSSProperties = {
       width: `${styleLiWidth}px`,
       height: `${styleLiHeight}px`,
@@ -84,6 +96,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
           <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}{units === 'metric' ? '°C' : '°F'}</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
+            <img src={require(`../../Images/weather-icons/${iconSource(hourElement.weather[0].icon)}.png`)} className={styles['weather-icon']} title={hourElement.weather[0].description} alt={hourElement.weather[0].main}/>
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>
             <p>Weather: {hourElement.weather[0].main}</p>

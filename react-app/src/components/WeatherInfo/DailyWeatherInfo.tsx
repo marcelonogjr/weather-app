@@ -95,6 +95,17 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     }
     
     const dailyDate = dateInfo(TimeConversor(dayElement.dt).date);
+
+    const iconSource = (icon: string) => {
+      const iconNumber = icon.slice(0, 2);
+      const iconPeriod = icon.slice(2);
+      
+      if (iconPeriod === 'n' && iconNumber !== '01' && iconNumber !== '02' && iconNumber !== '10'){
+        return `${iconNumber}d`;
+      }
+      
+      return icon;
+    };
     
     const graphLiStyle: React.CSSProperties = {
       width: `${styleLiWidth}px`,
@@ -147,6 +158,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         <div className={styles['daily-graph__dots']} style={divMinCircleStyle}></div>
         <p className = {styles['daily-temperature']} style={pMinTemperatureStyle}>{Math.round(dayElement.temp.min)}{units === 'metric' ? '°C' : '°F'}</p>
         <div className= {styles['daily-info']} style={divInfoStyle}>
+        <img src={require(`../../Images/weather-icons/${iconSource(dayElement.weather[0].icon)}.png`)} className={styles['weather-icon']} title={dayElement.weather[0].description} alt={dayElement.weather[0].main}/>
           <p>{dailyDate}</p>
           <p>Weather: {dayElement.weather[0].main}</p>
           <p>Humidity: {Math.round(dayElement.humidity)}%</p>

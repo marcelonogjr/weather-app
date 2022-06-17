@@ -25,12 +25,24 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
 
   const locationSunrise = timeInfo(TimeConversor(props.currentData.sunrise).time);
   const locationSunset = timeInfo(TimeConversor(props.currentData.sunset).time);
+
+  const iconSource = (icon: string) => {
+    const iconNumber = icon.slice(0, 2);
+    const iconPeriod = icon.slice(2);
+    
+    if (iconPeriod === 'n' && iconNumber !== '01' && iconNumber !== '02' && iconNumber !== '10'){
+      return `${iconNumber}d`;
+    }
+    
+    return icon;
+  };
   
   return (
     <div className={styles['current-bundle']}>
       <p>Sunrise: {locationSunrise}</p>
       <p>Sunset: {locationSunset}</p>
       <p>Weather: {props.currentData.weather[0].main}</p>
+      <img src={require(`../../Images/weather-icons/${iconSource(props.currentData.weather[0].icon)}.png`)} className={styles['weather-icon']} title={props.currentData.weather[0].description} alt={props.currentData.weather[0].main}/>
       <p>Temperature: {Math.round(props.currentData.temp)}{units === 'metric' ? '°C' : '°F'}</p>
       <p>Feels Like: {Math.round(props.currentData.feels_like)}{units === 'metric' ? '°C' : '°F'}</p>
       <p>Dew Point: {Math.round(props.currentData.dew_point)}{units === 'metric' ? '°C' : '°F'}</p>

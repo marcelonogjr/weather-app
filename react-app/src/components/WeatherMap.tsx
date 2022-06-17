@@ -11,8 +11,8 @@ const WeatherMap = () => {
   const { address, lat, lon, statusIsReady, isReady, units } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapUrl = `${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`;
 
@@ -48,6 +48,7 @@ const WeatherMap = () => {
       {isReady && mapLayer && units && (
         <div className={styles['map-bundle']}>
           <img
+            title={`Weather Map - ${mapLayer}`}
             className={styles['map-bundle__map']}
             src={mapImage}
             alt='Weather Map'
