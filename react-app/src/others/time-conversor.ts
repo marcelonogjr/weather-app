@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import WeatherContext from "../store/weather-context";
 
-export interface timeConversorObjectType {
+export interface TimeConversorObjectType {
   hour: {
     hour: number,
     period: string
@@ -10,7 +10,7 @@ export interface timeConversorObjectType {
   second: number;
 }
 
-export interface dateConversorObjectType {
+export interface DateConversorObjectType {
   weekDay: string;
   month: {
     spelled: string;

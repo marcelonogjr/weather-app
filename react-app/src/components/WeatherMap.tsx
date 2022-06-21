@@ -26,13 +26,13 @@ const WeatherMap = () => {
         mapIsReady: true,
       });
     };
-    if (address && lat && lon && zoom && mapLayer && units) {
+    if (address && lat && lon && zoom && mapLayer) {
       statusIsReady({
         mapIsReady: false,
       });
       fetchMap();
     }
-  }, [mapUrl, address, lat, lon, zoom, mapLayer, units, statusIsReady]);
+  }, [mapUrl, address, lat, lon, zoom, mapLayer, statusIsReady]);
 
   const MapLegend = (mapLayer && units) ? MapLegendProperties(units)[mapLayer].values.map((value) => {
     return (

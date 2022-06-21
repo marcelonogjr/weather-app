@@ -5,9 +5,10 @@ import WeatherContext from '../../store/weather-context';
 import { HourlyAPIDataType } from '../../models/WeatherAPIDataType';
 import styles from './HourlyWeatherInfo.module.css';
 import TimeConversor, {
-  timeConversorObjectType,
-  dateConversorObjectType
+  TimeConversorObjectType,
+  DateConversorObjectType
 } from '../../others/time-conversor';
+import unitsConversor from '../../others/units-conversor';
 import SvgWeatherIcons from './svg-icons';
 
 interface HourlyWeatherInfoProps {
@@ -18,7 +19,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
   const { units } = useContext(WeatherContext);
   const scrollRef = useHorizontalScroll();
 
-  const timeInfo = (timeConversorObject: timeConversorObjectType) => {
+  const timeInfo = (timeConversorObject: TimeConversorObjectType) => {
     return (
       <b>
         {timeConversorObject.hour.hour > 9 ? timeConversorObject.hour.hour : '0'+timeConversorObject.hour.hour}:
@@ -26,7 +27,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
       </b>
     );
   };
-  const dateInfo = (dateConversorObject: dateConversorObjectType) => {
+  const dateInfo = (dateConversorObject: DateConversorObjectType) => {
     return (
       <>
         {dateConversorObject.month.numb > 9 ? dateConversorObject.month.numb : '0'+dateConversorObject.month.numb}/
@@ -75,7 +76,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     };
     const divInfoStyle: React.CSSProperties = {
       width: `${styleLiWidth}px`,
-      top: `calc(95% - ${80 * (Math.round(hourElement.temp) - minTemperatureHourly) / rangeTemperatureHourly}% + 0.5% + 20px)`,
+      top: `calc(95% - ${80 * (Math.round(hourElement.temp) - minTemperatureHourly) / rangeTemperatureHourly}% + 0.5% + 10px)`,
       right: `${styleLiWidth * (- 0.5)}px`,
     };
 
@@ -84,13 +85,13 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           <div className={styles['graph-lines']} style={graphLiStyle}>
           </div>
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
-          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{Math.round(hourElement.temp)}{units === 'metric' ? '°C' : '°F'}</p>
+          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{unitsConversor(units, 'temp', hourElement.temp)}</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
             <SvgWeatherIcons iconCode={hourElement.weather[0].icon} descriptionCode={hourElement.weather[0].description}/>
             {/* <img src={require(`../../Images/weather-icons/${iconSource(hourElement.weather[0].icon)}.png`)} className={styles['weather-icon']} title={hourElement.weather[0].description} alt={hourElement.weather[0].main}/> */}
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>
-            <p>Weather: {hourElement.weather[0].main}</p>
+            {/* <p>Weather: {hourElement.weather[0].main}</p> */}
             <p>UVI: {Math.round(hourElement.uv)}</p>
             <p>Humidity: {Math.round(hourElement.humidity)}%</p>
             <p>POP: {Math.round(hourElement.pop * 100)}%</p>

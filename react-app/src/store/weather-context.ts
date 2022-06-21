@@ -7,7 +7,7 @@ const WeatherContext = React.createContext<WeatherContextType>({
   changeLocation: (newALocation: NewLocationType) => {},
   lat: null,
   lon: null,
-  units: null,
+  units: 'imperial',
   changeUnits: (newUnits: NewUnitsType) => {},
   isReady: false,
   statusIsReady: (someObject: {}) => {},

@@ -1,8 +1,8 @@
 import WeatherAPIDataType from '../../models/WeatherAPIDataType';
 import styles from './CurrentLocationDate.module.css';
 import TimeConversor, {
-  timeConversorObjectType,
-  dateConversorObjectType,
+  TimeConversorObjectType,
+  DateConversorObjectType,
 } from '../../others/time-conversor';
 
 interface CurrentLocationDatePropsType {
@@ -13,7 +13,7 @@ interface CurrentLocationDatePropsType {
 const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   const [city, state, country] = props.locationData.split(',');
   
-  const timeInfo = (timeConversorObject: timeConversorObjectType) => {
+  const timeInfo = (timeConversorObject: TimeConversorObjectType) => {
     
     return (
       <h4>
@@ -23,7 +23,7 @@ const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
       </h4>
     );
   };
-  const dateInfo = (dateConversorObject: dateConversorObjectType) => {
+  const dateInfo = (dateConversorObject: DateConversorObjectType) => {
     return (
       <h5>
         {dateConversorObject.weekDay}, {dateConversorObject.month.spelled}{' '}

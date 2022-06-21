@@ -9,6 +9,10 @@
   border-radius: 10px;
 }
 
+.location_units-bundle{
+  display: flex;
+}
+
 .weather-bundle {
   display: flex;
 }

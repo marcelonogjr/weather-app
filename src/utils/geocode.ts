@@ -1,14 +1,6 @@
 import axios from 'axios';
 // import { geocodeToken } from './tokens';
 
-// type geocodeDataType = {
-//   placeName: string;
-//   center: { 
-//     lat: number; 
-//     lon: number;
-//   };
-// }[];
-
 type geocodeType = (
   address: string
 ) => Promise<string[] | void>;

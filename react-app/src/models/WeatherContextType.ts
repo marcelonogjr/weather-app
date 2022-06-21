@@ -42,7 +42,7 @@ type WeatherContextType = {
   changeLocation: (newlocation: NewLocationType) => void;
   lat: number | null;
   lon: number | null;
-  units: NewUnitsType | null;
+  units: NewUnitsType;
   changeUnits: (newUnits: NewUnitsType) => void;
   isReady: boolean;
   statusIsReady: (object: StatusIsReadyType) => void;

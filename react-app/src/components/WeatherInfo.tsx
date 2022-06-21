@@ -3,16 +3,15 @@ import { useState, useEffect, useContext } from 'react';
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
 import CurrentLocationDate from './WeatherInfo/CurrentLocationDate';
+import WeatherUnits from './WeatherInfo/WeatherUnits';
 import CurrentWeatherInfo from './WeatherInfo/CurrentWeatherInfo';
-import LoadingSpinner from './UI/LoadingSpinner';
-import WeatherInfoButtons from './WeatherInfo/WeatherInfoButtons';
-import styles from './WeatherInfo.module.css';
-
-import WeatherAPIDataType from '../models/WeatherAPIDataType';
 import HourlyWeatherInfo from './WeatherInfo/HourlyWeatherInfo';
 import DailyWeatherInfo from './WeatherInfo/DailyWeatherInfo';
+import LoadingSpinner from './UI/LoadingSpinner';
+import WeatherInfoButtons from './WeatherInfo/WeatherInfoButtons';
+import WeatherAPIDataType from '../models/WeatherAPIDataType';
+import styles from './WeatherInfo.module.css';
  
-
 type currentInfoType = 'current' | 'hourly' | 'daily';
 
 const WeatherInfo = () => {
@@ -20,7 +19,7 @@ const WeatherInfo = () => {
   const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
-  const { address, lat, lon, statusIsReady, isReady, units } = useContext(WeatherContext);
+  const { address, lat, lon, statusIsReady, isReady, units, changeUnits } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
   // const serverUrl = 'http://localhost:5000';
@@ -28,7 +27,7 @@ const WeatherInfo = () => {
 
   useEffect(() => {
     const fetchWeatherInfo = () => {
-      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}&units=${units}`)
+      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}`)
         .then((response) => response.json())
         .then((response) => {
           statusIsReady({
@@ -38,11 +37,11 @@ const WeatherInfo = () => {
         });
     };
 
-    if (lat && lon && zoom && mapLayer && units) {
+    if (lat && lon && zoom && mapLayer) {
       setIsLoading(true);
       fetchWeatherInfo();
     }
-  }, [lat, lon, statusIsReady, zoom, mapLayer, units]);
+  }, [lat, lon, statusIsReady, zoom, mapLayer]);
 
   if (isLoading && isReady) {
     setIsLoading(false);
@@ -60,12 +59,23 @@ const WeatherInfo = () => {
     setCurrentInfo('daily');
   };
 
+  const unitsChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked === true){
+      changeUnits('metric');
+    } else {
+      changeUnits('imperial');
+    }
+  };
+
   return (
     <>
       {isLoading && !isReady && <LoadingSpinner />}
-      {!isLoading && weatherData && address && isReady && (
+      {!isLoading && weatherData && address && isReady && units && (
         <div className={styles['info-bundle']}>
-          <CurrentLocationDate locationData={address} weatherData={weatherData} />
+          <div className={styles['location_units-bundle']}>
+            <CurrentLocationDate locationData={address} weatherData={weatherData} />
+            <WeatherUnits selectedUnits={units} onChange={unitsChangeHandler}/>
+          </div>
           <div className={styles['weather-bundle']}>
             {currentInfo === 'current' && <CurrentWeatherInfo currentData={weatherData.current} />}
             {currentInfo === 'hourly' && <HourlyWeatherInfo hourlyData={weatherData.hourly} />}

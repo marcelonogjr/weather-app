@@ -9,7 +9,6 @@ import { GeocodeAPIDataType } from '../../models/WeatherAPIDataType';
 type WeatherSearchBarPropsType = {
   zoom: string;
   mapLayer: string;
-  units: string;
 };
 
 const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
@@ -37,7 +36,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         setAddressList(response);
         if (pressedEnterEarly) {
           navigate(
-            `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}&units=${props.units}`
+            `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`
           );
           setPressedEnterEarly(false);
         }
@@ -55,7 +54,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         clearTimeout(timer);
       }
     };
-  }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, props.units, setAddressList]);
+  }, [addressInput, usedListForInput, pressedEnterEarly, navigate, props.mapLayer, props.zoom, setAddressList]);
 
   const searchInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputQuery = event.currentTarget.value;
