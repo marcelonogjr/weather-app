@@ -8,7 +8,8 @@ import TimeConversor, {
   DateConversorObjectType
 } from '../../others/time-conversor';
 import unitsConversor from '../../others/units-conversor';
-import SvgWeatherIcons from './svg-icons';
+import SvgWeatherIcons from './icons/WeatherIcons';
+import SvgHumidityIcon from './icons/HumidityIcon';
 
 interface DailyWeatherInfoProps {
   dailyData: DailyAPIDataType;
@@ -160,8 +161,8 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         <div className= {styles['daily-info']} style={divInfoStyle}>
           <SvgWeatherIcons iconCode={dayElement.weather[0].icon} descriptionCode={dayElement.weather[0].description}/>
           <p>{dailyDate}</p>
-          <p>Weather: {dayElement.weather[0].main}</p>
-          <p>Humidity: {Math.round(dayElement.humidity)}%</p>
+          {/* <p>Humidity: {Math.round(dayElement.humidity)}%</p> */}
+          <SvgHumidityIcon humidityValue={dayElement.humidity} component='daily'/>
           <p>POP: {Math.round(dayElement.pop * 100)}%</p>
         </div>
       </li>

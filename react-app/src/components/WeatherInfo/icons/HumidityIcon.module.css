@@ -1,0 +1,15 @@
+.humidity-bundle{
+  position:relative;
+}
+
+.humidity-bundle p{
+  position:absolute;
+  text-align: center;
+}
+
+.humidity-bundle p:hover{
+  background-color: white;
+  transform: scale(2);
+  border: 1px solid grey;
+  border-radius: 2px;
+}

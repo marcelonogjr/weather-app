@@ -9,7 +9,8 @@ import TimeConversor, {
   DateConversorObjectType
 } from '../../others/time-conversor';
 import unitsConversor from '../../others/units-conversor';
-import SvgWeatherIcons from './svg-icons';
+import SvgWeatherIcons from './icons/WeatherIcons';
+import SvgHumidityIcon from './icons/HumidityIcon';
 
 interface HourlyWeatherInfoProps {
   hourlyData: HourlyAPIDataType;
@@ -95,12 +96,12 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{unitsConversor(units, 'temp', props.hourlyData[index].temp)}</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
             <SvgWeatherIcons iconCode={hourElement.weather[0].icon} descriptionCode={hourElement.weather[0].description}/>
-            {/* <img src={require(`../../Images/weather-icons/${iconSource(hourElement.weather[0].icon)}.png`)} className={styles['weather-icon']} title={hourElement.weather[0].description} alt={hourElement.weather[0].main}/> */}
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>
             {/* <p>Weather: {hourElement.weather[0].main}</p> */}
             <p>UVI: {Math.round(hourElement.uv)}</p>
-            <p>Humidity: {Math.round(hourElement.humidity)}%</p>
+            {/* <p>Humidity: {Math.round(hourElement.humidity)}%</p> */}
+            <SvgHumidityIcon humidityValue={hourElement.humidity} component='hourly'/>
             <p>POP: {Math.round(hourElement.pop * 100)}%</p>
           </div>
         </li>
