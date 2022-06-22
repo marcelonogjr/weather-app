@@ -28,32 +28,48 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     );
   };
 
-  const maxTemperatureDaily: number = Math.round([...props.dailyData].map((element) => element.temp.max).reduce((previousTemp, currentTemp) => {
+  const modifiedDailyData = props.dailyData.map(element => {
+    return {
+      ... element,
+      temp: {
+        max: +unitsConversor(units, 'temp', element.temp.max).slice(0, -3),
+        min: +unitsConversor(units, 'temp', element.temp.min).slice(0, -3)
+      }
+    }
+  })
+
+  const maxTemperatureDaily: number = Math.round([...modifiedDailyData].map((element) => element.temp.max).reduce((previousTemp, currentTemp) => {
     return Math.max(previousTemp, currentTemp);
   }));
-  const minTemperatureDaily: number = Math.round([...props.dailyData].map((element) => element.temp.min).reduce((previousTemp, currentTemp) => {
+  const minTemperatureDaily: number = Math.round([...modifiedDailyData].map((element) => element.temp.min).reduce((previousTemp, currentTemp) => {
     return Math.min(previousTemp, currentTemp);
   }));
   const rangeTemperatureDaily: number = maxTemperatureDaily-minTemperatureDaily;
 
-  const styleLiWidth = 1500 / props.dailyData.length;
+  const styleLiWidth = 1500 / modifiedDailyData.length;
   const styleLiHeight =250;
   
   const liGradientBackground = () => {
-    const temperatureStops = [-40, -22, -4, 14, 32, 50, 68, 77, 86, 122];
+    const temperatureStops = (unit: 'metric' | 'imperial') => {
+      if (unit === 'metric'){
+        return [-40, -30, -20, -10, 0, 10, 20, 25, 30, 50];
+      } else {
+        return [-40, -22, -4, 14, 32, 50, 68, 77, 86, 122];
+      }
+    };
 
-    const filteredStops = temperatureStops.filter((element, index, array) => {
+    const filteredStops = temperatureStops(units).filter((element, index, array) => {
       if ((element >= minTemperatureDaily && array[index - 1] < minTemperatureDaily) || (element <= maxTemperatureDaily && array[index + 1] > maxTemperatureDaily)) {
         return true;
       }
       return false
     });
-    const indexFilteredStops = [temperatureStops.indexOf(filteredStops[0]), temperatureStops.indexOf(filteredStops[1])]
+    const indexFilteredStops = [temperatureStops(units).indexOf(filteredStops[0]), temperatureStops(units).indexOf(filteredStops[1])]
 
     const minGradientStop = 15 * filteredStops[0] / minTemperatureDaily ;
-    const maxGradientStop = 100 - (5 * (temperatureStops[indexFilteredStops[1] + 1] - filteredStops[1]) / (temperatureStops[indexFilteredStops[1] + 1] - maxTemperatureDaily)) ;
+    const maxGradientStop = 100 - (5 * (temperatureStops(units)[indexFilteredStops[1] + 1] - filteredStops[1]) / (temperatureStops(units)[indexFilteredStops[1] + 1] - maxTemperatureDaily)) ;
 
-    const gradientStops = temperatureStops.map((element, index, array) => {
+    const gradientStops = temperatureStops(units).map((element, index, array) => {
       if (element < minTemperatureDaily) {
         return element = 0;
       }
@@ -84,7 +100,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     );
   };
   
-  const dailyList = props.dailyData.map((dayElement, index, dailyArray) => {
+  const dailyList = modifiedDailyData.map((dayElement, index, dailyArray) => {
     if (index === 0) {
       return <li key={dayElement.dt+'null'}></li>
     }
@@ -138,9 +154,9 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         <div style={graphLiStyle}>
         </div>
         <div className={styles['daily-graph__dots']} style={divMaxCircleStyle}></div>
-        <p className = {styles['daily-temperature']} style={pMaxTemperatureStyle}>{unitsConversor(units, 'temp', dayElement.temp.max)}</p>
+        <p className = {styles['daily-temperature']} style={pMaxTemperatureStyle}>{unitsConversor(units, 'temp', props.dailyData[index].temp.max)}</p>
         <div className={styles['daily-graph__dots']} style={divMinCircleStyle}></div>
-        <p className = {styles['daily-temperature']} style={pMinTemperatureStyle}>{unitsConversor(units, 'temp', dayElement.temp.min)}</p>
+        <p className = {styles['daily-temperature']} style={pMinTemperatureStyle}>{unitsConversor(units, 'temp', props.dailyData[index].temp.min)}</p>
         <div className= {styles['daily-info']} style={divInfoStyle}>
           <SvgWeatherIcons iconCode={dayElement.weather[0].icon} descriptionCode={dayElement.weather[0].description}/>
           <p>{dailyDate}</p>

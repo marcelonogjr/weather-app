@@ -37,18 +37,25 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     );
   };
 
-  const maxTemperatureHourly: number = Math.round([...props.hourlyData].map((element) => element.temp).reduce((previousTemp, currentTemp) => {
+  const modifiedHourlyData = props.hourlyData.map(element => {
+    return {
+      ... element,
+      temp: +unitsConversor(units, 'temp', element.temp).slice(0, -3),
+    }
+  })
+
+  const maxTemperatureHourly: number = Math.round([...modifiedHourlyData].map((element) => element.temp).reduce((previousTemp, currentTemp) => {
     return Math.max(previousTemp, currentTemp);
   }));
-  const minTemperatureHourly: number = Math.round([...props.hourlyData].map((element) => element.temp).reduce((previousTemp, currentTemp) => {
+  const minTemperatureHourly: number = Math.round([...modifiedHourlyData].map((element) => element.temp).reduce((previousTemp, currentTemp) => {
     return Math.min(previousTemp, currentTemp);
   }));
   const rangeTemperatureHourly: number = maxTemperatureHourly-minTemperatureHourly;
 
-  const styleLiWidth = 7000 / props.hourlyData.length;
+  const styleLiWidth = 7000 / modifiedHourlyData.length;
   const styleLiHeight =250;
   
-  const hourlyList = props.hourlyData.map((hourElement, index, hourlyArray) => {
+  const hourlyList = modifiedHourlyData.map((hourElement, index, hourlyArray) => {
     if (index === 0) {
       return <li key={hourElement.dt+'null'}></li>
     }
@@ -85,7 +92,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           <div className={styles['graph-lines']} style={graphLiStyle}>
           </div>
           <div className={styles['hourly-graph__dots']} style={divCircleStyle}></div>
-          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{unitsConversor(units, 'temp', hourElement.temp)}</p>
+          <p className = {styles['hourly-temperature']} style={pTemperatureStyle}>{unitsConversor(units, 'temp', props.hourlyData[index].temp)}</p>
           <div className= {styles['hourly-info']} style={divInfoStyle}>
             <SvgWeatherIcons iconCode={hourElement.weather[0].icon} descriptionCode={hourElement.weather[0].description}/>
             {/* <img src={require(`../../Images/weather-icons/${iconSource(hourElement.weather[0].icon)}.png`)} className={styles['weather-icon']} title={hourElement.weather[0].description} alt={hourElement.weather[0].main}/> */}

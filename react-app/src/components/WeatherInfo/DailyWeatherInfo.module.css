@@ -1,3 +1,7 @@
+.daily-bundle * {
+  transition: all 1s ease-out;
+}
+
 .daily-bundle {
   display: flex;
   flex-direction: column;
@@ -36,6 +40,7 @@
   height: 250px;
   width: 100%;
   position: relative;
+  transition: all 2s;
 }
 
 
