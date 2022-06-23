@@ -10,6 +10,7 @@ import TimeConversor, {
 import unitsConversor from '../../others/units-conversor';
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
+import RainProbIcon from './icons/RainProbIcon';
 
 interface DailyWeatherInfoProps {
   dailyData: DailyAPIDataType;
@@ -163,7 +164,8 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
           <p>{dailyDate}</p>
           {/* <p>Humidity: {Math.round(dayElement.humidity)}%</p> */}
           <SvgHumidityIcon humidityValue={dayElement.humidity} component='daily'/>
-          <p>POP: {Math.round(dayElement.pop * 100)}%</p>
+          <RainProbIcon rainProbValue={Math.round(dayElement.pop * 100)}/>
+          {/* <p>POP: {Math.round(dayElement.pop * 100)}%</p> */}
         </div>
       </li>
     )

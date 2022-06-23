@@ -1,0 +1,9 @@
+.rain_pop-bundle {
+  display: flex;
+  align-items: center;
+}
+
+.rain_pop-bundle p{
+  display: inline-block;
+  text-align: center;
+}
