@@ -16,8 +16,6 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
     const iconNumber = icon.slice(0, 2);
     const iconPeriod = icon.slice(2);
   
-    // width={widhtValue}
-    // height={heightValue}
     if (iconNumber === '01') {
       return (
         <svg

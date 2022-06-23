@@ -32,7 +32,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
 
   const modifiedDailyData = props.dailyData.map(element => {
     return {
-      ... element,
+      ...element,
       temp: {
         max: +unitsConversor(units, 'temp', element.temp.max).slice(0, -3),
         min: +unitsConversor(units, 'temp', element.temp.min).slice(0, -3)

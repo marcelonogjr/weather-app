@@ -12,7 +12,7 @@
   background: none;
   border: 10px solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(90deg, rgb(255, 100, 100) 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 65%,  rgb(100, 100, 255) 65%) ;
+  border-image-source: linear-gradient(90deg, rgb(255, 100, 100) 30%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%,  rgb(100, 100, 255) 70%) ;
   border-width: 3px;
   padding: 0.2rem;
   color: black;

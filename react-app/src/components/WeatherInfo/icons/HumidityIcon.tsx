@@ -2,12 +2,12 @@ import React from 'react';
 
 import styles from './HumidityIcon.module.css';
 
-type svgWeatherIconsProps = {
+type SvgHumidityIconProps = {
   humidityValue: number;
   component: 'current' | 'hourly' | 'daily';
 };
 
-const SvgHumidityIcon = (props: svgWeatherIconsProps) => {
+const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
   const svgHumidity = (humidityValue: number, component: string) => {
     const theme = 'dark';
 

@@ -41,7 +41,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
 
   const modifiedHourlyData = props.hourlyData.map(element => {
     return {
-      ... element,
+      ...element,
       temp: +unitsConversor(units, 'temp', element.temp).slice(0, -3),
     }
   })

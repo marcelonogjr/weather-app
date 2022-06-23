@@ -1,0 +1,15 @@
+.wind_direction-bundle{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  /* the height is set as: size of the vector (20px) * sqrt(2) + size of the p element (8px)  */
+  height: 36.284px;
+  padding: 0 2px;
+}
+
+.wind_direction-bundle p{
+  font-size: 7px;
+  margin: 0;
+}

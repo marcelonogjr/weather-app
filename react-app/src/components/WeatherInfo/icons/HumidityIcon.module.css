@@ -5,6 +5,7 @@
 .humidity-bundle p{
   position:absolute;
   text-align: center;
+  margin: 0;
 }
 
 .humidity-bundle p:hover{

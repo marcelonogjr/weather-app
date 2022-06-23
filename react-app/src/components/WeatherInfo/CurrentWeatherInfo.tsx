@@ -9,6 +9,7 @@ import TimeConversor, {
 import unitsConversor from '../../others/units-conversor';
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
+import SvgWindDirectionIcon from './icons/WindDirectionIcon';
 
 interface CurrentWeatherInfoProps {
   currentData: CurrentAPIDataType;
@@ -44,8 +45,12 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
       <p>Pressure: {Math.round(props.currentData.pressure)} mb</p>
       <p>UV index: {Math.round(props.currentData.uvi)}</p>
       <p>Average Visibility: {unitsConversor(units, 'lenght', props.currentData.visibility)}</p>
-      <p>Wind Speed: {unitsConversor(units, 'speed', props.currentData.wind_speed)}</p>
-      <p>Wind Direction: {Math.round(props.currentData.wind_deg)}°</p>
+      {/* <p>Wind Speed: {unitsConversor(units, 'speed', props.currentData.wind_speed)}</p> */}
+      <div className={styles['wind-bundle']}>
+        <p>Wind:</p>
+        <SvgWindDirectionIcon windDirection={props.currentData.wind_deg}/>
+        <p>{unitsConversor(units, 'speed', props.currentData.wind_speed)}</p>
+      </div>
     </div>
   );
 };
