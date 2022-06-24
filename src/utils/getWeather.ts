@@ -32,6 +32,7 @@ const getWeather: getWeatherType = async (lat: number, lon: number) => {
           max: element.temp.max
         },
         humidity: element.humidity,
+        uv: element.uvi,
         weather: element.weather,
         pop: element.pop,
       }

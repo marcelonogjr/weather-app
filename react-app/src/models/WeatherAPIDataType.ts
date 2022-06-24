@@ -53,6 +53,7 @@ export type DailyAPIDataType = {
     max: number;
   };
   humidity: number;
+  uv: number;
   weather: [
     {
       id: number;

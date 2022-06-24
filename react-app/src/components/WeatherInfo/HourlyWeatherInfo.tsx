@@ -12,6 +12,7 @@ import unitsConversor from '../../others/units-conversor';
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import RainProbIcon from './icons/RainProbIcon';
+import SvgUVIIndexIcons from './icons/UVIIcons';
 
 interface HourlyWeatherInfoProps {
   hourlyData: HourlyAPIDataType;
@@ -100,9 +101,12 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>
             {/* <p>Weather: {hourElement.weather[0].main}</p> */}
-            <p>UVI: {Math.round(hourElement.uv)}</p>
+            {/* <p>UVI: {Math.round(hourElement.uv)}</p> */}
             {/* <p>Humidity: {Math.round(hourElement.humidity)}%</p> */}
-            <SvgHumidityIcon humidityValue={hourElement.humidity} component='hourly'/>
+            <div className={styles['uvi_humidity-bundle']}>
+              <SvgUVIIndexIcons uvIndex={Math.round(hourElement.uv)} component='hourly'/>
+              <SvgHumidityIcon humidityValue={hourElement.humidity} component='hourly'/>
+            </div>
             <RainProbIcon rainProbValue={Math.round(hourElement.pop * 100)}/>
             {/* <p>POP: {Math.round(hourElement.pop * 100)}%</p> */}
           </div>
