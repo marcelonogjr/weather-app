@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import ThemeContext from '../../../store/theme-context';
 import styles from './HumidityIcon.module.css';
 
 type SvgHumidityIconProps = {
@@ -8,9 +9,9 @@ type SvgHumidityIconProps = {
 };
 
 const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
-  const svgHumidity = (humidityValue: number, component: string) => {
-    const theme = 'dark';
+  const { theme } = useContext(ThemeContext);
 
+  const svgHumidity = (humidityValue: number, component: string) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
 
@@ -52,7 +53,7 @@ const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
           style={{
             fill: 'none',
             stroke: `${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
             strokeWidth: 10,
             strokeMiterlimit: 10,

@@ -1,12 +1,16 @@
+import { useContext } from 'react';
+
+import ThemeContext from '../../../store/theme-context';
+
 type svgWeatherIconsProps = {
   iconCode: string;
   descriptionCode: string;
 };
 
 const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
+  const { theme } = useContext(ThemeContext);
+
   const svgIcons = (icon: string, description: string) => {
-    const theme = 'dark';
-  
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
   
@@ -33,7 +37,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -64,7 +68,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -102,7 +106,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -133,7 +137,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -166,9 +170,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
           <title>{description}</title>
           <style>
             {`.st0{fill:none;stroke:${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             };stroke-miterlimit:10}.st3{fill:${
-              theme === 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme === 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }}`}
           </style>
           <path
@@ -213,9 +217,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
           <title>{description}</title>
           <style>
             {`.st3{fill:none;stroke:${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             };stroke-miterlimit:10}.st4{fill:${
-              theme === 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme === 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }}`}
           </style>
           <path
@@ -223,7 +227,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -268,7 +272,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -310,7 +314,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
               }`,
               strokeWidth: 5,
               strokeMiterlimit: 10,
@@ -348,7 +352,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
           <title>{description}</title>
           <style>
             {`.st0{fill:none;stroke:${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             };stroke-miterlimit:10}.st4{fill:#434345}.st12{fill:#ededed}`}
           </style>
           <path

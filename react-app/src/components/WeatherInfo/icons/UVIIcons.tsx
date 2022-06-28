@@ -1,4 +1,6 @@
-import styles from './UVIIcons.module.css';
+import { useContext } from 'react';
+
+import ThemeContext from '../../../store/theme-context';
 
 type SvgWindDirectionIconProps = {
   uvIndex: number;
@@ -6,9 +8,9 @@ type SvgWindDirectionIconProps = {
 };
 
 const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
-  const svgUVI = (uvIndex: number, component: string) => {
-    const theme = 'dark';
+  const { theme } = useContext(ThemeContext);
 
+  const svgUVI = (uvIndex: number, component: string) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
 
@@ -105,15 +107,18 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
         }}
       >
         <style>{`.st1{fill: ${
-          theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+          theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
         }}`}</style>
-        <title>{component === 'daily' ? 'Maximum ' : ''}Ultraviolet Index: {uvIndex} ({uvISpecifics(uvIndex).risk})</title>
+        <title>
+          {component === 'daily' ? 'Maximum ' : ''}Ultraviolet Index: {uvIndex}{' '}
+          ({uvISpecifics(uvIndex).risk})
+        </title>
         <path
           d='M82 202H22c-11 0-20-9-20-20V22C2 11 11 2 22 2h60c11 0 20 9 20 20v160c0 11-9 20-20 20z'
           style={{
             fill: uvISpecifics(uvIndex).fill,
             stroke: `${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
             strokeWidth: 4,
             strokeMiterlimit: 10,
@@ -129,11 +134,12 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
           d={uvISpecifics(uvIndex).path}
           style={{
             fill: `${
-              theme === 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme === 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
             stroke: `${
-              theme === 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
+            strokeWidth: '2px',
             strokeMiterlimit: 10,
           }}
         />

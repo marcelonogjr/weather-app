@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+
+import ThemeContext from '../../../store/theme-context';
 import styles from './WindDirectionIcon.module.css';
 
 type SvgWindDirectionIconProps = {
@@ -5,8 +8,9 @@ type SvgWindDirectionIconProps = {
 };
 
 const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
+  const { theme } = useContext(ThemeContext);
+
   const abbreviatedDirection = (windDirection: number) => {
-    // windDirection = 340;
     const directionCoeficient = Math.floor((windDirection - 22.5) / 45);
 
     if (windDirection < 22.5 || windDirection >= 337.5) {
@@ -29,8 +33,6 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
   };
 
   const svgWindDirection = (windDirection: number) => {
-    const theme = 'dark';
-
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
 
@@ -58,10 +60,10 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
           d='M91.1 210.1C127.3 112.3 163 16 163 16s147.1 397.3 147 397.1L163 268.4 16 413.1s37.9-102.3 75.1-203z'
           style={{
             fill: `${
-              theme === 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme === 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
             stroke: `${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
             strokeWidth: 32,
             strokeLinecap: 'round',

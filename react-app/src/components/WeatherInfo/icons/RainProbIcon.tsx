@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+
+import ThemeContext from '../../../store/theme-context';
 import styles from './RainProbIcon.module.css';
 
 type SvgRainProbIconProps = {
@@ -5,9 +8,9 @@ type SvgRainProbIconProps = {
 };
 
 const SvgRainProbIcon = (props: SvgRainProbIconProps) => {
+  const { theme } = useContext(ThemeContext);
+  
   const rainProb = (rainProbValue : number) => {
-    const theme = 'dark';
-
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
   
@@ -23,7 +26,7 @@ const SvgRainProbIcon = (props: SvgRainProbIconProps) => {
     >
       <title>Rain probability: {rainProbValue}%</title>
       <style>{`.st0{fill:${
-              theme !== 'dark' ? darkThemeOutlineColor : lightThemeOutlineColor
+              theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }}`}</style>
       <path
         className="st0"
