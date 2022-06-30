@@ -21,6 +21,7 @@
 .units p {
   margin: 0;
   margin-bottom: 2px;
+  color: var(--color-text);
 }
 
 .units-switch {
@@ -64,7 +65,7 @@
   left: 4px;
   bottom: 4px;
   border-radius: 50%;
-  background-color: black;
+  background-color: var(--color-primary);
   -webkit-transition: .4s;
   transition: .4s;
 }

@@ -1,6 +1,3 @@
-.hourly-bundle * {
-  transition: all 1s ease-out;
-}
 
 .hourly-bundle {
   display: flex;

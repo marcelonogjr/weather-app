@@ -16,12 +16,13 @@
   cursor:pointer;
   width: auto;
   height: auto;
-  
+  background-color: var(--color-background);
 }
 
 .zoom-level li label span {
   padding: 0.1rem;
-  border: 1px solid black;
+  border: 1px solid var(--color-primary);
+  color: var(--color-text);
 }
 
 .zoom-level li label input{
@@ -29,6 +30,6 @@
 } 
 
 .zoom-level li label input[type="radio"]:checked + span {
-  background-color: rgb(0, 0, 0);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-inverse-text);
 }

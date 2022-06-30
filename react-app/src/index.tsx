@@ -7,6 +7,8 @@ import Help from './routes/Help';
 import Error404 from './routes/Error404';
 import Weather from './routes/Weather';
 
+import ThemeContextProvider from './store/ThemeContextProvider';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path='*' element={<App />}>
+      <Route path='*' element={<ThemeContextProvider><App /></ThemeContextProvider>}>
         <Route path='weather' element={<Weather />}>
           <Route path=':address' />
         </Route>

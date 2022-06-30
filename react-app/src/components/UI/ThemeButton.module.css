@@ -1,0 +1,22 @@
+.theme-button{
+  --size: 30px;
+  
+  background: none;
+  border: none;
+  padding: 0;
+
+  inline-size: var(--size);
+  block-size: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  /* @media (hover: none) {
+    --size: 48px;
+  } */
+}
+/* 
+.theme-button > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke-linecap: round;
+} */

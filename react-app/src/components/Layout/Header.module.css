@@ -1,0 +1,8 @@
+.nav_button-bundle {
+  display: flex;
+  align-items: center;
+}
+
+.nav_button-bundle button {
+  margin-left: auto;
+}

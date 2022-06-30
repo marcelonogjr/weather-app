@@ -103,7 +103,6 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
         height={heightValue}
         style={{
           margin: '2px',
-          // padding: '2px',
         }}
       >
         <style>{`.st1{fill: ${

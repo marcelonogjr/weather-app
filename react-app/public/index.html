@@ -27,7 +27,43 @@
     <title>Weather App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <style>
+      html[theme='light'] {
+        --color-background: #fcfcfc;
+        --color-text: #000000;
+        --color-inverse-text: #ffffff;
+        --color-primary: #1a1a1a;
+        --color-secondary: #ff3300;
+        --color-tertiary: #fbff00;
+        --color-quaternary: #ff6fe0;
+        --color-grey-low-contrast: #a7a7a7;
+        --color-grey-high-contrast: #494949;
+      }
+
+      html[theme='dark'] {
+        --color-background: #1a1a1a;
+        --color-text: #ffffff;
+        --color-inverse-text: #000000;
+        --color-primary: #e6e6e6;
+        --color-secondary: #003cff;
+        --color-tertiary: #00f7ff;
+        --color-quaternary: #34ff22;
+        --color-grey-low-contrast: #494949;
+        --color-grey-high-contrast: #a7a7a7;
+      }
+
+      body {
+        background-color: var(--color-background);
+      }
+    </style>
+    <script>
+      document.documentElement.setAttribute(
+        'theme',
+        window.matchMedia('(prefers-color-scheme: dark)').matches === true
+          ? 'dark'
+          : 'light'
+      );
+    </script>
     <div id="root"></div>
   </body>
 </html>
