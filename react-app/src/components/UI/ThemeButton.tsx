@@ -30,7 +30,7 @@ const ThemeButton = () => {
         height={'30'}
         // style={{ }}
       >
-        <style>{'.st10{fill:#fafafa} .st11{fill:#000}'}</style>
+        <style>{`.st10{fill:#fffbca} .st11{fill:none}`}</style>
         <radialGradient
           id='SVGID_1_'
           cx={499.99}
@@ -730,7 +730,7 @@ const ThemeButton = () => {
         <path
           d='M688.2 1662.1c-45.8 55.6-115.3 91.1-193 91.1-138.1 0-250-111.9-250-250 0-122.9 88.6-225 205.4-246-35.6 43.2-57 98.6-57 158.9 0 138.1 111.9 250 250 250 15.3 0 30.2-1.4 44.6-4z'
           style={{
-            fill: '#fafafa',
+            fill: '#fffbca',
           }}
         />
         <path
