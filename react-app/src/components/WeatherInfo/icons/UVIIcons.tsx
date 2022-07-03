@@ -105,9 +105,7 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
           margin: '2px',
         }}
       >
-        <style>{`.st1{fill: ${
-          theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
-        }}`}</style>
+        <style>{`.st1{fill: #000}`}</style>
         <title>
           {component === 'daily' ? 'Maximum ' : ''}Ultraviolet Index: {uvIndex}{' '}
           ({uvISpecifics(uvIndex).risk})
@@ -119,7 +117,7 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
             stroke: `${
               theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
             }`,
-            strokeWidth: 4,
+            strokeWidth: 2,
             strokeMiterlimit: 10,
           }}
         />

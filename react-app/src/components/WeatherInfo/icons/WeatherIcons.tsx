@@ -13,47 +13,123 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
   const svgIcons = (icon: string, description: string) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
-  
+
     const widhtValue = '50';
     const heightValue = '50';
-  
+
     const iconNumber = icon.slice(0, 2);
     const iconPeriod = icon.slice(2);
-  
+
     if (iconNumber === '01') {
       return (
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 70.8 70.8'
+          viewBox='0 0 567.2 567.2'
           width={widhtValue}
           height={heightValue}
           style={{ padding: '10px' }}
         >
           <title>{description}</title>
+          <radialGradient
+            id='day'
+            cx={283.6}
+            cy={-637.4}
+            r={393.513}
+            fx={214.045}
+            fy={-665.222}
+            gradientTransform='translate(0 920)'
+            gradientUnits='userSpaceOnUse'
+          >
+            <stop
+              offset={0.5}
+              style={{
+                stopColor: '#f2a71e',
+              }}
+            />
+            <stop
+              offset={0.558}
+              style={{
+                stopColor: '#f29e1c',
+              }}
+            />
+            <stop
+              offset={0.654}
+              style={{
+                stopColor: '#f18518',
+              }}
+            />
+            <stop
+              offset={0.776}
+              style={{
+                stopColor: '#f05c10',
+              }}
+            />
+            <stop
+              offset={0.918}
+              style={{
+                stopColor: '#ee2406',
+              }}
+            />
+            <stop
+              offset={1}
+              style={{
+                stopColor: '#ed0000',
+              }}
+            />
+          </radialGradient>
+          <radialGradient
+            id='night'
+            cx={283.6}
+            cy={284.6}
+            r={393.513}
+            fx={214.045}
+            fy={256.778}
+            gradientTransform='matrix(1 0 0 -1 0 567.2)'
+            gradientUnits='userSpaceOnUse'
+          >
+            <stop
+              offset={0.5}
+              style={{
+                stopColor: '#ffffe1',
+              }}
+            />
+            <stop
+              offset={0.556}
+              style={{
+                stopColor: '#fffdd0',
+              }}
+            />
+            <stop
+              offset={0.626}
+              style={{
+                stopColor: '#fffbc5',
+              }}
+            />
+            <stop
+              offset={0.725}
+              style={{
+                stopColor: '#fffabe',
+              }}
+            />
+            <stop
+              offset={1}
+              style={{
+                stopColor: '#fffabc',
+              }}
+            />
+          </radialGradient>
           <circle
-            cx={35.4}
-            cy={35.4}
-            r={34.9}
+            cx={283.6}
+            cy={283.6}
+            r={283.6}
             style={{
-              fill: 'none',
-              stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
-              }`,
-              strokeMiterlimit: 10,
-            }}
-          />
-          <circle
-            cx={35.4}
-            cy={35.4}
-            r={34.9}
-            style={{
-              fill: `${iconPeriod === 'd' ? '#f2a71e' : '#49484A'}`,
+              fill: `url(#${iconPeriod === 'd' ? 'day' : 'night'})`,
             }}
           />
         </svg>
       );
     }
-  
+
     if (iconNumber === '02') {
       return (
         <svg
@@ -68,7 +144,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -90,7 +168,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '03') {
       return (
         <svg
@@ -106,7 +184,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -122,7 +202,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '04') {
       return (
         <svg
@@ -137,7 +217,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -157,7 +239,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '09') {
       return (
         <svg
@@ -202,7 +284,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '10') {
       return (
         <svg
@@ -227,7 +309,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -257,7 +341,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '11') {
       return (
         <svg
@@ -272,7 +356,9 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeMiterlimit: 10,
             }}
@@ -298,7 +384,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '13') {
       return (
         <svg
@@ -314,20 +400,22 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             style={{
               fill: 'none',
               stroke: `${
-                theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
+                theme !== 'dark'
+                  ? lightThemeOutlineColor
+                  : darkThemeOutlineColor
               }`,
               strokeWidth: 5,
               strokeMiterlimit: 10,
             }}
           />
-            <circle
-              cx={151}
-              cy={151}
-              r={58.6}
-              style={{
-                fill: '#fff',
-              }}
-            />
+          <circle
+            cx={151}
+            cy={151}
+            r={58.6}
+            style={{
+              fill: '#fff',
+            }}
+          />
           <path
             d='M292 144h-11.7l9-9.3c2.9-3 2.8-7.7-.2-10.6-3-2.9-7.7-2.8-10.6.2L259.4 144h-13.9l8.8-9.3c2.8-3 2.7-7.8-.3-10.6s-7.8-2.7-10.6.3L224.8 144H212l16.6-18c1.3-1.4 2-3.3 2-5.1v-.1c0-4.1-3.3-7.3-7.4-7.4l-23-.2 8.2-8.2H235c4.1 0 7.5-3.4 7.5-7.5S239.1 90 235 90h-11.7l10-10H260c4.1 0 7.5-3.4 7.5-7.5S264.1 65 260 65h-11.7l8-8c2.9-2.9 2.9-7.7 0-10.6-2.9-2.9-7.7-2.9-10.6 0l-8.3 8.3-.2-13.1c-.1-4.1-3.4-7.6-7.5-7.6h-.1c-4.1 0-7.4 3.7-7.4 7.8l.4 27.6-9.8 9.8-.4-12.9c-.1-4.1-3.6-7.4-7.7-7.3-4.1.1-7.4 3.6-7.3 7.7l.7 27-8.6 8.6-.2-22.4c.3-2.1-.4-4.3-1.9-5.9-2.8-3.1-7.7-3.3-10.8-.5l-19.1 17.1v-14L177.3 58c3-2.8 3.2-7.6.4-10.6-2.8-3-7.7-3.1-10.7-.3l-9.5 8.8V42.1L177.6 23c3-2.9 3.1-7.6.3-10.6-2.9-3-7.8-3.1-10.7-.2l-9.4 9V10c0-4.1-3.4-7.5-7.5-7.5s-7.5 3.4-7.5 7.5v10.5l-8-8.2c-2.9-2.9-7.6-2.9-10.5 0-2.9 2.9-3.1 7.7-.1 10.6l18.7 18.8v13.8l-8-8.2c-2.9-2.9-7.6-2.9-10.5 0-2.9 2.9-3.1 7.7-.1 10.6L143 76.7v13l-17-16.3c-3-2.9-7.6-2.8-10.5.2-1.7 1.7-2.3 4-2 6.2l-.7 21.8-8.1-7.9V67c0-4.1-3.4-7.5-7.5-7.5s-7.5 3.4-7.5 7.5v11.7l-10-10V42c0-4.1-3.4-7.5-7.5-7.5s-7.5 3.4-7.5 7.5v11.7l-7.9-8c-2.9-2.9-7.6-2.9-10.5 0-2.9 2.9-2.9 7.7 0 10.6l8.1 8.1-12.7.3c-4.1.1-7.4 3.7-7.4 7.8.1 4.1 3.4 7.5 7.5 7.5h.1l27.5-.6 9.8 9.8-12.9.4c-4.1.1-7.4 3.6-7.3 7.7.1 4.1 3.4 7.3 7.5 7.3h.2l27-.7 9.4 9.4-23.1.5c-2.1.1-4.6.6-6.3 2.2-3 2.9-3.1 7.6-.3 10.6l.2.2c.2.2.3.4.5.5l16 16.7H76.7l-18.6-19.7c-2.8-3-7.6-3.1-10.6-.3-3 2.8-3.1 7.6-.3 10.6L56 144H42.1L23 124.3c-2.9-3-7.6-3.1-10.6-.2s-3.1 7.6-.2 10.6l9 9.3H10c-4.1 0-7.5 3.4-7.5 7.5S5.9 159 10 159h10.5l-8.2 8.2c-2.9 2.9-2.9 7.7 0 10.6 1.5 1.5 3.4 2.2 5.3 2.2s3.8-.7 5.3-2.2L41.7 159h13.8l-8.2 8.2c-2.9 2.9-2.9 7.7 0 10.6 1.5 1.5 3.4 2.2 5.3 2.2s3.8-.7 5.3-2.2L76.7 159h13.2l-16.3 16.9c-2.9 3-2.8 7.7.2 10.6 1.4 1.3 3.2 2 5 2.1h.1l23.9.6-9.4 9.4-27-.7c-4.1-.1-7.6 3.1-7.7 7.3-.1 4.1 3.1 7.6 7.3 7.7l12.9.4-10.1 10.1-27.2-.4h-.1c-4.1 0-7.4 3.1-7.5 7.2-.1 4.1 3.2 7.3 7.4 7.4l13 .2-8 8c-2.9 2.9-2.9 7.7 0 10.6 1.5 1.5 3.4 2.2 5.3 2.2s3.7-.7 5.1-2.2l6.9-7V261c0 4.1 3.4 7.5 7.5 7.5s7.5-3.4 7.5-7.5v-26.7l10-10V236c0 4.1 3.4 7.5 7.5 7.5s7.5-3.4 7.5-7.5v-26.7l9.7-9.5.6 22.7c-.2 2.1.6 4.5 2.2 6.1 1.5 1.5 3.5 2.4 5.4 2.4 2.3 0 4.3-1.5 5.5-2.9l15.6-15.5v12.2L124 243.6c-2.9 2.9-2.8 7.7.1 10.6 1.5 1.5 3.4 2.2 5.3 2.2s3.7-.7 5.2-2.2l8.1-8.2v13.8L124 278.6c-2.9 2.9-2.8 7.7.1 10.6 1.5 1.5 3.4 2.2 5.3 2.2s3.7-.7 5.2-2.2l8.1-8.2v11c0 4.1 3.4 7.5 7.5 7.5s7.5-3.4 7.5-7.5v-11.7l9.4 9c1.5 1.4 3.4 2.1 5.3 2.1 2 0 4-.8 5.4-2.3 2.9-3 2.7-7.7-.3-10.6l-19.9-19.1v-13.9l9.5 8.8c1.4 1.4 3.4 2.1 5.2 2.1 2 0 4-.8 5.5-2.3 2.8-3 2.6-7.8-.4-10.6l-19.8-18.6v-13.1l17.3 16.3c1.9 1.6 3.7 2.9 6.2 2.9h.1c4.1 0 7.5-3.4 7.5-7.5l.2-24.5 9.6 9.6-.7 27c-.1 4.1 3.1 7.6 7.3 7.7h.2c4 0 7.4-3.2 7.5-7.3l.4-12.9 9.8 9.8-.4 27.4c-.1 4.1 3.2 7.6 7.4 7.6h.1c4.1 0 7.4-3.1 7.5-7.2l.2-13 7.9 7.9c1.5 1.5 3.4 2.2 5.3 2.2s3.8-.7 5.3-2.2c2.9-2.9 2.9-7.7 0-10.6l-7.1-7.1H261c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5h-26.7l-10-10H236c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5h-26.7l-9.1-9.1 23-1c1.9-.1 3.9-1 5.1-2.2 3-2.9 3-7.6.1-10.6l-15.7-16h12.1l18.8 18.8c1.5 1.5 3.4 2.2 5.3 2.2s3.8-.7 5.3-2.2c2.9-2.9 2.9-7.7 0-10.6L246 159h13.8l18.8 18.8c1.5 1.5 3.4 2.2 5.3 2.2s3.8-.7 5.3-2.2c2.9-2.9 2.9-7.7 0-10.6L281 159h11c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5zm-174.2-16.2L134 144h-23.3l-14.6-15.4 21.7-.8zm-.3 46.8-21.2-.6 14.5-15h22.4l-15.7 15.6zm25.2 16.9-14.2 14.1-.5-20.5 14.7-14.8v21.2zm0-59.8-15.3-15.4.4-20.1 14.9 14.4v21.1zm15-20.7 16.7-15 .1 21.3-16.9 16.8V111zm16 95-16.1-14.8v-23.3l16.1 16.1v22zm12.1-31.5L170.3 159h21.4l14.3 14.6-20.2.9zm5.8-30.5h-22.3l16.1-16.1 20.9.1-14.7 16z'
             style={{
@@ -337,7 +425,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     if (iconNumber === '50') {
       return (
         <svg
@@ -430,7 +518,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
         </svg>
       );
     }
-  
+
     return <></>;
   };
 

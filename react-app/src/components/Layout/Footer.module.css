@@ -1,0 +1,4 @@
+.page-footer {
+  color: var(--color-grey-high-contrast);
+  align-self: flex-end;
+}

@@ -48,7 +48,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         setSelectedAddress(-1);
         fetchLocation(addressInput);
       }
-    }, 1500);
+    }, 500);
     return () => {
       if (!usedListForInput){
         clearTimeout(timer);
