@@ -30,100 +30,12 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
           style={{ padding: '10px' }}
         >
           <title>{description}</title>
-          <radialGradient
-            id='day'
-            cx={283.6}
-            cy={-637.4}
-            r={393.513}
-            fx={214.045}
-            fy={-665.222}
-            gradientTransform='translate(0 920)'
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop
-              offset={0.5}
-              style={{
-                stopColor: '#f2a71e',
-              }}
-            />
-            <stop
-              offset={0.558}
-              style={{
-                stopColor: '#f29e1c',
-              }}
-            />
-            <stop
-              offset={0.654}
-              style={{
-                stopColor: '#f18518',
-              }}
-            />
-            <stop
-              offset={0.776}
-              style={{
-                stopColor: '#f05c10',
-              }}
-            />
-            <stop
-              offset={0.918}
-              style={{
-                stopColor: '#ee2406',
-              }}
-            />
-            <stop
-              offset={1}
-              style={{
-                stopColor: '#ed0000',
-              }}
-            />
-          </radialGradient>
-          <radialGradient
-            id='night'
-            cx={283.6}
-            cy={284.6}
-            r={393.513}
-            fx={214.045}
-            fy={256.778}
-            gradientTransform='matrix(1 0 0 -1 0 567.2)'
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop
-              offset={0.5}
-              style={{
-                stopColor: '#ffffe1',
-              }}
-            />
-            <stop
-              offset={0.556}
-              style={{
-                stopColor: '#fffdd0',
-              }}
-            />
-            <stop
-              offset={0.626}
-              style={{
-                stopColor: '#fffbc5',
-              }}
-            />
-            <stop
-              offset={0.725}
-              style={{
-                stopColor: '#fffabe',
-              }}
-            />
-            <stop
-              offset={1}
-              style={{
-                stopColor: '#fffabc',
-              }}
-            />
-          </radialGradient>
           <circle
             cx={283.6}
             cy={283.6}
             r={283.6}
             style={{
-              fill: `url(#${iconPeriod === 'd' ? 'day' : 'night'})`,
+              fill: `${iconPeriod === 'd' ? '#f2a71e' : '#fffbca'}`,
             }}
           />
         </svg>
@@ -156,7 +68,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             cy={9.1}
             r={8.6}
             style={{
-              fill: `${iconPeriod === 'd' ? '#f2a71e' : '#49484A'}`,
+              fill: `${iconPeriod === 'd' ? '#f2a71e' : '#fffbca'}`,
             }}
           />
           <path
@@ -321,7 +233,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
             cy={9.1}
             r={8.6}
             style={{
-              fill: '#f1a720',
+              fill: `${iconPeriod === 'd' ? '#f2a71e' : '#fffbca'}`,
             }}
           />
           <path
