@@ -11,7 +11,9 @@ const ThemeButton = () => {
   useEffect(() => {
     const newViewbox = `0 ${theme === 'light' ? '0' : '1000'} 1000 1000`;
 
-    gsap.to(svgRef.current, {
+    gsap.fromTo(svgRef.current, {
+      rotation: '0',
+    },{
       duration: 1,
       rotation: '+=360',
       attr: { viewBox: newViewbox },
