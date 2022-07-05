@@ -37,11 +37,12 @@ const WeatherInfo = () => {
         });
     };
 
-    if (lat && lon && zoom && mapLayer) {
+    if (lat && lon && zoom && mapLayer && !isReady) {
+      console.log('I\'m running here! (Fetching info data).')
       setIsLoading(true);
       fetchWeatherInfo();
     }
-  }, [lat, lon, statusIsReady, zoom, mapLayer]);
+  }, [lat, lon, statusIsReady, zoom, mapLayer, isReady]);
 
   if (isLoading && isReady) {
     setIsLoading(false);

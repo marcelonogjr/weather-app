@@ -14,8 +14,8 @@ const WeatherUnits = (props: WeatherUnitsProps) => {
           <input
             type='checkbox'
             name='units'
-            value='imperial'
-            // onChange={unitsChangeHandler}
+            value={props.selectedUnits}
+            defaultChecked={props.selectedUnits === 'imperial' ? false : true}
             onChange={props.onChange}
           />
           <span className={styles['units-slider']}></span>

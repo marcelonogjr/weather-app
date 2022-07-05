@@ -44,6 +44,17 @@ const weatherReducer: ReducerType = (state, action) => {
       ...actionDataIsReady,
     };
 
+    if (state.isReady) {
+      return {
+        ...state,
+        isReady: false,
+        dataIsReady:{
+          infoIsReady: false,
+          mapIsReady: false,
+        }
+      };
+    }
+
     if (newDataIsReady.infoIsReady && newDataIsReady.mapIsReady) {
       return {
         ...state,
@@ -56,6 +67,7 @@ const weatherReducer: ReducerType = (state, action) => {
 
     return {
       ...state,
+      isReady: false,
       dataIsReady: {
         ...state.dataIsReady,
         ...actionDataIsReady,
