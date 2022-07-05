@@ -10,6 +10,10 @@ const WeatherContext = React.createContext<WeatherContextType>({
   units: 'imperial',
   changeUnits: (newUnits: NewUnitsType) => {},
   isReady: false,
+  dataIsReady: {
+    infoIsReady: false,
+    mapIsReady: false,
+  },
   statusIsReady: (someObject: {}) => {},
 });
 

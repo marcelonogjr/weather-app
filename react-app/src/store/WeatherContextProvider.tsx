@@ -39,11 +39,6 @@ const weatherReducer: ReducerType = (state, action) => {
   if (action.type === 'CHANGE_STATUS') {
     const actionDataIsReady = action.dataIsReady;
 
-    const newDataIsReady = {
-      ...state.dataIsReady,
-      ...actionDataIsReady,
-    };
-
     if (state.isReady) {
       return {
         ...state,
@@ -54,6 +49,11 @@ const weatherReducer: ReducerType = (state, action) => {
         }
       };
     }
+
+    const newDataIsReady = {
+      ...state.dataIsReady,
+      ...actionDataIsReady,
+    };
 
     if (newDataIsReady.infoIsReady && newDataIsReady.mapIsReady) {
       return {
@@ -124,6 +124,10 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
     units: currentUnits,
     changeUnits: changeUnitsHandler,
     isReady: weatherState.isReady,
+    dataIsReady: {
+      infoIsReady: weatherState.dataIsReady.infoIsReady,
+      mapIsReady: weatherState.dataIsReady.mapIsReady,
+    },
     statusIsReady: changeStatusHandler,
   };
 

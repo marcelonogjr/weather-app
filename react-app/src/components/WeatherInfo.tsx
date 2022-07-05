@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
@@ -19,11 +19,14 @@ const WeatherInfo = () => {
   const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
-  const { address, lat, lon, statusIsReady, isReady, units, changeUnits } = useContext(WeatherContext);
+  const { address, lat, lon, statusIsReady, isReady, dataIsReady, units, changeUnits } = useContext(WeatherContext);
+  const infoIsReady = useCallback(() => {
+    return dataIsReady.infoIsReady;
+  }, []);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5000';
+  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
     const fetchWeatherInfo = () => {
@@ -37,12 +40,12 @@ const WeatherInfo = () => {
         });
     };
 
-    if (lat && lon && zoom && mapLayer && !isReady) {
+    if (lat && lon && zoom && mapLayer && !infoIsReady()) {
       console.log('I\'m running here! (Fetching info data).')
       setIsLoading(true);
       fetchWeatherInfo();
     }
-  }, [lat, lon, statusIsReady, zoom, mapLayer, isReady]);
+  }, [lat, lon, statusIsReady, zoom, mapLayer, infoIsReady]);
 
   if (isLoading && isReady) {
     setIsLoading(false);

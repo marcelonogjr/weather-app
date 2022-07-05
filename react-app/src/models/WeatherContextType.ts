@@ -45,6 +45,10 @@ type WeatherContextType = {
   units: NewUnitsType;
   changeUnits: (newUnits: NewUnitsType) => void;
   isReady: boolean;
+  dataIsReady: {
+    infoIsReady: boolean;
+    mapIsReady: boolean;
+  };
   statusIsReady: (object: StatusIsReadyType) => void;
 };
 
