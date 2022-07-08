@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
@@ -19,33 +19,42 @@ const WeatherInfo = () => {
   const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
-  const { address, lat, lon, statusIsReady, isReady, dataIsReady, units, changeUnits } = useContext(WeatherContext);
-  const infoIsReady = useCallback(() => {
-    return dataIsReady.infoIsReady;
-  }, []);
+  const { address, lat, lon, statusIsReady, isReady, units, changeUnits } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
-    const fetchWeatherInfo = () => {
-      fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}`)
-        .then((response) => response.json())
-        .then((response) => {
+    const abortController = new AbortController();
+
+    const fetchWeatherInfo = async () => {
+      try {
+        const response = await fetch(`${serverUrl}/api/weather?lat=${lat}&lon=${lon}`, {signal: abortController.signal});
+        const responseJSON = await response.json();
+        const typeNarrowing = (response: any): response is WeatherAPIDataType => {
+          return (response as WeatherAPIDataType) !== undefined;
+        }
+        if (typeNarrowing(responseJSON)){
           statusIsReady({
             infoIsReady: true,
           });
-          setWeatherData(response);
-        });
+          setWeatherData(responseJSON);
+        }
+      } catch (error: unknown){
+
+      }
     };
 
-    if (lat && lon && zoom && mapLayer && !infoIsReady()) {
-      console.log('I\'m running here! (Fetching info data).')
+    if (lat && lon && zoom && mapLayer && !isReady) {
       setIsLoading(true);
       fetchWeatherInfo();
     }
-  }, [lat, lon, statusIsReady, zoom, mapLayer, infoIsReady]);
+    
+    return () => {
+      abortController.abort();
+    }
+  }, [lat, lon, statusIsReady, zoom, mapLayer, isReady]);
 
   if (isLoading && isReady) {
     setIsLoading(false);

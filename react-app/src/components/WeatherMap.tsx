@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
@@ -8,43 +8,42 @@ import MapLegendProperties from './WeatherMap/MapLegendProperties';
 const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
 
-  const { address, lat, lon, statusIsReady, isReady, dataIsReady, units } = useContext(WeatherContext);
-  const mapIsReady = useCallback(() => {
-    return dataIsReady.mapIsReady;
-  }, []);
+  const { lat, lon, statusIsReady, isReady, units } =
+    useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  const serverUrl = 'http://localhost:5000';
-  // const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  // const serverUrl = 'http://localhost:5000';
+  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   const mapUrl = `${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`;
 
   useEffect(() => {
+    const abortController = new AbortController();
+    
     const fetchMap = async () => {
-      const res = await fetch(mapUrl);
-      const imageBlob = await res.blob();
-      const imageObjectURL = URL.createObjectURL(imageBlob);
-      setMapImage(imageObjectURL);
-      statusIsReady({
-        mapIsReady: true,
-      });
+      try{
+        const res = await fetch(mapUrl, {signal: abortController.signal});
+        const imageBlob = await res.blob();
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+        setMapImage(imageObjectURL);
+        statusIsReady({
+          mapIsReady: true,
+        });
+      } catch (error: unknown) {
+        
+      }
     };
-    if (address && lat && lon && zoom && mapLayer && !mapIsReady()) {
+    if (lat && lon && zoom && mapLayer && !isReady) {
       statusIsReady({
         mapIsReady: false,
       });
       fetchMap();
     }
-  }, [
-    mapUrl,
-    address,
-    lat,
-    lon,
-    zoom,
-    mapLayer,
-    mapIsReady,
-    statusIsReady,
-  ]);
+
+    return () => {
+      abortController.abort();
+    }
+  }, [mapUrl, lat, lon, zoom, mapLayer, isReady, statusIsReady]);
 
   const MapLegend =
     mapLayer && units

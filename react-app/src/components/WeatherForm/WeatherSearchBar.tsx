@@ -29,18 +29,33 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
 
   useEffect(() => {
-    const fetchLocation = (addressQuery: string) => {
-      fetch(`${serverUrl}/api/find-location?address=${addressQuery}`)
-        .then((response) => response.json())
-        .then((response) => {
-          addressListRef.current = [];
-          setAddressList(response);
+    const abortController = new AbortController();
+
+    const fetchLocation = async (addressQuery: string) => {
+      try {
+        const response = await fetch(
+          `${serverUrl}/api/find-location?address=${addressQuery}`
+        );
+        const responseJSON = await response.json();
+        addressListRef.current = [];
+        const typeNarrowing = (
+          response: any
+        ): response is GeocodeAPIDataType => {
+          return (response as GeocodeAPIDataType) !== undefined;
+        };
+        if (typeNarrowing(responseJSON)) {
+          setAddressList(responseJSON);
           if (pressedEnterEarly) {
-            const newPath = `?address=${response[0].placeName}&lat=${response[0].center.lat}&lon=${response[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
-            navigate(newPath, {replace: true});
+            const newPath = `?address=${responseJSON[0].placeName}&lat=${responseJSON[0].center.lat}&lon=${responseJSON[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
+            navigate(newPath, { replace: true });
             setPressedEnterEarly(false);
           }
-        });
+        }
+      } catch (error: unknown) {}
+
+      return () => {
+        abortController.abort();
+      };
     };
 
     const timer = setTimeout(() => {
@@ -147,7 +162,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         lon: addressList[selectedAddress].center.lon,
       });
       const newPath = `?address=${addressList[selectedAddress].placeName}&lat=${addressList[selectedAddress].center.lat}&lon=${addressList[selectedAddress].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
-      navigate(newPath, {replace: true});
+      navigate(newPath, { replace: true });
     } else {
       setShowList(false);
       setPressedEnterEarly(true);
@@ -155,7 +170,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     statusIsReady({
       infoIsReady: false,
       mapIsReady: false,
-    })
+    });
   };
 
   const backdropClickHandler = () => {
