@@ -1,7 +1,7 @@
 export interface GetWeatherAPIType {
   lat: number;
   lon: number;
-  timezone: "America/Sao_Paulo";
+  timezone: string;
   timezone_offset: number;
   current: {
     dt: number;
@@ -25,16 +25,16 @@ export interface GetWeatherAPIType {
       icon: string;
     }[];
     rain?: {
-      '1h': number; 
+      '1h': number;
     };
     snow?: {
-      '1h': number; 
+      '1h': number;
     };
   };
-  minutely:{
+  minutely: {
     dt: number;
     precipitation: number;
-  }[],
+  }[];
   hourly: {
     dt: number;
     temp: number;
@@ -55,10 +55,10 @@ export interface GetWeatherAPIType {
       icon: string;
     }[];
     rain?: {
-      '1h': number; 
+      '1h': number;
     };
     snow?: {
-      '1h': number; 
+      '1h': number;
     };
     pop: number;
   }[];
@@ -109,6 +109,33 @@ export interface GetWeatherAPIType {
     description: string;
     tags: string[];
   }[];
-};
+}
 
-//48.383, -106.919
+export interface GeocodeAPIType {
+  type: string;
+  query: string[];
+  features: {
+    id: string;
+    type: string;
+    place_type: string[];
+    relevance: number;
+    properties: {
+      wikidata: string;
+    };
+    text: string;
+    place_name: string;
+    bbox: number[];
+    center: number[];
+    geometry: {
+      type: string;
+      coordinates: number[];
+    };
+    context: {
+      id: string;
+      short_code: string;
+      wikidata: string;
+      text: string;
+    }[];
+  }[];
+  attribution: string;
+}
