@@ -1,6 +1,6 @@
 import axios from 'axios';
-// import { geocodeToken } from './tokens';
 import { GeocodeAPIType } from './support/apiTypes';
+// import { geocodeToken } from './tokens';
 
 type geocodeType = (
   address: string
@@ -10,22 +10,34 @@ type geocodeType = (
     lat: number;
     lon: number;
   };
-}[] | void>;
+}[] | string>;
 
 const geocode: geocodeType = async (address: string) => {
   const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
 
   const mapBoxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${geocodeToken}&limit=10&types=country,region,postcode,district,place,locality`;
 
-  const response = await axios.get<GeocodeAPIType>(mapBoxUrl);
-
-  const geocodeData = response.data.features.map((element) => {
-    return {
-      placeName: element.place_name,
-      center: { lat: element.center[1], lon: element.center[0] },
-    };
-  });
-  return geocodeData;
+  try {
+    const response = await axios.get<GeocodeAPIType>(mapBoxUrl);
+    const geocodeData = response.data.features.map((element) => {
+      return {
+        placeName: element.place_name,
+        center: { lat: element.center[1], lon: element.center[0] },
+      };
+    });
+    
+    return geocodeData;
+  } catch (error){
+    if (axios.isAxiosError(error) && error.response){
+      if (error.response.status === 429){
+        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.'
+      } else {
+        return 'Error: Geocode service not responding. Try again later or, if the problem persists, contact the owner.'
+      }
+    } else {
+      return 'Error: Geocode service not responding. Try again later.'
+    }
+  }
 };
 
 export default geocode;
