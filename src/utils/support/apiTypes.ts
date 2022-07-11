@@ -111,6 +111,66 @@ export interface GetWeatherAPIType {
   }[];
 }
 
+export interface GetWeatherReturnType {
+  current: {
+    dt: number;
+    sunrise: number;
+    sunset: number;
+    temp: number;
+    feels_like: number;
+    pressure: number;
+    humidity: number;
+    dew_point: number;
+    uvi: number;
+    clouds: number;
+    visibility: number;
+    wind_speed: number;
+    wind_gust?: number;
+    wind_deg: number;
+    weather: {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }[];
+    rain?: {
+      '1h': number;
+    };
+    snow?: {
+      '1h': number;
+    };
+  };
+  hourly: {
+    dt: number;
+    temp: number;
+    humidity: number;
+    uv: number;
+    weather: {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }[];
+    pop: number;
+  }[];
+  daily: {
+    dt: number;
+    temp: {
+      min: number;
+      max: number;
+    },
+    humidity: number;
+    uv: number;
+    weather: {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }[];
+    pop: number;
+  }[];
+}
+
 export interface GeocodeAPIType {
   type: string;
   query: string[];

@@ -1,15 +1,21 @@
 import axios from 'axios';
 // import { openWeatherToken } from './tokens';
-import { GetWeatherAPIType } from './support/apiTypes';
+import {
+  GetWeatherAPIType,
+  GetWeatherReturnType,
+} from './support/apiTypes';
 
-type getWeatherType = (lat: number, lon: number) => Promise<unknown | void>;
+type GetWeatherType = (
+  lat: number,
+  lon: number
+) => Promise<GetWeatherReturnType | string>;
 
-const getWeather: getWeatherType = async (lat: number, lon: number) => {
+const getWeather: GetWeatherType = async (lat: number, lon: number) => {
   const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
 
   const urlByCoordinates = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=imperial`;
-  const response = await axios.get<GetWeatherAPIType>(urlByCoordinates);
-  if (response.data) {
+  try {
+    const response = await axios.get<GetWeatherAPIType>(urlByCoordinates);
     const newCurrentDT =
       response.data.current.dt + response.data.timezone_offset;
     const newCurrentSunrise =
@@ -23,7 +29,8 @@ const getWeather: getWeatherType = async (lat: number, lon: number) => {
       sunrise: newCurrentSunrise,
       sunset: newCurrentSunset,
     };
-    const hourly = response.data.hourly.map((element: any) => {
+
+    const hourly = response.data.hourly.map((element) => {
       return {
         dt: element.dt + response.data.timezone_offset,
         temp: element.temp,
@@ -33,7 +40,8 @@ const getWeather: getWeatherType = async (lat: number, lon: number) => {
         pop: element.pop,
       };
     });
-    const daily = response.data.daily.map((element: any) => {
+
+    const daily = response.data.daily.map((element) => {
       return {
         dt: element.dt + response.data.timezone_offset,
         temp: {
@@ -49,6 +57,16 @@ const getWeather: getWeatherType = async (lat: number, lon: number) => {
 
     const weather = { current, hourly, daily };
     return weather;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      if (error.response.status === 429) {
+        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.';
+      } else {
+        return 'Error: Geocode service not responding. Try again later or, if the problem persists, contact the owner.';
+      }
+    } else {
+      return 'Error: Geocode service not responding. Try again later.';
+    }
   }
 };
 
