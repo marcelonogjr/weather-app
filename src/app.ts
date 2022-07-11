@@ -99,11 +99,15 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
     const response = await assembleMap(lat, lon, zoom, mapType);
 
     if (response) {
-      res.writeHead(200, {
-        'Content-Type': 'image/png',
-        'Content-Length': response.length,
-      });
-      res.end(response);
+      if (typeof response === 'string'){
+        res.send(response);
+      } else{
+        res.writeHead(200, {
+          'Content-Type': 'image/png',
+          'Content-Length': response.length,
+        });
+        res.end(response);
+      }
     }
   }
 });

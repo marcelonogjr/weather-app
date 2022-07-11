@@ -26,29 +26,37 @@ const assembleMap = async (lat: number, lon: number, zoom: number, mapType: mapL
   const xOffset = tileOffset[0] - offsetCoordinates[0];
   const yOffset = tileOffset[1] - offsetCoordinates[1];
 
-  const mainImage = await loadImage(`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/${lon},${lat},${zoom}/512x512?access_token=${geocodeToken}`);
-  const topLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yLow}.png?appid=${openWeatherToken}`);
-  const topRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yLow}.png?appid=${openWeatherToken}`);
-  const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
-  const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
+  try {
+    const mainImage = await loadImage(`https://api.mapbox.com/styles/v1/mapbox/light-v10/static/${lon},${lat},${zoom}/512x512?access_token=${geocodeToken}`);
+    const topLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yLow}.png?appid=${openWeatherToken}`);
+    const topRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yLow}.png?appid=${openWeatherToken}`);
+    const bottomLeftImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xLow}/${yHigh}.png?appid=${openWeatherToken}`);
+    const bottomRightImage = await loadImage(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
 
-  // console.log(`https://tile.openweathermap.org/map/${mapType}/${zoom}/${xHigh}/${yHigh}.png?appid=${openWeatherToken}`);
+    context.drawImage(mainImage,0, 0, width, height);
+    context2.drawImage(topLeftImage, -width/2 + xOffset, -height/2 + yOffset, width, height);
+    context2.drawImage(topRightImage,width/2 + xOffset, -height/2 + yOffset, width, height);
+    context2.drawImage(bottomLeftImage, -width/2 + xOffset, height/2 + yOffset, width, height);
+    context2.drawImage(bottomRightImage,width/2 + xOffset, height/2 + yOffset, width, height);
+    
+    const imageData = context2.getImageData(0, 0, width, height);
+    
+    const finalImageData = conversionColorTransformation(mapType, imageData);
 
-  context.drawImage(mainImage,0, 0, width, height);
-  context2.drawImage(topLeftImage, -width/2 + xOffset, -height/2 + yOffset, width, height);
-  context2.drawImage(topRightImage,width/2 + xOffset, -height/2 + yOffset, width, height);
-  context2.drawImage(bottomLeftImage, -width/2 + xOffset, height/2 + yOffset, width, height);
-  context2.drawImage(bottomRightImage,width/2 + xOffset, height/2 + yOffset, width, height);
-  
-  const imageData = context2.getImageData(0, 0, width, height);
-  
-  const finalImageData = conversionColorTransformation(mapType, imageData);
-
-  context2.putImageData(finalImageData, 0, 0);
-  context.drawImage(canvas2, 0, 0);
-  
-  const buffer = canvas.toBuffer('image/png');
-  return buffer;
+    context2.putImageData(finalImageData, 0, 0);
+    context.drawImage(canvas2, 0, 0);
+    
+    const buffer = canvas.toBuffer('image/png');
+    return buffer;
+  } catch (error){
+    if (error instanceof Error){
+      if (error.message === 'Server responded with 429'){
+        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.'
+      } else {
+        return 'Error: Map service not responding. Try again later or, if the problem persists, contact the owner.'
+      }
+    }
+  }
 };
-
+// 
 export default assembleMap;
