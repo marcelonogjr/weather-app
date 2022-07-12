@@ -8,7 +8,7 @@ import {
 type GetWeatherType = (
   lat: number,
   lon: number
-) => Promise<GetWeatherReturnType | string>;
+) => Promise<GetWeatherReturnType | {error: string}>;
 
 const getWeather: GetWeatherType = async (lat: number, lon: number) => {
   const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
@@ -60,12 +60,12 @@ const getWeather: GetWeatherType = async (lat: number, lon: number) => {
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       if (error.response.status === 429) {
-        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.';
+        return {error: 'Error: Out of API calls! Try again at the beggining of the next month or contact the development team.'};
       } else {
-        return 'Error: Geocode service not responding. Try again later or, if the problem persists, contact the owner.';
+        return {error: 'Error: Weather service not responding. Try again later or, if the problem persists, contact the development team.'};
       }
     } else {
-      return 'Error: Geocode service not responding. Try again later.';
+      return {error: 'Error: Weather service not responding. Try again later.'};
     }
   }
 };

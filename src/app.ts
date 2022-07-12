@@ -4,7 +4,10 @@ import path from 'path';
 import geocode from './utils/geocode';
 import getWeather from './utils/getWeather';
 import assembleMap from './utils/map/assembleMap';
-import { zoomConversion, weatherLayerConversion } from './utils/support/inputConversion';
+import {
+  zoomConversion,
+  weatherLayerConversion,
+} from './utils/support/inputConversion';
 
 const app: Application = express();
 const port = process.env.PORT || 5000;
@@ -18,18 +21,13 @@ app.use(express.static(reactPath));
 app.get('/api/find-location', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  if (!req.query.address) {
+  if (typeof req.query.address !== 'string') {
     return res.send({
-      error: 'Please type a location for the search.',
+      error: 'ERROR: Please type a valid location for the search.',
     });
-  }
-
-  if (typeof req.query.address === 'string') {
+  } else {
     const geocodeResponse = await geocode(req.query.address);
-
-    if (geocodeResponse) {
-      return res.send(geocodeResponse);
-    }
+    return res.send(geocodeResponse);
   }
 });
 
@@ -38,23 +36,25 @@ app.get('/api/weather', async (req: Request, res: Response) => {
 
   if (!req.query.lat || !req.query.lon) {
     return res.send({
-      error: 'ERROR: Please choose a valid location.',
+      error: 'ERROR: Please provide valid coordinates.',
     });
-  } 
-  if (typeof req.query.lat === 'string' && typeof req.query.lon === 'string'){
+  }
+  if (typeof req.query.lat === 'string' && typeof req.query.lon === 'string') {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
-    
-    const weather = await getWeather(lat, lon);
-  
-    if (weather) {
+
+    if (!isNaN(lat) && !isNaN(lon)) {
+      const weather = await getWeather(lat, lon);
       return res.send(weather);
+    } else {
+      return res.send({
+        error: 'ERROR: Please provide valid coordinates.',
+      });
     }
   } else {
     return res.send({
-      error: 'ERROR: something went wrong!',
-    })
-
+      error: 'ERROR: Please provide valid coordinates.',
+    });
   }
 });
 
@@ -62,52 +62,50 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   if (
-    !req.query.lat ||
-    !req.query.lon ||
+    typeof req.query.lat !== 'string' ||
+    typeof req.query.lon !== 'string' ||
     (req.query.zoom !== 'small' &&
       req.query.zoom !== 'medium' &&
       req.query.zoom !== 'large') ||
-      (req.query.map__type !== 'clouds' &&
+    (req.query.map__type !== 'clouds' &&
       req.query.map__type !== 'precipitation' &&
       req.query.map__type !== 'pressure' &&
       req.query.map__type !== 'wind' &&
       req.query.map__type !== 'temperature')
   ) {
     return res.send({
-      error: 'ERROR: something went wrong!',
+      error:
+        'ERROR: Please provide valid coordinates, zoom level and map layer type.',
     });
-  }
-
-  if (
-    typeof req.query.lat === 'string' &&
-    typeof req.query.lon === 'string' &&
-    (req.query.zoom === 'small' ||
-      req.query.zoom === 'medium' ||
-      req.query.zoom === 'large') &&
-    (req.query.map__type === 'clouds' ||
-    req.query.map__type === 'precipitation' ||
-    req.query.map__type === 'pressure' ||
-    req.query.map__type === 'wind' ||
-    req.query.map__type === 'temperature')
-  ) {
-
+  } else {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
-    const zoom = zoomConversion(req.query.zoom);
-    const mapType = weatherLayerConversion(req.query.map__type);
 
-    const response = await assembleMap(lat, lon, zoom, mapType);
+    if (!isNaN(lat) && !isNaN(lon)) {
+      const zoom = zoomConversion(req.query.zoom);
+      const mapType = weatherLayerConversion(req.query.map__type);
 
-    if (response) {
-      if (typeof response === 'string'){
+      const response = await assembleMap(lat, lon, zoom, mapType);
+
+      const isErrorTypeNarrowing = (
+        response: Buffer | { error: string }
+      ): response is { error: string } => {
+        return (response as { error: string }).error !== undefined;
+      };
+      
+      if (isErrorTypeNarrowing(response)) {
         res.send(response);
-      } else{
+      } else {
         res.writeHead(200, {
           'Content-Type': 'image/png',
           'Content-Length': response.length,
         });
         res.end(response);
       }
+    } else {
+      return res.send({
+        error: 'ERROR: Please provide valid coordinates.',
+      });
     }
   }
 });

@@ -10,9 +10,9 @@ type geocodeType = (
     lat: number;
     lon: number;
   };
-}[] | string>;
+}[] | {error: string}>;
 
-const geocode: geocodeType = async (address: string) => {
+const geocode: geocodeType = async (address) => {
   const geocodeToken: string | undefined = process.env.GEOCODE_TOKEN;
 
   const mapBoxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${geocodeToken}&limit=10&types=country,region,postcode,district,place,locality`;
@@ -30,12 +30,12 @@ const geocode: geocodeType = async (address: string) => {
   } catch (error){
     if (axios.isAxiosError(error) && error.response){
       if (error.response.status === 429){
-        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.'
+        return {error: 'Error: Out of API calls! Try again at the beggining of the next month or contact the development team.'}
       } else {
-        return 'Error: Geocode service not responding. Try again later or, if the problem persists, contact the owner.'
+        return {error: 'Error: Geocode service not responding. Try again later or, if the problem persists, contact the development team.'}
       }
     } else {
-      return 'Error: Geocode service not responding. Try again later.'
+      return {error: 'Error: Geocode service not responding. Try again later.'}
     }
   }
 };

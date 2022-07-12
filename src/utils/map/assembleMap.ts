@@ -51,12 +51,14 @@ const assembleMap = async (lat: number, lon: number, zoom: number, mapType: mapL
   } catch (error){
     if (error instanceof Error){
       if (error.message === 'Server responded with 429'){
-        return 'Error: Out of API calls! Try again at the beggining of the next month or contact the owner.'
+        return {error: 'Error: Out of API calls! Try again at the beggining of the next month or contact the development team.'}
       } else {
-        return 'Error: Map service not responding. Try again later or, if the problem persists, contact the owner.'
+        return {error: 'Error: Map service not responding. Try again later.'}
       }
+    } else {
+      return {error: 'Error: Something went wrong! Try again later or, if the problem persists, contact the development team.'}
     }
   }
 };
-// 
+
 export default assembleMap;
