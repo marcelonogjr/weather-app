@@ -158,7 +158,7 @@ export interface GetWeatherReturnType {
     temp: {
       min: number;
       max: number;
-    },
+    };
     humidity: number;
     uv: number;
     weather: {
@@ -199,3 +199,11 @@ export interface GeocodeAPIType {
   }[];
   attribution: string;
 }
+
+export type GeocodeReturnType = {
+  placeName: string;
+  center: {
+    lat: number;
+    lon: number;
+  };
+}[];

@@ -8,6 +8,7 @@ import {
   zoomConversion,
   weatherLayerConversion,
 } from './utils/support/inputConversion';
+import {GetWeatherReturnType, GeocodeReturnType } from './utils/support/apiTypes';
 
 const app: Application = express();
 const port = process.env.PORT || 5000;
@@ -22,11 +23,21 @@ app.get('/api/find-location', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   if (typeof req.query.address !== 'string') {
-    return res.send({
-      error: 'ERROR: Please type a valid location for the search.',
+    return res.status(400).send({
+      error: 'ERROR: Please type a valid address for the search.',
     });
   } else {
+    const isErrorTypeNarrowing = (
+      response: GeocodeReturnType  | { error: string }
+    ): response is { error: string } => {
+      return (response as { error: string }).error !== undefined;
+    };
+
     const geocodeResponse = await geocode(req.query.address);
+
+    if (isErrorTypeNarrowing(geocodeResponse)){
+      return res.status(500).send(geocodeResponse);
+    }
     return res.send(geocodeResponse);
   }
 });
@@ -35,7 +46,7 @@ app.get('/api/weather', async (req: Request, res: Response) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   if (!req.query.lat || !req.query.lon) {
-    return res.send({
+    return res.status(400).send({
       error: 'ERROR: Please provide valid coordinates.',
     });
   }
@@ -45,14 +56,25 @@ app.get('/api/weather', async (req: Request, res: Response) => {
 
     if (!isNaN(lat) && !isNaN(lon)) {
       const weather = await getWeather(lat, lon);
-      return res.send(weather);
+
+      const isErrorTypeNarrowing = (
+        response: GetWeatherReturnType  | { error: string }
+      ): response is { error: string } => {
+        return (response as { error: string }).error !== undefined;
+      };
+
+      if (isErrorTypeNarrowing(weather)) {
+        return res.status(500).send(weather);
+      } else {
+        return res.send(weather);
+      }
     } else {
-      return res.send({
+      return res.status(400).send({
         error: 'ERROR: Please provide valid coordinates.',
       });
     }
   } else {
-    return res.send({
+    return res.status(400).send({
       error: 'ERROR: Please provide valid coordinates.',
     });
   }
@@ -73,7 +95,7 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
       req.query.map__type !== 'wind' &&
       req.query.map__type !== 'temperature')
   ) {
-    return res.send({
+    return res.status(400).send({
       error:
         'ERROR: Please provide valid coordinates, zoom level and map layer type.',
     });
@@ -94,7 +116,7 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
       };
       
       if (isErrorTypeNarrowing(response)) {
-        res.send(response);
+        res.status(500).send(response);
       } else {
         res.writeHead(200, {
           'Content-Type': 'image/png',
@@ -103,7 +125,7 @@ app.get('/api/weather-map', async (req: Request, res: Response) => {
         res.end(response);
       }
     } else {
-      return res.send({
+      return res.status(400).send({
         error: 'ERROR: Please provide valid coordinates.',
       });
     }
