@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 
 import WeatherContext from '../../store/weather-context';
-
+import isErrorType from '../../models/IsErrorType';
 import styles from './WeatherSearchBar.module.css';
 import { GeocodeAPIDataType } from '../../models/WeatherAPIDataType';
 
@@ -21,7 +21,8 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
 
   const addressListRef = useRef<HTMLParagraphElement[] | null[]>([]);
 
-  const { changeLocation, statusIsReady } = useContext(WeatherContext);
+  const { changeLocation, statusIsReady, changeInError } =
+    useContext(WeatherContext);
   const navigate = useNavigate();
   const locationSearch = useLocation().search;
 
@@ -38,20 +39,36 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         );
         const responseJSON = await response.json();
         addressListRef.current = [];
-        const typeNarrowing = (
-          response: any
-        ): response is GeocodeAPIDataType => {
-          return (response as GeocodeAPIDataType) !== undefined;
-        };
-        if (typeNarrowing(responseJSON)) {
-          setAddressList(responseJSON);
-          if (pressedEnterEarly) {
-            const newPath = `?address=${responseJSON[0].placeName}&lat=${responseJSON[0].center.lat}&lon=${responseJSON[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
-            navigate(newPath, { replace: true });
-            setPressedEnterEarly(false);
+
+        if (!response.ok && isErrorType(responseJSON)) {
+          throw new Error(responseJSON.error);
+        } else {
+          const typeNarrowing = (
+            response: any
+          ): response is GeocodeAPIDataType => {
+            return (response as GeocodeAPIDataType)[0].placeName !== undefined;
+          };
+          if (typeNarrowing(responseJSON)) {
+            setAddressList(responseJSON);
+            if (pressedEnterEarly) {
+              const newPath = `?address=${responseJSON[0].placeName}&lat=${responseJSON[0].center.lat}&lon=${responseJSON[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
+              navigate(newPath, { replace: true });
+              changeInError({
+                errorStatus: false,
+                errorMessage: '',
+              });
+              setPressedEnterEarly(false);
+            }
           }
         }
-      } catch (error: unknown) {}
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          changeInError({
+            errorStatus: true,
+            errorMessage: error.message,
+          });
+        }
+      }
 
       return () => {
         abortController.abort();
@@ -78,6 +95,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
     props.zoom,
     setAddressList,
     locationSearch,
+    changeInError,
   ]);
 
   const searchInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,6 +178,10 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         address: addressList[selectedAddress].placeName,
         lat: addressList[selectedAddress].center.lat,
         lon: addressList[selectedAddress].center.lon,
+      });
+      changeInError({
+        errorStatus: false,
+        errorMessage: '',
       });
       const newPath = `?address=${addressList[selectedAddress].placeName}&lat=${addressList[selectedAddress].center.lat}&lon=${addressList[selectedAddress].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
       navigate(newPath, { replace: true });

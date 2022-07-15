@@ -2,13 +2,14 @@ import { useState, useEffect, useContext } from 'react';
 
 import WeatherContext from '../store/weather-context';
 import MapContext from '../store/map-context';
+import isErrorType from '../models/IsErrorType';
 import styles from './WeatherMap.module.css';
 import MapLegendProperties from './WeatherMap/MapLegendProperties';
 
 const WeatherMap = () => {
   const [mapImage, setMapImage] = useState<undefined | string>();
 
-  const { lat, lon, statusIsReady, isReady, units } =
+  const { lat, lon, statusIsReady, isReady, units, changeInError } =
     useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
@@ -19,18 +20,36 @@ const WeatherMap = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    
+
     const fetchMap = async () => {
-      try{
-        const res = await fetch(mapUrl, {signal: abortController.signal});
-        const imageBlob = await res.blob();
-        const imageObjectURL = URL.createObjectURL(imageBlob);
-        setMapImage(imageObjectURL);
-        statusIsReady({
-          mapIsReady: true,
-        });
+      try {
+        const res = await fetch(mapUrl, { signal: abortController.signal });
+        if (!res.ok) {
+          const resJSON = await res.json();
+          if (isErrorType(resJSON)) {
+            throw new Error(resJSON.error);
+          } else {
+            throw new Error(
+              'Something went wrong! Try again later or, if the problem persists, please contact the development team.'
+            );
+          }
+        } else {
+          const imageBlob = await res.blob();
+          const imageObjectURL = URL.createObjectURL(imageBlob);
+          setMapImage(imageObjectURL);
+          statusIsReady({
+            mapIsReady: true,
+          });
+        }
       } catch (error: unknown) {
-        
+        if (error instanceof Error) {
+          if (error.message !== 'The user aborted a request.'){
+            changeInError({
+              errorStatus: true,
+              errorMessage: error.message,
+            });
+          }
+        }
       }
     };
     if (lat && lon && zoom && mapLayer && !isReady) {
@@ -42,8 +61,8 @@ const WeatherMap = () => {
 
     return () => {
       abortController.abort();
-    }
-  }, [mapUrl, lat, lon, zoom, mapLayer, isReady, statusIsReady]);
+    };
+  }, [mapUrl, lat, lon, zoom, mapLayer, isReady, statusIsReady, changeInError]);
 
   const MapLegend =
     mapLayer && units

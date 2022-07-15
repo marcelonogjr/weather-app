@@ -7,7 +7,8 @@ import {
   DefaultWeatherStatusType,
   ReducerType,
   NewLocationType,
-  NewUnitsType
+  NewUnitsType,
+  InErrorType,
 } from '../models/WeatherContextType';
 
 const defaultWeatherStatus: DefaultWeatherStatusType = {
@@ -43,10 +44,10 @@ const weatherReducer: ReducerType = (state, action) => {
       return {
         ...state,
         isReady: false,
-        dataIsReady:{
+        dataIsReady: {
           infoIsReady: false,
           mapIsReady: false,
-        }
+        },
       };
     }
 
@@ -80,6 +81,10 @@ const weatherReducer: ReducerType = (state, action) => {
 
 const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
   const [currentUnits, setCurrentUnits] = useState<NewUnitsType>('imperial');
+  const [isError, setIsError] = useState<InErrorType>({
+    errorStatus: false,
+    errorMessage: '',
+  });
   const [weatherState, dispatchWeatherAction] = useReducer(
     weatherReducer,
     defaultWeatherStatus
@@ -114,7 +119,14 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
 
   const changeUnitsHandler = useCallback((newUnits: NewUnitsType) => {
     setCurrentUnits(newUnits);
-  }, [])
+  }, []);
+
+  const changeInErrorHandler = useCallback((isError: InErrorType) => {
+    setIsError({
+      errorStatus: isError.errorStatus,
+      errorMessage: isError.errorMessage,
+    });
+  }, []);
 
   const contextValue = {
     address: weatherState.address,
@@ -129,6 +141,8 @@ const WeatherContextProvider: React.FC<ChildrenProps> = (props) => {
       mapIsReady: weatherState.dataIsReady.mapIsReady,
     },
     statusIsReady: changeStatusHandler,
+    inError: isError,
+    changeInError: changeInErrorHandler,
   };
 
   return (

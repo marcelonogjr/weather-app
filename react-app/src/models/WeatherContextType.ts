@@ -1,6 +1,6 @@
 export interface ChildrenProps {
   children: React.ReactNode;
-};
+}
 
 export interface DefaultWeatherStatusType {
   address: string | null;
@@ -11,26 +11,31 @@ export interface DefaultWeatherStatusType {
     infoIsReady: boolean;
     mapIsReady: boolean;
   };
-};
+}
 
 export interface StatusIsReadyType {
   infoIsReady?: boolean;
   mapIsReady?: boolean;
-};
+}
 
 export type NewLocationType = {
   address: string;
   lat: number;
   lon: number;
-}
+};
 
 export type NewUnitsType = 'imperial' | 'metric';
+
+export interface InErrorType {
+  errorStatus: boolean;
+  errorMessage: string;
+};
 
 interface ActionReducerType {
   type: string;
   location: NewLocationType;
   dataIsReady: StatusIsReadyType;
-};
+}
 
 export type ReducerType = (
   state: DefaultWeatherStatusType,
@@ -50,6 +55,8 @@ type WeatherContextType = {
     mapIsReady: boolean;
   };
   statusIsReady: (object: StatusIsReadyType) => void;
+  inError: InErrorType;
+  changeInError: (object: InErrorType) => void;
 };
 
 export default WeatherContextType;

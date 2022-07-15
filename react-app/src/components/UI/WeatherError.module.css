@@ -1,0 +1,15 @@
+.error-bundle {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: fit-content;
+  /* background-color: var(--color-grey-low-contrast); */
+  /* border: 3px solid red;
+  border-radius: 20px; */
+}
+
+.error-bundle p {
+  color: var(--color-text);
+  font-weight: 600;
+  margin: 0;
+}
