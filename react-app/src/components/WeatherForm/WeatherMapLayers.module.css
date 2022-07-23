@@ -7,7 +7,7 @@
 .weather-layer-bundle select{
   margin-left: 20px;
   height: fit-content;
-  background-color: var(--color-background);
+  background-color: var(--color-main-content-background);
   color: var(--color-text)
 }
 

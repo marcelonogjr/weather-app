@@ -45,7 +45,7 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
       <p>Cloudiness: {Math.round(props.currentData.clouds)}%</p>
       <p>Pressure: {Math.round(props.currentData.pressure)} mb</p>
       <p>UV index: {Math.round(props.currentData.uvi)}</p>
-      <SvgUVIIndexIcons uvIndex={props.currentData.uvi} component='current'/>
+      <SvgUVIIndexIcons uvIndex={Math.round(props.currentData.uvi)} component='current'/>
       <p>Average Visibility: {unitsConversor(units, 'lenght', props.currentData.visibility)}</p>
       {/* <p>Wind Speed: {unitsConversor(units, 'speed', props.currentData.wind_speed)}</p> */}
       <div className={styles['wind-bundle']}>

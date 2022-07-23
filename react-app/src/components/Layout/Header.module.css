@@ -3,10 +3,15 @@
   align-items: center;
 }
 
+.nav_button-bundle a{
+  color: var(--color-secondary);
+}
+
 .nav_button-bundle button {
   margin-left: auto;
 }
 
 .page-title {
   margin: 0;
+  color: var(--color-secondary);
 }

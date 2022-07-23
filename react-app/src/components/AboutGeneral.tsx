@@ -1,23 +1,13 @@
-import ReactMarkdown from 'react-markdown';
-import testMd from '../../articles/About/testMd';
+import MapCoordinates from './articles/About/MapCoordinates/MapCoordinates';
 
 import styles from './AboutGeneral.module.css';
 
 const AboutGeneral = () => {
-  const markdown = `Just a link: [Learn React!](https://reactjs.com).  
-  Here is a list for you:
-  * Banana
-  * Nabana
-  * Nanaba
-  `;
 
   return (
-    <>
-    <div className={styles['test-1']}>
-      <ReactMarkdown children={testMd} />
+    <div className={styles['articles-content']}>
+      <MapCoordinates />
     </div>
-      <ReactMarkdown children={markdown} />
-    </>
   );
 };
 

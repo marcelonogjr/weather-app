@@ -1,4 +1,18 @@
-.test-1 ul{
+.articles-content {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.articles-content p, .articles-content h2, .articles-content h3, .articles-content h4 {
+  margin-bottom: 0;
+}
+
+.articles-content ul{
   list-style: none;
   color:aqua;
+}
+
+.articles-content a{
+  color: var(--color-hlink);
 }
