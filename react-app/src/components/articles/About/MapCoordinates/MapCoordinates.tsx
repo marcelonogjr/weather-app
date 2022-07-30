@@ -12,6 +12,12 @@ import {
   mapCoordinates4,
   mapCoordinates5,
   mapCoordinates6,
+  mapCoordinates7,
+  mapCoordinates8,
+  mapCoordinates9,
+  mapCoordinates10,
+  mapCoordinates11,
+  mapCoordinates12,
 } from './text/mapCoordinates';
 import {
   MapCoordinatesImg1,
@@ -19,6 +25,12 @@ import {
   MapCoordinatesImg3,
   MapCoordinatesImg4,
   MapCoordinatesImg5,
+  MapCoordinatesImg6,
+  MapCoordinatesImg7,
+  MapCoordinatesImg8,
+  MapCoordinatesImg9,
+  MapCoordinatesImg10,
+  MapCoordinatesImg11,
 } from './images/MapCoordinatesSvgs';
 
 const MapCoordinates = () => {
@@ -59,7 +71,94 @@ const MapCoordinates = () => {
         rehypePlugins={[rehypeKatex]}
       />
       <MapCoordinatesImg5 />
-      <ReactMarkdown children={mapCoordinates6} />
+      <ReactMarkdown
+        children={mapCoordinates6}
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+      />
+      <MapCoordinatesImg6 />
+      <ReactMarkdown children={mapCoordinates7} />
+      <div className={styles['san_francisco_step_3-bundle']}>
+        <MapCoordinatesImg7 />
+        <img
+          id={styles['map_complementary_center']}
+          src={require('./images/coordinates_comparison_tiles.png')}
+          alt='Map view of San Francisco using the tile coordinate system with zoom 10'
+        />
+        <img
+          id={styles['map_complementary_right']}
+          src={require('./images/san_francisco_complementary_right.png')}
+          alt='Complementary tile of San Francisco located on the right of the original'
+        />
+        <img
+          id={styles['map_complementary_bottom']}
+          src={require('./images/san_francisco_complementary_bottom.png')}
+          alt='Complementary tile of San Francisco located on the bottom of the original'
+        />
+        <img
+          id={styles['map_complementary_bottom_right']}
+          src={require('./images/san_francisco_complementary_bottom-right.png')}
+          alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
+        />
+      </div>
+      <ReactMarkdown children={mapCoordinates8} />
+      <div className={styles['san_francisco_step_4-bundle']}>
+        <MapCoordinatesImg8 />
+        <img
+          id={styles['map_step_4_center']}
+          src={require('./images/coordinates_comparison_tiles.png')}
+          alt='Map view of San Francisco using the tile coordinate system with zoom 10'
+        />
+        <img
+          id={styles['map_step_4_right']}
+          src={require('./images/san_francisco_complementary_right.png')}
+          alt='Complementary tile of San Francisco located on the right of the original'
+        />
+        <img
+          id={styles['map_step_4_bottom']}
+          src={require('./images/san_francisco_complementary_bottom.png')}
+          alt='Complementary tile of San Francisco located on the bottom of the original'
+        />
+        <img
+          id={styles['map_step_4_bottom_right']}
+          src={require('./images/san_francisco_complementary_bottom-right.png')}
+          alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
+        />
+      </div>
+      <ReactMarkdown children={mapCoordinates9} />
+      <MapCoordinatesImg9 />
+      <ReactMarkdown children={mapCoordinates10} />
+      <MapCoordinatesImg10 />
+      <ReactMarkdown
+        children={mapCoordinates11}
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+      />
+      <MapCoordinatesImg11 />
+      <ReactMarkdown children={mapCoordinates12} />
+      <div className={styles['san_francisco_step_6-bundle']}>
+        <MapCoordinatesImg8 />
+        <img
+          id={styles['map_step_6_center']}
+          src={require('./images/coordinates_comparison_tiles.png')}
+          alt='Map view of San Francisco using the tile coordinate system with zoom 10'
+        />
+        <img
+          id={styles['map_step_6_right']}
+          src={require('./images/san_francisco_complementary_right.png')}
+          alt='Complementary tile of San Francisco located on the right of the original'
+        />
+        <img
+          id={styles['map_step_6_bottom']}
+          src={require('./images/san_francisco_complementary_bottom.png')}
+          alt='Complementary tile of San Francisco located on the bottom of the original'
+        />
+        <img
+          id={styles['map_step_6_bottom_right']}
+          src={require('./images/san_francisco_complementary_bottom-right.png')}
+          alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
+        />
+      </div>
     </>
   );
 };
