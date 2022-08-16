@@ -1,4 +1,15 @@
 .page-footer {
   color: var(--color-grey-high-contrast);
-  align-self: flex-end;
+  align-self: center;
+  width: 850px;
+  border-top: 1px solid var(--color-grey-high-contrast);
+  margin-top: 16px;
+  padding: 16px 0;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-footer p {
+  align-self: center;
 }

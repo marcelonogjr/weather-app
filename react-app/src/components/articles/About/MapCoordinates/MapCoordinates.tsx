@@ -18,6 +18,10 @@ import {
   mapCoordinates10,
   mapCoordinates11,
   mapCoordinates12,
+  mapCoordinates13,
+  mapCoordinates14,
+  mapCoordinates15,
+  mapCoordinates16,
 } from './text/mapCoordinates';
 import {
   MapCoordinatesImg1,
@@ -31,6 +35,10 @@ import {
   MapCoordinatesImg9,
   MapCoordinatesImg10,
   MapCoordinatesImg11,
+  MapCoordinatesImg12,
+  MapCoordinatesImg13,
+  MapCoordinatesImg14,
+  MapCoordinatesImg15,
 } from './images/MapCoordinatesSvgs';
 
 const MapCoordinates = () => {
@@ -134,10 +142,23 @@ const MapCoordinates = () => {
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex]}
       />
-      <MapCoordinatesImg11 />
-      <ReactMarkdown children={mapCoordinates12} />
+      <div className={styles['san_francisco_step_5-bundle']}>
+        <img
+          id={styles['map_step_5']}
+          src={require('./images/tile_zoom_0_satellite.jpg')}
+          alt='Satellite view of the earth using the Web Mercator Projection'
+        />
+        <MapCoordinatesImg11 />
+      </div>
+      <ReactMarkdown
+        children={mapCoordinates12}
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+      />
+      <MapCoordinatesImg12 />
+      <ReactMarkdown children={mapCoordinates13} />
       <div className={styles['san_francisco_step_6-bundle']}>
-        <MapCoordinatesImg8 />
+        <MapCoordinatesImg13 />
         <img
           id={styles['map_step_6_center']}
           src={require('./images/coordinates_comparison_tiles.png')}
@@ -159,6 +180,28 @@ const MapCoordinates = () => {
           alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
         />
       </div>
+      <ReactMarkdown children={mapCoordinates14} />
+      <MapCoordinatesImg14 />
+      <ReactMarkdown children={mapCoordinates15} />
+      <div className={styles['san_francisco_step_7-bundle']}>
+        <img
+          id={styles['map_step_7_street']}
+          src={require('./images/sf-street_layer.png')}
+          alt='Complementary tile of San Francisco located on the right of the original'
+        />
+        <img
+          id={styles['map_step_7_weather']}
+          src={require('./images/sf-weather_layer.png')}
+          alt='Complementary tile of San Francisco located on the bottom of the original'
+        />
+        <img
+          id={styles['map_step_7_combined']}
+          src={require('./images/sf-combined_layers.png')}
+          alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
+        />
+        <MapCoordinatesImg15 />
+      </div>
+      <ReactMarkdown children={mapCoordinates16} />
     </>
   );
 };

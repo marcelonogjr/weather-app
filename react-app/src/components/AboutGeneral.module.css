@@ -4,8 +4,12 @@
   margin: 2rem 0;
 }
 
-.articles-content p, .articles-content h2, .articles-content h3, .articles-content h4 {
+.articles-content p, .articles-content h2, .articles-content h3, .articles-content h4, .articles-content h5 {
   margin-bottom: 0;
+}
+
+.articles-content h5 {
+  margin-top: 0;
 }
 
 .articles-content ul{

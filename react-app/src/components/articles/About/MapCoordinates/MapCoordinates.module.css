@@ -48,7 +48,7 @@
 
 #tile_map_zoom_0 {
   position: absolute;
-  top: 22px;
+  top: calc(22px + 2rem);
   left: 122px;
   max-width: 256px;
   max-height: 256px;
@@ -135,33 +135,36 @@
   top: 258.5px;
 }
 
+.san_francisco_step_5-bundle {
+  position: relative;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+#map_step_5 {
+  position: absolute;
+  height: 540px;
+  top: 120px;
+  right: 30px;
+  z-index: -5;
+}
+
 .san_francisco_step_6-bundle {
   position: relative;
   align-self: center;
   margin-top: 2rem;
 }
 
-.san_francisco_step_6-bundle::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 256px;
-  height: 256px;
-  background-image: linear-gradient(120deg, #eaee44, #33d0ff);
-  opacity: .7;
-}
-
 .san_francisco_step_6-bundle img {
   position: absolute;
   height: 256px;
+  z-index: -5;
 }
 
 #map_step_6_center {
   left: 2.5px;
   top: 2.5px;
 }
-
 
 #map_step_6_right {
   left: 258.5px;
@@ -176,4 +179,33 @@
 #map_step_6_bottom_right {
   left: 258.5px;
   top: 258.5px;
+}
+
+.san_francisco_step_7-bundle {
+  position: relative;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.san_francisco_step_7-bundle img {
+  position: absolute;
+  z-index: -5;
+}
+
+#map_step_7_street {
+  left: 60px;
+  top: calc(2rem + 1px);
+  height: 153.6px;
+}
+
+#map_step_7_weather {
+  left: 385.4px;
+  top: calc(2rem + 1px);
+  height: 153.6px;
+}
+
+#map_step_7_combined {
+  left: 262.8px;
+  top: calc(2rem + 231.6px);
+  height: 307.2px;
 }
