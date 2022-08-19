@@ -281,7 +281,6 @@ export const mapCoordinates15 = `
 
 // image 15
 
-
 export const mapCoordinates16 = `
   That's it! 
 `;
