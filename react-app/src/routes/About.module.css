@@ -14,6 +14,7 @@
   padding: 1.5rem;
   max-width: 850px;
   border-radius: 10px;
+  z-index: -1000;
 }
 
 .articles-content p, .articles-content h2, .articles-content h3, .articles-content h4, .articles-content h5 {
