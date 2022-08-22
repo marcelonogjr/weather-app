@@ -1,7 +1,19 @@
+.articles-main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100vw;
+  align-items: center;
+}
+
 .articles-content {
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 2rem 12rem;
+  background-color: var(--color-main-content-background);
+  padding: 1.5rem;
+  max-width: 850px;
+  border-radius: 10px;
 }
 
 .articles-content p, .articles-content h2, .articles-content h3, .articles-content h4, .articles-content h5 {
@@ -9,6 +21,10 @@
 }
 
 .articles-content h5 {
+  margin-top: 0;
+}
+
+.articles-content h2 {
   margin-top: 0;
 }
 

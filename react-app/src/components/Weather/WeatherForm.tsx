@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 
-import WeatherContext from '../store/weather-context';
-import MapContext from '../store/map-context';
+import WeatherContext from '../../store/weather-context';
+import MapContext from '../../store/map-context';
 
 import WeatherSearchBar from './WeatherForm/WeatherSearchBar';
 import WeatherMapLayers from './WeatherForm/WeatherMapLayers';

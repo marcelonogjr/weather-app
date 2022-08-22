@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 
-import WeatherContext from '../../store/weather-context';
-import { CurrentAPIDataType } from '../../models/WeatherAPIDataType';
+import WeatherContext from '../../../store/weather-context';
+import { CurrentAPIDataType } from '../../../models/WeatherAPIDataType';
 import styles from './CurrentWeatherInfo.module.css';
 import TimeConversor, {
   TimeConversorObjectType
-} from '../../others/time-conversor';
-import unitsConversor from '../../others/units-conversor';
+} from '../../../others/time-conversor';
+import unitsConversor from '../../../others/units-conversor';
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import SvgWindDirectionIcon from './icons/WindDirectionIcon';

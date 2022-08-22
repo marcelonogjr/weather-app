@@ -1,0 +1,29 @@
+.about-left_nav_bar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top:132px;
+  margin-top: 2rem;
+  padding: 2rem 2rem 2rem 1rem;
+  background-color: var(--color-main-content-background);
+  border-radius: 0 10px 10px 0;
+  width: 13rem;
+}
+
+.about-left_nav_bar nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.left-navbar_link {
+  color: var(--color-secondary);
+  font-weight:700;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.active {
+  text-decoration: underline;
+}

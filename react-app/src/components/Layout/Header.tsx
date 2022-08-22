@@ -6,19 +6,17 @@ import MainLogo from '../UI/MainLogo';
 
 const Header = () => {
   const location = useLocation();
-  const currentPath = location.pathname.replace('/', '');
+  const currentPath = location.pathname.split('/')[1];
 
   return (
-    <header>
-      <div className={styles['nav_button-bundle']}>
+    <header className={styles['header']}>
         <MainLogo />
-        <nav>
-          <Link to='/weather' className={styles[`${currentPath === 'weather' ? 'selected' : ''}`]}>Weather</Link>
-          <Link to='/about' className={styles[`${currentPath === 'about' ? 'selected' : ''}`]}>About</Link>
-          <Link to='/help' className={styles[`${currentPath === 'help' ? 'selected' : ''}`]}>Help</Link>
+        <nav className={styles['nav_button-bundle']}>
+          <Link to='/weather' className={styles[`link${currentPath === 'weather' ? '-selected' : ''}`]}>Weather</Link>
+          <Link to='/about/intro' className={styles[`link${currentPath === 'about' ? '-selected' : ''}`]}>About</Link>
+          <Link to='/help' className={styles[`link${currentPath === 'help' ? '-selected' : ''}`]}>Help</Link>
         </nav>
         <ThemeButton />
-      </div>
     </header>
   );
 };

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import styles from '../MapCoordinates.module.css';
-import ThemeContext from '../../../../../store/theme-context';
+import ThemeContext from '../../../../store/theme-context';
 
 export const MapCoordinatesImg1 = () => {
   const { theme } = useContext(ThemeContext);

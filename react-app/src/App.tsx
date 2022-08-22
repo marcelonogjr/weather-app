@@ -11,7 +11,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path='/' element={<Navigate replace={true} to='/weather' />}/>
       </Routes>
-      <Outlet />
+      <div className='main-content'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

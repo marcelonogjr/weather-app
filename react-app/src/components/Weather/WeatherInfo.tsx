@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext } from 'react';
 
-import WeatherContext from '../store/weather-context';
-import MapContext from '../store/map-context';
+import WeatherContext from '../../store/weather-context';
+import MapContext from '../../store/map-context';
 import CurrentLocationDate from './WeatherInfo/CurrentLocationDate';
 import WeatherUnits from './WeatherInfo/WeatherUnits';
 import CurrentWeatherInfo from './WeatherInfo/CurrentWeatherInfo';
 import HourlyWeatherInfo from './WeatherInfo/HourlyWeatherInfo';
 import DailyWeatherInfo from './WeatherInfo/DailyWeatherInfo';
-import LoadingSpinner from './UI/LoadingSpinner';
+import LoadingSpinner from '.././UI/LoadingSpinner';
 import WeatherInfoButtons from './WeatherInfo/WeatherInfoButtons';
-import WeatherError from './UI/WeatherError';
-import WeatherAPIDataType from '../models/WeatherAPIDataType';
-import isErrorType from '../models/IsErrorType';
+import WeatherError from '.././UI/WeatherError';
+import WeatherAPIDataType from '../../models/WeatherAPIDataType';
+import isErrorType from '../../models/IsErrorType';
 import styles from './WeatherInfo.module.css';
 
 type currentInfoType = 'current' | 'hourly' | 'daily';

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 
-import WeatherContext from '../../store/weather-context';
-import isErrorType from '../../models/IsErrorType';
+import WeatherContext from '../../../store/weather-context';
+import isErrorType from '../../../models/IsErrorType';
 import styles from './WeatherSearchBar.module.css';
-import { GeocodeAPIDataType } from '../../models/WeatherAPIDataType';
+import { GeocodeAPIDataType } from '../../../models/WeatherAPIDataType';
 
 type WeatherSearchBarPropsType = {
   zoom: string;

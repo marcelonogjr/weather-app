@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 
-import WeatherContext from '../store/weather-context';
-import MapContext from '../store/map-context';
-import isErrorType from '../models/IsErrorType';
+import WeatherContext from '../../store/weather-context';
+import MapContext from '../../store/map-context';
+import isErrorType from '../../models/IsErrorType';
 import styles from './WeatherMap.module.css';
 import MapLegendProperties from './WeatherMap/MapLegendProperties';
 

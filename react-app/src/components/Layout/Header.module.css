@@ -1,23 +1,28 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 1;
+  width: 850px;
+  margin: 1rem 0 2rem 0;
+}
+
 .nav_button-bundle {
   display: flex;
   align-items: center;
+  padding: 0 0 0 1rem;
 }
 
-.nav_button-bundle a{
-  color: var(--color-secondary);
+.link{
+  color: var(--color-text);
+  text-decoration: none;
+  margin: 0.5rem;
 }
 
-.nav_button-bundle button {
-  margin-left: auto;
-}
-
-.selected {
-  font-size: 120%;
+.link-selected {
+  color: var(--color-text);
+  margin: 0.5rem;
+  font-size: 140%;
   font-weight: bold;
   text-decoration: underline;
-}
-
-.page-title {
-  margin: 0;
-  color: var(--color-secondary);
 }

@@ -1,9 +1,9 @@
-import WeatherAPIDataType from '../../models/WeatherAPIDataType';
+import WeatherAPIDataType from '../../../models/WeatherAPIDataType';
 import styles from './CurrentLocationDate.module.css';
 import TimeConversor, {
   TimeConversorObjectType,
   DateConversorObjectType,
-} from '../../others/time-conversor';
+} from '../../../others/time-conversor';
 
 interface CurrentLocationDatePropsType {
   locationData: string;

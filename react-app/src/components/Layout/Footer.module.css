@@ -1,7 +1,7 @@
 .page-footer {
   color: var(--color-grey-high-contrast);
   align-self: center;
-  width: 850px;
+  width: 100%;
   border-top: 1px solid var(--color-grey-high-contrast);
   margin-top: 16px;
   padding: 16px 0;

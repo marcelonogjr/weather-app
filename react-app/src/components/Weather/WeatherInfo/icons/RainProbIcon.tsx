@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import ThemeContext from '../../../store/theme-context';
+import ThemeContext from '../../../../store/theme-context';
 import styles from './RainProbIcon.module.css';
 
 type SvgRainProbIconProps = {

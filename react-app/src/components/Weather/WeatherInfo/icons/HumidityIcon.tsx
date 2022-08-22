@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import ThemeContext from '../../../store/theme-context';
+import ThemeContext from '../../../../store/theme-context';
 import styles from './HumidityIcon.module.css';
 
 type SvgHumidityIconProps = {

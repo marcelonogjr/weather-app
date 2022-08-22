@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import useHorizontalScroll from '../custom-hooks/useSideScroll';
+import useHorizontalScroll from '../../custom-hooks/useSideScroll';
 
-import WeatherContext from '../../store/weather-context';
-import { HourlyAPIDataType } from '../../models/WeatherAPIDataType';
+import WeatherContext from '../../../store/weather-context';
+import { HourlyAPIDataType } from '../../../models/WeatherAPIDataType';
 import styles from './HourlyWeatherInfo.module.css';
 import TimeConversor, {
   TimeConversorObjectType,
   DateConversorObjectType
-} from '../../others/time-conversor';
-import unitsConversor from '../../others/units-conversor';
+} from '../../../others/time-conversor';
+import unitsConversor from '../../../others/units-conversor';
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import RainProbIcon from './icons/RainProbIcon';
