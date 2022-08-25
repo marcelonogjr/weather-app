@@ -50,7 +50,7 @@
   text-align: center;
   width: 40px;
   height: 20px;
-  color: black;
+  color: var(--color-text);
   position: absolute;
   z-index: 1;
 }
@@ -59,7 +59,7 @@
   /* display: block; */
   width: 8px;
   height: 8px;
-  background-color: black;
+  background-color: var(--color-text);
   position: absolute;
   clip-path: circle(50%);
   z-index: 1;

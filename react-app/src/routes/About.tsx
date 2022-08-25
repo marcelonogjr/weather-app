@@ -8,8 +8,6 @@ const About: React.FC = () => {
   const location = useLocation();
   const pathName = location.pathname.split("/")[2];
 
-  console.log(pathName);
-  
   return (
     <div className={styles['articles-main']}>
       <AboutLeftNavBar currentLocation={pathName}/>

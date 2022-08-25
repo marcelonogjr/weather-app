@@ -1,0 +1,39 @@
+.about-right_nav_bar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 132px;
+  margin-top: 2rem;
+  padding: 2rem 0rem 2rem 1rem;
+  background-color: var(--color-main-content-background);
+  border-radius: 10px 0 0 10px;
+  width: 15rem;
+}
+
+.about-right_nav_bar nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.about-right_nav_bar nav a {
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.main-section {
+  color: var(--color-text);
+  font-weight: 700;
+  padding-left: 0.5rem;
+}
+
+.sub-section {
+  color: var(--color-text);
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.active {
+  color: var(--color-tertiary);
+  padding-left: 2.5rem;
+}

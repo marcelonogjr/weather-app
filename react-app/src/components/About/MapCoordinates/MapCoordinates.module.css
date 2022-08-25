@@ -1,3 +1,12 @@
+.article-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-content a{
+  color: var(--color-hlink);
+}
+
 .map_distortion-bundle {
   display: flex;
   justify-content: center;

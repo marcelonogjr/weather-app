@@ -214,7 +214,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         <p
           onClick={addressClickHandler}
           onKeyDown={inputKeyboardEventHandler}
-          ref={(address) => (addressListRef.current[index] = address)}
+          ref={(element) => (addressListRef.current[index] = element)}
         >
           {element.placeName}
         </p>

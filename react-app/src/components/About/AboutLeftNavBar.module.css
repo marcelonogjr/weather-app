@@ -5,10 +5,10 @@
   left: 0;
   top:132px;
   margin-top: 2rem;
-  padding: 2rem 2rem 2rem 1rem;
+  padding: 2rem 1rem 2rem 0rem;
   background-color: var(--color-main-content-background);
   border-radius: 0 10px 10px 0;
-  width: 13rem;
+  width: 12rem;
 }
 
 .about-left_nav_bar nav{
@@ -17,13 +17,16 @@
 }
 
 .left-navbar_link {
-  color: var(--color-secondary);
-  font-weight:700;
+  color: var(--color-text);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 1rem;
+  padding-left: 0.5rem;
 }
 
 .active {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  padding-left: 1rem;
+  font-weight:700;
+  font-size: 120%;
 }
