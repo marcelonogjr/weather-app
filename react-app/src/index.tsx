@@ -11,6 +11,7 @@ import Error404 from './routes/Error404';
 import Weather from './routes/Weather';
 import AboutIntro from './components/About/Introduction/AboutIntro';
 import MapCoordinates from './components/About/MapCoordinates/MapCoordinates';
+import ColorTransformation from './components/About/ColorTransformation/ColorTransformation';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,6 +24,7 @@ root.render(
         <Route path='about' element={<About />}>
           <Route path='intro' element={<AboutIntro />}/>
           <Route path='map-tiles' element={<MapCoordinates />}/>
+          <Route path='color-transform' element={<ColorTransformation />}/>
         </Route>
         <Route path='help' element={<Help />} />
         <Route path='*' element={<Error404 />} />

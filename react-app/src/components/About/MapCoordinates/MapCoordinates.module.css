@@ -12,38 +12,6 @@
   justify-content: center;
 }
 
-/* #map_coordinates-svg1 {
-  flex-shrink: 0;
-} */
-
-::-moz-selection {
-  /* Code for Firefox */
-  color: var(--color-inverse-text);
-  background: var(--color-secondary);
-}
-
-::selection {
-  color: var(--color-inverse-text);
-  background: var(--color-secondary);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-main-content-background);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(
-    --color-grey-high-contrast
-  ); /* color of the scroll thumb */
-  border-radius: 2px; /* roundness of the scroll thumb */
-}
-
 .map_distortion-bundle p {
   height: auto;
   margin: 0;

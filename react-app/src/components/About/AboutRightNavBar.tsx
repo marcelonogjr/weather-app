@@ -46,8 +46,8 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
       if (notNullTypeNarrowing(articleRefs)) {
         for (let i = 0; i < articleRefs.length - 1; i++) {
           if (
-            articleRefs[i].offsetTop <= window.scrollY + 15 &&
-            articleRefs[i + 1].offsetTop >= window.scrollY + 15
+            articleRefs[i].offsetTop <= window.scrollY + 50 &&
+            articleRefs[i + 1].offsetTop >= window.scrollY + 50
           ) {
             setSelectedIndex(i);
             return;

@@ -1,0 +1,28 @@
+.article-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-content a{
+  color: var(--color-hlink);
+}
+
+.color_problems-bundle {
+  align-self: center;
+  margin-top: 2rem;
+  position: relative;
+}
+.color_problems-bundle img {
+  position: absolute;
+  height: calc(512px * 0.5);
+}
+
+#color_problems_original {
+  top: calc(317.4408px * 0.5);
+  left: calc(7px * 0.5);
+}
+
+#color_problems_modified {
+  top: calc(317.4408px * 0.5);
+  left: calc(1031px * 0.5);
+}

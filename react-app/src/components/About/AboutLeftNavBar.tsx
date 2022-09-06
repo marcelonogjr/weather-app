@@ -12,6 +12,9 @@ const AboutLeftNavBar = (props: {currentLocation: string}) => {
         <Link to={'/about/map-tiles'} className={`${styles['left-navbar_link']} ${props.currentLocation === 'map-tiles' ? styles['active'] : ''}`}>
           Map Coordinates
         </Link>
+        <Link to={'/about/color-transform'} className={`${styles['left-navbar_link']} ${props.currentLocation === 'color-transform' ? styles['active'] : ''}`}>
+          Color Transformation
+        </Link>
       </nav>
     </div>
   );
