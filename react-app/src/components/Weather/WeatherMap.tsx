@@ -13,8 +13,7 @@ const WeatherMap = () => {
     useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  // const serverUrl = 'http://localhost:5000';
-  const serverUrl = 'https://weather-nogueira-app.herokuapp.com';
+  const serverUrl = 'http://localhost:5001';
 
   const mapUrl = `${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`;
 

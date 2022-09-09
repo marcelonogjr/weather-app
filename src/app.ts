@@ -11,7 +11,7 @@ import {
 import {GetWeatherReturnType, GeocodeReturnType } from './utils/support/apiTypes';
 
 const app: Application = express();
-const port = process.env.PORT || 5000;
+const port = 5001;
 
 // Define paths for Express config
 const reactPath = path.join(__dirname, '../react-app/build');

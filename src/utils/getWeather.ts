@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { openWeatherToken } from './tokens';
+import { openWeatherToken } from './tokens';
 import {
   GetWeatherAPIType,
   GetWeatherReturnType,
@@ -11,8 +11,6 @@ type GetWeatherType = (
 ) => Promise<GetWeatherReturnType | {error: string}>;
 
 const getWeather: GetWeatherType = async (lat: number, lon: number) => {
-  const openWeatherToken: string | undefined = process.env.OPENWEATHER_TOKEN;
-
   const urlByCoordinates = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=imperial`;
   try {
     const response = await axios.get<GetWeatherAPIType>(urlByCoordinates);
