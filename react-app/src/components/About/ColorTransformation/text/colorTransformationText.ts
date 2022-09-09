@@ -98,7 +98,7 @@ export const colorTransformationText = [
   of a problem, since every value above 86°F (30°C) are displayed at the same "maximum" color, but unfortunately I
   cannot do anything about that. There is no way to widen the range of the orignal scale, since every data that falls
   out of the maximum or minimum values of the scale will be presented to me in the same colors, making it impossible
-  to distinguish anything that exceeds that range. So the only thing I can do it's to modify what happens between the
+  to distinguish anything that exceeds that range. So the only thing I can do is to modify what happens between the
   maximum and minimum values of the original scales.
   
   The scale of the other three layers, especially the _precipitation_ and _wind speed_, are not that satisfying to me -
@@ -106,14 +106,14 @@ export const colorTransformationText = [
   that I have modified, I think it's best to start explaining the modifications on the _clouds_ layer, since it's the
   one that has the simples logic to modify the original colors, in my chosen solution.
   
-  By the way, from now on, everytime that I'm "changing" the colors of a layer, since all the possible "theoretical"
-  values are known - more on that in the end of the article - there will be a mathematical logic that will take these
-  original possible values and transform them to the colors that I want them to be, analyzing pixel by pixel of
-  whatever image the OpenWeatherMap API sends my server and changing each pixel color at a time.
+  From now on, everytime that I'm changing the colors of a layer, since all the possible theoretical values are known,
+  there will be a mathematical logic that will take these original possible values and transform them into the
+  correspondent color in a new scale that I'll establish, analyzing pixel by pixel of whatever image the
+  OpenWeatherMap API sends my server and changing each pixel color at a time.
 `,
   // #### The Clouds Layer
   `
-  I wasn't too bothered by the stopping values or the choices of colors of the _clouds layer_ per say, but since it
+  I wasn't too bothered by the stopping values or the choices of colors of the _clouds layer_ per se, but since it
   was decided to use a light color scheme for the [Mapbox's street map](https://docs.mapbox.com/api/maps/static-images/)
   (the layer that goes below the weather layer), the original light colors of the clouds would often conflict with
   the map below, making it hard to understand the relevant data this layer displays.
@@ -161,20 +161,20 @@ export const colorTransformationText = [
   `
   ##### Figure out the best parameters to track the original colors
 
-  For the solution to work it's necessary to be able to correctly identify "where" exactly that color fits in the
-  theoretical functions - again, more on that later.
+  For the solution to work it's necessary to be able to correctly identify _where_ exactly that color fits in the
+  theoretical functions.
   
   For instance, if we analyze the _precipitation_ layer by looking at the graph, is it possible to use only the Blue
   channel as a paremeter to track the correspondant precipitation value of any pixel color? The answer is _yes_.
-  Since there's a single "blue value" associated with one, and only one, precipitation value, by only tracking the
+  Since there's a single blue value associated with one, and only one, precipitation value, by only tracking the
   blue channel it's possible to infer the values of all the other channels (since we know the theoretical values) and
   the precipitation value associated with the combination of all of them. In math, that's called an [injective
-  function](https://en.wikipedia.org/wiki/Injective_function). It means that for every "x" value of the function,
-  there's only one "y" value associated with it. Graphically, any horizontal line imaginable can only "go through"
+  function](https://en.wikipedia.org/wiki/Injective_function). It means that for every _x_ value of the function,
+  there's only one _y_ value associated with it. Graphically, any horizontal line imaginable can only "go through"
   the function line once.
 
   Every channel of the _precipitation_ layer are described by _injective functions_, so it's possible to
-  track what precipitation value is associated by the color of that pixel by "looking" at any single channel. The
+  track what precipitation value is associated by the color of that pixel by analyzing at any single channel. The
   same can not be said when analyzing the _wind speed_ layer.
 
   By looking at the wind speed graph, you can see that the R, G and B channels have some values that are associated
@@ -207,7 +207,8 @@ export const colorTransformationText = [
   // Image 9 -> new wind speed color scale
   `
   For the _precipitation_ layer I decided to maintain the original range, but added three new stops, so that the
-  smaller values be better represented. When the precipitation (in form of liquid rain, just to be clear) reaches
+  smaller values be better represented - they're the most common values and problably what the user will see the most
+  when using this app. When the precipitation (in form of liquid rain, just to be clear) reaches
   values higher than 0.9 in/3h, it is considered to be a [**heavy rain**](https://glossary.ametsoc.org/wiki/Rain),
   and it's represented with a "redish" tone in the new scale.
 `,
@@ -222,28 +223,27 @@ export const colorTransformationText = [
   to get to those values.
 
   Remembering the [Necessary Concepts](#necessary-concepts) section of this article, every two consecutive stops in
-  the linear gradient will generate a linear function. The "y" value of that function will represent a specific color
-  channel value that depends on the "x" value, and that, in this case, will represent whatever number in the scale of
+  the linear gradient will generate a linear function. The _y_ value of that function will represent a specific color
+  channel value that depends on the _x_ value, and that, in this case, will represent whatever number in the scale of
   any weather layer. Since there's an original scale, and a modified scale, both scales will generate different
-  linear functions every consecutive stops, but will have different a "y" for the same "x" correspondant value, like
+  linear functions every consecutive stops, but will have a different _y_ for the same _x_ correspondant value, like
   follows.
 
   $\\begin{cases} y_0 = a_0x + b_0 & \\rarr \\text{for the } \\bold{original} \\text{ scale}  \\\\ y_1 = a_1x + b_1 & \\rarr \\text{for the } \\bold{modified} \\text{ scale} \\end{cases}$
 
-  The values $a_0$ and $b_0$ will be different depending on the adjacent stops where "x" is located in between for the
-  original scale - the same is true for $a_1$ and $b_1$ for the modified scale. Since "x" is common for both equations,
-  and for the transformation to work it's required to have $y_0$ as an input (it'll be read when analyzing the
-  original pixel color), and $y_1$ as an output (new color to be shown to the user), working out the math will get to
-  this final function:
+  The values $a_0$ and $b_0$ will be different depending on the adjacent stops where _x_ is located in between for the
+  original scale - the same is true for $a_1$ and $b_1$ for the modified scale. Since _x_ is common for both functions,
+  and the transformation is based on having $y_0$ (the original color channels) as an input, and $y_1$ as an output
+  (new color to be shown to the user), working out the math will get to this final function:
 
   $y_1 = \\dfrac{a_1}{a_0} \\left( y_0 - b_0 \\right) + b_1$
 
   The function above will be applied for every of the four channels of the RGBA, so for both layers that I decided to
-  change, every channel will have distinct transformation functions depending on the correct "x" parameter infered on
+  change, every channel will have distinct transformation functions depending on the correct _x_ parameter infered on
   step two.
 
   That's it for the colors transformation logic of the _wind speed_ and _precipitation_ layers. But when I was
-  impementing this solution, the tests made me realize that it was not perfect, since some of the colors of the
+  implementing this solution, the tests made me realize that it was not perfect, since some of the colors of the
   pixels that I was getting from the API didn't make sense, i.e. it was not part of the original scale theoretical
   possible colors. The explanation for that is found in the next section.
 `,
@@ -263,7 +263,7 @@ export const colorTransformationText = [
   divided by 2 in each dimension, and therefore dividing a single tile in other 4 tiles contained inside the original
   tile. But what does that have to do with scaling?
 
-  There's two ways to "scale" an image: upscale and downscale. That means increase or decrease it's size by a certain
+  There's two ways to scale an image: upscale and downscale. That means increase or decrease it's size by a certain
   amount. The next illustration shows a 2x2 image being upscaled by a constant factor of 2 in each dimension (i.e. to
   a 4x4 image).
 `,

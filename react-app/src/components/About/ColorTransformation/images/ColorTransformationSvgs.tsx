@@ -464,7 +464,7 @@ export const ColorTransformationImg5 = () => {
   const { theme } = useContext(ThemeContext);
 
   const genericColor = theme === 'light' ? '#000000' : '#ffffff';
-  const alphaColor = theme === 'light' ? '#964b00' : '#964b00';
+  const alphaColor = theme === 'light' ? '#e69b50' : '#964b00';
   const detailColor = theme === 'light' ? '#ff00ff' : '#00ffff';
 
   return (
@@ -1223,7 +1223,7 @@ export const ColorTransformationImg8 = () => {
   const { theme } = useContext(ThemeContext);
 
   const genericColor = theme === 'light' ? '#000000' : '#ffffff';
-  const alphaColor = theme === 'light' ? '#964b00' : '#964b00';
+  const alphaColor = theme === 'light' ? '#e69b50' : '#964b00';
 
   return (
     <svg
@@ -1874,7 +1874,7 @@ export const ColorTransformationImg9 = () => {
   const { theme } = useContext(ThemeContext);
 
   const genericColor = theme === 'light' ? '#000000' : '#ffffff';
-  const alphaColor = theme === 'light' ? '#964b00' : '#964b00';
+  const alphaColor = theme === 'light' ? '#e69b50' : '#964b00';
 
   return (
     <svg
@@ -2318,7 +2318,7 @@ export const ColorTransformationImg10 = () => {
   const { theme } = useContext(ThemeContext);
 
   const genericColor = theme === 'light' ? '#000000' : '#ffffff';
-  const alphaColor = theme === 'light' ? '#964b00' : '#964b00';
+  const alphaColor = theme === 'light' ? '#e69b50' : '#964b00';
 
   return (
     <svg
