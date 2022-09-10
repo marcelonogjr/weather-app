@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
 import styles from './AboutRightNavBar.module.css';
@@ -66,6 +66,17 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
     };
   }, [articleRefs]);
 
+  const clickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (notNullTypeNarrowing(articleRefs)) {
+      for (let i = 0; i < articleHeading.length; i++) {
+        if (event.currentTarget.hash.replace('#', '') === articleHeading[i].id) {
+          articleRefs[i].scrollIntoView();
+          return;
+        }
+      }
+    }
+  };
+
   const sectionsElements = props.articleSpecifics.headingSections.map(
     (element, index) => {
       return (
@@ -75,6 +86,7 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
           className={`${styles[`${element.type}-section`]} ${
             index === selectedIndex ? styles['active'] : ''
           }`}
+          onClick={clickHandler}
         >
           {element.title}
         </a>
