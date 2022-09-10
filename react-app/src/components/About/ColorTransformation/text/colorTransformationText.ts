@@ -94,7 +94,7 @@ export const colorTransformationText = [
 `,
   // Image 6 -> The color scales for both temperature and pressure layers
   `
-  The original scale value and the way color vary in both layers are "good enough". The _temperature_ layer has a bit
+  The original scale value and the way color vary in both layers are _"satisfactory"_. The _temperature_ layer has a bit
   of a problem, since every value above 86°F (30°C) are displayed at the same "maximum" color, but unfortunately I
   cannot do anything about that. There is no way to widen the range of the orignal scale, since every data that falls
   out of the maximum or minimum values of the scale will be presented to me in the same colors, making it impossible
@@ -136,7 +136,7 @@ export const colorTransformationText = [
   weather layers it's to allow an [qualitative](https://en.wikipedia.org/wiki/Qualitative) evaluation, not a
   quantitative one - the exact average number for a specific region and time is available to the user anyway.
 
-  Now that the _clouds_ layer is "good enough", let's talk about the remaining two layers.
+  Now that the _clouds_ layer is _satisfactory_, let's talk about the remaining two layers.
 `,
   // ###  The "Not So Trivial" Solutions
   `
@@ -296,7 +296,7 @@ export const colorTransformationText = [
   color that is located in an intermediate position in relation to other "real" pixel colors will have an unexpected
   value for probably all the four channels, creating colors that I also didn't predict on the [step 3](#step-three).
   The modifications that I made on the _clouds_ layer won't suffer from that problem, since I applyed the same rule
-  for the entire scale, converting the "modified" pixels using the absolute same formula as everything else.
+  for the entire scale, converting the _modified_ pixels using the absolute same formula as everything else.
   
   In the moment that I'm writing this article, I was able to capture a [typhoon](https://en.wikipedia.org/wiki/Typhoon)
   image that can serve as a good exemple on how the original _wind speed_ layer was and how it got transformed by
@@ -306,8 +306,10 @@ export const colorTransformationText = [
   `
   As you can see, the task to better differentiate wind speed values using different colors was accomplished, but
   there's some lines around regions with defined speed values in the modified version that's not apparent in the
-  original image because of the Lanczos method when scaling. To me it's still a good tradeoff and that's what you'll
-  see when using this app.
+  original image because of the Lanczos method when scaling. There's no way to solve this problem, since
+  it's impossible to determine for sure how this data is being transformed in the original server before it's sent
+  to mine. Any filter that I decide to implement in the final image will also have loss of data. By the end of the day,
+  this is still a good tradeoff and that's what you'll see when using this app.
 
   Thats it!
 ` 
