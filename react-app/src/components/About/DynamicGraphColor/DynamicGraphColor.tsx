@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 
+import { ReactMdCustomPure, ReactMdCustomWithKatex } from '../../React-Markdown/ReactMdCustom';
 import AboutRightNavBar from '../AboutRightNavBar';
 import styles from './DynamicGraphColor.module.css';
 
@@ -27,6 +28,7 @@ const DynamicGraphColor = () => {
         <h3 ref={(element) => (headingElementsRefs.current[0] = element)}>
           {dynamicGraphColorNavHeaders.headingSections[0].title}
         </h3>
+        <ReactMdCustomPure text={dynamicGraphColorText[0]} />
       </div>
       <AboutRightNavBar articleSpecifics={dynamicGraphColorNavHeaders} />
     </article>

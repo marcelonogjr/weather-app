@@ -1,12 +1,8 @@
 import { useRef } from 'react';
 
-import ReactMarkdown from 'react-markdown';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-
+import { ReactMdCustomPure, ReactMdCustomWithKatex } from '../../React-Markdown/ReactMdCustom';
 import AboutRightNavBar from '../AboutRightNavBar';
 import styles from './MapCoordinates.module.css';
-import 'katex/dist/katex.min.css';
 
 import { mapCoordinatesText } from './text/mapCoordinates';
 import {
@@ -99,11 +95,11 @@ const MapCoordinates = () => {
         <h3 ref={(element) => (headingElementsRefs.current[0] = element)}>
           {mapCoordinatesNavHeaders.headingSections[0].title}
         </h3>
-        <ReactMarkdown children={mapCoordinatesText[0]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[0]}/>
         <div className={styles['map_distortion-bundle']}>
           <MapCoordinatesImg1 />
         </div>
-        <ReactMarkdown children={mapCoordinatesText[1]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[1]}/>
         <div className={styles['web_mercator_zoom_0-bundle']}>
           <MapCoordinatesImg2 />
           <img
@@ -112,17 +108,17 @@ const MapCoordinates = () => {
             alt='Satellite view of the earth using the Web Mercator Projection'
           />
         </div>
-        <ReactMarkdown children={mapCoordinatesText[2]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[2]}/>
         <MapCoordinatesImg3 />
-        <ReactMarkdown children={mapCoordinatesText[3]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[3]}/>
         <h3 ref={(element) => (headingElementsRefs.current[1] = element)}>
           {mapCoordinatesNavHeaders.headingSections[1].title}
         </h3>
-        <ReactMarkdown children={mapCoordinatesText[4]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[4]}/>
         <h4 ref={(element) => (headingElementsRefs.current[2] = element)}>
           {mapCoordinatesNavHeaders.headingSections[2].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[5]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[5]}/>
         <div className={styles['san_francisco_comparison-bundle']}>
           <MapCoordinatesImg4 />
           <img
@@ -136,42 +132,27 @@ const MapCoordinates = () => {
             alt='Map view of San Francisco using traditional coordinate system with zoom 10'
           />
         </div>
-        <ReactMarkdown children={mapCoordinatesText[6]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[6]}/>
         <h3 ref={(element) => (headingElementsRefs.current[3] = element)}>
           {mapCoordinatesNavHeaders.headingSections[3].title}
         </h3>
-        <ReactMarkdown children={mapCoordinatesText[7]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[7]}/>
         <h4 ref={(element) => (headingElementsRefs.current[4] = element)}>
           {mapCoordinatesNavHeaders.headingSections[4].title}
         </h4>
-        <ReactMarkdown
-          children={mapCoordinatesText[8]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={mapCoordinatesText[8]}/>
         <h4 ref={(element) => (headingElementsRefs.current[5] = element)}>
           {mapCoordinatesNavHeaders.headingSections[5].title}
         </h4>
-        <ReactMarkdown
-          children={mapCoordinatesText[9]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={mapCoordinatesText[9]}/>
         <MapCoordinatesImg5 />
-        <ReactMarkdown
-          children={mapCoordinatesText[10]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={mapCoordinatesText[10]}/>
         <h4 ref={(element) => (headingElementsRefs.current[6] = element)}>
           {mapCoordinatesNavHeaders.headingSections[6].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[11]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[11]}/>
         <MapCoordinatesImg6 />
-        <ReactMarkdown children={mapCoordinatesText[12]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[12]}/>
         <div className={styles['san_francisco_step_3-bundle']}>
           <MapCoordinatesImg7 />
           <img
@@ -198,7 +179,7 @@ const MapCoordinates = () => {
         <h4 ref={(element) => (headingElementsRefs.current[7] = element)}>
           {mapCoordinatesNavHeaders.headingSections[7].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[13]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[13]}/>
         <div className={styles['san_francisco_step_4-bundle']}>
           <MapCoordinatesImg8 />
           <img
@@ -225,16 +206,11 @@ const MapCoordinates = () => {
         <h4 ref={(element) => (headingElementsRefs.current[8] = element)}>
           {mapCoordinatesNavHeaders.headingSections[8].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[14]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[14]}/>
         <MapCoordinatesImg9 />
-        <ReactMarkdown children={mapCoordinatesText[15]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[15]}/>
         <MapCoordinatesImg10 />
-        <ReactMarkdown
-          children={mapCoordinatesText[16]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={mapCoordinatesText[16]}/>
         <div className={styles['san_francisco_step_5-bundle']}>
           <img
             id={styles['map_step_5']}
@@ -243,17 +219,12 @@ const MapCoordinates = () => {
           />
           <MapCoordinatesImg11 />
         </div>
-        <ReactMarkdown
-          children={mapCoordinatesText[17]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={mapCoordinatesText[17]}/>
         <MapCoordinatesImg12 />
         <h4 ref={(element) => (headingElementsRefs.current[9] = element)}>
           {mapCoordinatesNavHeaders.headingSections[9].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[18]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[18]}/>
         <div className={styles['san_francisco_step_6-bundle']}>
           <MapCoordinatesImg13 />
           <img
@@ -280,9 +251,9 @@ const MapCoordinates = () => {
         <h4 ref={(element) => (headingElementsRefs.current[10] = element)}>
           {mapCoordinatesNavHeaders.headingSections[10].title}
         </h4>
-        <ReactMarkdown children={mapCoordinatesText[19]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[19]}/>
         <MapCoordinatesImg14 />
-        <ReactMarkdown children={mapCoordinatesText[20]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[20]}/>
         <div className={styles['san_francisco_step_7-bundle']}>
           <img
             id={styles['map_step_7_street']}
@@ -301,7 +272,7 @@ const MapCoordinates = () => {
           />
           <MapCoordinatesImg15 />
         </div>
-        <ReactMarkdown children={mapCoordinatesText[21]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={mapCoordinatesText[21]}/>
       </div>
       <AboutRightNavBar articleSpecifics={mapCoordinatesNavHeaders}/>
     </article>

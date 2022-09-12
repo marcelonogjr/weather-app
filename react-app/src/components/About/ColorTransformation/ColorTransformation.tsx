@@ -1,12 +1,8 @@
 import { useRef } from 'react';
 
-import ReactMarkdown from 'react-markdown';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-
+import {ReactMdCustomPure, ReactMdCustomWithKatex} from '../../React-Markdown/ReactMdCustom';
 import AboutRightNavBar from '../AboutRightNavBar';
 import styles from './ColorTransformation.module.css';
-import 'katex/dist/katex.min.css';
 
 import { colorTransformationText } from './text/colorTransformationText';
 import {
@@ -106,89 +102,74 @@ const ColorTransformation = () => {
         <h3 ref={(element) => (headingElementsRefs.current[0] = element)}>
           {colorTransformationNavHeaders.headingSections[0].title}
         </h3>
-        <ReactMarkdown children={colorTransformationText[0]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[0]} />
         <ColorTransformationImg1 />
-        <ReactMarkdown children={colorTransformationText[1]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[1]} />
         <h3 ref={(element) => (headingElementsRefs.current[1] = element)}>
           {colorTransformationNavHeaders.headingSections[1].title}
         </h3>
         <h4 ref={(element) => (headingElementsRefs.current[2] = element)}>
           {colorTransformationNavHeaders.headingSections[2].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[2]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[2]} />
         <ColorTransformationImg2 />
-        <ReactMarkdown children={colorTransformationText[3]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[3]} />
         <ColorTransformationImg3 />
         <h4 ref={(element) => (headingElementsRefs.current[3] = element)}>
           {colorTransformationNavHeaders.headingSections[3].title}
         </h4>
-        <ReactMarkdown
-          children={colorTransformationText[4]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={colorTransformationText[4]} />
         <ColorTransformationImg4 />
         <h4 ref={(element) => (headingElementsRefs.current[4] = element)}>
           {colorTransformationNavHeaders.headingSections[4].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[5]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[5]} />
         <ColorTransformationImg5 />
-        <ReactMarkdown children={colorTransformationText[6]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[6]} />
         <h3 ref={(element) => (headingElementsRefs.current[5] = element)}>
           {colorTransformationNavHeaders.headingSections[5].title}
         </h3>
-        <ReactMarkdown children={colorTransformationText[7]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[7]} />
         <ColorTransformationImg6 />
-        <ReactMarkdown children={colorTransformationText[8]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[8]} />
         <h4 ref={(element) => (headingElementsRefs.current[6] = element)}>
           {colorTransformationNavHeaders.headingSections[6].title}
         </h4>
-        <ReactMarkdown
-          children={colorTransformationText[9]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={colorTransformationText[9]} />
         <ColorTransformationImg7 />
-        <ReactMarkdown children={colorTransformationText[10]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[10]} />
         <h3 ref={(element) => (headingElementsRefs.current[7] = element)}>
           {colorTransformationNavHeaders.headingSections[7].title}
         </h3>
-        <ReactMarkdown children={colorTransformationText[11]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[11]} />
         <h4 ref={(element) => (headingElementsRefs.current[8] = element)}>
           {colorTransformationNavHeaders.headingSections[8].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[12]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[12]} />
         <ColorTransformationImg8 />
         <h4 ref={(element) => (headingElementsRefs.current[9] = element)}>
           {colorTransformationNavHeaders.headingSections[9].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[13]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[13]} />
         <h4 ref={(element) => (headingElementsRefs.current[10] = element)}>
           {colorTransformationNavHeaders.headingSections[10].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[14]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[14]} />
         <ColorTransformationImg9 />
-        <ReactMarkdown children={colorTransformationText[15]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[15]} />
         <ColorTransformationImg10 />
         <h4 ref={(element) => (headingElementsRefs.current[11] = element)}>
           {colorTransformationNavHeaders.headingSections[11].title}
         </h4>
-        <ReactMarkdown
-          children={colorTransformationText[16]}
-          components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}} /* eslint-disable-line */
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        />
+        <ReactMdCustomWithKatex text={colorTransformationText[16]} />
         <h4 ref={(element) => (headingElementsRefs.current[12] = element)}>
           {colorTransformationNavHeaders.headingSections[12].title}
         </h4>
-        <ReactMarkdown children={colorTransformationText[17]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[17]} />
         <ColorTransformationImg11 />
-        <ReactMarkdown children={colorTransformationText[18]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[18]} />
         <ColorTransformationImg12 />
-        <ReactMarkdown children={colorTransformationText[19]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+        <ReactMdCustomPure text={colorTransformationText[19]} />
         <div className={styles['color_problems-bundle']}>
           <img
             id={styles['color_problems_original']}
@@ -201,7 +182,7 @@ const ColorTransformation = () => {
             alt='Exemple of the modified wind speed layer'
           />
           <ColorTransformationImg13 />
-          <ReactMarkdown children={colorTransformationText[20]} components={{a: ({node, ...props}) => <a target="_blank" rel="noopener noreferrer" {...props} />}}/> {/* eslint-disable-line */}
+          <ReactMdCustomPure text={colorTransformationText[20]} />
         </div>
       </div>
       <AboutRightNavBar articleSpecifics={colorTransformationNavHeaders} />
