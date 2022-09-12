@@ -314,5 +314,3 @@ export const colorTransformationText = [
   Thats it!
 ` 
 ];
-
-// **** Don't forget to talk about the problems with your solution **** -> https://gis.stackexchange.com/questions/10931/what-is-lanczos-resampling-useful-for-in-a-spatial-context
