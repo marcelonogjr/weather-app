@@ -164,10 +164,6 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         (element) => element.placeName === selectedName
       );
       setSelectedAddress(selectedLocation);
-      statusIsReady({
-        infoIsReady: false,
-        mapIsReady: false,
-      });
     }
   };
 
