@@ -8,6 +8,8 @@ import TimeConversor, {
   DateConversorObjectType,
 } from '../../../others/time-conversor';
 import unitsConversor from '../../../others/units-conversor';
+import { dailyLiBackground } from '../../../others/daily-graph-gradient';
+
 import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import RainProbIcon from './icons/RainProbIcon';
@@ -49,103 +51,25 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     };
   });
 
-  const maxTemperatureDaily: number = Math.round(
+  const maxTemperatureDaily = Math.round(
     [...modifiedDailyData]
       .map((element) => element.temp.max)
       .reduce((previousTemp, currentTemp) => {
         return Math.max(previousTemp, currentTemp);
       })
   );
-  const minTemperatureDaily: number = Math.round(
+  const minTemperatureDaily = Math.round(
     [...modifiedDailyData]
       .map((element) => element.temp.min)
       .reduce((previousTemp, currentTemp) => {
         return Math.min(previousTemp, currentTemp);
       })
   );
-  const rangeTemperatureDaily: number =
-    maxTemperatureDaily - minTemperatureDaily;
+  const rangeTemperatureDaily = maxTemperatureDaily - minTemperatureDaily;
 
   const styleLiWidth = 1500 / modifiedDailyData.length;
   const styleLiHeight = 250;
-
-  const liGradientBackground = () => {
-    const temperatureStops = (unit: 'metric' | 'imperial') => {
-      if (unit === 'metric') {
-        return [-40, -30, -20, -10, 0, 10, 20, 25, 30, 50];
-      } else {
-        return [-40, -22, -4, 14, 32, 50, 68, 77, 86, 122];
-      }
-    };
-
-    const filteredStops = temperatureStops(units).filter(
-      (element, index, array) => {
-        if (
-          (element >= minTemperatureDaily &&
-            array[index - 1] < minTemperatureDaily) ||
-          (element <= maxTemperatureDaily &&
-            array[index + 1] > maxTemperatureDaily)
-        ) {
-          return true;
-        }
-        return false;
-      }
-    );
-    const indexFilteredStops = [
-      temperatureStops(units).indexOf(filteredStops[0]),
-      temperatureStops(units).indexOf(filteredStops[1]),
-    ];
-
-    const minGradientStop = (15 * filteredStops[0]) / minTemperatureDaily;
-    const maxGradientStop =
-      100 -
-      (5 *
-        (temperatureStops(units)[indexFilteredStops[1] + 1] -
-          filteredStops[1])) /
-        (temperatureStops(units)[indexFilteredStops[1] + 1] -
-          maxTemperatureDaily);
-
-    const gradientStops = temperatureStops(units).map(
-      (element, index, array) => {
-        if (element < minTemperatureDaily) {
-          return (element = 0);
-        }
-        if (element > maxTemperatureDaily) {
-          return (element = 100);
-        }
-        if (
-          element >= minTemperatureDaily &&
-          array[index - 1] < minTemperatureDaily
-        ) {
-          return (element = minGradientStop);
-        }
-        if (
-          element <= maxTemperatureDaily &&
-          array[index + 1] > maxTemperatureDaily
-        ) {
-          return (element = maxGradientStop);
-        } else {
-          return (element =
-            minGradientStop +
-            ((element - filteredStops[0]) /
-              (filteredStops[1] - filteredStops[0])) *
-              (maxGradientStop - minGradientStop));
-        }
-      }
-    );
-
-    return `linear-gradient(0deg, 
-      rgb(130,22,146) ${gradientStops[0]}%,
-      rgb(130,87,219) ${gradientStops[1]}%,
-      rgb(32,140,236) ${gradientStops[2]}%,
-      rgb(32,196,232) ${gradientStops[3]}%,
-      rgb(35,221,221) ${gradientStops[4]}%,
-      rgb(194,255,40) ${gradientStops[5]}%,
-      rgb(255,240,40) ${gradientStops[6]}%,
-      rgb(255,194,40) ${gradientStops[7]}%,
-      rgb(252,128,20) ${gradientStops[8]}%,
-      rgb(255,0,0) ${gradientStops[9]}%`;
-  };
+  const dailyLiBackgrounds = dailyLiBackground(units, maxTemperatureDaily, minTemperatureDaily)
 
   const dailyList = modifiedDailyData.map((dayElement, index, dailyArray) => {
     if (index === 0) {
@@ -180,7 +104,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         }%)
         )`,
       transform: `translateX(${-index}px)`,
-      background: liGradientBackground(),
+      background: dailyLiBackgrounds,
     };
 
     const pMaxTemperatureStyle: React.CSSProperties = {
@@ -250,7 +174,6 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
             descriptionCode={dayElement.weather[0].description}
           />
           <p>{dailyDate}</p>
-          {/* <p>Humidity: {Math.round(dayElement.humidity)}%</p> */}
           <div className={styles['uvi_humidity-bundle']}>
             <SvgUVIIndexIcons
               uvIndex={Math.round(dayElement.uv)}
@@ -262,7 +185,6 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
             />
           </div>
           <RainProbIcon rainProbValue={Math.round(dayElement.pop * 100)} />
-          {/* <p>POP: {Math.round(dayElement.pop * 100)}%</p> */}
         </div>
       </li>
     );
