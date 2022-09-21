@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 
 import ThemeContextProvider from './store/ThemeContextProvider';
@@ -23,6 +23,7 @@ root.render(
       <Route path='*' element={<ThemeContextProvider><App /></ThemeContextProvider>}>
         <Route path='weather' element={<Weather />} />
         <Route path='about' element={<About />}>
+          <Route path='*' element={<Navigate replace={true} to='/about/intro' />}/>
           <Route path='intro' element={<AboutIntro />}/>
           <Route path='map-tiles' element={<MapCoordinates />}/>
           <Route path='color-transform' element={<ColorTransformation />}/>
