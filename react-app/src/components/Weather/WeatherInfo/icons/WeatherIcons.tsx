@@ -212,9 +212,7 @@ const SvgWeatherIcons = (props: svgWeatherIconsProps) => {
           <style>
             {`.st3{fill:none;stroke:${
               theme !== 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
-            };stroke-miterlimit:10}.st4{fill:${
-              theme === 'dark' ? lightThemeOutlineColor : darkThemeOutlineColor
-            }}`}
+            };stroke-miterlimit:10}.st4{fill:${darkThemeOutlineColor}}`}
           </style>
           <path
             d='M29.7 16c.4.6.6 1.4.6 2.1 0 2.4-1.9 4.3-4.3 4.3H6.2C3 22.4.5 19.8.5 16.7c0-3.2 2.6-5.8 5.7-5.8h.6c-.1-.4-.1-.8-.1-1.2 0-3.4 2.8-6.1 6.2-6.1 1.5 0 3 .6 4 1.5C18.4 2.4 21.2.5 24.5.5c4.8 0 8.6 3.8 8.6 8.6 0 2.8-1.3 5.3-3.4 6.9z'
