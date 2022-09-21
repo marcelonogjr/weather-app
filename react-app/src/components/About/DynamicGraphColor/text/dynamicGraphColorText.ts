@@ -1,31 +1,31 @@
 export const dynamicGraphColorText = [
   // ### Introduction
   `
-  The last article that I originally planned to write about is here, and I have some good news: it's a short one!
   This article is about how I determined the dynamic background gradient for the graph that is displayed for the users
   when they decide to look for the _Daily Weather Forecast_ for a specific place and time.
 
-  I'm assuming that you, my dear reader, are reading this series of articles in the original order, and if you are
-  there's another good news for you: this time there won't be a _Necessary Concepts_ section, since everything you
-  need to understand about what I'll write here was already covered in the [Color Transformation](https://weather.marcelojr.tech/about/color-transform#necessary-concepts)
+  I'm assuming that you, as stated in the [Introduction article](https://weather.marcelojr.tech/about/intro), are
+  reading this series of articles in the original order. For this particular one, there won't be a _Necessary Concepts_
+  section, since everything you need to understand about what I'll write here was already covered in the [_Necessary
+  Concepts_ of the Color Transformation](https://weather.marcelojr.tech/about/color-transform#necessary-concepts)
   article - if you didn't read it already, I really reccomend you do so.
 
   Before we start, it's important to stablish a few things. Since the graph of the _Daily Weather Forecast_ is
   showing the maximum and minimum temperature values for the days to come, I used a temperature color scale very
-  similar to the one used in the map temperature layer, but using only the RGB channels and with with one more
+  similar to the one used in the map temperature layer, but using only the RGB channels and with one more
   aditional stop at 122 °F (50 °C) using the color red, like shown below.
 `,
   // Image 1 -> temp scale, with temperature and explicit RGB values
   `
   As explained in the previous article, adding a stop to the scale [wasn't possible](weather.marcelojr.tech/about/color-transform#trivial-solutions)
-  with the map layer, but since I could define any scale I wanted for the graph, removing that restriction felt
+  in the map layer, but since I could define any scale I wanted for the chart, removing that restriction felt
   appropriate.
 `,
   // ### The Solution
   `
   The main goal here is to stablish a way to display the maximum and minimum temperature values for each day in an
-  [area graph](https://en.wikipedia.org/wiki/Area_chart), using a celsius or a fahrenheit temperature scale, and make
-  every temperature value (point) be exactly above it's correspondent color, using the stablished scale like - the one
+  [area chart](https://en.wikipedia.org/wiki/Area_chart), using a celsius or a fahrenheit temperature scale, and make
+  every temperature value (point) be exactly above it's correspondent color, using the stablished scale like the one
   shown in the previous illustration.
 
   One obvious (but bad) solution is to use a static background with the entire gradient correlated with all possible 
@@ -35,7 +35,7 @@ export const dynamicGraphColorText = [
   // Image 2 -> Background (rectangule) with the entire gradient and 4 max/min couples (include all the stops for refference):
   // [(70, 52), (78, 55), (75, 47), (72, 51)] °F, with lines connecting it and a darker background on off-limits areas 
   `
-  But, as you can see, the relevant area of the graph is really small compared to the entire range, so it would be
+  But, as you can see, the relevant area of the chart is really small compared to the entire range, so it would be
   better if visually the graph had it's superior and inferior limits representing the maximum possible value and the
   minimum possible value, respectively, for the days to come in that particular region.
   
@@ -43,12 +43,12 @@ export const dynamicGraphColorText = [
 `,
   // Image 3 -> just like image 2, but limiting the superior and inferior values (obviously using the same height/width)
 `
-  We can see that the area of the graph is more optimized this way - the top horizontal line will match the maximum
+  We can see that the area of the chart is more optimized this way - the top horizontal line will match the maximum
   temperature value of the set, and the bottom horizontal line is positioned exactly on the minimum temperature value.
   But that also implies in changing the background with every set of data, and also changing the heights that will
   match every temperature in either scale (°F or °C).
 
-  That implication of changing the background of the graph is the focus of this article, a background that happens to
+  That implication of changing the background of the chart is the focus of this article, a background that happens to
   be a linear gradient, dynamically. If you recall [how linear gradient works](https://weather.marcelojr.tech/about/color-transform#linear-gradients),
   we need to stablish stops (at least two) that will contain 2 determined properties: colors and position. Every
   color between two consecutive stops will be a direct result of a linear function that, depending on the position,
@@ -72,14 +72,13 @@ export const dynamicGraphColorText = [
   Like stated previously, the first thing required to solve this problem is to isolate the maximum and the minimum
   possible values. Is intuitive to think that, since these possibles temperatures represent a forecast of the
   maximum/minimum temperature values for the days to come of a given time and location, what we really need to find
-  is the **maximum** _maximums_ and the **minimum** _minimums_ temperatures of the forecast. Let me illustrate it using
-  the same previous values as an exemple.
+  is the **greater** of the _maximums_ and the **lesser** of the _minimums_ temperatures of the forecast. Let me
+  illustrate it using the same previous values as an exemple.
 `,
   // Image 4 - the maximum set (squares) with it's maximum value highlighted in red; the same for the minimum (in blue)
  `
-  Get it?
-  
-  Now that theese values are known, it's possible to proceed.
+  As you can see, among the maximums, the greater value is 78 °F (in red) and among the minimum, the lesser is 47 °F
+  (in blue). Now that theese values are known, it's possible to proceed.
 `,
   // #### The Extremities
   `
@@ -108,7 +107,7 @@ export const dynamicGraphColorText = [
   than the max or min temperature found in the previous step, and $previous$ reffers to the stop immediately lower.
 
   After doing that for all the 3 channels of each maximum and minimum values, we have all the characteristics
-  (position and color) of the top and bottom extremities of the graph.
+  (position and color) of the top and bottom extremities of the chart.
 `,
   // Image 6 -> the gradient background with just the extremities
   // #### Everuthing in Between
@@ -124,7 +123,7 @@ export const dynamicGraphColorText = [
   $y = 100 \\cdot \\left( \\dfrac{stop_{temperature} - minimum_{temperature}}{maximum_{temperature} - minimum_{temperature}} \\right)$
   
   In this case, $y$ is the stop location in %. After finding all their positions, since we already have their colors,
-  it's possible to "assemble" the gradient that will serve as the background of the graph - all the temperature
+  it's possible to "assemble" the gradient that will serve as the background of the chart - all the temperature
   points plotted in the graph will now match their exact color in the scale.
 `,
   // Image 7 -> Just like image 6, but with all the stops
@@ -145,7 +144,7 @@ export const dynamicGraphColorText = [
   But it's also important to exercise that from time to time, because when you try to teach someone something you can
   actually evaluate how much you now about that subject. In fact, I'm not embarassed to say that I was able to catch
   some mistakes in my code when I started this proccess of writing, and I can honestly say that doing this really
-  made be a better programmer.
+  made me a better programmer.
 
   Have a great day and as stated in the [introduction](https://weather.marcelojr.tech/about/intro) article, feel free
   to contact me if you have any questions of suggestions on how to improve this app. 
