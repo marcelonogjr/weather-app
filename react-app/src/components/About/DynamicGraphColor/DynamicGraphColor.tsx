@@ -5,6 +5,7 @@ import {
   ReactMdCustomWithKatex,
 } from '../../React-Markdown/ReactMdCustom';
 import AboutRightNavBar from '../AboutRightNavBar';
+import BottomNavButtons from '../BottomNavButtons';
 import styles from './DynamicGraphColor.module.css';
 
 import { dynamicGraphColorText } from './text/dynamicGraphColorText';
@@ -57,7 +58,7 @@ const DynamicGraphColor = () => {
     refs: headingElementsRefs.current,
   };
 
-  return (
+  return (<>
     <article>
       <div className={styles['article-content']}>
         <h2>Dynamic Graph Color Problem</h2>
@@ -100,7 +101,16 @@ const DynamicGraphColor = () => {
         <ReactMdCustomPure text={dynamicGraphColorText[11]} />
       </div>
       <AboutRightNavBar articleSpecifics={dynamicGraphColorNavHeaders} />
-    </article>
+    </article>      <BottomNavButtons
+        previous={{
+          route: '/about/color-transform',
+          name: 'Color Transformation Problem',
+        }}
+        next={{
+          route: undefined,
+          name: 'none',
+        }}
+      /></>
   );
 };
 
