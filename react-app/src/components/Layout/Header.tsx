@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import styles from './Header.module.css';
 import ThemeButton from '../UI/ThemeButton';
+import GitHubLogo from '../UI/GitHubLogo';
 import MainLogo from '../UI/MainLogo';
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
           <Link to='/about/intro' className={styles[`link${currentPath === 'about' ? '-selected' : ''}`]}>About</Link>
           <Link to='/help' className={styles[`link${currentPath === 'help' ? '-selected' : ''}`]}>Help</Link>
         </nav>
+        <GitHubLogo />
         <ThemeButton />
     </header>
   );
