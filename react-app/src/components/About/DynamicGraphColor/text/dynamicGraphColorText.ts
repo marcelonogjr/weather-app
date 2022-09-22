@@ -48,8 +48,8 @@ export const dynamicGraphColorText = [
   But that also implies in changing the background with every set of data, and also changing the heights that will
   match every temperature in either scale (°F or °C).
 
-  That implication of changing the background of the chart is the focus of this article, a background that happens to
-  be a linear gradient, dynamically. If you recall [how linear gradient works](https://weather.marcelojr.tech/about/color-transform#linear-gradients),
+  That implication of changing dynamically the background of the chart is the focus of this article, a background
+  that happens to be a linear gradient. If you recall [how linear gradient works](https://weather.marcelojr.tech/about/color-transform#linear-gradients),
   we need to stablish stops (at least two) that will contain 2 determined properties: colors and position. Every
   color between two consecutive stops will be a direct result of a linear function that, depending on the position,
   will determine the values of each [RGB color channel](https://en.wikipedia.org/wiki/RGB_color_model).
@@ -148,9 +148,5 @@ export const dynamicGraphColorText = [
 
   Have a great day and as stated in the [introduction](https://weather.marcelojr.tech/about/intro) article, feel free
   to contact me if you have any questions of suggestions on how to improve this app. 
-
-  > "If you cannot explain something in simple terms, you don't understand it. The best way to learn is to teach."
-  >
-  >  Feynman? Einstein? It doesn't really matter...
 `
 ];

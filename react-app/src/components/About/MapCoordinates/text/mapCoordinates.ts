@@ -39,10 +39,10 @@ export const mapCoordinatesText = [
   and that is to centralize a location of interest in a tile (it will be illustrated in the _Alternatives_ section). 
 
   For this feature, I decided to use Mapbox's [Static Images](https://docs.mapbox.com/api/maps/static-images/) to 
-  display the geographical map layer and combine on top of it the [Weather maps 1.0](https://openweathermap.org/api/weathermaps),
+  display the geographical map layer, and combine on top of it the [Weather maps 1.0](https://openweathermap.org/api/weathermaps),
   from OpenWeatherMap, for the weather layers. They're both free to use if you just create an account.
 
-  The Mapbox's API makes it possible to call a location using a (_lat_, _lon_, _zoom_) system, wich has a 
+  The Mapbox's API makes it possible to call a location using a (_lat_, _lon_, _zoom_) system, which has a 
   (_lat_, _lon_) point centralized in the same area displayed by a given (_zoom_) - great, problem solved! - but the
   weather layer API only offers an image called with the regular tile system, so for this feature to be complete I
   would have to figure out a way to combine both layers using a minimum number of API calls.
@@ -142,7 +142,7 @@ export const mapCoordinatesText = [
   ##### _Join the tile images in the correct order_
 
   This step is very straigh forward, the only thing necessary is to "join" the four images with no gaps in between and
-  in the correct order, forming an image 4 times bigger than the one desired.
+  in the correct order, forming an image 4 times larger than the one desired.
 `,
   `
   ##### _Calculate the offset necessary to crop the joined image in the correct position_
@@ -171,7 +171,7 @@ export const mapCoordinatesText = [
   $position_{y} = \\left\\lfloor \\dfrac{256}{2\\pi} 2^{zoom} \\left( \\pi - \\ln \\left[\\tan{ \\left( \\dfrac{\\pi}{4} + \\dfrac{lat}{2} \\right )}\\right] \\right) \\right\\rfloor$ pixels
 
   But the formulas above outputs the hotizontal and vertical location of the point inside the whole world map image
-  formed with a specific zoom. To recall how the tile system works, a specific zoom 'n' will determine how many
+  formed with a specific zoom. To recall how the tile system works, a specific zoom ***n*** will determine how many
   "squares" (tiles) the whole world map will have after dividing it $2^{n}$ number of times in each dimension, but
   with each tile having a constant size of 256x256 pixels. So, because of that, the formula above will result in a
   big number, since the (0, 0) point is always located in the most up-left corner of the world projection.
@@ -215,7 +215,7 @@ export const mapCoordinatesText = [
   The illustration below uses San Francisco again as an exemple, and the resulting image (highlighted area) should be
   the same as the one shown in the _Alternatives_ section - remember that this is just to have a parameter using
   something that can also use the tile system, but the goal here is to center the weather layer that's going above
-  the street layer, since the "street map" is already fetched with the image centralized on the **_I point_**. 
+  the street layer, since the ***street map*** is already fetched with the image centralized on the **_I point_**. 
 `,
   `
   ##### _Place the weather layer above the map layer to form the final desired result_
@@ -224,7 +224,7 @@ export const mapCoordinatesText = [
   above the _Street Layer_ - as it was fetched from the Mapbox API - and get the final desired image.
 `,
   `
-  Below, one last exemple of San Francisco with an _zoom = 8_ and a _wind_ weather layer from a specific time. 
+  Below, one last exemple of San Francisco with an _zoom = 8_ and a **_wind_ weather layer** from a specific time. 
 `,
   `
   That's it! 
