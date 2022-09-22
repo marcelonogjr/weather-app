@@ -13,6 +13,7 @@ import AboutIntro from './components/About/Introduction/AboutIntro';
 import MapCoordinates from './components/About/MapCoordinates/MapCoordinates';
 import ColorTransformation from './components/About/ColorTransformation/ColorTransformation';
 import DynamicGraphColor from './components/About/DynamicGraphColor/DynamicGraphColor';
+import AboutConclusion from './components/About/Conclusion/AboutConclusion';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -28,6 +29,7 @@ root.render(
           <Route path='map-tiles' element={<MapCoordinates />}/>
           <Route path='color-transform' element={<ColorTransformation />}/>
           <Route path='dynamic-graph' element={<DynamicGraphColor />}/>
+          <Route path='conclusion' element={<AboutConclusion />}/>
         </Route>
         <Route path='help' element={<Help />} />
         <Route path='*' element={<Error404 />} />

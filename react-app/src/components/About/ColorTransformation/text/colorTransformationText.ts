@@ -312,5 +312,18 @@ export const colorTransformationText = [
   this is still a good tradeoff and that's what you'll see when using this app.
 
   Thats it!
+`,
+  // ### Conclusion
+  `
+  That was long ride... I hope it's been insightful even if you are not trying to replicate or adapt this solution to
+  your own project. Especially this last part on scaling was particularly interesting for me, because it opened my
+  eyes to how difficult it can be to study/work with digital images in general.
+
+  The next article is a shorter one, and it's heavily based on what was discussed in this article. It's basically an
+  implementation of a color gradient - almost the same scale used in the [temperature color scale presented here](https://weather.marcelojr.tech/about/color-transformation#trivial-solutions) -
+  to an area chart that is displayed to the user when they look for daily weather information, but I'll leave the
+  explanation to the article itself.
+  
+  Thank you again for reaching this far and I hope you'll have a great day.
 ` 
 ];

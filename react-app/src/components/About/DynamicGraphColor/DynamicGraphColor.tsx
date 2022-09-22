@@ -109,8 +109,8 @@ const DynamicGraphColor = () => {
           name: 'Color Transformation Problem',
         }}
         next={{
-          route: undefined,
-          name: 'none',
+          route: '/about/conclusion',
+          name: 'Conclusion',
         }}
       />
     </>

@@ -95,6 +95,11 @@ const ColorTransformation = () => {
         title: 'Problems',
         type: 'sub',
       },
+      {
+        id: 'conclusion',
+        title: 'Conclusion',
+        type: 'main',
+      },
     ],
     refs: headingElementsRefs.current,
   };
@@ -188,6 +193,10 @@ const ColorTransformation = () => {
             />
             <ColorTransformationImg13 />
             <ReactMdCustomPure text={colorTransformationText[20]} />
+            <h3 ref={(element) => (headingElementsRefs.current[13] = element)}>
+              {colorTransformationNavHeaders.headingSections[13].title}
+            </h3>
+            <ReactMdCustomPure text={colorTransformationText[21]} />
           </div>
         </div>
         <AboutRightNavBar articleSpecifics={colorTransformationNavHeaders} />

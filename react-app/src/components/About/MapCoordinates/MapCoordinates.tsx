@@ -87,6 +87,11 @@ const MapCoordinates = () => {
         title: 'Seventh Step',
         type: 'sub',
       },
+      {
+        id: 'conclusion',
+        title: 'Conclusion',
+        type: 'main',
+      },
     ],
     refs: headingElementsRefs.current,
   };
@@ -277,6 +282,10 @@ const MapCoordinates = () => {
             <MapCoordinatesImg15 />
           </div>
           <ReactMdCustomPure text={mapCoordinatesText[21]} />
+          <h3 ref={(element) => (headingElementsRefs.current[11] = element)}>
+            {mapCoordinatesNavHeaders.headingSections[11].title}
+          </h3>
+          <ReactMdCustomPure text={mapCoordinatesText[22]} />
         </div>
         <AboutRightNavBar articleSpecifics={mapCoordinatesNavHeaders} />
       </article>

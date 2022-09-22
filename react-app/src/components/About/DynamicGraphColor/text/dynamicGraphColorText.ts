@@ -133,20 +133,14 @@ export const dynamicGraphColorText = [
 `,
   // ### Conclusion
   `
-  Not only we finished understanding how the linear gradient background was applied on the daily forecast in this app,
-  but we also made it to the end of this series of articles.
+  This one is considerably simpler than the previous ones, isn't it? Nevertheless, it's also something that I think
+  the user of this app will take for granted and it's not very clear the difficulties associated with implementing
+  this logic...
+  
+  I hope you're still enjoying this series, and if you didn't read the previous articles, I really recommend that
+  you check that out sometime. On the next article you'll find a conclusion to this series and some final
+  considerations on this work.
 
-  I'm really thankful to you, reader, for getting this far through this madness and I hope that you are now able to
-  take something useful to your life - even if it is what **not** to do when building a demo weather app ;D
-
-  Jokes aside, I really think I've learned a lot writing this articles - that was _by far_ ***THE MOST*** difficult
-  part of building this app. Programming is easy. Explaining what you did in a comprehensible way... That's *hard*.
-  But it's also important to exercise that from time to time, because when you try to teach someone something you can
-  actually evaluate how much you now about that subject. In fact, I'm not embarassed to say that I was able to catch
-  some mistakes in my code when I started this proccess of writing, and I can honestly say that doing this really
-  made me a better programmer.
-
-  Have a great day and as stated in the [introduction](https://weather.marcelojr.tech/about/intro) article, feel free
-  to contact me if you have any questions of suggestions on how to improve this app. 
+  As aways, have a great day!
 `
 ];

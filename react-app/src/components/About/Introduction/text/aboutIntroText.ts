@@ -1,7 +1,7 @@
 export const aboutIntroText = `
-  ### Introduction
+  ## Introduction
 
-  #### About This Site
+  ### About This Site
 
   Hi!
   
@@ -11,15 +11,15 @@ export const aboutIntroText = `
 
   To build this app I used [TypeScript](https://www.typescriptlang.org/) as a main programming language. The backend
   is built using [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) and the frontend uses [React](https://reactjs.org/),
-  [React Router](https://reactrouter.com/en/main) and mainly pure [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-  for styling - the animation used on theme button, uses [GreenSock](https://greensock.com/). The weather information
-  comes from [OpenWeatherMap](https://openweathermap.org/) (forecast and weather map layer) and [Mapbox](https://www.mapbox.com/)
+  [React Router](https://reactrouter.com/en/main) and almost [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  only for styling - the animation used on theme button, uses [GreenSock](https://greensock.com/). The weather
+  information comes from [OpenWeatherMap](https://openweathermap.org/) (forecast and weather map layer) and [Mapbox](https://www.mapbox.com/)
   (geocode and street map layer). The entire code for this project is [publicly available on GitHub](https://github.com/marcelonogjr/weather-app),
   in there you can see exactly what I used and how I built everything you see here - and also what you don't see.
 
   To know more about me and my work visit [marcelojr.tech](https://marcelojr.tech).
   
-  #### About the Following Series of Articles
+  ### About the Following Series of Articles
 
   Besides building a working weather app where the user can look for the weather forecast in most places on earth,
   I also decided to write about some uncommon problems that I faced when building the weather section, but I did it
@@ -30,7 +30,7 @@ export const aboutIntroText = `
   All I wrote about was problem solving (algorithms, in it's purest form), but I did my best to explain everything
   in the simplest way I could so anybody, no matter their background, could understand the solution to specific
   problems I faced when developing this App. I also wrote about the necessary concepts that's required in order to
-  understand the explanations, ponted to several links that allows you to go deeper on a subject and made custom
+  understand the explanations, pointed to several links that allows you to go deeper on a subject and made custom
   illustrations to improve comprehension of the text.
   
   There's a little bit of math in there, but don't worry, they are only there to show you that it's possible
@@ -47,7 +47,10 @@ export const aboutIntroText = `
   bit shorter, and you'll take about 7 minutes to read it. It seems like a lot, but I hope that you may find some
   interesting insights in there.
 
-  Happy readings!
+  If you have any questions or suggestions on how to improve the articles or this website in general, please send me
+  and email at **marcelo@marcelojr.tech**.
+  
+  Without further ado, happy readings!
   
   > "If you cannot explain something in simple terms, you don't understand it. The best way to learn is to teach."
   >

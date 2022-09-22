@@ -46,6 +46,15 @@ const AboutLeftNavBar = (props: { currentLocation: string }) => {
         >
           Dynamic Graph Color
         </Link>
+        <Link
+          to={'/about/conclusion'}
+          className={`${styles['left-navbar_link']} ${
+            props.currentLocation === 'conclusion' ? styles['active'] : ''
+          }`}
+          onClick={clickHandler}
+        >
+          Conclusion
+        </Link>
       </nav>
     </div>
   );

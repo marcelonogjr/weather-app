@@ -2,7 +2,7 @@ export const mapCoordinatesText = [
   `
   The first big problem that I faced when trying to implement the weather map in this app
   was to centralize the called coordinate. But to understand _why_ this was a problem, I should first 
-  present you two concepts:
+  present you two concepts.
 
   The first one is the [**Mercator Projection**](https://en.wikipedia.org/wiki/Mercator_projection). This cylindrical
   projection of the earth is vastly used in our daily lives, but, like any flat representation of a spherical like
@@ -229,4 +229,14 @@ export const mapCoordinatesText = [
   `
   That's it! 
 `,
+  // #### Conclusion
+  `
+  Now you know how I solved the Map Coordinates Problem. In general, I think this is a tipical case of something that
+  the user will take for granted, and may not be obvious to begginer developers how much of a problem there is to
+  generate a simple image displaying the correct information.
+
+  In any case, thank you for reaching this far on the reading and maybe you'll find the next article, that explains
+  how I made modifications to the _weather layers_ original colors to be even more interesting than this one. Have a
+  great day!
+`
 ];
