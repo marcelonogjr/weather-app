@@ -28,12 +28,12 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
     return (refs[0] as HTMLHeadingElement).offsetTop !== undefined;
   };
 
-  // handle user click to a specific section
+  // handle user click to a specific section minus 88px -> the header is currently 84px
   useEffect(() => {
     if (notNullTypeNarrowing(articleRefs)) {
       for (let i = 0; i < articleHeading.length; i++) {
         if (pathHash === articleHeading[i].id) {
-          articleRefs[i].scrollIntoView();
+          window.scrollTo({top: articleRefs[i].offsetTop - 88});
           return;
         }
       }
@@ -70,7 +70,7 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
     if (notNullTypeNarrowing(articleRefs)) {
       for (let i = 0; i < articleHeading.length; i++) {
         if (event.currentTarget.hash.replace('#', '') === articleHeading[i].id) {
-          articleRefs[i].scrollIntoView();
+          window.scrollTo({top: articleRefs[i].offsetTop - 88});
           return;
         }
       }

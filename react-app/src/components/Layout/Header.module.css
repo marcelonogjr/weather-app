@@ -1,10 +1,22 @@
 .header {
+  position:sticky;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-shrink: 1;
+  top: 0;
+  height: 84px;
   width: 850px;
   margin: 1rem 0 2rem 0;
+  transition-property: all; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+  z-index: 1000;
+  background-color: var(--color-background);
+}
+
+.hide {
+  top: -84px;
 }
 
 .nav_button-bundle {

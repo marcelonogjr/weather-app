@@ -191,13 +191,13 @@ const ColorTransformation = () => {
               src={require('./images/modf-wind_layer-wb.png')}
               alt='Exemple of the modified wind speed layer'
             />
-            <ColorTransformationImg13 />
-            <ReactMdCustomPure text={colorTransformationText[20]} />
-            <h3 ref={(element) => (headingElementsRefs.current[13] = element)}>
-              {colorTransformationNavHeaders.headingSections[13].title}
-            </h3>
-            <ReactMdCustomPure text={colorTransformationText[21]} />
           </div>
+          <ColorTransformationImg13 />
+          <ReactMdCustomPure text={colorTransformationText[20]} />
+          <h3 ref={(element) => (headingElementsRefs.current[13] = element)}>
+            {colorTransformationNavHeaders.headingSections[13].title}
+          </h3>
+          <ReactMdCustomPure text={colorTransformationText[21]} />
         </div>
         <AboutRightNavBar articleSpecifics={colorTransformationNavHeaders} />
       </article>
