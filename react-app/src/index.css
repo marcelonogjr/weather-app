@@ -2,10 +2,27 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "AvenirNextPro";
+  src: url(./fonts/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: "AvenirNextPro";
+  src: url(./fonts/AvenirNextLTPro-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "AvenirNextPro";
+  src: url(./fonts/AvenirNextLTPro-It.otf);
+  font-style: italic;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: arial;
+  font-family: "AvenirNextPro";
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
