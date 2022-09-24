@@ -1,10 +1,60 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 
 import ThemeContext from '../../store/theme-context';
 import styles from './MainLogo.module.css';
 
+interface MousePositionStateType {
+  x: null | number;
+  y: null | number;
+}
+
 const MainLogo = () => {
+  const [isShown, setIsShown] = useState(false);
+  const [mousePosition, setMousePosition] = useState<MousePositionStateType>({
+    x: null,
+    y: null,
+  });
   const { theme } = useContext(ThemeContext);
+  const svgLogoRef = useRef<SVGSVGElement>(null);
+  const sunOrMoonRef = useRef<SVGCircleElement>(null);
+
+  useEffect(() => {
+    const updateMousePosition = (event: MouseEvent) => {
+      if (isShown && svgLogoRef.current) {
+        setMousePosition({
+          x: event.clientX - svgLogoRef.current.getBoundingClientRect().x,
+          y: event.clientY - svgLogoRef.current.getBoundingClientRect().y,
+        });
+      }
+    };
+    gsap.to(sunOrMoonRef.current, {
+      duration: 0.3,
+      x:
+        sunOrMoonRef.current && mousePosition.x
+          ? mousePosition.x - sunOrMoonRef.current.cx.animVal.value
+          : 0,
+      y:
+        sunOrMoonRef.current && mousePosition.y
+          ? mousePosition.y - sunOrMoonRef.current.cy.animVal.value
+          : 0,
+      ease: 'power3.out',
+    });
+
+    if (!isShown) {
+      gsap.to(sunOrMoonRef.current, {
+        duration: 1,
+        x: 0,
+        y: 0,
+        ease: 'power3.inOut',
+      });
+    }
+
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, [isShown, mousePosition]);
 
   const logoSVG = () => {
     return (
@@ -13,8 +63,17 @@ const MainLogo = () => {
         viewBox='0 0 250 80'
         width={'250'}
         height={'80'}
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => {
+          setMousePosition({ x: null, y: null });
+          setIsShown(false);
+        }}
+        ref={svgLogoRef}
+        style={{ overflow: 'visible' }}
       >
-        <style>{`.logo-letters{fill:${theme === 'dark' ? '#ffffff' : '#000000'}}`}</style>
+        <style>{`.logo-letters{fill:${
+          theme === 'dark' ? '#ffffff' : '#12202b'
+        }}`}</style>
         <path
           style={{
             fill: `transparent`,
@@ -30,11 +89,12 @@ const MainLogo = () => {
             fill: `${theme === 'dark' ? '#fffbca' : '#f2a71e'}`,
             transition: 'all 0.3s ease-out',
           }}
+          ref={sunOrMoonRef}
         />
         <path
           d='M70.3 54c0 5.5-4.3 9.8-9.8 9.8h-45c-7.3 0-13-5.9-13-13 0-7.3 5.9-13.2 13-13.2h1.4c-.2-.9-.2-1.8-.2-2.7-.1-7.8 6.3-13.9 14-13.9 7.1 0 13 5.2 13.9 12.3 1.4-.7 2.7-1.1 4.3-1.1 5.2 0 9.3 4.1 9.3 9.3 0 1.1-.2 2.3-.7 3.4.9-.2 1.8-.5 3-.5 5.3-.2 9.8 4.1 9.8 9.6z'
           style={{
-            fill: `${theme === 'dark' ? '#454545' : '#ffffff'}`,
+            fill: `${theme === 'dark' ? '#454545' : '#b0e7ff'}`,
             transition: 'all 0.3s ease-out',
           }}
         />
