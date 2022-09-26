@@ -25,12 +25,10 @@ const ThemeButton = () => {
   const ThemeIcon = () => {
     return (
       <svg
+        id={styles['theme-svg']}
         ref={svgRef}
         xmlns='http://www.w3.org/2000/svg'
         viewBox={`0 0 1000 1000`}
-        width={'30'}
-        height={'30'}
-        // style={{ }}
       >
         <style>{`.moon-theme{fill:#fffbca} .st11{fill:none}`}</style>
         <circle

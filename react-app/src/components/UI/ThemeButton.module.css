@@ -1,13 +1,37 @@
 .theme-button{
   margin-left: 1rem;
-  --size: 30px;
-  
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  inline-size: var(--size);
-  block-size: var(--size);
   aspect-ratio: 1;
   border-radius: 50%;
+}
+
+#theme-svg {
+  height: 4rem;
+}
+
+@media (max-width: 161rem) {
+  #theme-svg {
+    height: 2.8rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  #theme-svg {
+    height: 2rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  #theme-svg {
+    height: 1.6rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  #theme-svg {
+    height: 2.8rem;
+  }
 }

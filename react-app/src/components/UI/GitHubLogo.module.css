@@ -9,3 +9,31 @@
   aspect-ratio: 1;
   border-radius: 50%;
 }
+
+#github-svg {
+  height: 3rem;
+}
+
+@media (max-width: 161rem) {
+  #github-svg {
+    height: 2.1rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  #github-svg {
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  #github-svg {
+    height: 1.2rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  #github-svg {
+    height: 2.1rem;
+  }
+}

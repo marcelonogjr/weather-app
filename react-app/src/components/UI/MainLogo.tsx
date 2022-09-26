@@ -18,7 +18,7 @@ const MainLogo = () => {
   const { theme } = useContext(ThemeContext);
   const svgLogoRef = useRef<SVGSVGElement>(null);
   const sunOrMoonRef = useRef<SVGCircleElement>(null);
-
+  
   useEffect(() => {
     const updateMousePosition = (event: MouseEvent) => {
       if (isShown && svgLogoRef.current) {
@@ -31,12 +31,12 @@ const MainLogo = () => {
     gsap.to(sunOrMoonRef.current, {
       duration: 0.3,
       x:
-        sunOrMoonRef.current && mousePosition.x
-          ? mousePosition.x - sunOrMoonRef.current.cx.animVal.value
+        sunOrMoonRef.current && svgLogoRef.current && mousePosition.x
+          ? mousePosition.x * 250 / svgLogoRef.current.clientWidth - sunOrMoonRef.current.cx.baseVal.value
           : 0,
       y:
-        sunOrMoonRef.current && mousePosition.y
-          ? mousePosition.y - sunOrMoonRef.current.cy.animVal.value
+        sunOrMoonRef.current && svgLogoRef.current && mousePosition.y
+          ? mousePosition.y * 80 / svgLogoRef.current.clientHeight - sunOrMoonRef.current.cy.baseVal.value
           : 0,
       ease: 'power3.out',
     });
@@ -59,10 +59,9 @@ const MainLogo = () => {
   const logoSVG = () => {
     return (
       <svg
+        id={styles['logo-svg']}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 250 80'
-        width={'250'}
-        height={'80'}
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => {
           setMousePosition({ x: null, y: null });

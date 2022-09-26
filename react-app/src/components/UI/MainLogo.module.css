@@ -4,3 +4,36 @@
   padding: 0;
   margin-right: 1rem;
 }
+
+#logo-svg {
+  height: 10rem;
+}
+
+@media (max-width: 161rem) {
+  #logo-svg {
+    height: 7rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  #logo-svg {
+    height: 5rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  #logo-svg {
+    height: 4rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .logo-div{
+    margin-right: 3rem;
+    margin-left: auto;
+  }
+
+  #logo-svg {
+    height: 3rem;
+  }
+}

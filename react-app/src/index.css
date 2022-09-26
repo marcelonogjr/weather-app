@@ -19,7 +19,25 @@
   font-style: italic;
 }
 
+html {
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-0xl: 1.3125rem;
+  --font-size-1xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.652rem;
+  --font-size-4xl: 4rem;
+  --font-size-5xl: 6rem;
+}
+
 body {
+  --motinor-qhd-width: 161rem;
+  --motinor-fhd-width: 121rem;
+  --tablet-width: 49rem;
+  --mobile-width: 27rem;
+
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: "AvenirNextPro";
@@ -30,7 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  transition: all 0.3s ease-out;
+  transition: all 0.5s ease-out;
   align-items: center;
 }
 
@@ -46,13 +64,4 @@ body {
   padding: 0 1.5rem;
   z-index: 1;
   width: 100%;
-}
-
-h1 {
-  font-size: 64px;
-  margin-bottom: 16px;
-}
-
-.portrait {
-  width: 250px;
 }
