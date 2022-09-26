@@ -149,7 +149,7 @@ const Header = () => {
             to='/about/intro'
             className={`${styles['link-hamb']} ${styles['sub']} ${
               styles[
-                `${currentSubPath === 'intro' ? 'link-hamb-selected' : ''}`
+                `${currentSubPath === 'intro' ? 'link-hamb-sub-selected' : ''}`
               ]
             } ${currentPath !== 'about' ? styles['not-active'] : ''}`}
             onClick={backdropHandler}
@@ -160,7 +160,7 @@ const Header = () => {
             to='/about/map-tiles'
             className={`${styles['link-hamb']} ${styles['sub']} ${
               styles[
-                `${currentSubPath === 'map-tiles' ? 'link-hamb-selected' : ''}`
+                `${currentSubPath === 'map-tiles' ? 'link-hamb-sub-selected' : ''}`
               ]
             } ${currentPath !== 'about' ? styles['not-active'] : ''}`}
             onClick={backdropHandler}
@@ -173,7 +173,7 @@ const Header = () => {
               styles[
                 `${
                   currentSubPath === 'color-transform'
-                    ? 'link-hamb-selected'
+                    ? 'link-hamb-sub-selected'
                     : ''
                 }`
               ]
@@ -187,7 +187,7 @@ const Header = () => {
             className={`${styles['link-hamb']} ${styles['sub']} ${
               styles[
                 `${
-                  currentSubPath === 'dynamic-graph' ? 'link-hamb-selected' : ''
+                  currentSubPath === 'dynamic-graph' ? 'link-hamb-sub-selected' : ''
                 }`
               ]
             } ${currentPath !== 'about' ? styles['not-active'] : ''}`}
@@ -199,7 +199,7 @@ const Header = () => {
             to='/about/conclusion'
             className={`${styles['link-hamb']} ${styles['sub']} ${
               styles[
-                `${currentSubPath === 'conclusion' ? 'link-hamb-selected' : ''}`
+                `${currentSubPath === 'conclusion' ? 'link-hamb-sub-selected' : ''}`
               ]
             } ${currentPath !== 'about' ? styles['not-active'] : ''}`}
             onClick={backdropHandler}

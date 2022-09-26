@@ -169,23 +169,25 @@
 }
 
 .hamburguer-menu {
-  display: none;
+  opacity: 0;
 }
 
-.hamburguer-menu_backdrop {
-  display: none;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.hamburguer-menu_button {
-  display: none;
-}
-
-.hamburguer-git-and-theme{
-  display: none;
-}
-
-.hamburguer-menu_close-button{
-  display: none;
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 46rem) {
@@ -208,13 +210,13 @@
     z-index: 100;
     top: 0;
     left: 0;
-    /* right: 0;
-    bottom: 0; */
     width: 100vw;
     height: 100vh;
+    opacity: 1;
+    visibility: visible;
   }
-  
-  .hamburguer-menu_backdrop{
+
+  .hamburguer-menu_backdrop {
     position: fixed;
     display: block;
     z-index: 110;
@@ -224,22 +226,24 @@
     opacity: 0.95;
   }
 
-  .hamburguer-menu_close-button{
+  .hamburguer-menu_close-button {
     position: fixed;
     display: flex;
     z-index: 190;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     left: 2rem;
     top: 2rem;
+    animation: fadeIn 1s ease-in-out;
+    -webkit-animation: fadeIn 1s ease-in-out;
   }
 
   #hamburguer-menu_close_svg {
-    height: 3rem;
+    height: 2.5rem;
     padding: 0.2rem;
   }
 
-  .hamburguer-git-and-theme{
+  .hamburguer-git-and-theme {
     position: fixed;
     z-index: 150;
     right: 2rem;
@@ -250,40 +254,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 1s ease-in-out;
+    -webkit-animation: fadeIn 1s ease-in-out;
   }
 
   .hamburguer-nav_buttons {
     position: fixed;
     top: 10rem;
-    left: 3rem;
+    left: 2rem;
     display: flex;
     flex-direction: column;
     z-index: 150;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 1s ease-in-out;
+    -webkit-animation: fadeIn 1s ease-in-out;
   }
 
-  .link-hamb{
+  .link-hamb {
     margin: 1rem 0;
     width: 20rem;
     color: var(--color-text);
     text-decoration: none;
     font-size: var(--font-size-1xl);
-  }  
+    animation: fadeIn 1.5s ease-in-out;
+    -webkit-animation: fadeIn 1.5s ease-in-out;
+  }
 
   .link-hamb-selected {
-    /* margin: auto 2.5rem 0; */
     font-size: calc(1.4 * var(--font-size-1xl));
-    /* text-decoration: underline; */
     font-weight: 700;
   }
 
-  .sub{
+  .sub {
     font-size: var(--font-size-0xl);
     margin-left: 4rem;
+    animation: fadeIn 1.5s ease-in-out;
+    -webkit-animation: fadeIn 1.5s ease-in-out;
   }
 
-  .not-active{
+  .link-hamb-sub-selected {
+    font-size: calc(1.2 * var(--font-size-0xl));
+    font-weight: 700;
+  }
+
+  .not-active {
     display: none;
   }
 }
