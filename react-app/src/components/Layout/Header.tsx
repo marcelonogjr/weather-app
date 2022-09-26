@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import useScrollDirection from '../custom-hooks/useScrollDirection';
@@ -10,7 +10,7 @@ import MainLogo from '../UI/MainLogo';
 import ThemeContext from '../../store/theme-context';
 
 const Header = () => {
-  const [backdropStatus, setBackdropStatus] = useState(false);
+  const [backdropAndMenuIsVisible, setBackdropAndMenuIsVisible] = useState(false);
   const themeCtx = useContext(ThemeContext);
   const scrollDirection = useScrollDirection();
 
@@ -19,21 +19,27 @@ const Header = () => {
   const currentSubPath = location.pathname.split('/')[2];
 
   const backdropHandler = () => {
-    setBackdropStatus(!backdropStatus);
+    setBackdropAndMenuIsVisible(!backdropAndMenuIsVisible);
   };
 
-  console.log(backdropStatus);
+  useEffect(() => {
+    if (backdropAndMenuIsVisible){
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [backdropAndMenuIsVisible])
 
   return (
     <>
       <header
         className={`${styles['header']} ${
           scrollDirection === 'down' ? styles['hide'] : styles['show']
-        } ${backdropStatus ? styles['not-active'] : ''}`}
+        } ${backdropAndMenuIsVisible ? styles['not-active'] : ''}`}
       >
         <div
           className={`${styles['hamburguer-menu_button']} ${
-            backdropStatus ? styles['not-active'] : ''
+            backdropAndMenuIsVisible ? styles['not-active'] : ''
           }`}
           onClick={backdropHandler}
         >
@@ -85,7 +91,7 @@ const Header = () => {
       </header>
       <div
         className={`${styles['hamburguer-menu']} ${
-          !backdropStatus ? styles['not-active'] : ''
+          !backdropAndMenuIsVisible ? styles['not-active'] : ''
         }`}
       >
         <div
