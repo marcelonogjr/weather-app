@@ -1,7 +1,7 @@
 import { useContext, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
-import ThemeContext from '../../store/theme-context';
+import ThemeContext from '../../../store/theme-context';
 import styles from './ThemeButton.module.css';
 
 const ThemeButton = () => {

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-import ThemeContext from '../../store/theme-context';
+import ThemeContext from '../../../store/theme-context';
 import styles from './MainLogo.module.css';
 
 interface MousePositionStateType {

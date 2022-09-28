@@ -4,9 +4,9 @@ import { Link, useLocation } from 'react-router-dom';
 import useScrollDirection from '../custom-hooks/useScrollDirection';
 
 import styles from './Header.module.css';
-import ThemeButton from '../UI/ThemeButton';
-import GitHubLogo from '../UI/GitHubLogo';
-import MainLogo from '../UI/MainLogo';
+import ThemeButton from '../UI/Header-Icons/ThemeButton';
+import GitHubLogo from '../UI/Header-Icons/GitHubLogo';
+import MainLogo from '../UI/Header-Icons/MainLogo';
 import ThemeContext from '../../store/theme-context';
 
 const Header = () => {
