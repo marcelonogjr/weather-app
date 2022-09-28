@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import useScrollDirection from '../custom-hooks/useScrollDirection';
@@ -21,14 +21,6 @@ const Header = () => {
   const backdropHandler = () => {
     setBackdropAndMenuIsVisible(!backdropAndMenuIsVisible);
   };
-
-  useEffect(() => {
-    if (backdropAndMenuIsVisible){
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [backdropAndMenuIsVisible])
 
   return (
     <>

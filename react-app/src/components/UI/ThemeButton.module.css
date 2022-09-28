@@ -1,4 +1,4 @@
-.theme-button{
+.theme-button {
   margin-left: 1rem;
   background: none;
   border: none;
@@ -6,6 +6,18 @@
   cursor: pointer;
   aspect-ratio: 1;
   border-radius: 50%;
+}
+
+@media (max-width: 38.5rem) {
+  .theme-button {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 36rem) {
+  .theme-button {
+    margin-left: 1rem;
+  }
 }
 
 #theme-svg {
@@ -30,7 +42,7 @@
   }
 }
 
-@media (max-width: 46rem) {
+@media (max-width: 36rem) {
   #theme-svg {
     height: 2.8rem;
   }
