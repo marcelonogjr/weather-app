@@ -1,0 +1,47 @@
+.open_weather-button {
+  margin: 2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}
+
+#open_weather-svg {
+  height: 6rem;
+}
+
+@media (max-width: 161rem) {
+  .open_weather-button {
+    margin: 2.1rem;
+  }
+  #open_weather-svg {
+    height: 4.2rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .open_weather-button {
+    margin: 1.5rem;
+  }
+  #open_weather-svg {
+    height: 3rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  .open_weather-button {
+    margin: 1.2rem;
+  }
+  #open_weather-svg {
+    height: 2.4rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .open_weather-button {
+    margin: 2.1rem;
+  }
+  #open_weather-svg {
+    height: 3.6rem;
+  }
+}

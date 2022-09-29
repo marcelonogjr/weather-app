@@ -1,0 +1,47 @@
+.mapbox-link {
+  margin: 3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}
+
+#mapbox-svg {
+  height: 3rem;
+}
+
+@media (max-width: 161rem) {
+  .mapbox-link {
+    margin: 2.1rem;
+  }
+  #mapbox-svg {
+    height: 2.1rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .mapbox-link {
+    margin: 1.5rem;
+  }
+  #mapbox-svg {
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  .mapbox-link {
+    margin: 1.2rem;
+  }
+  #mapbox-svg {
+    height: 1.2rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .mapbox-link {
+    margin: 2.1rem;
+  }
+  #mapbox-svg {
+    height: 2.1rem;
+  }
+}

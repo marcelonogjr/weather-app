@@ -1,0 +1,47 @@
+.react_logo-button {
+  margin: 3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}
+
+#react_logo-svg {
+  height: 8rem;
+}
+
+@media (max-width: 161rem) {
+  .react_logo-button {
+    margin: 2.1rem;
+  }
+  #react_logo-svg {
+    height: 5.6rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .react_logo-button {
+    margin: 1.5rem;
+  }
+  #react_logo-svg {
+    height: 4rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  .react_logo-button {
+    margin: 1.2rem;
+  }
+  #react_logo-svg {
+    height: 3.2rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .react_logo-button {
+    margin: 2.1rem;
+  }
+  #react_logo-svg {
+    height: 5.6rem;
+  }
+}

@@ -1,0 +1,47 @@
+.nodejs-link {
+  margin: 3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}
+
+#nodejs-svg {
+  height: 7rem;
+}
+
+@media (max-width: 161rem) {
+  .nodejs-link {
+    margin: 2.1rem;
+  }
+  #nodejs-svg {
+    height: 4.9rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .nodejs-link {
+    margin: 1.5rem;
+  }
+  #nodejs-svg {
+    height: 3.5rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  .nodejs-link {
+    margin: 1.2rem;
+  }
+  #nodejs-svg {
+    height: 2.8rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .nodejs-link {
+    margin: 2.1rem;
+  }
+  #nodejs-svg {
+    height: 4.9rem;
+  }
+}

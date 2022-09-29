@@ -1,0 +1,47 @@
+.react_router-link {
+  margin: 3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}
+
+#react_router-svg {
+  height: 7rem;
+}
+
+@media (max-width: 161rem) {
+  .react_router-link {
+    margin: 2.1rem;
+  }
+  #react_router-svg {
+    height: 4.9rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .react_router-link {
+    margin: 1.5rem;
+  }
+  #react_router-svg {
+    height: 3.5rem;
+  }
+}
+
+@media (max-width: 81rem) {
+  .react_router-link {
+    margin: 1.2rem;
+  }
+  #react_router-svg {
+    height: 2.8rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .react_router-link {
+    margin: 2.1rem;
+  }
+  #react_router-svg {
+    height: 4.9rem;
+  }
+}

@@ -10,7 +10,7 @@ const GitHubLogo = () => {
 
   return (
     <a
-      className={styles['github-button']}
+      className={styles['github-link']}
       target='_blank'
       rel='noopener noreferrer'
       href='https://github.com/marcelonogjr/weather-app'
