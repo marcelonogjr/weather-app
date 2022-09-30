@@ -1,4 +1,4 @@
-.typescript-button {
+.typescript-link {
   margin: 3rem;
   background: none;
   border: none;
@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 161rem) {
-  .typescript-button {
+  .typescript-link {
     margin: 2.1rem;
   }
   #typescript-svg {
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 121rem) {
-  .typescript-button {
+  .typescript-link {
     margin: 1.5rem;
   }
   #typescript-svg {
@@ -30,7 +30,7 @@
 }
 
 @media (max-width: 81rem) {
-  .typescript-button {
+  .typescript-link {
     margin: 1.2rem;
   }
   #typescript-svg {
@@ -39,7 +39,7 @@
 }
 
 @media (max-width: 36rem) {
-  .typescript-button {
+  .typescript-link {
     margin: 2.1rem;
   }
   #typescript-svg {

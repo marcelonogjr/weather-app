@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 161rem) {
-  .react_logo-button {
+  .react_logo-link {
     margin: 2.1rem;
   }
   #react_logo-svg {
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 121rem) {
-  .react_logo-button {
+  .react_logo-link {
     margin: 1.5rem;
   }
   #react_logo-svg {
@@ -30,7 +30,7 @@
 }
 
 @media (max-width: 81rem) {
-  .react_logo-button {
+  .react_logo-link {
     margin: 1.2rem;
   }
   #react_logo-svg {
@@ -39,7 +39,7 @@
 }
 
 @media (max-width: 36rem) {
-  .react_logo-button {
+  .react_logo-link {
     margin: 2.1rem;
   }
   #react_logo-svg {

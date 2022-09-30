@@ -67,8 +67,16 @@
   flex-grow: 1.5;
 }
 
+.weather-geo > p{
+  margin-bottom: 0;
+}
+
 .main-language {
   flex-grow: 1;
+}
+
+.main-language > p{
+  margin-bottom: 0;
 }
 
 .frontend-bundle {
@@ -79,7 +87,7 @@
   margin-bottom: 0;
 }
 
-.frontend-main, .weather-geo_logos, .main-language_logos, .backend_logos {
+.frontend-main, .frontend-styling_logos, .weather-geo_logos, .main-language_logos, .backend_logos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -91,6 +99,14 @@
   font-size: var(--font-size-lg);
 }
 
+.frontend-styling > p{
+  margin-bottom: 0;
+}
+
+
+.backend > p{
+  margin-bottom: 0;
+}
 @media (max-width: 161rem) {
   .frontend-styling {
     font-size: var(--font-size-md);

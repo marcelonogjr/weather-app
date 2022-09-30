@@ -35,7 +35,11 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles['main-language']}>
-          <p>Main Programming<br/>Language</p>
+          <p>
+            Main Programming
+            <br />
+            Language
+          </p>
           <div className={styles['main-language_logos']}>
             <TypeScriptLogo />
           </div>
@@ -47,8 +51,10 @@ const Footer = () => {
             <ReactRouterLogo />
             <div className={styles['frontend-styling']}>
               <p>Styling & Animations</p>
-              <CSSLogo />
-              <GreenSockLogo />
+              <div className={styles['frontend-styling_logos']}>
+                <CSSLogo />
+                <GreenSockLogo />
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-.open_weather-button {
+.open_weather-link {
   margin: 3rem;
   background: none;
   border: none;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 161rem) {
-  .open_weather-button {
+  .open_weather-link {
     margin: 2.1rem;
   }
   #open_weather-svg {
@@ -20,7 +20,7 @@
 }
 
 @media (max-width: 121rem) {
-  .open_weather-button {
+  .open_weather-link {
     margin: 1.5rem;
   }
   #open_weather-svg {
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 81rem) {
-  .open_weather-button {
+  .open_weather-link {
     margin: 1.2rem;
   }
   #open_weather-svg {
@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 36rem) {
-  .open_weather-button {
+  .open_weather-link {
     margin: 2.1rem;
   }
   #open_weather-svg {
