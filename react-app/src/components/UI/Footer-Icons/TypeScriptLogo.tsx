@@ -3,7 +3,7 @@ import styles from './TypeScriptLogo.module.css';
 const TypeScriptLogo = () => {
   return (
     <a
-      className={styles['typescript-button']}
+      className={styles['typescript-link']}
       target='_blank'
       rel='noopener noreferrer'
       href='https://www.typescriptlang.org/'

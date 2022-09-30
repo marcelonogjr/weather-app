@@ -1,9 +1,10 @@
-.react_logo-button {
+.react_logo-link {
   margin: 3rem;
   background: none;
   border: none;
   padding: 0;
   width: fit-content;
+  height: fit-content;
 }
 
 #react_logo-svg {

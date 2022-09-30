@@ -4,10 +4,11 @@
   border: none;
   padding: 0;
   width: fit-content;
+  height: fit-content;
 }
 
 #typescript-svg {
-  height: 8rem;
+  height: 10rem;
 }
 
 @media (max-width: 161rem) {
@@ -15,7 +16,7 @@
     margin: 2.1rem;
   }
   #typescript-svg {
-    height: 5.6rem;
+    height: 7rem;
   }
 }
 
@@ -24,7 +25,7 @@
     margin: 1.5rem;
   }
   #typescript-svg {
-    height: 4rem;
+    height: 5rem;
   }
 }
 
@@ -33,7 +34,7 @@
     margin: 1.2rem;
   }
   #typescript-svg {
-    height: 3.2rem;
+    height: 4rem;
   }
 }
 
@@ -42,6 +43,6 @@
     margin: 2.1rem;
   }
   #typescript-svg {
-    height: 5.6rem;
+    height: 7rem;
   }
 }

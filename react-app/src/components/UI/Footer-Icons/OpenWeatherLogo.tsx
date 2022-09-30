@@ -10,7 +10,7 @@ const OpenWeatherLogo = () => {
 
   return (
     <a
-      className={styles['open_weather-button']}
+      className={styles['open_weather-link']}
       target='_blank'
       rel='noopener noreferrer'
       href='https://openweathermap.org/'

@@ -3,7 +3,7 @@ import styles from './ReactLogo.module.css';
 const ReactLogo = () => {
   return (
     <a
-      className={styles['react_logo-button']}
+      className={styles['react_logo-link']}
       target='_blank'
       rel='noopener noreferrer'
       href='https://reactjs.org/'

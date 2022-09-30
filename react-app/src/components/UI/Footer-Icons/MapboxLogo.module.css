@@ -4,6 +4,7 @@
   border: none;
   padding: 0;
   width: fit-content;
+  height: fit-content;
 }
 
 #mapbox-svg {
