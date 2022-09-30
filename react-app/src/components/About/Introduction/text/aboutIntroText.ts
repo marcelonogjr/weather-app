@@ -7,15 +7,24 @@ export const aboutIntroText = `
   
   My name is Marcelo, I'm a web developer and engineering student from Brazil, and this is my _ultimate_ Weather App.
   It's main purpose is to serve as complete fully functional project to compose my personal portfolio. It also served
-  as a personal challenge to improve and consolidate my skills as a full-stack web developer.
+  as a personal challenge to improve and consolidate my skills with project management and as a full-stack web
+  developer.
 
-  To build this app I used [TypeScript](https://www.typescriptlang.org/) as a main programming language. The backend
+  I built this app using [TypeScript](https://www.typescriptlang.org/) as a main programming language. The backend
   is built using [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) and the frontend uses [React](https://reactjs.org/),
-  [React Router](https://reactrouter.com/en/main) and almost [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-  only for styling - the animation used on theme button, uses [GreenSock](https://greensock.com/). The weather
-  information comes from [OpenWeatherMap](https://openweathermap.org/) (forecast and weather map layer) and [Mapbox](https://www.mapbox.com/)
-  (geocode and street map layer). The entire code for this project is [publicly available on GitHub](https://github.com/marcelonogjr/weather-app),
-  in there you can see exactly what I used and how I built everything you see here - and also what you don't see.
+  [React Router](https://reactrouter.com/en/main), using [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) mainly
+  for styling and a few animations, and more complex animations being handled by [GreenSock](https://greensock.com/).
+  The weather forecast information and weather map layer comes from [OpenWeatherMap](https://openweathermap.org/),
+  while [Mapbox](https://www.mapbox.com/) provides geocode and street map layer services.
+  
+  To help me handle the texts to write the following series of articles I used [react-markdown](https://github.com/remarkjs/react-markdown),
+  with the addition to the [remark-math](https://github.com/remarkjs/remark-math) and [rehype-katex](https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex)
+  to write all the math formulas contained in them. The illustrations are all made by me and some images that are
+  used as exemples comes from Mapbox and OpenWeatherMap - sometimes with the modifications made in the backend of this
+  app (the details are inside the articles).
+  
+  The entire code for this project is [publicly available on GitHub](https://github.com/marcelonogjr/weather-app), in
+  there you can see exactly what I used and how I built everything you see here - and also what you don't see.
 
   To know more about me and my work visit [marcelojr.tech](https://marcelojr.tech).
   

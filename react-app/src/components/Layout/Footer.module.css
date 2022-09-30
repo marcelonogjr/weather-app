@@ -75,6 +75,10 @@
   flex-grow: 1;
 }
 
+.frontend-bundle > p{
+  margin-bottom: 0;
+}
+
 .frontend-main, .weather-geo_logos, .main-language_logos, .backend_logos {
   display: flex;
   flex-direction: row;
