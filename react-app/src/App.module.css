@@ -1,9 +1,24 @@
 .app-component {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  width: 99vw;
+  width: 100vw;
   margin: 0;
   align-items: center;
+}
+
+.main-content {
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  /* background-color: var(--color-main-content-background);
+  border-radius: 10px; */
+  padding: 0 1.5rem;
+  z-index: 1;
+  width: 100%;
 }
 
 ::-moz-selection {

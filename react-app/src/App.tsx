@@ -6,16 +6,18 @@ import styles from './App.module.css';
 
 const App: React.FC = () => {
   return (
-    <div className={styles['app-component']}>
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Navigate replace={true} to='/weather' />}/>
-      </Routes>
-      <div className='main-content'>
-        <Outlet />
+    <>
+      <div className={styles['app-component']}>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Navigate replace={true} to='/weather' />} />
+        </Routes>
+        <div className='main-content'>
+          <Outlet />
+        </div>
       </div>
-      <Footer />
-    </div>
+        <Footer />
+    </>
   );
 };
 

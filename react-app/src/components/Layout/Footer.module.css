@@ -1,12 +1,8 @@
 .page-footer {
   background-color: var(--color-footer-background);
   color: var(--color-grey-high-contrast);
-  align-self: center;
   width: 100%;
-  border-top: 1px solid var(--color-grey-high-contrast);
-  margin-top: 16px;
-  padding: 16px 0;
-  bottom: 0px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

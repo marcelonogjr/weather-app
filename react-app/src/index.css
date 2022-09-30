@@ -39,30 +39,19 @@ body {
   --tablet-width: 49rem;
   --mobile-width: 27rem;
 
-  background-color: var(--color-background);
   color: var(--color-text);
   font-family: "AvenirNextPro";
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   transition: all 0.5s ease-out;
   align-items: center;
 }
 
-.main-content {
-  /* flex-grow: 1; */
-  align-self: center;
+#root {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: fit-content;
-  /* background-color: var(--color-main-content-background);
-  border-radius: 10px; */
-  padding: 0 1.5rem;
-  z-index: 1;
-  width: 100%;
 }
