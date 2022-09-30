@@ -156,7 +156,7 @@
   }
 }
 
-.hamburguer-menu {
+.hamburguer-menu,.hamburguer-menu_button {
   display: none;
 }
 
