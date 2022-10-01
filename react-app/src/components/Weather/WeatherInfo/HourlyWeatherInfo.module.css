@@ -17,7 +17,7 @@
   overflow-y: hidden;
   position: relative;
 }
-
+/* 
 .hourly-bundle ul::-webkit-scrollbar {
   height: 8px;
 }
@@ -27,9 +27,9 @@
 }
 
 .hourly-bundle ul::-webkit-scrollbar-thumb {
-  background-color: black;    /* color of the scroll thumb */
-  border-radius: 2px;       /* roundness of the scroll thumb */
-}
+  background-color: black;    
+  border-radius: 2px;      
+} */
 
 #hourly-graph {
   display: flex;

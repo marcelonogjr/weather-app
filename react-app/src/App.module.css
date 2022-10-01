@@ -35,16 +35,48 @@
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  cursor: pointer;
+  cursor: help;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-main-content-background);
+  background: transparent;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+  background-size: 10px;
+  background-position: center center;
+  background-image: var(--scroll-thumb-vdecrement-svg);
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  background-size: 10px;
+  background-position: center center;
+  background-image: var(--scroll-thumb-vincrement-svg);
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-size: 10px;
+  background-position: center center;
+  background-image: var(--scroll-thumb-hdecrement-svg);
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+  background-size: 10px;
+  background-position: center center;
+  background-image: var(--scroll-thumb-hincrement-svg);
+  background-repeat: no-repeat;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(
-    --color-grey-high-contrast
-  ); /* color of the scroll thumb */
-  border-radius: 2px; /* roundness of the scroll thumb */
+  background-color: var(--color-grey-high-contrast);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button:horizontal:start:increment,
+::-webkit-scrollbar-button:horizontal:end:decrement {
+  width: 0;
+  height: 0;
 }

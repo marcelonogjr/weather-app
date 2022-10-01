@@ -21,7 +21,7 @@
   position: relative;
 }
 
-.daily-bundle ul::-webkit-scrollbar {
+/* .daily-bundle ul::-webkit-scrollbar {
   height: 8px;
 }
 
@@ -30,9 +30,9 @@
 }
 
 .daily-bundle ul::-webkit-scrollbar-thumb {
-  background-color: black;    /* color of the scroll thumb */
-  border-radius: 2px;       /* roundness of the scroll thumb */
-}
+  background-color: black;    
+  border-radius: 2px;       
+} */
 
 #daily-graph {
   display: flex;
