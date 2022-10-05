@@ -1,11 +1,20 @@
-.weather-selector svg {
-  --svg-icon-size: 7rem;
-  width: var(--svg-icon-size);
-  height: var(--svg-icon-size);
+.weather-selector {
+  --svg-current-icon-size: 7rem;
+  --svg-hourly-icon-size: 3rem;
+  --svg-daily-icon-size: 3rem;
 }
 
-@media (max-width: 60rem) {
-  .weather-selector svg {
-    width: 7rem;
-  }
+.weather-svg_current{
+  width: var(--svg-current-icon-size);
+  height: var(--svg-current-icon-size);
+}
+
+.weather-svg_hourly{
+  width: var(--svg-hourly-icon-size);
+  height: var(--svg-hourly-icon-size);
+}
+
+.weather-svg_daily{
+  width: var(--svg-daily-icon-size);
+  height: var(--svg-daily-icon-size);
 }

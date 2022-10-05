@@ -5,7 +5,10 @@ import { CustomEase } from 'gsap/CustomEase';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon11 = (props: { description: string }) => {
+const WeatherIcon11 = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const lightningRef = useRef<SVGPathElement>(null);
   const lightCloudRef = useRef<SVGCircleElement>(null);
   const darkCloudRef = useRef<SVGCircleElement>(null);
@@ -53,15 +56,17 @@ const WeatherIcon11 = (props: { description: string }) => {
         repeatRefresh: true,
       });
 
-    const lightCloudAnimation = gsap.to([lightCloudRef.current, darkCloudRef.current], {
-      duration: 10,
-      x: 'random(-100, 100)',
-      scale: 'random(0.8, 1)',
-      ease: 'power1.inOut',
-      repeat: -1,
-      repeatRefresh: true,
-    });
-
+    const lightCloudAnimation = gsap.to(
+      [lightCloudRef.current, darkCloudRef.current],
+      {
+        duration: 10,
+        x: 'random(-100, 100)',
+        scale: 'random(0.8, 1)',
+        ease: 'power1.inOut',
+        repeat: -1,
+        repeatRefresh: true,
+      }
+    );
 
     return () => {
       lightCloudAnimation.kill();
@@ -71,7 +76,8 @@ const WeatherIcon11 = (props: { description: string }) => {
 
   return (
     <svg
-      id={styles['weather-09-svg']}
+      id={styles['weather-11-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 939.4 1000'
     >

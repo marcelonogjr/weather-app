@@ -4,7 +4,11 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon02 = (props: { description: string; period: string }) => {
+const WeatherIcon02 = (props: {
+  description: string;
+  period: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const cloudRef = useRef<SVGPathElement>(null);
 
   const { theme } = useContext(ThemeContext);
@@ -30,6 +34,7 @@ const WeatherIcon02 = (props: { description: string; period: string }) => {
   return (
     <svg
       id={styles['weather-02-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 600'
     >

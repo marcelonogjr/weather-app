@@ -4,7 +4,10 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon01n = (props: { description: string }) => {
+const WeatherIcon01n = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const moonBlurRef = useRef<SVGCircleElement>(null);
 
   const { theme } = useContext(ThemeContext);
@@ -32,14 +35,13 @@ const WeatherIcon01n = (props: { description: string }) => {
   return (
     <svg
       id={styles['weather-01n-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 1000'
     >
       <title>{props.description}</title>
       <style>
-        {
-          `.wi01n0{fill:${moonColorTheme}; stroke: ${moonStrokeTheme}; stroke-width: 10; stroke-miterlimit:10}`
-        }
+        {`.wi01n0{fill:${moonColorTheme}; stroke: ${moonStrokeTheme}; stroke-width: 10; stroke-miterlimit:10}`}
       </style>
       <filter id='moon-blur' x='-100%' y='-100%' height='300%' width='300%'>
         <feGaussianBlur in='SourceGraphic' stdDeviation={70} result='BLUR' />

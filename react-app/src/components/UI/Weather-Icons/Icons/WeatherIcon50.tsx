@@ -4,7 +4,10 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon50 = (props: { description: string}) => {
+const WeatherIcon50 = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const mistG1Ref = useRef<SVGPathElement>(null);
   const mistG2Ref = useRef<SVGPathElement>(null);
 
@@ -14,18 +17,15 @@ const WeatherIcon50 = (props: { description: string}) => {
   const mistG2Color = theme === 'light' ? '#808285' : '#686868';
 
   useEffect(() => {
-    const mistAnimation = gsap.to(
-      [mistG1Ref.current, mistG2Ref.current],
-      {
-        duration: 10,
-        x: 'random(-80,80)',
-        scale: 'random(0.9, 1.1)',
-        opacity: 'random(0.5,1)',
-        ease: 'linear',
-        repeat: -1,
-        repeatRefresh: true
-      }
-    );
+    const mistAnimation = gsap.to([mistG1Ref.current, mistG2Ref.current], {
+      duration: 10,
+      x: 'random(-80,80)',
+      scale: 'random(0.9, 1.1)',
+      opacity: 'random(0.5,1)',
+      ease: 'linear',
+      repeat: -1,
+      repeatRefresh: true,
+    });
     return () => {
       mistAnimation.kill();
     };
@@ -34,6 +34,7 @@ const WeatherIcon50 = (props: { description: string}) => {
   return (
     <svg
       id={styles['weather-50-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 525.5'
     >

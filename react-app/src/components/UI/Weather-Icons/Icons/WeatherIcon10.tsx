@@ -4,7 +4,11 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon10 = (props: { description: string; period: string }) => {
+const WeatherIcon10 = (props: {
+  description: string;
+  period: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const rainDrop1Ref = useRef<SVGPathElement>(null);
   const rainDrop2Ref = useRef<SVGPathElement>(null);
   const rainDrop3Ref = useRef<SVGPathElement>(null);
@@ -15,22 +19,22 @@ const WeatherIcon10 = (props: { description: string; period: string }) => {
 
   const sunOrMoonColor = props.period === 'd' ? '#f2a71e' : '#fffbca';
   const lightCloudColor = theme === 'light' ? '#b0e7ff' : '#fff';
-  
+
   useEffect(() => {
-      const gsapFromAnimation = {
-        opacity: 0,
-        x: 220 * Math.tan(0.595588398),
-        y: -220,
-      };
-    
-      const gsapToAnimation = {
-        duration: 'random(1, 1.5)',
-        opacity: 1,
-        x: 0,
-        y: 0,
-        ease: 'linear',
-        repeat: -1,
-      };
+    const gsapFromAnimation = {
+      opacity: 0,
+      x: 220 * Math.tan(0.595588398),
+      y: -220,
+    };
+
+    const gsapToAnimation = {
+      duration: 'random(1, 1.5)',
+      opacity: 1,
+      x: 0,
+      y: 0,
+      ease: 'linear',
+      repeat: -1,
+    };
 
     const rainDrop1Animation = gsap.fromTo(
       rainDrop1Ref.current,
@@ -69,6 +73,7 @@ const WeatherIcon10 = (props: { description: string; period: string }) => {
   return (
     <svg
       id={styles['weather-10-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 857 1000'
     >

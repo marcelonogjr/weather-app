@@ -1,7 +1,3 @@
-.daily-bundle * {
-  transition: all 1s ease-out;
-}
-
 .daily-bundle {
   display: flex;
   flex-direction: column;
@@ -20,19 +16,6 @@
   overflow-y: hidden;
   position: relative;
 }
-
-/* .daily-bundle ul::-webkit-scrollbar {
-  height: 8px;
-}
-
-.daily-bundle ul::-webkit-scrollbar-track {
-  background: white;
-}
-
-.daily-bundle ul::-webkit-scrollbar-thumb {
-  background-color: black;    
-  border-radius: 2px;       
-} */
 
 #daily-graph {
   display: flex;

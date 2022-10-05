@@ -5,7 +5,10 @@ import { CustomEase } from 'gsap/CustomEase';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon13 = (props: { description: string }) => {
+const WeatherIcon13 = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const snowCrystalRefs = useRef<SVGPathElement>(null);
   const snowDropsRefs = useRef<SVGCircleElement[] | null[]>([]);
   const mainTimeline = useRef<GSAPTimeline>();
@@ -91,6 +94,7 @@ const WeatherIcon13 = (props: { description: string }) => {
   return (
     <svg
       id={styles['weather-13-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 1000'
     >

@@ -3,7 +3,10 @@ import gsap from 'gsap';
 
 import styles from './WeatherIcons.module.css';
 
-const WeatherIcon01d = (props: { description: string }) => {
+const WeatherIcon01d = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const smallRaysRef = useRef<SVGPathElement>(null);
   const mediumRaysRef = useRef<SVGPathElement>(null);
   const largeRaysRef = useRef<SVGPathElement>(null);
@@ -21,18 +24,15 @@ const WeatherIcon01d = (props: { description: string }) => {
         repeatRefresh: true,
       }
     );
-    const smallerRaysAnimation = gsap.to(
-      smallRaysRef.current,
-      {
-        duration: 10,
-        scale: 'random(0.7, 1)',
-        rotate: '-=50',
-        transformOrigin: '50% 50%',
-        ease: 'linear',
-        repeat: -1,
-        repeatRefresh: true,
-      }
-    );
+    const smallerRaysAnimation = gsap.to(smallRaysRef.current, {
+      duration: 10,
+      scale: 'random(0.7, 1)',
+      rotate: '-=50',
+      transformOrigin: '50% 50%',
+      ease: 'linear',
+      repeat: -1,
+      repeatRefresh: true,
+    });
 
     return () => {
       biggerRaysAnimation.kill();
@@ -43,6 +43,7 @@ const WeatherIcon01d = (props: { description: string }) => {
   return (
     <svg
       id={styles['weather-01d-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 900 900'
     >

@@ -4,7 +4,10 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon04 = (props: { description: string }) => {
+const WeatherIcon04 = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const lightCloudRef = useRef<SVGCircleElement>(null);
   const darkCloudRef = useRef<SVGCircleElement>(null);
 
@@ -14,34 +17,28 @@ const WeatherIcon04 = (props: { description: string }) => {
   const darkCloudColor = theme === 'light' ? '#3a3a3a' : '#1d313f';
 
   useEffect(() => {
-    const lightCloudAnimation = gsap.to(
-      lightCloudRef.current,
-      {
-        duration: 5,
-        opacity: 'random(0.65, 1)',
-        x: 'random(-125, 175)',
-        y: 'random(-50, 100)',
-        scale: 'random(0.9, 1.1)',
-        ease: 'power1.inOut',
-        repeat: -1,
-        repeatRefresh: true,
-      }
-    );
-    const darkCloudAnimation = gsap.to(
-      darkCloudRef.current,
-      {
-        duration: 10,
-        opacity: 'random(0.65, 1)',
-        x: 'random(-175, 125)',
-        y: 'random(-125, 50)',
-        scale: 'random(0.9, 1.1)',
-        ease: 'power1.inOut',
-        repeat: -1,
-        repeatRefresh: true,
-      }
-      );
-      return () => {
-        lightCloudAnimation.kill();
+    const lightCloudAnimation = gsap.to(lightCloudRef.current, {
+      duration: 5,
+      opacity: 'random(0.65, 1)',
+      x: 'random(-125, 175)',
+      y: 'random(-50, 100)',
+      scale: 'random(0.9, 1.1)',
+      ease: 'power1.inOut',
+      repeat: -1,
+      repeatRefresh: true,
+    });
+    const darkCloudAnimation = gsap.to(darkCloudRef.current, {
+      duration: 10,
+      opacity: 'random(0.65, 1)',
+      x: 'random(-175, 125)',
+      y: 'random(-125, 50)',
+      scale: 'random(0.9, 1.1)',
+      ease: 'power1.inOut',
+      repeat: -1,
+      repeatRefresh: true,
+    });
+    return () => {
+      lightCloudAnimation.kill();
       darkCloudAnimation.kill();
     };
   }, []);
@@ -49,6 +46,7 @@ const WeatherIcon04 = (props: { description: string }) => {
   return (
     <svg
       id={styles['weather-04-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 712'
     >

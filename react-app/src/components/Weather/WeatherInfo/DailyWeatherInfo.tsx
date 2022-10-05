@@ -10,10 +10,10 @@ import TimeConversor, {
 import unitsConversor from '../../../others/units-conversor';
 import { dailyLiBackground } from '../../../others/daily-graph-gradient';
 
-import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import RainProbIcon from './icons/RainProbIcon';
 import SvgUVIIndexIcons from './icons/UVIIcons';
+import WeatherIconSelector from '../../UI/Weather-Icons/WeatherIconSelector';
 
 interface DailyWeatherInfoProps {
   dailyData: DailyAPIDataType;
@@ -69,7 +69,11 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
 
   const styleLiWidth = 1500 / modifiedDailyData.length;
   const styleLiHeight = 250;
-  const dailyLiBackgrounds = dailyLiBackground(units, maxTemperatureDaily, minTemperatureDaily)
+  const dailyLiBackgrounds = dailyLiBackground(
+    units,
+    maxTemperatureDaily,
+    minTemperatureDaily
+  );
 
   const dailyList = modifiedDailyData.map((dayElement, index, dailyArray) => {
     if (index === 0) {
@@ -169,9 +173,10 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
           {unitsConversor(units, 'temp', props.dailyData[index].temp.min)}
         </p>
         <div className={styles['daily-info']} style={divInfoStyle}>
-          <SvgWeatherIcons
-            iconCode={dayElement.weather[0].icon}
-            descriptionCode={dayElement.weather[0].description}
+          <WeatherIconSelector
+            iconId={dayElement.weather[0].icon}
+            iconDescription={dayElement.weather[0].description}
+            parentComponent='daily'
           />
           <p>{dailyDate}</p>
           <div className={styles['uvi_humidity-bundle']}>

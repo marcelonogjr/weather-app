@@ -4,7 +4,10 @@ import gsap from 'gsap';
 import styles from './WeatherIcons.module.css';
 import ThemeContext from '../../../../store/theme-context';
 
-const WeatherIcon09 = (props: { description: string }) => {
+const WeatherIcon09 = (props: {
+  description: string;
+  parentComponent: 'current' | 'hourly' | 'daily';
+}) => {
   const rainDrop1Ref = useRef<SVGPathElement>(null);
   const rainDrop2Ref = useRef<SVGPathElement>(null);
   const rainDrop3Ref = useRef<SVGPathElement>(null);
@@ -22,7 +25,7 @@ const WeatherIcon09 = (props: { description: string }) => {
       x: 220 * Math.tan(0.595588398),
       y: -220,
     };
-  
+
     const gsapToAnimation = {
       duration: 'random(1, 1.5)',
       opacity: 1,
@@ -69,6 +72,7 @@ const WeatherIcon09 = (props: { description: string }) => {
   return (
     <svg
       id={styles['weather-09-svg']}
+      className={styles[`weather-svg_${props.parentComponent}`]}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 939.4 1000'
     >
