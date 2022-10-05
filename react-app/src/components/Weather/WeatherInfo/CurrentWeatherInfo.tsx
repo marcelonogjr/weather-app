@@ -7,10 +7,11 @@ import TimeConversor, {
   TimeConversorObjectType
 } from '../../../others/time-conversor';
 import unitsConversor from '../../../others/units-conversor';
-import SvgWeatherIcons from './icons/WeatherIcons';
+// import SvgWeatherIcons from './icons/WeatherIcons';
 import SvgHumidityIcon from './icons/HumidityIcon';
 import SvgWindDirectionIcon from './icons/WindDirectionIcon';
 import SvgUVIIndexIcons from './icons/UVIIcons';
+import WeatherIconSelector from '../../UI/Weather-Icons/WeatherIconSelector';
 
 interface CurrentWeatherInfoProps {
   currentData: CurrentAPIDataType;
@@ -36,7 +37,7 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
       <p>Sunrise: {locationSunrise}</p>
       <p>Sunset: {locationSunset}</p>
       <p>Weather: {props.currentData.weather[0].main}</p>
-      <SvgWeatherIcons iconCode={props.currentData.weather[0].icon} descriptionCode={props.currentData.weather[0].description}/>
+      <WeatherIconSelector iconId={props.currentData.weather[0].icon} iconDescription={props.currentData.weather[0].description}/>
       <p>Temperature: {unitsConversor(units, 'temp', props.currentData.temp)}</p>
       <p>Feels Like: {unitsConversor(units, 'temp', props.currentData.feels_like)}</p>
       <p>Dew Point: {unitsConversor(units, 'temp', props.currentData.dew_point)}</p>

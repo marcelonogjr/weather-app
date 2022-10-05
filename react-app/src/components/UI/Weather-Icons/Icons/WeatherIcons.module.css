@@ -1,0 +1,11 @@
+.weather-selector svg {
+  --svg-icon-size: 7rem;
+  width: var(--svg-icon-size);
+  height: var(--svg-icon-size);
+}
+
+@media (max-width: 60rem) {
+  .weather-selector svg {
+    width: 7rem;
+  }
+}

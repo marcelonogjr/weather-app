@@ -26,8 +26,8 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   const navigate = useNavigate();
   const locationSearch = useLocation().search;
 
-  // const serverUrl = 'http://localhost:5001';
-  const serverUrl = 'https://weather.marcelojr.tech';
+  const serverUrl = 'http://localhost:5001';
+  // const serverUrl = 'https://weather.marcelojr.tech';
 
   useEffect(() => {
     const abortController = new AbortController();
