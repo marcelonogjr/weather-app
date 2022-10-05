@@ -43,12 +43,16 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         if (!response.ok && isErrorType(responseJSON)) {
           throw new Error(responseJSON.error);
         } else {
+          console.log(responseJSON);
           const typeNarrowing = (
             response: any
           ): response is GeocodeAPIDataType => {
-            return (response as GeocodeAPIDataType)[0].placeName !== undefined;
+            return (response as GeocodeAPIDataType)[0] !== undefined;
           };
+          console.log(typeNarrowing(responseJSON));
+          console.log('I SHOULD be running');
           if (typeNarrowing(responseJSON)) {
+            console.log('I should NOT be running!');
             setAddressList(responseJSON);
             if (pressedEnterEarly) {
               const newPath = `?address=${responseJSON[0].placeName}&lat=${responseJSON[0].center.lat}&lon=${responseJSON[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
