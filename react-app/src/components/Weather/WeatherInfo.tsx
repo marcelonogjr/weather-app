@@ -34,8 +34,8 @@ const WeatherInfo = () => {
   } = useContext(WeatherContext);
   const { zoom, mapLayer } = useContext(MapContext);
 
-  const serverUrl = 'http://localhost:5001';
-  // const serverUrl = 'https://weather.marcelojr.tech';
+  // const serverUrl = 'http://localhost:5001';
+  const serverUrl = 'https://weather.marcelojr.tech';
 
   useEffect(() => {
     const abortController = new AbortController();
