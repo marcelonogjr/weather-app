@@ -4,9 +4,7 @@
   justify-content: flex-start;
   margin: 1rem 0;
   padding: 1rem;
-  background-color: var(--color-grey-low-contrast);
   height: auto;
-  border-radius: 10px;
 }
 
 .location_units-bundle{

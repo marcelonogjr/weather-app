@@ -1,0 +1,25 @@
+.icons-svg {
+  width: 8rem;
+  height: 8rem;
+}
+
+@media (max-width: 160rem){
+  .icons-svg {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@media (max-width: 121rem){
+  .icons-svg {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 86rem){
+  .icons-svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}

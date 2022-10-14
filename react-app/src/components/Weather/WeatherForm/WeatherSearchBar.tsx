@@ -43,16 +43,12 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         if (!response.ok && isErrorType(responseJSON)) {
           throw new Error(responseJSON.error);
         } else {
-          console.log(responseJSON);
           const typeNarrowing = (
             response: any
           ): response is GeocodeAPIDataType => {
             return (response as GeocodeAPIDataType)[0] !== undefined;
           };
-          console.log(typeNarrowing(responseJSON));
-          console.log('I SHOULD be running');
           if (typeNarrowing(responseJSON)) {
-            console.log('I should NOT be running!');
             setAddressList(responseJSON);
             if (pressedEnterEarly) {
               const newPath = `?address=${responseJSON[0].placeName}&lat=${responseJSON[0].center.lat}&lon=${responseJSON[0].center.lon}&zoom_level=${props.zoom}&weather_layer=${props.mapLayer}`;
@@ -223,14 +219,14 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
   });
 
   return (
-    <>
+    <div className={styles['bar-button-bundle']}>
       <div className={styles['search-bar']}>
         <input
           type='text'
           className={styles['address-input']}
           value={addressInput}
           onChange={searchInputHandler}
-          placeholder='Search for a location.'
+          placeholder='Start typing to look for a location.'
           onKeyDown={inputKeyboardEventHandler}
         />
         {showList && (
@@ -241,7 +237,7 @@ const WeatherSearchBar = (props: WeatherSearchBarPropsType) => {
         )}
       </div>
       <button onClick={searchButtonClickHandler}>Search!</button>
-    </>
+    </div>
   );
 };
 

@@ -1,23 +1,91 @@
-.input-button-bundle {
+.weather-form {
   display: flex;
-  flex-grow: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
 }
 
-.input-button-bundle button {
-  cursor: pointer;
-  border: 1px solid #888888;
-  background: #888888;
-  color: white;
-  padding: 8px;
-  height: 34px;
+@media (max-width: 160rem){
+  .weather-form {
+    margin-top: 3.5rem;
+  }
 }
 
-.input-button-bundle button:hover {
-  font-weight:600;
-  text-decoration: underline 2px;
+@media (max-width: 121rem){
+  .weather-form {
+    margin-top: 2.5rem;
+  }
 }
 
-.other-inputs-bundle {
+@media (max-width: 121rem){
+  .weather-form {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 86rem){
+  .weather-form {
+    margin-top: 0rem;
+  }
+}
+
+.weather-form > p{
+  margin: 4rem 0 0 0;
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+}
+
+@media (max-width: 160rem){
+  .weather-form > p{
+    margin-top: 3.5rem;
+    font-size: var(--font-size-1xl);
+  }
+}
+
+@media (max-width: 121rem){
+  .weather-form > p{
+    margin-top: 2rem;
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 86rem){
+  .weather-form > p{
+    margin-top: 1rem;
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 53rem){
+  .weather-form > p{
+    margin-top: 1rem;
+    font-size: var(--font-size-0xs);
+  }
+}
+
+.map-settings-bundle {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+@media (max-width: 160rem){
+  .map-settings-bundle {
+    gap: 8rem;
+  }
+}
+
+@media (max-width: 121rem){
+  .map-settings-bundle {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 86rem){
+  .map-settings-bundle {
+    gap: 2rem;
+  }
 }

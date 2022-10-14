@@ -12,8 +12,6 @@ const Weather: React.FC = () => {
 
   return (
     <div className={styles['weather-main']}>
-      <p>Search for a city and get the weather below.</p>
-
       <WeatherContextProvider>
         <MapContextProvider>
           <WeatherForm />

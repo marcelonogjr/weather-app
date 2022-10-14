@@ -34,11 +34,6 @@ html {
 }
 
 body {
-  --motinor-qhd-width: 161rem;
-  --motinor-fhd-width: 121rem;
-  --tablet-width: 49rem;
-  --mobile-width: 27rem;
-
   color: var(--color-text);
   font-family: "AvenirNextPro";
   max-width: 100%;

@@ -1,10 +1,28 @@
-.weather-main{
+.weather-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   align-self: center;
   height: fit-content;
-  background-color: var(--color-main-content-background);
-  border-radius: 10px;
-  padding: 0 1.5rem;
-  z-index: 1;
-  width: 800px;
+  padding: 3rem 1.5rem;
   flex-shrink: 1;
+  min-width: 70vw;
+}
+
+@media (max-width: 160rem) {
+  .weather-main {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 121rem) {
+  .weather-main {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 38.5rem) {
+  .weather-main {
+    padding: 3rem 0;
+  }
 }
