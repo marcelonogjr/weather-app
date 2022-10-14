@@ -11,7 +11,8 @@ interface CurrentLocationDatePropsType {
 }
 
 const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
-  const [city, state, country] = props.locationData.split(',');
+  const locationArray = props.locationData.split(',');
+  const mainLocation = locationArray.shift();
   
   const timeInfo = (timeConversorObject: TimeConversorObjectType) => {
     
@@ -35,9 +36,9 @@ const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   
   return (
     <div className={styles['location_date-bundle']}>
-      <h3>{city}</h3>
+      <h3>{mainLocation}</h3>
       <h4>
-        {state}, {country}
+        {locationArray.length > 0 && locationArray.join(', ')}
       </h4>
       <span>
         {timeInfo(TimeConversor(props.weatherData.current.dt).time)}
