@@ -7,7 +7,6 @@ export interface TimeConversorObjectType {
     period: string
   };
   minute: number;
-  second: number;
 }
 
 export interface DateConversorObjectType {
@@ -85,13 +84,11 @@ const TimeConversor = (currentDate: number) => {
 
   const currentHour = units === 'imperial' ? imperialHours(currentLocalDate.getHours()) : {hour: currentLocalDate.getHours(), period: ''};
   const currentMinute = currentLocalDate.getMinutes();
-  const currentSecond = currentLocalDate.getSeconds();
 
   return {
     time: {
       hour: currentHour,
       minute: currentMinute,
-      second: currentSecond,
     },
     date: {
       weekDay: currentWeekDay,

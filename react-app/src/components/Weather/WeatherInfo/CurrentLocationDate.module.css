@@ -1,11 +1,23 @@
 .location_date-bundle{
-  margin: 0 0 1rem 0;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 1rem;
 }
 
-.location_date-bundle h3, 
-.location_date-bundle h4, 
-.location_date-bundle h5{
+.location, .date{
+  display: inline-block;
+  text-align: center;
   margin: 0;
+  font-size: var(--font-size-sm);
+}
 
+.location__main, .date__time{
+  font-weight: bold;
+}
+
+.location__main {
+  font-size: 130%;
 }

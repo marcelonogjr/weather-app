@@ -5,11 +5,14 @@
   margin: 1rem 0;
   padding: 1rem;
   height: auto;
-  width: 80vw;
+  width: 100vw;
 }
 
 .location_units-bundle{
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .weather-bundle {

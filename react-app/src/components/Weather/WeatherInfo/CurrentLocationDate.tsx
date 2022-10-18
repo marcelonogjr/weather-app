@@ -13,37 +13,44 @@ interface CurrentLocationDatePropsType {
 const CurrentLocationDate = (props: CurrentLocationDatePropsType) => {
   const locationArray = props.locationData.split(',');
   const mainLocation = locationArray.shift();
-  
+
   const timeInfo = (timeConversorObject: TimeConversorObjectType) => {
-    
     return (
-      <h4>
-        {timeConversorObject.hour.hour > 9 ? timeConversorObject.hour.hour : '0' + timeConversorObject.hour.hour}:
-        {timeConversorObject.minute > 9 ? timeConversorObject.minute : '0' + timeConversorObject.minute}:
-        {timeConversorObject.second > 9 ? timeConversorObject.second : '0' + timeConversorObject.second} {timeConversorObject.hour.period}
-      </h4>
+      <>
+        {timeConversorObject.hour.hour > 9
+          ? timeConversorObject.hour.hour
+          : '0' + timeConversorObject.hour.hour}
+        :
+        {timeConversorObject.minute > 9
+          ? timeConversorObject.minute
+          : '0' + timeConversorObject.minute}{' '}
+        {timeConversorObject.hour.period}
+      </>
     );
   };
   const dateInfo = (dateConversorObject: DateConversorObjectType) => {
     return (
-      <h5>
+      <>
         {dateConversorObject.weekDay}, {dateConversorObject.month.spelled}{' '}
         {dateConversorObject.day}
         <sup>{dateConversorObject.ordinal}</sup> {dateConversorObject.year}
-      </h5>
+      </>
     );
   };
-  
+
   return (
     <div className={styles['location_date-bundle']}>
-      <h3>{mainLocation}</h3>
-      <h4>
-        {locationArray.length > 0 && locationArray.join(', ')}
-      </h4>
-      <span>
-        {timeInfo(TimeConversor(props.weatherData.current.dt).time)}
+      <p className={styles['location']}>
+        <span className={styles['location__main']}>{mainLocation}</span>
+        {locationArray.length > 0 && `, ${locationArray.join(', ')}`}
+      </p>
+      <p className={styles['date']}>
+        <span className={styles['date__time']}>
+          {timeInfo(TimeConversor(props.weatherData.current.dt).time)}
+        </span>
+        {' - '}
         {dateInfo(TimeConversor(props.weatherData.current.dt).date)}
-      </span>
+      </p>
     </div>
   );
 };
