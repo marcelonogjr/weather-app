@@ -89,3 +89,10 @@
     gap: 2rem;
   }
 }
+
+@media (max-width: 36rem){
+  .map-settings-bundle {
+    flex-direction: column;
+    gap: 0;
+  }
+}
