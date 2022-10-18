@@ -58,7 +58,7 @@ const Header = () => {
                 styles[`${currentPath === 'weather' ? 'link-selected' : ''}`]
               }`}
             >
-              Weather
+              Home
             </Link>
             <Link
               to='/about/intro'
@@ -126,7 +126,7 @@ const Header = () => {
             }`}
             onClick={backdropHandler}
           >
-            Weather
+            Home
           </Link>
           <Link
             to='/about/intro'
