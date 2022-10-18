@@ -5,10 +5,12 @@
   margin: 1rem 0;
   padding: 1rem;
   height: auto;
-  width: 100vw;
+  width: 95vw;
+  background-color: var(--color-main-content-background);
+  border-radius: 10px;
 }
 
-.location_units-bundle{
+.location_units-bundle {
   display: flex;
   align-items: center;
   justify-content: space-between;
