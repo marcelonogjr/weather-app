@@ -17,7 +17,7 @@ const WeatherIcon09 = (props: {
   const { theme } = useContext(ThemeContext);
 
   const lightCloudColor = theme === 'light' ? '#b0e7ff' : '#fff';
-  const darkCloudColor = theme === 'light' ? '#3a3a3a' : '#1d313f';
+  const darkCloudColor = theme === 'light' ? '#3a3a3a' : '#646464';
 
   useEffect(() => {
     const gsapFromAnimation = {
