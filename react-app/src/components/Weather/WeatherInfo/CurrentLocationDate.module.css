@@ -11,7 +11,31 @@
   display: inline-block;
   text-align: center;
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-2xl);
+}
+
+@media (max-width: 160rem){
+  .location, .date{
+    font-size: var(--font-size-1xl);
+  } 
+}
+
+@media (max-width: 121rem){
+  .location, .date{
+    font-size: var(--font-size-lg);
+  } 
+}
+
+@media (max-width: 81rem){
+  .location, .date{
+    font-size: var(--font-size-sm);
+  } 
+}
+
+@media (max-width: 53rem){
+  .location, .date{
+    font-size: var(--font-size-0xs);
+  } 
 }
 
 .location__main, .date__time{
