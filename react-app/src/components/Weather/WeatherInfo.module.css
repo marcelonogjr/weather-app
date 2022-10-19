@@ -13,8 +13,9 @@
 .location_units-bundle {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .weather-bundle {
