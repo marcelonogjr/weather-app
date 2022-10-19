@@ -65,7 +65,7 @@ const WeatherInfo = () => {
         }
       } catch (error: unknown) {
         if (error instanceof Error) {
-          if (error.message !== 'The user aborted a request.'){
+          if (error.message !== 'The user aborted a request.') {
             changeInError({
               errorStatus: true,
               errorMessage: error.message,
@@ -112,7 +112,9 @@ const WeatherInfo = () => {
   return (
     <>
       {isLoading && !isReady && <LoadingSpinner />}
-      {inError.errorStatus && <WeatherError errorMessage={inError.errorMessage}/>}
+      {inError.errorStatus && (
+        <WeatherError errorMessage={inError.errorMessage} />
+      )}
       {!isLoading && weatherData && address && isReady && units && (
         <div className={styles['info-bundle']}>
           <div className={styles['location_units-bundle']}>
@@ -122,6 +124,12 @@ const WeatherInfo = () => {
             />
             <WeatherUnits selectedUnits={units} onChange={unitsChangeHandler} />
           </div>
+          <WeatherInfoButtons
+            onCurrentClick={onClickCurrentButtonHandler}
+            onHourlyClick={onClickHourlyButtonHandler}
+            onDailyClick={onClickDailyButtonHandler}
+            currentlyActive={currentInfo}
+          />
           <div className={styles['weather-bundle']}>
             {currentInfo === 'current' && (
               <CurrentWeatherInfo currentData={weatherData.current} />
@@ -132,12 +140,6 @@ const WeatherInfo = () => {
             {currentInfo === 'daily' && (
               <DailyWeatherInfo dailyData={weatherData.daily} />
             )}
-            <WeatherInfoButtons
-              onCurrentClick={onClickCurrentButtonHandler}
-              onHourlyClick={onClickHourlyButtonHandler}
-              onDailyClick={onClickDailyButtonHandler}
-              currentlyActive={currentInfo}
-            />
           </div>
         </div>
       )}

@@ -1,25 +1,85 @@
 .info-buttons {
   display: flex;
-  flex-direction: column;
-  width: fit-content;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-.info-buttons button{
+@media (max-width: 160rem){
+  .info-buttons {
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media (max-width: 121rem){
+  .info-buttons {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 81rem){
+  .info-buttons {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 53rem){
+  .info-buttons {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 36rem){
+  .info-buttons {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.info-button {
   cursor: pointer;
-  border: 1px solid #888888;
-  background: #888888;
-  color: white;
-  padding: 8px;
-  height: 34px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  width: 33%;
+  padding: 0.5rem 0;
+  border: 0;
+  color: var(--color-text);
+  background-color: var(--color-main-content-background);
+  font-size: var(--font-size-2xl);
 }
 
-.info-buttons button:hover{
-  background-color: black;
-  color: white;
+@media (max-width: 160rem){
+  .info-button {
+    font-size: var(--font-size-1xl);
+  }
 }
 
-.info-buttons .active{
-  background-color: white;
-  color: black;
+@media (max-width: 121rem){
+  .info-button {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 81rem){
+  .info-button {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 53rem){
+  .info-button {
+    font-size: var(--font-size-0xs);
+  }
+}
+
+.info-button:hover{
+  font-size: 120%;
+}
+
+.active{
+  font-size: 120%;
+  font-weight: bold;
+  border: 0.125rem solid var(--color-tertiary);
+  border-radius: 10px;
 }
 
