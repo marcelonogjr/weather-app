@@ -47,8 +47,8 @@
   width: var(--width-size);
   height: var(--height-size);
   z-index: 10;
-  background-color: var(--color-grey-low-contrast);
-  color: var(--color-text);
+  background-color: var(--color-text);
+  color: var(--color-inverse-text);
   font-size: var(--font-size-2xl);
 }
 
@@ -83,7 +83,7 @@
 }
 
 .address-input::placeholder {
-  color: var(--color-grey-high-contrast);
+  color: var(--color-grey-low-contrast);
 }
 
 .address-input:focus {
@@ -94,11 +94,11 @@
 .bar-button-bundle > button {
   height: var(--height-size);
   width: fit-content;
-  background-color: var(--color-grey-high-contrast);
   padding: 0 0.75rem;
   border: 1px solid var(--color-grey-high-contrast);
   border-radius: 0 10px 10px 0;
-  color: var(--color-inverse-text);
+  background-color: var(--colorgrey-high-contrast);
+  color: var(--color-text);
   font-size: var(--font-size-2xl);
   cursor: pointer;
 }
@@ -136,6 +136,7 @@
 
 .bar-button-bundle > button:hover {
   background-color: var(--color-text);
+  color: var(--color-inverse-text);
 }
 
 .bar-button-bundle > button:focus {
