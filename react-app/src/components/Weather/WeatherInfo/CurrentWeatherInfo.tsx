@@ -7,9 +7,9 @@ import TimeConversor, {
   TimeConversorObjectType,
 } from '../../../others/time-conversor';
 import unitsConversor from '../../../others/units-conversor';
-import SvgHumidityIcon from './icons/HumidityIcon';
-import SvgWindDirectionIcon from './icons/WindDirectionIcon';
-import SvgUVIIndexIcons from './icons/UVIIcons';
+import SvgHumidityIcon from '../../UI/WeatherInfo-Icons/HumidityIcon';
+import SvgWindDirectionIcon from '../../UI/WeatherInfo-Icons/WindDirectionIcon';
+import SvgUVIIndexIcons from '../../UI/WeatherInfo-Icons/UVIIcons';
 import WeatherIconSelector from '../../UI/Weather-Icons/WeatherIconSelector';
 
 interface CurrentWeatherInfoProps {
