@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import ThemeContext from '../../../store/theme-context';
+import styles from './UVIIcons.module.css';
 
 type SvgWindDirectionIconProps = {
   uvIndex: number;
@@ -13,9 +14,6 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
   const svgUVI = (uvIndex: number, component: string) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
-
-    const widhtValue = component === 'current' ? '40' : '20';
-    const heightValue = component === 'current' ? '80' : '40';
 
     const uvISpecifics = (uvINumber: number) => {
       if (uvINumber === 1) {
@@ -96,16 +94,10 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        x={0}
-        y={0}
         viewBox='0 0 104 204'
-        width={widhtValue}
-        height={heightValue}
-        style={{
-          margin: '2px',
-        }}
+        className={styles[`uvi-icon_${props.component}`]}
       >
-        <style>{`.st1{fill: #000}`}</style>
+        <style>{`.uvi-icont1{fill: #000}`}</style>
         <title>
           {component === 'daily' ? 'Maximum ' : ''}Ultraviolet Index: {uvIndex}{' '}
           ({uvISpecifics(uvIndex).risk})
@@ -121,10 +113,10 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
             strokeMiterlimit: 10,
           }}
         />
-        <g className='st1'>
+        <g className='uvi-icont1'>
           <path d='M16.1 16.2V43h22V16.2h7.7v25.3c0 3-.6 5.1-1.7 6.2-1.1 1.1-3.3 1.6-6.5 1.6h-21c-3.2 0-5.4-.5-6.5-1.6-1.1-1.1-1.7-3.2-1.7-6.2V16.2h7.7zM73.9 49.3 54.7 16.2h8.8l13.4 23.9 12.8-23.9h7.7L79.2 49.3h-5.3z' />
         </g>
-        <g className='st1'>
+        <g className='uvi-icont1'>
           <path d='M8.9 70.5V57.3H12v13.1H8.9zM18.6 70.5V57.3h2.1L30 65c.3.3.6.5.8.7l.7.7c0-.7-.1-1.3-.1-1.6V57.2h2.7v13.1H32l-9.6-8.1-.6-.6-.5-.5c0 .4.1.8.1 1.1v8h-2.8zM40.8 70.5V57.3h8.5c2.4 0 4.3.6 5.6 1.7 1.3 1.1 1.9 2.7 1.9 4.8 0 1.2-.3 2.3-.8 3.3s-1.2 1.8-2.1 2.3c-.6.4-1.3.6-2.1.8-.8.2-1.9.2-3.3.2h-7.7zm3-2.5h4c2.1 0 3.6-.3 4.5-1 .9-.7 1.3-1.7 1.3-3.2 0-1.3-.4-2.4-1.1-3.1-.7-.7-1.8-1-3.2-1h-5.4V68zM62.3 70.5V57.3h13.5v2.2H65.4v2.9h6.1v2.2h-6.1V68h10.5v2.5H62.3zM79.6 70.5l6.2-6.8-6.3-6.4h4.1l4.2 4.5 4-4.5h3.5l-5.7 6 7.1 7.1h-4.2l-4.8-5.1-4.4 5.1h-3.7z' />
         </g>
         <path

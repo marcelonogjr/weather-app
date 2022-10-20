@@ -2,17 +2,24 @@
   position:relative;
 }
 
-.humidity-bundle p{
+.humidity-description_daily{
   position:absolute;
   text-align: center;
   margin: 0;
+  width: calc(2 * var(--daily-font-size));
+  top: calc(1.4 * var(--daily-font-size));
+  font-size: calc(0.75 * var(--daily-font-size));
 }
 
-.humidity-bundle p:hover{
+.humidity-description_daily:hover{
   background-color: var(--color-background);
   transform: scale(1.5);
-  border: 1px solid grey;
+  border: 1px solid var(--color-grey-high-contrast);
   border-radius: 2px;
   transition: all 0.5s linear;
   cursor: none;
+}
+
+.humidity-icon_daily {
+  height: calc(3 * var(--daily-font-size));
 }

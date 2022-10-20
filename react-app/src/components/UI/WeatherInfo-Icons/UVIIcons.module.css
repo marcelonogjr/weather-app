@@ -1,0 +1,9 @@
+.uvi-icon_daily {
+  height: calc(3 * var(--daily-font-size));
+}
+
+.uvi-icon_daily:hover{
+  transform: scale(1.5);
+  transition: all 0.5s linear;
+  cursor: none;
+}

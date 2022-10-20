@@ -182,7 +182,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
                 component='hourly'
               />
             </div>
-            <RainProbIcon rainProbValue={Math.round(hourElement.pop * 100)} />
+            <RainProbIcon rainProbValue={Math.round(hourElement.pop * 100)} component='hourly' />
             {/* <p>POP: {Math.round(hourElement.pop * 100)}%</p> */}
           </div>
         </li>

@@ -7,3 +7,8 @@
   display: inline-block;
   text-align: center;
 }
+
+.rain-prob-icon_daily {
+  width: calc(1 * var(--daily-font-size));
+  margin-right: calc(0.3 * var(--daily-font-size));
+}

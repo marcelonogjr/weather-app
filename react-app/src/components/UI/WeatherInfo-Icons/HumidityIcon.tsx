@@ -15,16 +15,15 @@ const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
 
-    const widhtValue = component === 'current' ? '60' : '30';
-    const heightValue = component === 'current' ? '60' : '30';
+    // const widhtValue = component === 'current' ? '60' : '30';
+    // const heightValue = component === 'current' ? '60' : '30';
 
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         xmlnsXlink='http://www.w3.org/1999/xlink'
         viewBox='0 0 376.1 525'
-        width={widhtValue}
-        height={heightValue}
+        className={styles[`humidity-icon_${component}`]}
       >
         <title>{`Humidity: ${humidityValue}%`}</title>
         <defs>
@@ -63,16 +62,9 @@ const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
     );
   };
 
-  const humidityStyles: React.CSSProperties = {
-    width: props.component === 'current' ? '40px' : '20px',
-    left: props.component === 'current' ? '10px' : '5px',
-    top: props.component === 'current' ? '30px' : '15px',
-    fontSize: props.component === 'current' ? '12px' : '8px',
-  };
-
   return (
     <div className={styles['humidity-bundle']}>
-      <p style={humidityStyles}>{props.humidityValue}%</p>
+      <p className={styles[`humidity-description_${props.component}`]}>{props.humidityValue}%</p>
       {svgHumidity(props.humidityValue, props.component)}
     </div>
   );

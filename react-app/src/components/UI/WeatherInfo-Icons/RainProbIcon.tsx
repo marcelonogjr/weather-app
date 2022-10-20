@@ -5,6 +5,7 @@ import styles from './RainProbIcon.module.css';
 
 type SvgRainProbIconProps = {
   rainProbValue: number;
+  component: 'current' | 'hourly' | 'daily';
 };
 
 const SvgRainProbIcon = (props: SvgRainProbIconProps) => {
@@ -13,15 +14,11 @@ const SvgRainProbIcon = (props: SvgRainProbIconProps) => {
   const rainProb = (rainProbValue : number) => {
     const cloudColor = theme === 'light' ?'#3385e4' : '#fff';
   
-    const widhtValue = '30';
-    const heightValue = '30';
     
     return (  <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 76.5 100"
-      width={widhtValue}
-      height={heightValue}
-      style={{ padding: '4px' }}
+      className={styles[`rain-prob-icon_${props.component}`]}
     >
       <title>Rain probability: {rainProbValue}%</title>
       <style>{`.rainprob0{fill:${cloudColor}}`}</style>

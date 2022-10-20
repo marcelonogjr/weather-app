@@ -24,21 +24,28 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   const scrollRef = useHorizontalScroll();
 
   const dateInfo = (dateConversorObject: DateConversorObjectType) => {
-    return (
-      <b>
-        {dateConversorObject.month.numb > 9
-          ? dateConversorObject.month.numb
-          : '0' + dateConversorObject.month.numb}
-        /
-        {dateConversorObject.day > 9
-          ? dateConversorObject.day
-          : '0' + dateConversorObject.day}
-        /
-        {dateConversorObject.year > 9
-          ? dateConversorObject.year
-          : '0' + dateConversorObject.year}
-      </b>
-    );
+    return {
+      date: (
+        <p className={styles['daily-date']}>
+          {dateConversorObject.month.numb > 9
+            ? dateConversorObject.month.numb
+            : '0' + dateConversorObject.month.numb}
+          /
+          {dateConversorObject.day > 9
+            ? dateConversorObject.day
+            : '0' + dateConversorObject.day}
+          /
+          {dateConversorObject.year > 9
+            ? dateConversorObject.year
+            : '0' + dateConversorObject.year}
+        </p>
+      ),
+      weekDay: (
+        <p className={styles['daily-week_day']}>
+          {dateConversorObject.weekDay}
+        </p>
+      ),
+    };
   };
 
   const modifiedDailyData = props.dailyData.map((element) => {
@@ -50,6 +57,8 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
       },
     };
   });
+
+  modifiedDailyData.push(modifiedDailyData[modifiedDailyData.length - 1]);
 
   const maxTemperatureDaily = Math.round(
     [...modifiedDailyData]
@@ -67,8 +76,6 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   );
   const rangeTemperatureDaily = maxTemperatureDaily - minTemperatureDaily;
 
-  const styleLiWidth = 1500 / modifiedDailyData.length;
-  const styleLiHeight = 250;
   const dailyLiBackgrounds = dailyLiBackground(
     units,
     maxTemperatureDaily,
@@ -83,8 +90,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     const dailyDate = dateInfo(TimeConversor(dayElement.dt).date);
 
     const graphLiStyle: React.CSSProperties = {
-      width: `${styleLiWidth}px`,
-      height: `${styleLiHeight}px`,
+      width: `calc(var(--daily-item-width) / ${modifiedDailyData.length})`,
       clipPath: `polygon(
         100% calc(95% - ${
           (80 * (Math.round(dayElement.temp.min) - minTemperatureDaily)) /
@@ -107,68 +113,69 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
           rangeTemperatureDaily
         }%)
         )`,
-      transform: `translateX(${-index}px)`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
       background: dailyLiBackgrounds,
     };
 
     const pMaxTemperatureStyle: React.CSSProperties = {
-      right: `-20px`,
+      right: `calc(-1.2 * var(--daily-font-size))`,
       top: `calc(95% - ${
         (80 * (Math.round(dayElement.temp.max) - minTemperatureDaily)) /
         rangeTemperatureDaily
-      }% + 0.5% - 37.5px)`,
-      transform: `translateX(${-index}px)`,
-    };
-    const divMaxCircleStyle: React.CSSProperties = {
-      right: `-4px`,
-      top: `calc(95% - ${
-        (80 * (Math.round(dayElement.temp.max) - minTemperatureDaily)) /
-        rangeTemperatureDaily
-      }% + 0.5% - 4px)`,
-      transform: `translateX(${-index}px)`,
+      }% + 0.5% - 3 * var(--daily-font-size))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
     };
 
     const pMinTemperatureStyle: React.CSSProperties = {
-      right: `-20px`,
+      right: `calc(-1.2 * var(--daily-font-size))`,
       top: `calc(95% - ${
         (80 * (Math.round(dayElement.temp.min) - minTemperatureDaily)) /
         rangeTemperatureDaily
-      }% + 0.5% - 5px)`,
-      transform: `translateX(${-index}px)`,
-    };
-    const divMinCircleStyle: React.CSSProperties = {
-      right: `-4px`,
-      top: `calc(95% - ${
-        (80 * (Math.round(dayElement.temp.min) - minTemperatureDaily)) /
-        rangeTemperatureDaily
-      }% + 0.5% - 4px)`,
-      transform: `translateX(${-index}px)`,
+      }% + 0.5% - 0.375 * var(--daily-font-size))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
     };
 
     const divInfoStyle: React.CSSProperties = {
-      width: `${styleLiWidth}px`,
+      width: `calc(var(--daily-item-width) / ${modifiedDailyData.length})`,
       top: `calc(95% - ${
         (80 * (Math.round(dayElement.temp.min) - minTemperatureDaily)) /
         rangeTemperatureDaily
-      }% + 0.5% + 30px)`,
-      right: `${styleLiWidth * -0.5}px`,
-      transform: `translateX(${-index}px)`,
+      }% + 0.5% + 3 * var(--daily-font-size))`,
+      right: `calc(-0.5 * var(--daily-item-width) / ${modifiedDailyData.length})`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
     };
 
+    if (index === modifiedDailyData.length - 1) {
+      return (
+        <li className={styles['daily-item']} key={`li-key_${dayElement.dt}`}>
+          <div
+            style={{
+              ...graphLiStyle,
+              mask: 'linear-gradient(270deg, transparent 0%, #000 100%)',
+              WebkitMask: 'linear-gradient(270deg, transparent 0%, #000 100%)',
+            }}
+          ></div>
+        </li>
+      );
+    }
+
     return (
-      <li id={styles['daily-graph']} key={`li-key_${dayElement.dt}`}>
-        <div style={graphLiStyle}></div>
+      <li className={styles['daily-item']} key={`li-key_${dayElement.dt}`}>
         <div
-          className={styles['daily-graph__dots']}
-          style={divMaxCircleStyle}
+          style={
+            index === 1
+              ? {
+                  ...graphLiStyle,
+                  mask: 'linear-gradient(90deg, transparent 0%, #000 100%)',
+                  WebkitMask:
+                    'linear-gradient(90deg, transparent 0%, #000 100%)',
+                }
+              : graphLiStyle
+          }
         ></div>
         <p className={styles['daily-temperature']} style={pMaxTemperatureStyle}>
           {unitsConversor(units, 'temp', props.dailyData[index].temp.max)}
         </p>
-        <div
-          className={styles['daily-graph__dots']}
-          style={divMinCircleStyle}
-        ></div>
         <p className={styles['daily-temperature']} style={pMinTemperatureStyle}>
           {unitsConversor(units, 'temp', props.dailyData[index].temp.min)}
         </p>
@@ -178,7 +185,8 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
             iconDescription={dayElement.weather[0].description}
             parentComponent='daily'
           />
-          <p>{dailyDate}</p>
+          {dailyDate.weekDay}
+          {dailyDate.date}
           <div className={styles['uvi_humidity-bundle']}>
             <SvgUVIIndexIcons
               uvIndex={Math.round(dayElement.uv)}
@@ -189,7 +197,10 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
               component='daily'
             />
           </div>
-          <RainProbIcon rainProbValue={Math.round(dayElement.pop * 100)} />
+          <RainProbIcon
+            rainProbValue={Math.round(dayElement.pop * 100)}
+            component='daily'
+          />
         </div>
       </li>
     );
@@ -197,7 +208,9 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
 
   return (
     <div className={styles['daily-bundle']}>
-      <ul ref={scrollRef}>{dailyList}</ul>
+      <ul ref={scrollRef} className={styles['daily-items']}>
+        {dailyList}
+      </ul>
     </div>
   );
 };
