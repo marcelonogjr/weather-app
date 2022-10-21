@@ -12,3 +12,8 @@
   width: calc(1 * var(--daily-font-size));
   margin-right: calc(0.3 * var(--daily-font-size));
 }
+
+.rain-prob-icon_hourly {
+  width: calc(1 * var(--hourly-font-size));
+  margin-right: calc(0.3 * var(--hourly-font-size));
+}

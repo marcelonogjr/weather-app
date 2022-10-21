@@ -1,4 +1,4 @@
-export const dailyLiBackground = (
+export const graphLiBackground = (
   unit: 'metric' | 'imperial',
   maxTemperature: number,
   minTemperature: number

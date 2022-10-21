@@ -1,52 +1,83 @@
 .hourly-bundle {
+  --hourly-font-size: var(--font-size-2xl);
   display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 90%;
-  border: 2px solid black;
+  flex-direction: row;
+  height: calc(34 * var(--hourly-font-size));
+  width: 100%;
 }
 
-.hourly-bundle ul {
-  display: flex;
-  padding: 0;
-  list-style-type: none;
-  height: 25rem;
-  width: 100%;
+@media (max-width: 160rem){
+  .hourly-bundle {
+    --hourly-font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 121rem){
+  .hourly-bundle {
+    --hourly-font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 81rem){
+  .hourly-bundle {
+    --hourly-font-size: var(--font-size-0xs);
+  }
+}
+
+@media (max-width: 53rem){
+  .hourly-bundle {
+    --hourly-font-size: var(--font-size-sm);
+  }
+}
+
+.hourly-items {
   overflow-x: scroll;
   overflow-y: hidden;
+  display: flex;
+  padding: 0 0 1rem 0;
+  list-style-type: none;
   position: relative;
+  --hourly-item-width: calc(93.75 * 49 / 9 * var(--hourly-font-size));
 }
 
-#hourly-graph {
+.hourly-item {
   display: flex;
   padding: 0;
-  height: 250px;
+  height: calc(15.625 * var(--hourly-font-size));
   width: 100%;
   position: relative;
+  font-size: var(--hourly-font-size);
 }
 
 .graph-lines {
-  background-color: white;
   flex-shrink: 0;
 }
 
 .hourly-temperature {
-  /* display: block; */
-  font-size: 14px;
   text-align: center;
-  width: 40px;
-  height: 20px;
-  color: white;
+  color: var(--color-text);
   position: absolute;
+  z-index: 1;
+}
+.hourly-temperature::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -0.3rem;
+  padding: 0 0.3rem;
+  background-color: var(--color-main-content-background);
+  border-radius: 20%;
+  z-index: -80;
+  opacity: 0.5;
 }
 
 .hourly-graph__dots {
-  /* display: block; */
-  width: 8px;
-  height: 8px;
-  background-color: white;
+  width: calc(var(--hourly-font-size) / 16 * 6);
+  height: calc(var(--hourly-font-size) / 16 * 6);
   position: absolute;
   clip-path: circle(50%);
+  z-index: 10;
 }
 
 .hourly-info {
@@ -54,19 +85,16 @@
   flex-direction: column;
   position: absolute;
   align-items: center;
-  z-index: 3;
+  width: fit-content;
 }
 
 .hourly-info p {
   margin: 0;
 }
 
-.weather-icon {
-  width: 50px;
-  height: 50px;
-}
-
 .uvi_humidity-bundle {
   display: flex;
   align-items: center;
+  padding: calc(0.5 * var(--hourly-font-size)) 0;
+  gap: calc(0.5 * var(--hourly-font-size));
 }

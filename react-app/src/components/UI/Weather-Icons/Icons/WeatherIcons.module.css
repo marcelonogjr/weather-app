@@ -1,6 +1,5 @@
 .weather-selector {
   --svg-current-icon-size: 7rem;
-  --svg-hourly-icon-size: 3rem;
 }
 
 .weather-svg_current{
@@ -9,8 +8,7 @@
 }
 
 .weather-svg_hourly{
-  width: var(--svg-hourly-icon-size);
-  height: var(--svg-hourly-icon-size);
+  height: calc(4 * var(--hourly-font-size));
 }
 
 .weather-svg_daily{

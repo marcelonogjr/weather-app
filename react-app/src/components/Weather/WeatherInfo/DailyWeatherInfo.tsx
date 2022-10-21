@@ -8,7 +8,7 @@ import TimeConversor, {
   DateConversorObjectType,
 } from '../../../others/time-conversor';
 import unitsConversor from '../../../others/units-conversor';
-import { dailyLiBackground } from '../../../others/daily-graph-gradient';
+import { graphLiBackground } from '../../../others/graphs-gradient';
 
 import SvgHumidityIcon from '../../UI/WeatherInfo-Icons/HumidityIcon';
 import RainProbIcon from '../../UI/WeatherInfo-Icons/RainProbIcon';
@@ -76,7 +76,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
   );
   const rangeTemperatureDaily = maxTemperatureDaily - minTemperatureDaily;
 
-  const dailyLiBackgrounds = dailyLiBackground(
+  const dailyLiBackgrounds = graphLiBackground(
     units,
     maxTemperatureDaily,
     minTemperatureDaily

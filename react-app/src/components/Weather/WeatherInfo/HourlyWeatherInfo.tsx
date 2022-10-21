@@ -13,6 +13,8 @@ import SvgHumidityIcon from '../../UI/WeatherInfo-Icons/HumidityIcon';
 import RainProbIcon from '../../UI/WeatherInfo-Icons/RainProbIcon';
 import SvgUVIIndexIcons from '../../UI/WeatherInfo-Icons/UVIIcons';
 import WeatherIconSelector from '../../UI/Weather-Icons/WeatherIconSelector';
+import { graphLiBackground } from '../../../others/graphs-gradient';
+import { hourlyDotsBackground } from '../../../others/hourly-dots-color';
 
 interface HourlyWeatherInfoProps {
   hourlyData: HourlyAPIDataType;
@@ -61,6 +63,8 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     };
   });
 
+  modifiedHourlyData.push(modifiedHourlyData[modifiedHourlyData.length - 1]);
+
   const maxTemperatureHourly: number = Math.round(
     [...modifiedHourlyData]
       .map((element) => element.temp)
@@ -78,8 +82,11 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
   const rangeTemperatureHourly: number =
     maxTemperatureHourly - minTemperatureHourly;
 
-  const styleLiWidth = 7000 / modifiedHourlyData.length;
-  const styleLiHeight = 250;
+  const hourlyLiBackgrounds = graphLiBackground(
+    units,
+    maxTemperatureHourly,
+    minTemperatureHourly
+  );
 
   const hourlyList = modifiedHourlyData.map(
     (hourElement, index, hourlyArray) => {
@@ -87,27 +94,25 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
         return <li key={hourElement.dt + 'null'}></li>;
       }
       const widthCorrection =
-        (1 *
-          Math.sqrt(
-            ((100 * styleLiWidth) / styleLiHeight) ** 2 +
+        Math.sqrt(
+          (9800 / 3) ** 2 +
+            (95 -
+              (80 *
+                (Math.round(hourlyArray[index - 1].temp) -
+                  minTemperatureHourly)) /
+                rangeTemperatureHourly -
               (95 -
-                (80 *
-                  (Math.round(hourlyArray[index - 1].temp) -
-                    minTemperatureHourly)) /
-                  rangeTemperatureHourly -
-                (95 -
-                  (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
-                    rangeTemperatureHourly)) **
-                2
-          )) /
-        ((100 * styleLiWidth) / styleLiHeight);
+                (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
+                  rangeTemperatureHourly)) **
+              2
+        ) /
+        (9800 / 3);
 
       const hourlyTime = timeInfo(TimeConversor(hourElement.dt).time);
       const hourlyDate = dateInfo(TimeConversor(hourElement.dt).date);
 
       const graphLiStyle: React.CSSProperties = {
-        width: `${styleLiWidth}px`,
-        height: `${styleLiHeight}px`,
+        width: `calc(var(--hourly-item-width) / ${modifiedHourlyData.length})`,
         clipPath: `polygon(
         0% calc(95% - ${
           (80 *
@@ -127,33 +132,65 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
             (Math.round(hourlyArray[index - 1].temp) - minTemperatureHourly)) /
           rangeTemperatureHourly
         }% + ${widthCorrection}%))`,
+        background: hourlyLiBackgrounds,
       };
       const pTemperatureStyle: React.CSSProperties = {
-        right: `-20px`,
+        right: `calc(-1.2 * var(--hourly-font-size))`,
         top: `calc(95% - ${
           (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
           rangeTemperatureHourly
-        }% + 0.5% - 37.5px)`,
+        }% + 0.5% - 3 * var(--hourly-font-size))`,
       };
       const divCircleStyle: React.CSSProperties = {
-        right: `-4px`,
+        right: `calc(var(--hourly-font-size) / 16 * -3)`,
         top: `calc(95% - ${
           (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
           rangeTemperatureHourly
-        }% + 0.5% - 4px)`,
+        }% + 0.5% - calc(var(--hourly-font-size) / 16 * 3))`,
+        backgroundColor: hourlyDotsBackground(units, hourElement.temp)
       };
       const divInfoStyle: React.CSSProperties = {
-        width: `${styleLiWidth}px`,
+        width: `calc(var(--hourly-item-width) / ${modifiedHourlyData.length})`,
         top: `calc(95% - ${
           (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
           rangeTemperatureHourly
-        }% + 0.5% + 10px)`,
-        right: `${styleLiWidth * -0.5}px`,
+        }% + 0.5% + 2 * var(--hourly-font-size))`,
+        right: `calc(-0.5 * var(--hourly-item-width) / ${modifiedHourlyData.length})`,
       };
 
+      if (index === modifiedHourlyData.length - 1) {
+        return (
+          <li
+            className={styles['hourly-item']}
+            key={`li-key_${hourElement.dt}`}
+          >
+            <div
+              style={{
+                ...graphLiStyle,
+                mask: 'linear-gradient(270deg, transparent 0%, #000 100%)',
+                WebkitMask:
+                  'linear-gradient(270deg, transparent 0%, #000 100%)',
+              }}
+            ></div>
+          </li>
+        );
+      }
+
       return (
-        <li id={styles['hourly-graph']} key={`li-key_${hourElement.dt}`}>
-          <div className={styles['graph-lines']} style={graphLiStyle}></div>
+        <li className={styles['hourly-item']} key={`li-key_${hourElement.dt}`}>
+          <div
+            className={styles['graph-lines']}
+            style={
+              index === 1
+                ? {
+                    ...graphLiStyle,
+                    mask: 'linear-gradient(90deg, transparent 0%, #000 100%)',
+                    WebkitMask:
+                      'linear-gradient(90deg, transparent 0%, #000 100%)',
+                  }
+                : graphLiStyle
+            }
+          ></div>
           <div
             className={styles['hourly-graph__dots']}
             style={divCircleStyle}
@@ -169,9 +206,6 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
             />
             <p>{hourlyTime}</p>
             <p>{hourlyDate}</p>
-            {/* <p>Weather: {hourElement.weather[0].main}</p> */}
-            {/* <p>UVI: {Math.round(hourElement.uv)}</p> */}
-            {/* <p>Humidity: {Math.round(hourElement.humidity)}%</p> */}
             <div className={styles['uvi_humidity-bundle']}>
               <SvgUVIIndexIcons
                 uvIndex={Math.round(hourElement.uv)}
@@ -182,8 +216,10 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
                 component='hourly'
               />
             </div>
-            <RainProbIcon rainProbValue={Math.round(hourElement.pop * 100)} component='hourly' />
-            {/* <p>POP: {Math.round(hourElement.pop * 100)}%</p> */}
+            <RainProbIcon
+              rainProbValue={Math.round(hourElement.pop * 100)}
+              component='hourly'
+            />
           </div>
         </li>
       );
@@ -192,7 +228,9 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
 
   return (
     <div className={styles['hourly-bundle']}>
-      <ul ref={scrollRef}>{hourlyList}</ul>
+      <ul ref={scrollRef} className={styles['hourly-items']}>
+        {hourlyList}
+      </ul>
     </div>
   );
 };
