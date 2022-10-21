@@ -113,7 +113,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
           rangeTemperatureDaily
         }%)
         )`,
-      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 16))`,
       background: dailyLiBackgrounds,
     };
 
@@ -123,7 +123,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         (80 * (Math.round(dayElement.temp.max) - minTemperatureDaily)) /
         rangeTemperatureDaily
       }% + 0.5% - 3 * var(--daily-font-size))`,
-      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 16))`,
     };
 
     const pMinTemperatureStyle: React.CSSProperties = {
@@ -132,7 +132,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         (80 * (Math.round(dayElement.temp.min) - minTemperatureDaily)) /
         rangeTemperatureDaily
       }% + 0.5% - 0.375 * var(--daily-font-size))`,
-      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 16))`,
     };
 
     const divInfoStyle: React.CSSProperties = {
@@ -142,7 +142,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
         rangeTemperatureDaily
       }% + 0.5% + 3 * var(--daily-font-size))`,
       right: `calc(-0.5 * var(--daily-item-width) / ${modifiedDailyData.length})`,
-      transform: `translateX(calc(${-index} * var(--daily-font-size) / 6))`,
+      transform: `translateX(calc(${-index} * var(--daily-font-size) / 16))`,
     };
 
     if (index === modifiedDailyData.length - 1) {
