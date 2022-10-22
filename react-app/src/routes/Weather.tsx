@@ -5,7 +5,6 @@ import MapContextProvider from '../store/MapContextProvider';
 
 import WeatherForm from '../components/Weather/WeatherForm';
 import WeatherInfo from '../components/Weather/WeatherInfo';
-import WeatherMap from '../components/Weather/WeatherMap';
 import styles from './Weather.module.css';
 
 const Weather: React.FC = () => {
@@ -16,7 +15,6 @@ const Weather: React.FC = () => {
         <MapContextProvider>
           <WeatherForm />
           <WeatherInfo />
-          <WeatherMap />
         </MapContextProvider>
       </WeatherContextProvider>
     </div>

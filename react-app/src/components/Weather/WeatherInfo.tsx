@@ -19,6 +19,7 @@ type currentInfoType = 'current' | 'hourly' | 'daily';
 const WeatherInfo = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [weatherData, setWeatherData] = useState<WeatherAPIDataType>();
+  const [mapImage, setMapImage] = useState<undefined | string>();
   const [currentInfo, setCurrentInfo] = useState<currentInfoType>('current');
 
   const {
@@ -38,13 +39,14 @@ const WeatherInfo = () => {
   const serverUrl = 'https://weather.marcelojr.tech';
 
   useEffect(() => {
-    const abortController = new AbortController();
+    const infoAbortController = new AbortController();
+    const mapAbortController = new AbortController();
 
     const fetchWeatherInfo = async () => {
       try {
         const response = await fetch(
           `${serverUrl}/api/weather?lat=${lat}&lon=${lon}`,
-          { signal: abortController.signal }
+          { signal: infoAbortController.signal }
         );
         const responseJSON = await response.json();
 
@@ -75,13 +77,47 @@ const WeatherInfo = () => {
       }
     };
 
+    const fetchMap = async () => {
+      try {
+        const res = await fetch(`${serverUrl}/api/weather-map?lat=${lat}&lon=${lon}&zoom=${zoom}&map__type=${mapLayer}`, { signal: mapAbortController.signal });
+        if (!res.ok) {
+          const resJSON = await res.json();
+          if (isErrorType(resJSON)) {
+            throw new Error(resJSON.error);
+          } else {
+            throw new Error(
+              'Something went wrong! Try again later or, if the problem persists, please contact the development team.'
+            );
+          }
+        } else {
+          const imageBlob = await res.blob();
+          const imageObjectURL = URL.createObjectURL(imageBlob);
+          setMapImage(imageObjectURL);
+          statusIsReady({
+            mapIsReady: true,
+          });
+        }
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          if (error.message !== 'The user aborted a request.'){
+            changeInError({
+              errorStatus: true,
+              errorMessage: error.message,
+            });
+          }
+        }
+      }
+    };
+
     if (lat && lon && zoom && mapLayer && !isReady) {
       setIsLoading(true);
       fetchWeatherInfo();
+      fetchMap();
     }
 
     return () => {
-      abortController.abort();
+      infoAbortController.abort();
+      mapAbortController.abort();
     };
   }, [lat, lon, statusIsReady, zoom, mapLayer, isReady, changeInError]);
 
@@ -132,7 +168,7 @@ const WeatherInfo = () => {
           />
           <div className={styles['weather-bundle']}>
             {currentInfo === 'current' && (
-              <CurrentWeatherInfo currentData={weatherData.current} />
+              <CurrentWeatherInfo currentData={weatherData.current} mapImage={mapImage}/>
             )}
             {currentInfo === 'hourly' && (
               <HourlyWeatherInfo hourlyData={weatherData.hourly} />

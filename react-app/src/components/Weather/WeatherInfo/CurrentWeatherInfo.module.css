@@ -1,9 +1,10 @@
 .current-bundle {
+  --current-font-size: var(--font-size-sm);
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: calc(34 * var(--current-font-size));
   width: 100%;
-  border: 2px solid black; 
+  font-size: var(--current-font-size);
 }
 
 .current-bundle > p{

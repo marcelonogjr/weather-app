@@ -11,9 +11,11 @@ import SvgHumidityIcon from '../../UI/WeatherInfo-Icons/HumidityIcon';
 import SvgWindDirectionIcon from '../../UI/WeatherInfo-Icons/WindDirectionIcon';
 import SvgUVIIndexIcons from '../../UI/WeatherInfo-Icons/UVIIcons';
 import WeatherIconSelector from '../../UI/Weather-Icons/WeatherIconSelector';
+import WeatherMap from './WeatherMap';
 
 interface CurrentWeatherInfoProps {
   currentData: CurrentAPIDataType;
+  mapImage: undefined | string;
 }
 
 const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
@@ -81,6 +83,7 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
         <SvgWindDirectionIcon windDirection={props.currentData.wind_deg} />
         <p>{unitsConversor(units, 'speed', props.currentData.wind_speed)}</p>
       </div>
+      <WeatherMap mapImage={props.mapImage}/>
     </div>
   );
 };

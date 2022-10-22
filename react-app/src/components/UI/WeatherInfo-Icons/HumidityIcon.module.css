@@ -1,5 +1,15 @@
 .humidity-bundle{
   position:relative;
+  --current-font-size: var(--font-size-sm);
+}
+
+.humidity-description_current{
+  position:absolute;
+  text-align: center;
+  margin: 0;
+  width: calc(2 * var(--current-font-size));
+  top: calc(1.4 * var(--current-font-size));
+  font-size: calc(0.75 * var(--current-font-size));
 }
 
 .humidity-description_hourly{
@@ -29,6 +39,10 @@
   border-radius: 2px;
   transition: all 0.5s linear;
   cursor: none;
+}
+
+.humidity-icon_current {
+  height: calc(3 * var(--current-font-size));
 }
 
 .humidity-icon_hourly {
