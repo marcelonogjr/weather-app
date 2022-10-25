@@ -1,13 +1,46 @@
 .current-bundle {
   --current-font-size: var(--font-size-sm);
   display: flex;
-  flex-direction: column;
   height: calc(34 * var(--current-font-size));
   width: 100%;
+  justify-content: space-between;
   font-size: var(--current-font-size);
 }
 
-.current-bundle > p{
+@media (max-width: 160rem){
+  .current-bundle {
+    --current-font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 121rem){
+  .current-bundle {
+    --current-font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 81rem){
+  .current-bundle {
+    --current-font-size: var(--font-size-0xs);
+  }
+}
+
+@media (max-width: 53rem){
+  .current-bundle {
+    --current-font-size: var(--font-size-sm);
+  }
+}
+
+.current-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 3;
+  align-items: center;
+  justify-content: center;
+}   
+
+.current-info > p{
   margin: 0;
 }
 

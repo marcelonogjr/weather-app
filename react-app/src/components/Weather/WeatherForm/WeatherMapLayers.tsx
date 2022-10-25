@@ -14,7 +14,7 @@ interface WeatherMapLayersProps {
 }
 
 const WeatherMapLayers = (props: WeatherMapLayersProps) => {
-  const selectedZoom = (currentLayer = props.selectedLayer) => {
+  const selectedLayer = (currentLayer = props.selectedLayer) => {
     if (currentLayer === 'clouds') {
       return 'Clouds';
     } else if (currentLayer === 'precipitation') {
@@ -29,7 +29,7 @@ const WeatherMapLayers = (props: WeatherMapLayersProps) => {
   };
   return (
     <div className={styles['layer-bundle']}>
-      <p>Weather Layer: {selectedZoom()}</p>
+      <p>Weather Layer: {selectedLayer()}</p>
       <ul className={styles['weather-layer_icons']}>
         <li>
           <label>
