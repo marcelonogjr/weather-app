@@ -58,7 +58,7 @@ const DailyWeatherInfo = (props: DailyWeatherInfoProps) => {
     };
   });
 
-  modifiedDailyData.push(modifiedDailyData[modifiedDailyData.length - 1]);
+  modifiedDailyData.push({...modifiedDailyData[modifiedDailyData.length - 1], dt: 2});
 
   const maxTemperatureDaily = Math.round(
     [...modifiedDailyData]

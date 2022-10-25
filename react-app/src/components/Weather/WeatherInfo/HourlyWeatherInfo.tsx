@@ -63,7 +63,10 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
     };
   });
 
-  modifiedHourlyData.push(modifiedHourlyData[modifiedHourlyData.length - 1]);
+  modifiedHourlyData.push({
+    ...modifiedHourlyData[modifiedHourlyData.length - 1],
+    dt: 1,
+  });
 
   const maxTemperatureHourly: number = Math.round(
     [...modifiedHourlyData]
@@ -147,7 +150,7 @@ const HourlyWeatherInfo = (props: HourlyWeatherInfoProps) => {
           (80 * (Math.round(hourElement.temp) - minTemperatureHourly)) /
           rangeTemperatureHourly
         }% + 0.5% - calc(var(--hourly-font-size) / 16 * 3))`,
-        backgroundColor: hourlyDotsBackground(units, hourElement.temp)
+        backgroundColor: hourlyDotsBackground(units, hourElement.temp),
       };
       const divInfoStyle: React.CSSProperties = {
         width: `calc(var(--hourly-item-width) / ${modifiedHourlyData.length})`,

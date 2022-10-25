@@ -30,10 +30,6 @@ const WeatherMap = (props: { mapImage: undefined | string }) => {
         })
       : '';
 
-  console.log(
-    mapLayer && units && MapLegendProperties(units)[mapLayer].gradient
-  );
-
   return (
     <>
       {mapLayer && units && (
