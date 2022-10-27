@@ -4,22 +4,8 @@
   justify-content: flex-start;
   margin: 1rem 0;
   padding: 1rem;
-  height: auto;
-  width: 60vw;
   background-color: var(--color-main-content-background);
-  border-radius: 10px;
-}
-
-@media(max-width: 121rem){
-  .info-bundle {
-    width: 75vw;
-  }
-}
-
-@media(max-width: 81rem){
-  .info-bundle {
-    width: 98vw;
-  }
+  border-radius: 20px;
 }
 
 .location_units-bundle {

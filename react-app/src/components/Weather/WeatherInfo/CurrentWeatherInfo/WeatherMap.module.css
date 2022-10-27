@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  --map-width-height: calc(30 * var(--current-font-size));
+  --map-width-height: calc(28 * var(--current-font-size));
   border: solid var(--color-text);
   border-width: 2px;
   border-radius: 10px;
@@ -10,6 +10,12 @@
   width: fit-content;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+@media (max-width: 36rem) {
+  .map-bundle {
+    --map-width-height: 100%;
+  }
 }
 
 .map {
@@ -59,10 +65,12 @@
   width: var(--map-width-height);
   height: calc(2 * var(--current-font-size));
   z-index: 5;
+  flex-shrink: 1;
 }
 
 .map-legend > span {
   z-index: 10;
-  width: calc(2.4 * var(--current-font-size));
+  flex-basis: calc(2.4 * var(--current-font-size));
   margin: 0;
+  flex-shrink: 1;
 }

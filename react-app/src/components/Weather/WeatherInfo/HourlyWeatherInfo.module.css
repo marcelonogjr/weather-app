@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: row;
   height: calc(34 * var(--hourly-font-size));
-  width: 100%;
+  width: calc(55 * var(--hourly-font-size));
+  /* width: 100%; */
 }
 
 @media (max-width: 160rem) {
@@ -26,6 +27,7 @@
 
 @media (max-width: 53rem) {
   .hourly-bundle {
+    width: 90vw;
     --hourly-font-size: var(--font-size-sm);
   }
 }

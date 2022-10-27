@@ -1,15 +1,14 @@
 .humidity-bundle{
   position:relative;
-  --current-font-size: var(--font-size-sm);
 }
 
 .humidity-description_current{
   position:absolute;
   text-align: center;
   margin: 0;
-  width: calc(2 * var(--current-font-size));
-  top: calc(1.4 * var(--current-font-size));
-  font-size: calc(0.75 * var(--current-font-size));
+  width: 100%;
+  top: calc(9.8 / 3 * var(--current-font-size));
+  font-size: calc(var(--current-font-size));
 }
 
 .humidity-description_hourly{
@@ -31,6 +30,7 @@
 }
 
 
+.humidity-description_current:hover,
 .humidity-description_hourly:hover,
 .humidity-description_daily:hover{
   background-color: var(--color-background);
@@ -42,7 +42,7 @@
 }
 
 .humidity-icon_current {
-  height: calc(3 * var(--current-font-size));
+  height: calc(7 * var(--current-font-size));
 }
 
 .humidity-icon_hourly {

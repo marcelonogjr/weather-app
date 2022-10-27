@@ -1,6 +1,5 @@
 .uvi-icon_current {
-  --current-font-size: var(--font-size-sm);
-  height: calc(3 * var(--current-font-size));
+  height: calc(11 * var(--current-font-size));
 }
 
 .uvi-icon_hourly {
