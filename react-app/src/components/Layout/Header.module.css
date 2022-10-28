@@ -6,9 +6,9 @@
   align-items: center;
   flex-shrink: 1;
   height: calc(10rem + 4px);
-  width: calc(100vw - 20px);
+  width: calc(100vw - 10px);
   margin: 1rem 0;
-  transition: all 0.5s ease-out, top 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* same transition from body, then the one for the top */
+  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* same transition from body, then the one for the top */
   top: 0;
   z-index: 1000;
   background-color: var(--color-background);
@@ -113,7 +113,6 @@
   margin: auto 2.5rem;
   width: 13.75rem;
   text-align: center;
-  transition: font-size 1s ease-in-out;
 }
 
 .link:hover {
