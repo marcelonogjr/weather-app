@@ -60,8 +60,4 @@ export const aboutIntroText = `
   and email at **marcelo@marcelojr.tech**.
   
   Without further ado, happy readings!
-  
-  > "If you cannot explain something in simple terms, you don't understand it. The best way to learn is to teach."
-  >
-  >  Feynman? Einstein? It doesn't really matter, does it?
 `;

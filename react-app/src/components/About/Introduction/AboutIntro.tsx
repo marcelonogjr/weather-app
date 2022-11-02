@@ -9,6 +9,13 @@ const AboutIntro = () => {
     <>
       <article className={styles['article-content']}>
         <ReactMdCustomPure text={aboutIntroText} />
+        <blockquote>
+          If you cannot explain something in simple terms, you don't understand
+          it. The best way to learn is to teach.
+        </blockquote>
+        <figcaption>
+          Feynman? Einstein? It doesn't really matter, does it?
+        </figcaption>
       </article>{' '}
       <BottomNavButtons
         previous={{
