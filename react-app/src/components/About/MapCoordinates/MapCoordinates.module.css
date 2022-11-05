@@ -79,7 +79,7 @@
 
 @media (max-width: 36rem) {
   .san_francisco_comparison-bundle {
-    --image4-parameter: calc(0.42 * var(--articles-font-size));
+    --image4-parameter: calc(0.4 * var(--articles-font-size));
   }
 }
 
@@ -121,7 +121,7 @@
 
 @media (max-width: 36rem) {
   .san_francisco_step_3-bundle {
-    --image7-parameter: calc(0.6 * var(--articles-font-size));
+    --image7-parameter: calc(0.54 * var(--articles-font-size));
   }
 }
 
@@ -218,7 +218,7 @@
 
 @media (max-width: 36rem) {
   .san_francisco_step_5-bundle {
-    --image11-parameter: calc(0.6 * var(--articles-font-size));
+    --image11-parameter: calc(0.55 * var(--articles-font-size));
   }
 }
 
@@ -309,7 +309,7 @@
 
 @media (max-width: 36rem) {
   .san_francisco_step_7-bundle {
-    --image15-parameter: calc(0.55 * var(--articles-font-size));
+    --image15-parameter: calc(0.52 * var(--articles-font-size));
   }
 }
 
