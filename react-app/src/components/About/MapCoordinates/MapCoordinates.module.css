@@ -3,186 +3,344 @@
   flex-direction: column;
 }
 
-.article-content a{
+.article-content a {
   color: var(--color-hlink);
 }
 
-.map_distortion-bundle {
-  display: flex;
-  justify-content: center;
+.article-content > svg {
+  align-self: center;
 }
 
-.map_distortion-bundle p {
-  height: auto;
-  margin: 0;
-  padding-top: 1rem;
+.article-content > svg,
+.article-content > div {
+  margin: calc(var(--articles-font-size) * 2) 0
+    calc(var(--articles-font-size) * 2) 0;
+}
+
+.ref-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ref-span {
+  color: var(--color-hlink);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#map_coordinates-svg1 {
+  max-width: calc(30 * var(--articles-font-size));
+  max-height: calc(37.5 * var(--articles-font-size));
 }
 
 .web_mercator_zoom_0-bundle {
   position: relative;
   align-self: center;
+  --image2-parameter: var(--articles-font-size);
 }
+
+@media (max-width: 36rem) {
+  .web_mercator_zoom_0-bundle {
+    --image2-parameter: calc(0.7 * var(--articles-font-size));
+  }
+}
+
+#map_coordinates-svg2 {
+  width: calc(22.96875 * var(--image2-parameter));
+  height: calc(24.609375 * var(--image2-parameter));
+}
+
 
 #tile_map_zoom_0 {
   position: absolute;
-  top: calc(22px + 2rem);
-  left: 122px;
-  max-width: 256px;
-  max-height: 256px;
+  top: 0;
+  right: 0;
+  max-width: calc(17.08984375 * var(--image2-parameter));
+  max-height: calc(17.08984375 * var(--image2-parameter));
+}
+
+#map_coordinates-svg3 {
+  width: calc(30 * var(--articles-font-size));
+  height: calc(30 * var(--articles-font-size));
 }
 
 .san_francisco_comparison-bundle {
   position: relative;
   align-self: center;
+  --image4-parameter: var(--articles-font-size);
+}
+
+@media (max-width: 53rem) {
+  .san_francisco_comparison-bundle {
+    --image4-parameter: calc(0.65 * var(--articles-font-size));
+  }
+}
+
+@media (max-width: 36rem) {
+  .san_francisco_comparison-bundle {
+    --image4-parameter: calc(0.42 * var(--articles-font-size));
+  }
+}
+
+#map_coordinates-svg4 {
+  width: calc(53.125 * var(--image4-parameter));
+  height: calc(31.25 * var(--image4-parameter));
 }
 
 #map_coordinates_comparison-1 {
   position: absolute;
-  height: 256px;
-  left: calc(64px / 3);
-  top: 128px;
+  height: calc(18.75 * var(--image4-parameter));
+  left: calc(1.5625 * var(--image4-parameter));
+  top: calc(9.375 * var(--image4-parameter));
 }
 
 #map_coordinates_comparison-2 {
   position: absolute;
-  height: 256px;
-  left: 448px;
-  top: 128px;
+  height: calc(18.75 * var(--image4-parameter));
+  left: calc(32.8125 * var(--image4-parameter));
+  top: calc(9.375 * var(--image4-parameter));
+}
+
+#map_coordinates-svg5 {
+  width: calc(37.5 * var(--articles-font-size));
+  height: calc(37.5 * var(--articles-font-size));
+}
+
+#map_coordinates-svg6 {
+  max-width: calc(37.5 * var(--articles-font-size));
+  max-height: calc(37.6875 * var(--articles-font-size));
 }
 
 .san_francisco_step_3-bundle {
   position: relative;
   align-self: center;
   margin-top: 2rem;
+  --image7-parameter: var(--articles-font-size);
 }
 
-.san_francisco_step_3-bundle img {
+@media (max-width: 36rem) {
+  .san_francisco_step_3-bundle {
+    --image7-parameter: calc(0.6 * var(--articles-font-size));
+  }
+}
+
+#map_coordinates-svg7 {
+  width: calc(37.5 * var(--image7-parameter));
+  height: calc(18 * var(--image7-parameter));
+}
+
+.san_francisco_step_3-bundle > img {
   position: absolute;
-  height: 133.2px;
+  height: calc(8.325 * var(--image7-parameter));
 }
 
 #map_complementary_center {
-  left: 315.9px;
-  top: 9.9px;
+  left: calc(19.74375 * var(--image7-parameter));
+  top: calc(0.61875 * var(--image7-parameter));
 }
 
 #map_complementary_right {
-  left: 450.9px;
-  top: 9.9px;
+  left: calc(28.18125 * var(--image7-parameter));
+  top: calc(0.61875 * var(--image7-parameter));
 }
 
 #map_complementary_bottom {
-  left: 315.9px;
-  top: 144.9px;
+  left: calc(19.74375 * var(--image7-parameter));
+  top: calc(9.05625 * var(--image7-parameter));
 }
 
 #map_complementary_bottom_right {
-  left: 450.9px;
-  top: 144.9px;
+  left: calc(28.18125 * var(--image7-parameter));
+  top: calc(9.05625 * var(--image7-parameter));
 }
 
 .san_francisco_step_4-bundle {
   position: relative;
   align-self: center;
   margin-top: 2rem;
+  --image8-parameter: var(--articles-font-size);
 }
 
-.san_francisco_step_4-bundle img {
+@media (max-width: 36rem) {
+  .san_francisco_step_4-bundle {
+    --image8-parameter: calc(0.6 * var(--articles-font-size));
+  }
+}
+
+#map_coordinates-svg8 {
+  width: calc(32.3125 * var(--image8-parameter));
+  height: calc(32.3125 * var(--image8-parameter));
+}
+
+.san_francisco_step_4-bundle > img {
   position: absolute;
-  height: 256px;
+  height: calc(16 * var(--image8-parameter));
 }
 
 #map_step_4_center {
-  left: 2.5px;
-  top: 2.5px;
+  left: calc(0.15625 * var(--image8-parameter));
+  top: calc(0.15625 * var(--image8-parameter));
 }
 
 #map_step_4_right {
-  left: 258.5px;
-  top: 2.5px;
+  left: calc(16.15625 * var(--image8-parameter));
+  top: calc(0.15625 * var(--image8-parameter));
 }
 
 #map_step_4_bottom {
-  left: 2.5px;
-  top: 258.5px;
+  left: calc(0.15625 * var(--image8-parameter));
+  top: calc(16.15625 * var(--image8-parameter));
 }
 
 #map_step_4_bottom_right {
-  left: 258.5px;
-  top: 258.5px;
+  left: calc(16.15625 * var(--image8-parameter));
+  top: calc(16.15625 * var(--image8-parameter));
+}
+
+#map_coordinates-svg9 {
+  max-width: calc(25 * var(--articles-font-size));
+  max-height: calc(25.1 * var(--articles-font-size));
+}
+
+#map_coordinates-svg10 {
+  max-width: calc(25 * var(--articles-font-size));
+  max-height: calc(25 * var(--articles-font-size));
 }
 
 .san_francisco_step_5-bundle {
   position: relative;
   align-self: center;
-  margin-top: 2rem;
+  --image11-parameter: var(--articles-font-size);
+  width: calc(37.5 * var(--image11-parameter));
+  height: calc(41.325 * var(--image11-parameter));
+}
+
+@media (max-width: 36rem) {
+  .san_francisco_step_5-bundle {
+    --image11-parameter: calc(0.6 * var(--articles-font-size));
+  }
+}
+
+
+#map_coordinates-svg11 {
+  position: absolute;
+  width: calc(37.5 * var(--image11-parameter));
+  height: calc(41.325 * var(--image11-parameter));
+  z-index: 3;
+  top:0;
+  left:0;
 }
 
 #map_step_5 {
   position: absolute;
-  height: 540px;
-  top: 120px;
-  right: 30px;
-  z-index: -5;
+  height: calc(33.75 * var(--image11-parameter));
+  top: calc(7.5 * var(--image11-parameter));
+  right: calc(1.875 * var(--image11-parameter));
+}
+
+#map_coordinates-svg12 {
+  max-width: calc(31.25 * var(--articles-font-size));
+  max-height: calc(93.75 * var(--articles-font-size));
 }
 
 .san_francisco_step_6-bundle {
   position: relative;
   align-self: center;
   margin-top: 2rem;
+  --image12-parameter: var(--articles-font-size);
+  width: calc(32.15625 * var(--image12-parameter));
+  height: calc(32.15625 * var(--image12-parameter));
 }
 
-.san_francisco_step_6-bundle img {
+@media (max-width: 36rem) {
+  .san_francisco_step_6-bundle {
+    --image12-parameter: calc(0.6 * var(--articles-font-size));
+  }
+}
+
+#map_coordinates-svg13 {
   position: absolute;
-  height: 256px;
-  z-index: -5;
+  width: calc(32.15625 * var(--image12-parameter));
+  height: calc(32.15625 * var(--image12-parameter));
+  z-index: 320;
+  top:0;
+  left:0;
+}
+
+.san_francisco_step_6-bundle > img {
+  position: absolute;
+  height: calc(16 * var(--image12-parameter));
 }
 
 #map_step_6_center {
-  left: 2.5px;
-  top: 2.5px;
+  left: calc(0.15625 * var(--image12-parameter));
+  top: calc(0.15625 * var(--image12-parameter));
 }
 
 #map_step_6_right {
-  left: 258.5px;
-  top: 2.5px;
+  left: calc(16.15625 * var(--image12-parameter));
+  top: calc(0.15625 * var(--image12-parameter));
 }
 
 #map_step_6_bottom {
-  left: 2.5px;
-  top: 258.5px;
+  left: calc(0.15625 * var(--image12-parameter));
+  top: calc(16.15625 * var(--image12-parameter));
 }
 
 #map_step_6_bottom_right {
-  left: 258.5px;
-  top: 258.5px;
+  left: calc(16.15625 * var(--image12-parameter));
+  top: calc(16.15625 * var(--image12-parameter));
+}
+
+#map_coordinates-svg14 {
+  max-width: calc(40.625 * var(--articles-font-size));
+  max-height: calc(36.5625 * var(--articles-font-size));
 }
 
 .san_francisco_step_7-bundle {
   position: relative;
   align-self: center;
   margin-top: 2rem;
+  --image15-parameter: var(--articles-font-size);
+  width: calc(40.625 * var(--image15-parameter));
+  height: calc(36.5625 * var(--image15-parameter));
+}
+
+@media (max-width: 36rem) {
+  .san_francisco_step_7-bundle {
+    --image15-parameter: calc(0.6 * var(--articles-font-size));
+  }
 }
 
 .san_francisco_step_7-bundle img {
   position: absolute;
-  z-index: -5;
+  height: calc(16 * var(--image15-parameter));
+}
+
+#map_coordinates-svg15 {
+  position: absolute;
+  width: calc(40.625 * var(--image15-parameter));
+  height: calc(36.5625 * var(--image15-parameter));
+  z-index: 320;
+  top:0;
+  left:0;
 }
 
 #map_step_7_street {
-  left: 60px;
-  top: calc(2rem + 1px);
-  height: 153.6px;
+  left: calc(4.0625 * var(--image15-parameter));
+  top: calc(0.0625 * var(--image15-parameter));
+  height: calc(10.4 * var(--image15-parameter));
 }
 
 #map_step_7_weather {
-  left: 385.4px;
-  top: calc(2rem + 1px);
-  height: 153.6px;
+  left: calc(1565.6875 / 60 * var(--image15-parameter));
+  top: calc(0.0625 * var(--image15-parameter));
+  height: calc(10.4 * var(--image15-parameter));
 }
 
 #map_step_7_combined {
-  left: 262.8px;
-  top: calc(2rem + 231.6px);
-  height: 307.2px;
+  left: calc(17.79375 * var(--image15-parameter));
+  top: calc(15.68125 * var(--image15-parameter));
+  height: calc(20.8 * var(--image15-parameter));
 }

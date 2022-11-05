@@ -29,6 +29,13 @@ import {
 
 const MapCoordinates = () => {
   const headingElementsRefs = useRef<HTMLHeadingElement[] | null[]>([]);
+  const img5ElementsRef = useRef<HTMLDivElement | null>(null);
+
+  const notNullTypeNarrowing = (
+    refs: null | HTMLDivElement
+  ): refs is HTMLDivElement => {
+    return (refs as HTMLDivElement).offsetTop !== undefined;
+  };
 
   const mapCoordinatesNavHeaders = {
     headingSections: [
@@ -96,6 +103,16 @@ const MapCoordinates = () => {
     refs: headingElementsRefs.current,
   };
 
+  const imgRefClickHandler = () => {
+    if (notNullTypeNarrowing(img5ElementsRef.current)) {
+      img5ElementsRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
   return (
     <>
       <article>
@@ -105,9 +122,7 @@ const MapCoordinates = () => {
             {mapCoordinatesNavHeaders.headingSections[0].title}
           </h3>
           <ReactMdCustomPure text={mapCoordinatesText[0]} />
-          <div className={styles['map_distortion-bundle']}>
-            <MapCoordinatesImg1 />
-          </div>
+          <MapCoordinatesImg1 />
           <ReactMdCustomPure text={mapCoordinatesText[1]} />
           <div className={styles['web_mercator_zoom_0-bundle']}>
             <MapCoordinatesImg2 />
@@ -154,12 +169,26 @@ const MapCoordinates = () => {
             {mapCoordinatesNavHeaders.headingSections[5].title}
           </h4>
           <ReactMdCustomWithKatex text={mapCoordinatesText[9]} />
-          <MapCoordinatesImg5 />
+          <div
+            ref={(element) => (img5ElementsRef.current = element)}
+            className={styles['ref-image']}
+          >
+            <MapCoordinatesImg5 />
+          </div>
           <ReactMdCustomWithKatex text={mapCoordinatesText[10]} />
           <h4 ref={(element) => (headingElementsRefs.current[6] = element)}>
             {mapCoordinatesNavHeaders.headingSections[6].title}
           </h4>
-          <ReactMdCustomPure text={mapCoordinatesText[11]} />
+          <p>
+            Based on the tile coordinates found in the previous step, now it's
+            possible to determine the right tiles to call that are necessary to
+            compose the final image - the point will be inside in one of the
+            colored squares, like the{' '}
+            <span className={styles['ref-span']} onClick={imgRefClickHandler}>
+              image illustrating the step 2
+            </span>
+            .
+          </p>
           <MapCoordinatesImg6 />
           <ReactMdCustomPure text={mapCoordinatesText[12]} />
           <div className={styles['san_francisco_step_3-bundle']}>

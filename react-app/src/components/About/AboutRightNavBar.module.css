@@ -11,6 +11,12 @@
   width: 15rem;
 }
 
+@media (max-width: 36rem){
+  .about-right_nav_bar {
+    display: none;
+  }
+}
+
 .about-right_nav_bar nav{
   display: flex;
   flex-direction: column;

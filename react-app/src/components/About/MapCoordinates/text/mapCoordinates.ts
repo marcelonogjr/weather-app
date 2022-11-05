@@ -95,7 +95,7 @@ export const mapCoordinatesText = [
 
   As you can see, the formula to find _x_ is very straight forward, but to find _y_ with a given _lat_ can be more 
   complex because it has to take into consideration the latitude distortion from the [Web Mercator Projection](https://en.wikipedia.org/wiki/Web_Mercator_projection)
-  that was explained in the _Necessary Concepts_ section.
+  that was explained in the [Necessary Concepts](#necessary-concepts) section.
 `,
   `
   ##### _Find out in what "quadrant" of the tile image (position in pixels) the **I point** is_
@@ -162,9 +162,9 @@ export const mapCoordinatesText = [
   that the **_I_ _point_** is found on step 2.
 `,
   `
-  For the Web Mercator Projection, it's possible to calculate the position of a (_lat_, _lon_) point (**I** in this
-  case) in pixels using these [formulas](https://en.wikipedia.org/wiki/Web_Mercator_projection#Formulas), with _lat_
-  and _lon_ in radians:
+  For the [Web Mercator Projection](https://en.wikipedia.org/wiki/Web_Mercator_projection), it's possible to calculate
+  the position of a (_lat_, _lon_) point (**I** in this case) in pixels using these [formulas](https://en.wikipedia.org/wiki/Web_Mercator_projection#Formulas),
+  with _lat_ and _lon_ in radians:
 
   $position_{x} = \\left\\lfloor \\dfrac{256}{2\\pi} 2^{zoom} \\left( lon + \\pi \\right) \\right\\rfloor$ pixels
 
