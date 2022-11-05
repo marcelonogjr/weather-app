@@ -9,6 +9,20 @@ const AboutConclusion = () => {
     <>
       <article className={styles['article-content']}>
         <ReactMdCustomPure text={aboutConclusionText} />
+        <blockquote>
+          A work is never completed, but merely abandoned.
+        </blockquote>
+        <figcaption>
+          Paul Valéry? Da Vinci?{' '}
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://quoteinvestigator.com/2019/03/01/abandon/'
+          >
+            Probably Valéry
+          </a>
+          ...
+        </figcaption>
       </article>{' '}
       <BottomNavButtons
         previous={{

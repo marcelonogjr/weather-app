@@ -6,3 +6,42 @@
 .article-content a{
   color: var(--color-hlink);
 }
+
+.article-content blockquote{
+  quotes: "“" "”" "‘" "’";
+  font-size: 150%;
+  line-height: 120%;
+  --quote-font: 'Noto Sans TC', sans-serif;
+  position: relative;
+  text-align: center;
+  width: 80%;
+  margin: calc(var(--articles-font-size) * 2) auto;
+}
+
+.article-content blockquote::before{
+  content: open-quote;
+  font-family:var(--quote-font);
+  color: var(--color-primary);
+  font-size: 200%;
+  position: absolute;
+  top: -10%;
+  right: 101%;
+}
+
+.article-content blockquote::after{
+  content: close-quote;
+  font-family:var(--quote-font);
+  color: var(--color-primary);
+  font-size: 200%;
+  position: absolute;
+  top: 100%;
+  left: 101%;
+}
+
+.article-content figcaption{
+  line-height: 120%;
+  font-style: italic;
+  text-align: end;
+  width: 80%;
+  margin: 0 auto;
+}

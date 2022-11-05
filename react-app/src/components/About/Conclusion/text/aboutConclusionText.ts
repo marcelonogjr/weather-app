@@ -34,9 +34,5 @@ export const aboutConclusionText = `
   and tackle other problems in order to evolve.
 
   Have a great day and as stated in the [introduction](https://weather.marcelojr.tech/about/intro) article, feel free
-  to contact me if you have any questions or suggestions on how to improve this app. 
-
-  > "A work is never completed, but merely abandoned."
-  >
-  >  Paul Valéry? Da Vinci? [Probably Valéry](https://quoteinvestigator.com/2019/03/01/abandon/)...
+  to contact me if you have any questions or suggestions on how to improve this app.
 `;
