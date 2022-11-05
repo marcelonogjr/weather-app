@@ -13,12 +13,6 @@ export const DynamicGraphColorImg1 = () => {
       id={styles['dynamic_gradient-svg1']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1050 600'
-      width={1050 * 0.6}
-      height={600 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.d1t1{fill:${genericColor}}.d1t2{fill:none;stroke:${genericColor};stroke-miterlimit:10}.d1t3{fill:red}.d1t4{fill:#0f0}.d1t5{fill:#00f}`}
@@ -409,12 +403,6 @@ export const DynamicGraphColorImg2 = () => {
       id={styles['dynamic_gradient-svg2']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1050 1050'
-      width={1050 * 0.5}
-      height={1050 * 0.5}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.d2t1{fill:${genericColor}}.d2t2{opacity:.4}.d2t3,.d2t4{fill:none;stroke:${genericColor};stroke-width:4;stroke-miterlimit:10}.d2t4{stroke-dasharray:15,15}.d2t5{fill:${offGraphColor}}.d2t6{fill:${antiGenericColor}}`}
@@ -633,12 +621,6 @@ export const DynamicGraphColorImg3 = () => {
       id={styles['dynamic_gradient-svg3']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1050 1100'
-      width={1050 * 0.5}
-      height={1100 * 0.5}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.d3t1{fill:${genericColor}}.d3t2{opacity:.5}.d3t3,.d3t4{fill:none;stroke:${genericColor};stroke-width:4;stroke-miterlimit:10}.d3t4{stroke-dasharray:15,15}.d3t5{fill:${offGraphColor}}.d3t6{fill:${antiGenericColor}}`}
@@ -804,12 +786,6 @@ export const DynamicGraphColorImg4 = () => {
       id={styles['dynamic_gradient-svg4']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 700 350'
-      width={610 * 0.8}
-      height={280 * 0.8}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {
@@ -854,12 +830,6 @@ export const DynamicGraphColorImg5 = () => {
       id={styles['dynamic_gradient-svg5']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 920 375'
-      width={920 * 0.5}
-      height={375 * 0.5}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.d5t0{fill:none;stroke:${genericColor};stroke-width:2;stroke-miterlimit:10}.d5t3{fill:${genericColor}}`}
@@ -926,12 +896,6 @@ export const DynamicGraphColorImg6 = () => {
       id={styles['dynamic_gradient-svg6']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1060 1030'
-      width={1060 * 0.5}
-      height={1030 * 0.5}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>{`.d6t1{fill:${genericColor}}`}</style>
       <linearGradient
@@ -982,12 +946,6 @@ export const DynamicGraphColorImg7 = () => {
       id={styles['dynamic_gradient-svg7']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1060 1030'
-      width={1060 * 0.5}
-      height={1030 * 0.5}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.d7t1{fill:${genericColor}}.d7t2{opacity:1}.d7t3,.d7t4{fill:none;stroke:${genericColor};stroke-width:4;stroke-miterlimit:10}.d7t4{stroke-dasharray:15,15}`}

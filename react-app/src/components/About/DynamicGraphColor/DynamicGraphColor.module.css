@@ -3,6 +3,59 @@
   flex-direction: column;
 }
 
-.article-content a{
+.article-content a {
   color: var(--color-hlink);
+}
+
+.article-content > svg {
+  align-self: center;
+}
+
+.article-content > svg,
+.article-content > div {
+  margin: calc(var(--articles-font-size) * 2) 0
+    calc(var(--articles-font-size) * 2) 0;
+}
+
+.ref-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ref-span {
+  color: var(--color-hlink);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#dynamic_gradient-svg1 {
+  max-width: calc(39.375 * var(--articles-font-size));
+  max-height: calc(22.5 * var(--articles-font-size));
+}
+
+#dynamic_gradient-svg2 {
+  max-width: calc(32.8125 * var(--articles-font-size));
+  max-height: calc(32.8125 * var(--articles-font-size));
+}
+
+#dynamic_gradient-svg3 {
+  max-width: calc(32.8125 * var(--articles-font-size));
+  max-height: calc(34.375 * var(--articles-font-size));
+}
+
+#dynamic_gradient-svg4 {
+  max-width: calc(30.5 * var(--articles-font-size));
+  max-height: calc(14 * var(--articles-font-size));
+}
+
+#dynamic_gradient-svg5 {
+  max-width: calc(28.75 * var(--articles-font-size));
+  max-height: calc(11.71875 * var(--articles-font-size));
+}
+
+#dynamic_gradient-svg6,
+#dynamic_gradient-svg7 {
+  max-width: calc(31.125 * var(--articles-font-size));
+  max-height: calc(32.1875 * var(--articles-font-size));
 }
