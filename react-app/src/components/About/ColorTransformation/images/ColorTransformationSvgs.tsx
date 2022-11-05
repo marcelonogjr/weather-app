@@ -14,12 +14,6 @@ export const ColorTransformationImg1 = () => {
       id={styles['color_transformation-svg1']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 300'
-      width={600}
-      height={180}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.c1t1{fill:#ccc}.c1t2{fill:#fff}.c1t4{fill:${genericColor}}.c1t6{fill:none;stroke:${genericColor};stroke-miterlimit:10}`}
@@ -162,12 +156,6 @@ export const ColorTransformationImg2 = () => {
       id={styles['color_transformation-svg2']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1020 1080'
-      width={1020 * 0.55}
-      height={1080 * 0.55}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>{`.c2t1{fill:${genericColor}}`}</style>
       <circle
@@ -292,12 +280,6 @@ export const ColorTransformationImg3 = () => {
       id={styles['color_transformation-svg3']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 400'
-      width={1000 * 0.55}
-      height={400 * 0.55}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>{`.c3t1{fill:#ccc}.c3t2{fill:#fff}.c3t4{fill:${genericColor}}`}</style>
       <pattern
@@ -422,12 +404,6 @@ export const ColorTransformationImg4 = () => {
       id={styles['color_transformation-svg4']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 900 900'
-      width={900 * 0.6}
-      height={900 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.c4t0{fill:none;stroke:${genericColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c4t2{fill:${genericColor}}`}
@@ -472,12 +448,6 @@ export const ColorTransformationImg5 = () => {
       id={styles['color_transformation-svg5']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1020 1020'
-      width={1020 * 0.6}
-      height={1020 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.c5t1{fill:#cccccc}.c5t2{fill:#fff}.c5t3{fill:none;stroke:${genericColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c5t5{fill:${genericColor}}.c5t6,.c5t7,.c5t8,.c5t9{fill:none;stroke:red;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.c5t7,.c5t8,.c5t9{stroke:#0f0}.c5t8,.c5t9{stroke:#00f}.c5t9{stroke:${alphaColor}}.c5t12{stroke:${detailColor}}.c5t12,.c5t13,.c5t14{fill:none;stroke-miterlimit:10}.c5t13{stroke:${detailColor};stroke-dasharray:11.9518,11.9518}.c5t14{stroke:${genericColor}}.c5t15{fill:red}.c5t16{fill:#00f}.c5t17{fill:#0f0}.c5t18{fill:${alphaColor}}`}
@@ -796,18 +766,12 @@ export const ColorTransformationImg6 = () => {
   const { theme } = useContext(ThemeContext);
 
   const genericColor = theme === 'light' ? '#000000' : '#ffffff';
-
+  
   return (
     <svg
       id={styles['color_transformation-svg6']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 960 555'
-      width={960 * 0.55}
-      height={555 * 0.55}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>{`.c6t1{fill:${genericColor}}`}</style>
       <linearGradient
@@ -970,12 +934,6 @@ export const ColorTransformationImg7 = () => {
       id={styles['color_transformation-svg7']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 500'
-      width={1000 * 0.6}
-      height={500 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>{`.c7t1{fill:#ccc}.c7t2{fill:#fff}.c7t4{fill:${genericColor}}`}</style>
       <pattern
@@ -1230,12 +1188,6 @@ export const ColorTransformationImg8 = () => {
       id={styles['color_transformation-svg8']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 1680'
-      width={1000 * 0.6}
-      height={1680 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.c8t1{fill:#ccc}.c8t2{fill:#fff}.c8t3,.c8t4{fill:none;stroke:${genericColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c8t4{stroke:red;stroke-width:1.5;stroke-linecap:round}.c8t5{opacity:.9294;fill:red}.c8t6,.c8t7{fill:none;stroke-linejoin:round;stroke-miterlimit:10}.c8t6{opacity:.9294;stroke:red;stroke-width:.75}.c8t7{stroke:#0f0;stroke-width:1.5;stroke-linecap:round}.c8t8{fill:#0f0}.c8t10,.c8t9{fill:none;stroke:#0f0;stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c8t10{stroke:#00f;stroke-width:1.5;stroke-linecap:round}.c8t11{fill:#00f}.c8t12,.c8t13{fill:none;stroke:#00f;stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c8t13{stroke:${alphaColor};stroke-width:1.5;stroke-linecap:round}.c8t14{fill:${alphaColor}}.c8t15{fill:none;stroke:${alphaColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c8t16{fill:${genericColor}}.c8t19{fill:none;stroke:${genericColor};stroke-miterlimit:10}`}
@@ -1881,12 +1833,6 @@ export const ColorTransformationImg9 = () => {
       id={styles['color_transformation-svg9']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 750'
-      width={1000 * 0.6}
-      height={750 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {`.c9t1{fill:#ccc}.c9t2{fill:#fff}.c9t3,.c9t5{fill:none;stroke:${genericColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c9t5{stroke:red;stroke-width:1.5;stroke-linecap:round}.c9t6{opacity:.9294;fill:red}.c9t7,.c9t8{fill:none;stroke-linejoin:round;stroke-miterlimit:10}.c9t7{opacity:.9294;stroke:red;stroke-width:.75}.c9t8{stroke:#0f0;stroke-width:1.5;stroke-linecap:round}.c9t9{fill:#0f0}.c9t10,.c9t11{fill:none;stroke:#0f0;stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c9t11{stroke:#00f;stroke-width:1.5;stroke-linecap:round}.c9t12{fill:#00f}.c9t13,.c9t14{fill:none;stroke:#00f;stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c9t14{stroke:${alphaColor};stroke-width:1.5;stroke-linecap:round}.c9t15{fill:${alphaColor}}.c9t16{fill:none;stroke:${alphaColor};stroke-width:.75;stroke-linejoin:round;stroke-miterlimit:10}.c9t17{fill:${genericColor}}`}
@@ -2325,12 +2271,6 @@ export const ColorTransformationImg10 = () => {
       id={styles['color_transformation-svg10']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1000 750'
-      width={1000 * 0.6}
-      height={750 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
         {
@@ -2769,12 +2709,6 @@ export const ColorTransformationImg11 = () => {
       id={styles['color_transformation-svg11']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 920 500'
-      width={920 * 0.6}
-      height={500 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
       {
@@ -2845,12 +2779,6 @@ export const ColorTransformationImg12 = () => {
       id={styles['color_transformation-svg12']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 920 500'
-      width={920 * 0.6}
-      height={500 * 0.6}
-      style={{
-        marginTop: '2rem',
-        alignSelf: 'center',
-      }}
     >
       <style>
       {
@@ -2915,11 +2843,6 @@ export const ColorTransformationImg13 = () => {
       id={styles['color_transformation-svg13']}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1550 850'
-      width={1550 * 0.5}
-      height={850 * 0.5}
-      style={{
-        alignSelf: 'center',
-      }}
     >
       <style>{`.c13t1{fill:#ccc}.c13t2{fill:#fff}.c13t4{fill:${genericColor}}`}</style>
     <path

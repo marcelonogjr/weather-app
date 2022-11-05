@@ -181,6 +181,7 @@ const ColorTransformation = () => {
           <ColorTransformationImg12 />
           <ReactMdCustomPure text={colorTransformationText[19]} />
           <div className={styles['color_problems-bundle']}>
+            <ColorTransformationImg13 />
             <img
               id={styles['color_problems_original']}
               src={require('./images/orig-wind_layer-wb.png')}
@@ -192,7 +193,6 @@ const ColorTransformation = () => {
               alt='Exemple of the modified wind speed layer'
             />
           </div>
-          <ColorTransformationImg13 />
           <ReactMdCustomPure text={colorTransformationText[20]} />
           <h3 ref={(element) => (headingElementsRefs.current[13] = element)}>
             {colorTransformationNavHeaders.headingSections[13].title}
