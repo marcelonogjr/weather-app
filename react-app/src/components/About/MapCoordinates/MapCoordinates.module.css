@@ -61,8 +61,8 @@
 }
 
 #map_coordinates-svg3 {
-  width: calc(30 * var(--articles-font-size));
-  height: calc(30 * var(--articles-font-size));
+  max-width: calc(30 * var(--articles-font-size));
+  max-height: calc(30 * var(--articles-font-size));
 }
 
 .san_francisco_comparison-bundle {
@@ -103,8 +103,8 @@
 }
 
 #map_coordinates-svg5 {
-  width: calc(37.5 * var(--articles-font-size));
-  height: calc(37.5 * var(--articles-font-size));
+  max-width: calc(37.5 * var(--articles-font-size));
+  max-height: calc(37.5 * var(--articles-font-size));
 }
 
 #map_coordinates-svg6 {
@@ -309,7 +309,7 @@
 
 @media (max-width: 36rem) {
   .san_francisco_step_7-bundle {
-    --image15-parameter: calc(0.6 * var(--articles-font-size));
+    --image15-parameter: calc(0.55 * var(--articles-font-size));
   }
 }
 

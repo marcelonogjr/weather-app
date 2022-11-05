@@ -52,3 +52,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 36rem){
+  .math-inline {
+    font-size: 70%;
+  }
+}
+
+@media (max-width: 25rem){
+  .math-inline {
+    font-size: 60%;
+  }
+}
