@@ -2,7 +2,7 @@ export const dynamicGraphColorText = [
   // ### Introduction
   `
   This article is about how I determined the dynamic background gradient for the graph that is displayed for the users
-  when they decide to look for the _Daily Weather Forecast_ for a specific place and time.
+  when they decide to look for the _Hourly or Daily Weather Forecast_ for a specific place and time.
 
   I'm assuming that you, as stated in the [Introduction article](https://weather.marcelojr.tech/about/intro), are
   reading this series of articles in the original order. For this particular one, there won't be a _Necessary Concepts_
@@ -17,7 +17,7 @@ export const dynamicGraphColorText = [
 `,
   // Image 1 -> temp scale, with temperature and explicit RGB values
   `
-  As explained in the previous article, adding a stop to the scale [wasn't possible](weather.marcelojr.tech/about/color-transform#trivial-solutions)
+  As explained in the previous article, adding a stop to the scale [wasn't possible](https://weather.marcelojr.tech/about/color-transform#trivial-solutions)
   in the map layer, but since I could define any scale I wanted for the chart, removing that restriction felt
   appropriate.
 `,
@@ -103,8 +103,9 @@ export const dynamicGraphColorText = [
   
   $x = previous_{color} + \\left( next_{color} - previous_{color} \\right) \\cdot \\left( \\dfrac{maxORmin_{temperature} - previous_{temperature}}{next_{temperature} - previous_{temperature}} \\right)$
 
-  Where $x$ will be the desired RGB channel value, $next$ reffers to characteristics of the stop immediately higher
-  than the max or min temperature found in the previous step, and $previous$ reffers to the stop immediately lower.
+  Where $x$ will be the desired RGB channel value, $next$ reffers to characteristics (color or temperature) of the stop
+  immediately higher than the max or min temperature found in the previous step, and $previous$ reffers to the stop
+  immediately lower.
 
   After doing that for all the 3 channels of each maximum and minimum values, we have all the characteristics
   (position and color) of the top and bottom extremities of the chart.
@@ -128,8 +129,8 @@ export const dynamicGraphColorText = [
 `,
   // Image 7 -> Just like image 6, but with all the stops
   `
-  That's it! Applying this logic will work for any set of temperatures values on the daily forecast - feel free to
-  test that when using the app.
+  That's it! Applying this logic will work for any set of temperatures values on the hourly and daily forecast - feel
+  free to test that when using the app.
 `,
   // ### Conclusion
   `

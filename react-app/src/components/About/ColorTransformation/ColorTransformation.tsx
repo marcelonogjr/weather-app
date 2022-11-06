@@ -23,10 +23,19 @@ import {
   ColorTransformationImg11,
   ColorTransformationImg12,
   ColorTransformationImg13,
+  ColorTransformationImg14,
 } from './images/ColorTransformationSvgs';
 
 const ColorTransformation = () => {
   const headingElementsRefs = useRef<HTMLHeadingElement[] | null[]>([]);
+  const img8ElementsRef = useRef<HTMLDivElement | null>(null);
+  const img9ElementsRef = useRef<HTMLDivElement | null>(null);
+
+  const notNullTypeNarrowing = (
+    refs: null | HTMLDivElement
+  ): refs is HTMLDivElement => {
+    return (refs as HTMLDivElement).offsetTop !== undefined;
+  };
 
   const colorTransformationNavHeaders = {
     headingSections: [
@@ -104,6 +113,26 @@ const ColorTransformation = () => {
     refs: headingElementsRefs.current,
   };
 
+  const precipitationImgRefClickHandler = () => {
+    if (notNullTypeNarrowing(img9ElementsRef.current)) {
+      img9ElementsRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
+  const windImgRefClickHandler = () => {
+    if (notNullTypeNarrowing(img8ElementsRef.current)) {
+      img8ElementsRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
   return (
     <>
       <article>
@@ -156,32 +185,92 @@ const ColorTransformation = () => {
             {colorTransformationNavHeaders.headingSections[8].title}
           </h4>
           <ReactMdCustomPure text={colorTransformationText[12]} />
-          <ColorTransformationImg8 />
+          <div
+            ref={(element) => (img8ElementsRef.current = element)}
+            className={styles['ref-image']}
+          >
+            <ColorTransformationImg8 />
+          </div>
+          <div
+            ref={(element) => (img9ElementsRef.current = element)}
+            className={styles['ref-image']}
+          >
+            <ColorTransformationImg9 />
+          </div>
           <h4 ref={(element) => (headingElementsRefs.current[9] = element)}>
             {colorTransformationNavHeaders.headingSections[9].title}
           </h4>
           <ReactMdCustomPure text={colorTransformationText[13]} />
+          <p>
+            For instance, if we analyze the{' '}
+            <span
+              className={styles['ref-span']}
+              onClick={precipitationImgRefClickHandler}
+            >
+              precipitation layer by looking at the graph
+            </span>
+            , is it possible to use only the Blue channel as a paremeter to
+            track the correspondant precipitation value of any pixel color? The
+            answer is <span className={styles['span_italic']}>yes</span>. Since
+            there's a single blue value associated with one, and only one,
+            precipitation value, by only tracking the blue channel it's possible
+            to infer the values of all the other channels (since we know the
+            theoretical values) and the precipitation value associated with the
+            combination of all of them. In math, that's called an{' '}
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href='https://en.wikipedia.org/wiki/Injective_function'
+            >
+              injective function
+            </a>
+            . It means that for every{' '}
+            <span className={styles['span_italic']}>x</span> value of the
+            function, there's only one{' '}
+            <span className={styles['span_italic']}>y</span> value associated
+            with it. Graphically, any horizontal line imaginable can only "go
+            through" the function line once.
+          </p>
+          <ReactMdCustomPure text={colorTransformationText[14]} />
+          <p>
+            By looking at the{'  '}
+            <span
+              className={styles['ref-span']}
+              onClick={windImgRefClickHandler}
+            >
+              wind speed graph
+            </span>
+            , you can see that the R, G and B channels have some values that are
+            associated with three distinct wind speed values. For instance, if
+            we imagine a horizontal line that represents the value{' '}
+            <span className={styles['span_italic']}>70</span> for each channel,
+            it will "go through" the Red, Green and Blue lines three times. The
+            function that represents the Alpha channel of this layer is also not
+            injective, since it has the same value (255) when the wind speed is
+            equal or greater to 223.7 mph (100 m/s).
+          </p>
+          <ReactMdCustomPure text={colorTransformationText[15]} />
           <h4 ref={(element) => (headingElementsRefs.current[10] = element)}>
             {colorTransformationNavHeaders.headingSections[10].title}
           </h4>
-          <ReactMdCustomPure text={colorTransformationText[14]} />
-          <ColorTransformationImg9 />
-          <ReactMdCustomPure text={colorTransformationText[15]} />
+          <ReactMdCustomPure text={colorTransformationText[16]} />
           <ColorTransformationImg10 />
+          <ReactMdCustomPure text={colorTransformationText[17]} />
+          <ColorTransformationImg11 />
           <h4 ref={(element) => (headingElementsRefs.current[11] = element)}>
             {colorTransformationNavHeaders.headingSections[11].title}
           </h4>
-          <ReactMdCustomWithKatex text={colorTransformationText[16]} />
+          <ReactMdCustomWithKatex text={colorTransformationText[18]} />
           <h4 ref={(element) => (headingElementsRefs.current[12] = element)}>
             {colorTransformationNavHeaders.headingSections[12].title}
           </h4>
-          <ReactMdCustomPure text={colorTransformationText[17]} />
-          <ColorTransformationImg11 />
-          <ReactMdCustomPure text={colorTransformationText[18]} />
-          <ColorTransformationImg12 />
           <ReactMdCustomPure text={colorTransformationText[19]} />
+          <ColorTransformationImg12 />
+          <ReactMdCustomPure text={colorTransformationText[20]} />
+          <ColorTransformationImg13 />
+          <ReactMdCustomPure text={colorTransformationText[21]} />
           <div className={styles['color_problems-bundle']}>
-            <ColorTransformationImg13 />
+            <ColorTransformationImg14 />
             <img
               id={styles['color_problems_original']}
               src={require('./images/orig-wind_layer-wb.png')}
@@ -193,11 +282,11 @@ const ColorTransformation = () => {
               alt='Exemple of the modified wind speed layer'
             />
           </div>
-          <ReactMdCustomPure text={colorTransformationText[20]} />
+          <ReactMdCustomPure text={colorTransformationText[22]} />
           <h3 ref={(element) => (headingElementsRefs.current[13] = element)}>
             {colorTransformationNavHeaders.headingSections[13].title}
           </h3>
-          <ReactMdCustomPure text={colorTransformationText[21]} />
+          <ReactMdCustomPure text={colorTransformationText[23]} />
         </div>
         <AboutRightNavBar articleSpecifics={colorTransformationNavHeaders} />
       </article>

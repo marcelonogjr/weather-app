@@ -182,11 +182,11 @@ export const mapCoordinatesText = [
   `
   Unfortunately, since the previous formulas to locate the interest point is referenced in the most top-left corner
   of the "world image", it's necessary to change this reference to a known point inside of the image formed in the
-  previous step - and there's no better point than **_K_** for that. Because of how the tile coordinate system works,
-  by definition, when dividing the results of the previous formula by 256 (a tile length), the rest of this division
-  (non-integer part, the result of the "mod" operator) will correspond to the position, in pixels, of **_I_** in
-  relation to **_K_**. In the case of _San Francisco_ with a _zoom = 3_, the position of **_I_** inside it's original
-  tile will be:
+  previous step - and there's no better point than **_K_** (if you fotgot, the most up-left point of the image) for
+  that. Because of how the tile coordinate system works, by definition, when dividing the results of the previous
+  formula by 256 (a tile length), the rest of this division (non-integer part, the result of the "mod" operator) will
+  correspond to the position, in pixels, of **_I_** in relation to **_K_**. In the case of _San Francisco_ with a
+  _zoom = 3_, the position of **_I_** inside it's original tile will be:
 
   $position_{x} \\bmod 256 = 327 \\bmod 256 = 71$ pixels
 

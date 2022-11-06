@@ -27,14 +27,14 @@ export const colorTransformationText = [
   problem. 
 `,
   // ### Necessary Concepts
-  // Maybe a text in between?
   // #### The RGBA Color Model
   `
   The first thing required to solve this problem is a basic understanding of the RGBA Color Model.
   
   The [_RGB color model_](https://en.wikipedia.org/wiki/RGB_color_model) - probably the most important color
-  system in web development - uses number values from 0 to 255 in each parameter (Red, Green, Blue) to form every
-  other colors. The illustration below shows some exemples of colors and their correspondent _RGB_ values.
+  system in web development - uses number values from 0 to 255 in each parameter - called channels, they're: Red,
+  Green and Blue - to form every other colors. The illustration below shows some exemples of colors and their
+  correspondent _RGB_ values.
 `,
   // Image 2 -> Simple RGB explanation (9 circles - 3 main colors, 3 full combinations, dark and light gray, and a random one)
   `
@@ -163,31 +163,18 @@ export const colorTransformationText = [
 
   For the solution to work it's necessary to be able to correctly identify _where_ exactly that color fits in the
   theoretical functions.
-  
-  For instance, if we analyze the _precipitation_ layer by looking at the graph, is it possible to use only the Blue
-  channel as a paremeter to track the correspondant precipitation value of any pixel color? The answer is _yes_.
-  Since there's a single blue value associated with one, and only one, precipitation value, by only tracking the
-  blue channel it's possible to infer the values of all the other channels (since we know the theoretical values) and
-  the precipitation value associated with the combination of all of them. In math, that's called an [injective
-  function](https://en.wikipedia.org/wiki/Injective_function). It means that for every _x_ value of the function,
-  there's only one _y_ value associated with it. Graphically, any horizontal line imaginable can only "go through"
-  the function line once.
-
+  `,
+`
   Every channel of the _precipitation_ layer are described by _injective functions_, so it's possible to
   track what precipitation value is associated by the color of that pixel by analyzing at any single channel. The
   same can not be said when analyzing the _wind speed_ layer.
-
-  By looking at the wind speed graph, you can see that the R, G and B channels have some values that are associated
-  with three distinct wind speed values. For instance, if we imagine a horizontal line that represents the value
-  _70_  for each channel, it will "go through" the Red, Green and Blue lines three times. The function that
-  represents the Alpha channel of this layer is also not injective, since it has the same value (255) when the wind
-  speed is equal or greater to 223.7 mph (100 m/s).
 
   Conveniently, as I'll show in the next step, I limited the wind speed so it's maximum value is 100 m/s, so I ended
   up using the Alpha channel to track the wind speed values after all. If I didn't, I would have to have used more
   than one channel as a parameter to do the same, leading to a more complex logic that could increase the possibility
   of problems with this solution - once again, more on that later.
-
+`,
+  `
   Now that we have an deep understanding of all possible inputs, it's time to determine what the end result should be.
 `,
   // Third Step

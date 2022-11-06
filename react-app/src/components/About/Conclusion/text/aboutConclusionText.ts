@@ -30,7 +30,7 @@ export const aboutConclusionText = `
   life is also a choice of not doing other things, and the secret is really to spend our resources in the best way we
   can.
 
-  Using this perspective, no work is ever finished, is it? We can aways improve... But is also important to move on
+  Using this perspective, no work is ever finished, is it? We can aways improve it... But is also important to move on
   and tackle other problems in order to evolve.
 
   Have a great day and as stated in the [introduction](https://weather.marcelojr.tech/about/intro) article, feel free

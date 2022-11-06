@@ -12,7 +12,7 @@ export const aboutIntroText = `
 
   I built this app using [TypeScript](https://www.typescriptlang.org/) as a main programming language. The backend
   is built using [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) and the frontend uses [React](https://reactjs.org/),
-  [React Router](https://reactrouter.com/en/main), using [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) mainly
+  [React Router](https://reactrouter.com/en/main), using [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
   for styling and a few animations, and more complex animations being handled by [GreenSock](https://greensock.com/).
   The weather forecast information and weather map layer comes from [OpenWeatherMap](https://openweathermap.org/),
   while [Mapbox](https://www.mapbox.com/) provides geocode and street map layer services.
@@ -47,8 +47,9 @@ export const aboutIntroText = `
   developer trying to implement this solution in your own app or just curious about math.
   
   The articles are intended to be read in the original order - it will make more sense, but you can also understand
-  them if you don't do that. They can also be considered a "heavy" reading if you decide to really learn everything
-  and read carefully to the articles and open the links contained in them.
+  them if you don't do that. They can also be considered a "heavy" reading if you decide to really learn everything,
+  and in that case, I encourage you to read carefully to the articles and open the links contained in them to know
+  more on a specific subject.
   
   The first one, the ***Map Coordinates Problem***, can take about 15 minutes to read - assuming that you'll stop and
   try to understand the illustrations as they show up. The ***Color Transformation Problem*** is a little bit longer,

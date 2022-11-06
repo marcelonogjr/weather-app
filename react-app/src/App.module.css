@@ -25,12 +25,12 @@
 ::-moz-selection {
   /* Code for Firefox */
   color: var(--color-inverse-text);
-  background: var(--color-secondary);
+  background: var(--color-tertiary);
 }
 
 ::selection {
   color: var(--color-inverse-text);
-  background: var(--color-secondary);
+  background: var(--color-tertiary);
 }
 
 ::-webkit-scrollbar {
