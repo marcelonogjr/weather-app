@@ -10,10 +10,10 @@ export const dynamicGraphColorText = [
   Concepts_ of the Color Transformation](https://weather.marcelojr.tech/about/color-transform#necessary-concepts)
   article - if you didn't read it already, I really reccomend you do so.
 
-  Before we start, it's important to stablish a few things. Since the graph of the _Daily Weather Forecast_ is
-  showing the maximum and minimum temperature values for the days to come, I used a temperature color scale very
-  similar to the one used in the map temperature layer, but using only the RGB channels and with one more
-  aditional stop at 122 °F (50 °C) using the color red, like shown below.
+  Before we start, it's important to stablish a few things. Since both graphs (hourly and daily) are displaying the
+  maximum and minimum temperature values for the hours or days to come, I used a temperature color scale very similar
+  to the one used in the map temperature layer, but using only the RGB channels and with one more aditional stop at
+  122 °F (50 °C) using the color red, like shown below.
 `,
   // Image 1 -> temp scale, with temperature and explicit RGB values
   `
@@ -23,10 +23,10 @@ export const dynamicGraphColorText = [
 `,
   // ### The Solution
   `
-  The main goal here is to stablish a way to display the maximum and minimum temperature values for each day in an
-  [area chart](https://en.wikipedia.org/wiki/Area_chart), using a celsius or a fahrenheit temperature scale, and make
-  every temperature value (point) be exactly above it's correspondent color, using the stablished scale like the one
-  shown in the previous illustration.
+  The main goal here is to stablish a way to display the maximum and minimum temperature values for each hour or day in
+  an [area chart](https://en.wikipedia.org/wiki/Area_chart), using a celsius or a fahrenheit temperature scale, and
+  make every temperature value (point) be exactly above it's correspondent color, using the stablished scale like the
+  one shown in the previous illustration.
 
   One obvious (but bad) solution is to use a static background with the entire gradient correlated with all possible 
   temperatures in the range of -40 °F (or °C) to 122 °F (50 °C), and only worry with positioning the points
@@ -37,7 +37,7 @@ export const dynamicGraphColorText = [
   `
   But, as you can see, the relevant area of the chart is really small compared to the entire range, so it would be
   better if visually the graph had it's superior and inferior limits representing the maximum possible value and the
-  minimum possible value, respectively, for the days to come in that particular region.
+  minimum possible value, respectively, for the hours or days to come in that particular region.
   
   Using the same values like in the previous illustration as an exemple again, the desired result would be like this:
 `,
@@ -73,12 +73,15 @@ export const dynamicGraphColorText = [
   possible values. Is intuitive to think that, since these possibles temperatures represent a forecast of the
   maximum/minimum temperature values for the days to come of a given time and location, what we really need to find
   is the **greater** of the _maximums_ and the **lesser** of the _minimums_ temperatures of the forecast. Let me
-  illustrate it using the same previous values as an exemple.
+  illustrate it using the same previous values as an exemple - from now on using the daily forecast as an exemple.
 `,
   // Image 4 - the maximum set (squares) with it's maximum value highlighted in red; the same for the minimum (in blue)
  `
   As you can see, among the maximums, the greater value is 78 °F (in red) and among the minimum, the lesser is 47 °F
-  (in blue). Now that theese values are known, it's possible to proceed.
+  (in blue). Now that theese values are known, it's possible to proceed. For the hourly forecast, the only difference
+  is that each hour only have only one temperature point associated with it, so the logic work the same way, but
+  instead of choosing the greater of the maximums and the lesser of the minimums temperature values, we should choose
+  the maximum and minimum temperature values for all the hours to come.
 `,
   // #### The Extremities
   `
