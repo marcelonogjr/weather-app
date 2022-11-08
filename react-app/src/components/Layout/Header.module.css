@@ -79,26 +79,27 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  font-size: var(--font-size-3xl);
+  --header-font-size: var(--font-size-3xl);
+  font-size: var(--header-font-size);
   flex-grow: 1;
   flex-shrink: 1;
 }
 
 @media (max-width: 161rem) {
   .nav_button-bundle {
-    font-size: var(--font-size-2xl);
+    --header-font-size: var(--font-size-2xl);
   }
 }
 
 @media (max-width: 121rem) {
   .nav_button-bundle {
-    font-size: var(--font-size-1xl);
+    --header-font-size: var(--font-size-1xl);
   }
 }
 
 @media (max-width: 81rem) {
   .nav_button-bundle {
-    font-size: var(--font-size-0xl);
+    --header-font-size: var(--font-size-0xl);
   }
 }
 
@@ -118,12 +119,18 @@
 
 .link:hover {
   font-size: 125%;
+  text-decoration: var(--color-tertiary) underline solid calc(0.1 * var(--header-font-size));
 }
 
 .link-selected {
   margin: auto 2.5rem;
   font-size: 125%;
   font-weight: bold;
+  text-decoration: var(--color-tertiary) underline solid calc(0.2 * var(--header-font-size));
+}
+
+.link-selected:hover {
+  text-decoration: var(--color-tertiary) underline solid calc(0.2 * var(--header-font-size));
 }
 
 @media (max-width: 161rem) {
@@ -271,9 +278,18 @@
     -webkit-animation: fadeIn 1.5s ease-in-out;
   }
 
+  .link-hamb:hover {
+    text-decoration: var(--color-tertiary) underline solid 0.1rem;
+  }
+
   .link-hamb-selected {
     font-size: calc(1.4 * var(--font-size-1xl));
     font-weight: 700;
+    text-decoration: var(--color-tertiary) underline solid 0.3rem;
+  }
+
+  .link-hamb-selected:hover {
+    text-decoration: var(--color-tertiary) underline solid 0.3rem;
   }
 
   .sub {
@@ -286,6 +302,11 @@
   .link-hamb-sub-selected {
     font-size: calc(1.2 * var(--font-size-0xl));
     font-weight: 700;
+    text-decoration: var(--color-tertiary) underline solid 0.2rem;
+  }
+
+  .link-hamb-sub-selected:hover {
+    text-decoration: var(--color-tertiary) underline solid 0.2rem;
   }
 
   .not-active {

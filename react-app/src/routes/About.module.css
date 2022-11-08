@@ -49,9 +49,7 @@
 
 @media (max-width: 53rem){
   .articles-content {
-    margin-right: 0;
-    margin-left: auto;
-    width: 70vw;
+    width: 90vw;
   }
 }
 

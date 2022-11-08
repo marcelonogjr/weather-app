@@ -32,7 +32,9 @@
     margin-right: 3rem;
     margin-left: auto;
   }
+}
 
+@media (max-width: 36rem) {
   #logo-svg {
     height: 3rem;
   }

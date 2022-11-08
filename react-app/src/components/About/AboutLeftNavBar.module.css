@@ -65,3 +65,7 @@
   font-weight:700;
   text-decoration: var(--color-tertiary) underline solid calc(0.25 * var(--articles-font-size));
 }
+
+.active:hover {
+  text-decoration: var(--color-tertiary) underline solid calc(0.25 * var(--articles-font-size));
+}
