@@ -2,21 +2,20 @@ import { Link } from 'react-router-dom';
 import styles from './AboutLeftNavBar.module.css';
 
 const AboutLeftNavBar = (props: { currentLocation: string }) => {
-  
   const clickHandler = () => {
-    window.scrollTo({top: 0});
+    window.scrollTo({ top: 0 });
   };
 
   return (
-    <div className={styles['about-left_nav_bar']}>
-      <nav>
+    <nav className={styles['about-left_nav_bar']}>
+      <ul className={styles['nav_bar-list']}>
         <Link
           to={'/about/intro'}
           className={`${styles['left-navbar_link']} ${
             props.currentLocation === 'intro' ? styles['active'] : ''
           }`}
           onClick={clickHandler}
-          >
+        >
           Introduction
         </Link>
         <Link
@@ -25,7 +24,7 @@ const AboutLeftNavBar = (props: { currentLocation: string }) => {
             props.currentLocation === 'map-tiles' ? styles['active'] : ''
           }`}
           onClick={clickHandler}
-          >
+        >
           Map Coordinates
         </Link>
         <Link
@@ -55,8 +54,8 @@ const AboutLeftNavBar = (props: { currentLocation: string }) => {
         >
           Conclusion
         </Link>
-      </nav>
-    </div>
+      </ul>
+    </nav>
   );
 };
 
