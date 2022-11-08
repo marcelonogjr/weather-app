@@ -1,6 +1,26 @@
+.article-right_nav_bar-bundle{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-items: flex-end;
+  width: 100%;
+}
+
+@media (max-width: 81rem) {
+  .article-right_nav_bar-bundle{
+    justify-items: center;
+  }
+}
+
 .article-content {
   display: flex;
   flex-direction: column;
+  margin: 2rem auto;
+  background-color: var(--color-main-content-background);
+  padding: 1.5rem;
+  max-width: calc(55 * var(--articles-font-size));
+  border-radius: 20px;
+  flex-shrink: 1;
 }
 
 .article-content a {
@@ -71,9 +91,15 @@
   --image4-parameter: var(--articles-font-size);
 }
 
+@media (max-width: 81rem) {
+  .san_francisco_comparison-bundle {
+    --image4-parameter: calc(0.75 * var(--articles-font-size));
+  }
+}
+
 @media (max-width: 53rem) {
   .san_francisco_comparison-bundle {
-    --image4-parameter: calc(0.65 * var(--articles-font-size));
+    --image4-parameter: calc(0.6 * var(--articles-font-size));
   }
 }
 
@@ -119,6 +145,12 @@
   --image7-parameter: var(--articles-font-size);
 }
 
+@media (max-width: 53rem) {
+  .san_francisco_step_3-bundle {
+    --image7-parameter: calc(0.82 * var(--articles-font-size));
+  }
+}
+
 @media (max-width: 36rem) {
   .san_francisco_step_3-bundle {
     --image7-parameter: calc(0.54 * var(--articles-font-size));
@@ -160,6 +192,12 @@
   align-self: center;
   margin-top: 2rem;
   --image8-parameter: var(--articles-font-size);
+}
+
+@media (max-width: 53rem) {
+  .san_francisco_step_4-bundle {
+    --image8-parameter: calc(0.88 * var(--articles-font-size));
+  }
 }
 
 @media (max-width: 36rem) {
@@ -216,6 +254,12 @@
   height: calc(41.325 * var(--image11-parameter));
 }
 
+@media (max-width: 53rem) {
+  .san_francisco_step_5-bundle {
+    --image11-parameter: calc(0.85 * var(--articles-font-size));
+  }
+}
+
 @media (max-width: 36rem) {
   .san_francisco_step_5-bundle {
     --image11-parameter: calc(0.55 * var(--articles-font-size));
@@ -251,6 +295,12 @@
   --image12-parameter: var(--articles-font-size);
   width: calc(32.15625 * var(--image12-parameter));
   height: calc(32.15625 * var(--image12-parameter));
+}
+
+@media (max-width: 53rem) {
+  .san_francisco_step_6-bundle {
+    --image12-parameter: calc(0.9 * var(--articles-font-size));
+  }
 }
 
 @media (max-width: 36rem) {
@@ -305,6 +355,12 @@
   --image15-parameter: var(--articles-font-size);
   width: calc(40.625 * var(--image15-parameter));
   height: calc(36.5625 * var(--image15-parameter));
+}
+
+@media (max-width: 53rem) {
+  .san_francisco_step_7-bundle {
+    --image15-parameter: calc(0.8 * var(--articles-font-size));
+  }
 }
 
 @media (max-width: 36rem) {

@@ -1,6 +1,26 @@
+.article-right_nav_bar-bundle{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-items: flex-end;
+  width: 100%;
+}
+
+@media (max-width: 81rem) {
+  .article-right_nav_bar-bundle{
+    justify-items: center;
+  }
+}
+
 .article-content {
   display: flex;
   flex-direction: column;
+  margin: 2rem auto;
+  background-color: var(--color-main-content-background);
+  padding: 1.5rem;
+  max-width: calc(55 * var(--articles-font-size));
+  border-radius: 20px;
+  flex-shrink: 1;
 }
 
 .article-content a {

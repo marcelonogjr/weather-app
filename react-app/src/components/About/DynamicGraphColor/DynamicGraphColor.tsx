@@ -60,7 +60,7 @@ const DynamicGraphColor = () => {
 
   return (
     <>
-      <article>
+      <article className={styles['article-right_nav_bar-bundle']}>
         <div className={styles['article-content']}>
           <h2>Dynamic Graph Color Problem</h2>
           <h3 ref={(element) => (headingElementsRefs.current[0] = element)}>

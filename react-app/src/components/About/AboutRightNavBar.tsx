@@ -33,7 +33,7 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
     if (notNullTypeNarrowing(articleRefs)) {
       for (let i = 0; i < articleHeading.length; i++) {
         if (pathHash === articleHeading[i].id) {
-          window.scrollTo({top: articleRefs[i].offsetTop - 88});
+          window.scrollTo({ top: articleRefs[i].offsetTop - 88 });
           return;
         }
       }
@@ -69,8 +69,10 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
   const clickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (notNullTypeNarrowing(articleRefs)) {
       for (let i = 0; i < articleHeading.length; i++) {
-        if (event.currentTarget.hash.replace('#', '') === articleHeading[i].id) {
-          window.scrollTo({top: articleRefs[i].offsetTop - 88});
+        if (
+          event.currentTarget.hash.replace('#', '') === articleHeading[i].id
+        ) {
+          window.scrollTo({ top: articleRefs[i].offsetTop - 88 });
           return;
         }
       }
@@ -96,7 +98,9 @@ const AboutRightNavBar = (props: AboutRightNavBarPropsType) => {
 
   return (
     <aside className={styles['about-right_nav_bar']}>
-      <nav>{sectionsElements}</nav>
+      <nav>
+        <ul className={styles['nav_bar-list']}>{sectionsElements}</ul>
+      </nav>
     </aside>
   );
 };
