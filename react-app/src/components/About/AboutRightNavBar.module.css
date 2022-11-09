@@ -32,7 +32,7 @@
   border-radius: 20px;
   width: calc(6.72 * 2 * var(--articles-font-size));
   top: calc(10rem + 4px);
-  margin: 0;
+  margin: 0 0 2rem 0;
   list-style: none;
 }
 
