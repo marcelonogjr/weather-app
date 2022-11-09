@@ -278,6 +278,13 @@
     height: fit-content;
   }
 
+  .hamburguer-nav_buttons:first-child {
+    margin-top: 5rem;
+  }
+  .hamburguer-nav_buttons:last-child {
+    margin-bottom: 5rem;
+  }
+
   .link-hamb {
     margin: 1rem 0;
     width: fit-content;
