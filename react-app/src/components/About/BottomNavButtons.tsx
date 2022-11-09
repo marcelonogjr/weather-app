@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 
 import styles from './BottomNavButtons.module.css';
+import ButtonArrows from './BottomNavButtons/ButtonArrows';
 
 interface BottomNavButtonsPropsType {
   previous: {
@@ -31,25 +32,34 @@ const BottomNavButtons = (props: BottomNavButtonsPropsType) => {
   };
 
   return (
-    <div className={styles['bottom-nav-bundle']}>
-      <button
-        className={`${styles['previous-button']} ${
-          props.previous.name === 'none' ? styles['none'] : ''
-        }`}
-        onClick={previousButtonHandler}
-      >
-        <span className={styles['main-span']}>{props.previous.name}</span>
-        <span className={styles['sub-span']}>Previous</span>
-      </button>
-      <button
-        className={`${styles['next-button']} ${
-          props.next.name === 'none' ? styles['none'] : ''
-        }`}
-        onClick={nextButtonHandler}
-      >
-        <span className={styles['main-span']}>{props.next.name}</span>
-        <span className={styles['sub-span']}>Next</span>
-      </button>
+    <div className={styles['top-div']}>
+      <div className={styles['bottom-nav-bundle']}>
+        <button
+          className={`${styles['previous-button']} ${
+            props.previous.name === 'none' ? styles['none'] : ''
+          }`}
+          onClick={previousButtonHandler}
+        >
+          <ButtonArrows direction='previous' />
+          <div className={styles['words-bundle']}>
+            <span className={styles['main-span']}>{props.previous.name}</span>
+            <span className={styles['sub-span']}>Previous</span>
+          </div>
+        </button>
+        <button
+          className={`${styles['next-button']} ${
+            props.next.name === 'none' ? styles['none'] : ''
+          }`}
+          onClick={nextButtonHandler}
+        >
+          <div className={styles['words-bundle']}>
+            <span className={styles['main-span']}>{props.next.name}</span>
+            <span className={styles['sub-span']}>Next</span>
+          </div>
+          <ButtonArrows direction='next' />
+        </button>
+      </div>
+      <div className={styles['right-nav_bar-placeholder']} />
     </div>
   );
 };

@@ -1,34 +1,82 @@
+.top-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
 .bottom-nav-bundle {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin: 0 auto 2rem;
   padding: 1rem 0;
-  width: 50%;
-  border-top: 5px double var(--color-text);
+  width: 100%;
+  max-width: calc(55 * var(--articles-font-size));
+  height: calc(7 * var(--articles-font-size));
 }
 
-.bottom-nav-bundle button {
+@media (max-width: 36rem) {
+  .bottom-nav-bundle {
+    flex-direction: column;
+    height: fit-content;
+    gap: 2rem;
+  }
+}
+
+.bottom-nav-bundle > button {
   background-color: var(--color-main-content-background);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
   width: 45%;
-  padding: 1rem;
+  border: calc(0.1 * var(--articles-font-size)) solid var(--color-text);
+  border-radius: 20px;
+  fill: var(--color-text);
+}
+
+@media (max-width: 36rem) {
+  .bottom-nav-bundle > button {
+    width: 70%;
+    height: calc(5 * var(--articles-font-size));
+  }
+}
+
+.bottom-nav-bundle > button:hover {
+  border: calc(0.1 * var(--articles-font-size)) solid var(--color-tertiary);
+  fill: var(--color-tertiary);
+}
+
+.words-bundle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .previous-button {
+  justify-content: flex-start;
   cursor: pointer;
   align-items: flex-start;
-  border: 5px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(90deg,var(--color-text) 10%,transparent);
+}
+
+@media (max-width: 36rem) {
+  .previous-button {
+    margin: 0 auto 0 5vw;
+  }
 }
 
 .next-button {
+  justify-content: flex-end;
   cursor: pointer;
   align-items: flex-end;
-  border: 5px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(90deg,transparent,var(--color-text));
+}
+
+@media (max-width: 36rem) {
+  .next-button {
+    margin: 0 5vw 0 auto;
+  }
 }
 
 .none {
@@ -39,11 +87,28 @@
 .main-span {
   color: var(--color-text);
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: calc(1.1 * var(--articles-font-size));
 }
 
 .sub-span {
   color: var(--color-text);
   font-weight: 700;
-  font-size: small;
+  font-size: calc(0.8 * var(--articles-font-size));
+}
+
+#button-arrow-svgs {
+  height: 100%;
+  padding: calc(0.6 * var(--articles-font-size));
+}
+
+.right-nav_bar-placeholder {
+  width: calc(6.72 * 2 * var(--articles-font-size) + 1rem);
+  height: 100%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 81rem) {
+  .right-nav_bar-placeholder {
+    display: none;
+  }
 }
