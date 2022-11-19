@@ -1,0 +1,18 @@
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bold-italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+#sun-theme-svg, #moon-theme-svg{
+  height: var(--help-font-size);
+  transform: scale(1.7);
+  margin: calc(.5 * var(--help-font-size)) calc(.5 * var(--help-font-size)) 0 calc(.5 * var(--help-font-size));
+}

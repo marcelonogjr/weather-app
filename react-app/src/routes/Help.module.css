@@ -80,6 +80,10 @@
   }
 }
 
+.help-content a {
+  color: var(--color-hlink);
+}
+
 .help-content p, .help-content h5 {
   margin-top: 0;
 }
@@ -90,6 +94,12 @@
 
 .help-content h4 {
   margin-bottom: 0;
+}
+
+.help-content img {
+  margin: 1rem 1rem 2rem 1rem;
+  border: calc(0.2 * var(--help-font-size)) solid var(--color-tertiary);
+  border-radius: 20px;
 }
 
 .help-left-navbar-space {
