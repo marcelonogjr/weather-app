@@ -11,8 +11,42 @@
   font-weight: bold;
 }
 
-#sun-theme-svg, #moon-theme-svg{
+#sun-theme-svg,
+#moon-theme-svg {
   height: var(--help-font-size);
   transform: scale(1.7);
-  margin: calc(.5 * var(--help-font-size)) calc(.5 * var(--help-font-size)) 0 calc(.5 * var(--help-font-size));
+  margin: calc(0.5 * var(--help-font-size)) calc(0.5 * var(--help-font-size)) 0
+    calc(0.5 * var(--help-font-size));
+}
+
+.weather-conditions,
+.uvi-containers,
+.wind-dir-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-condition,
+.uvi-category-container,
+.wind-dir-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: var(--help-font-size) calc(2 * var(--help-font-size));
+  font-weight: bold;
+}
+
+.uvi-icons {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.humidity-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

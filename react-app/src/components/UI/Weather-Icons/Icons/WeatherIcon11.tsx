@@ -7,7 +7,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon11 = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const lightningRef = useRef<SVGPathElement>(null);
   const lightCloudRef = useRef<SVGCircleElement>(null);

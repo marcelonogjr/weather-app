@@ -7,7 +7,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon13 = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const snowCrystalRefs = useRef<SVGPathElement>(null);
   const snowDropsRefs = useRef<SVGCircleElement[] | null[]>([]);

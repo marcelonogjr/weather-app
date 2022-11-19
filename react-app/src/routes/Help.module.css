@@ -84,6 +84,10 @@
   color: var(--color-hlink);
 }
 
+.help-content p, .help-content ul {
+  margin-right: auto;
+}
+
 .help-content p, .help-content h5 {
   margin-top: 0;
 }
@@ -97,9 +101,10 @@
 }
 
 .help-content img {
-  margin: 1rem 1rem 2rem 1rem;
+  margin: 1rem auto 2rem auto;
   border: calc(0.2 * var(--help-font-size)) solid var(--color-tertiary);
   border-radius: 20px;
+  width: 100%;
 }
 
 .help-left-navbar-space {

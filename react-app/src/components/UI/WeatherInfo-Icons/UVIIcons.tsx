@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import ThemeContext from '../../../store/theme-context';
 import styles from './UVIIcons.module.css';
 
-type SvgWindDirectionIconProps = {
+type SvgUVIIconProps = {
   uvIndex: number;
-  component: 'current' | 'hourly' | 'daily';
+  component: 'current' | 'hourly' | 'daily' | 'help';
 };
 
-const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
+const SvgUVIIcons = (props: SvgUVIIconProps) => {
   const { theme } = useContext(ThemeContext);
 
   const svgUVI = (uvIndex: number, component: string) => {
@@ -84,7 +84,7 @@ const SvgUVIIcons = (props: SvgWindDirectionIconProps) => {
         };
       } else {
         return {
-          risk: 'Low',
+          risk: 'None',
           fill: 'grey',
           path: 'M37.7 183.6c-3.6-4.1-5.4-9.9-5.4-17.4v-58c0-7.5 1.8-13.3 5.4-17.4 3.6-4.1 8.7-6.2 15.2-6.2 6.6 0 11.6 2.1 15.2 6.2s5.4 9.9 5.4 17.4v58c0 7.5-1.8 13.3-5.4 17.4-3.6 4.1-8.7 6.2-15.2 6.2s-11.6-2.1-15.2-6.2zm23.7-7c2-2.5 3-5.9 3-10.4v-58c0-4.5-1-8-3-10.4-2-2.5-4.8-3.7-8.5-3.7-3.6 0-6.5 1.2-8.5 3.7s-3 5.9-3 10.4v58c0 4.5 1 8 3 10.4 2 2.5 4.8 3.7 8.5 3.7s6.5-1.2 8.5-3.7z',
         };

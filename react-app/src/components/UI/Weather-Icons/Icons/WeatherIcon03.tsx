@@ -6,7 +6,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon03 = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const cloudRef = useRef<SVGCircleElement>(null);
 

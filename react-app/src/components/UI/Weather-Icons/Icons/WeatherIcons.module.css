@@ -9,3 +9,8 @@
 .weather-svg_daily{
   height: calc(4 * var(--daily-font-size));
 }
+
+.weather-svg_help{
+  height: calc(6 * var(--help-font-size));
+  width: calc(6 * var(--help-font-size));
+}

@@ -1,4 +1,4 @@
-.wind_direction-bundle{
+.wind_direction-current-bundle{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -9,7 +9,33 @@
   padding: 0 2px;
 }
 
-.wind_direction-bundle p{
+.wind_direction-current-bundle p{
   font-size: 7px;
   margin: 0;
+}
+
+.wind-current-svg {
+  width: 20px;
+  height: 20px;
+}
+
+.wind_direction-help-bundle{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  /* the height is set as: size of the vector (20px) * sqrt(2) + size of the p element (8px)  */
+  height: calc(3 * var(--help-font-size) * 1.414213562373095);
+  padding: 0 2px;
+}
+
+.wind_direction-help-bundle p{
+  font-size: var(--help-font-size);
+  margin: 0;
+}
+
+.wind-help-svg {
+  width: calc(2 * var(--help-font-size));
+  height: calc(2 * var(--help-font-size));
 }

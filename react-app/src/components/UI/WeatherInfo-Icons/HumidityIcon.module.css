@@ -29,16 +29,30 @@
   font-size: calc(0.75 * var(--daily-font-size));
 }
 
+.humidity-description_help{
+  position:absolute;
+  text-align: center;
+  margin: calc(3 * var(--help-font-size));
+  width: calc(3.5 * var(--help-font-size));
+  top: calc(5 * var(--help-font-size));
+  font-size: calc(0.75 * var(--help-font-size));
+}
 
 .humidity-description_current:hover,
 .humidity-description_hourly:hover,
-.humidity-description_daily:hover{
+.humidity-description_daily:hover,
+.humidity-description_help:hover{
   background-color: var(--color-background);
   transform: scale(1.5);
   border: 1px solid var(--color-grey-high-contrast);
   border-radius: 2px;
   transition: all 0.5s linear;
   cursor: none;
+}
+
+.humidity-description_help:hover{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .humidity-icon_current {
@@ -51,4 +65,9 @@
 
 .humidity-icon_daily {
   height: calc(3 * var(--daily-font-size));
+}
+
+.humidity-icon_help {
+  height: calc(5 * var(--help-font-size));
+  margin: calc(3 * var(--help-font-size));
 }

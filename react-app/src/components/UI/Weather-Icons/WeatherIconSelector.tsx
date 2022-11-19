@@ -14,7 +14,7 @@ import WeatherIcon13 from './Icons/WeatherIcon13';
 const WeatherIconSelector = (props: {
   iconId: string;
   iconDescription: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const iconNumber = props.iconId.slice(0, 2);
   const iconPeriod = props.iconId.slice(2);

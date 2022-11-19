@@ -5,7 +5,7 @@ import styles from './HumidityIcon.module.css';
 
 type SvgHumidityIconProps = {
   humidityValue: number;
-  component: 'current' | 'hourly' | 'daily';
+  component: 'current' | 'hourly' | 'daily' | 'help';
 };
 
 const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
@@ -14,9 +14,6 @@ const SvgHumidityIcon = (props: SvgHumidityIconProps) => {
   const svgHumidity = (humidityValue: number, component: string) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
-
-    // const widhtValue = component === 'current' ? '60' : '30';
-    // const heightValue = component === 'current' ? '60' : '30';
 
     return (
       <svg

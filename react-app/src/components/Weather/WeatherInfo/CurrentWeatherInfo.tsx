@@ -100,6 +100,7 @@ const CurrentWeatherInfo = (props: CurrentWeatherInfoProps) => {
               <div className={styles['wind_value']}>
                 <SvgWindDirectionIcon
                   windDirection={props.currentData.wind_deg}
+                  component='current'
                 />
                 <p>
                   {unitsConversor(units, 'speed', props.currentData.wind_speed)}

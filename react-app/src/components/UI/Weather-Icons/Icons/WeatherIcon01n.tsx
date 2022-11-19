@@ -6,7 +6,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon01n = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const moonBlurRef = useRef<SVGCircleElement>(null);
 

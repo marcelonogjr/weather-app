@@ -6,7 +6,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon09 = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const rainDrop1Ref = useRef<SVGPathElement>(null);
   const rainDrop2Ref = useRef<SVGPathElement>(null);

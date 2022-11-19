@@ -5,7 +5,7 @@ import styles from './WeatherIcons.module.css';
 
 const WeatherIcon01d = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const smallRaysRef = useRef<SVGPathElement>(null);
   const mediumRaysRef = useRef<SVGPathElement>(null);

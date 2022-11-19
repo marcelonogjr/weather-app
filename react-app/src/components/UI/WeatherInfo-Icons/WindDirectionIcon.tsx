@@ -5,6 +5,7 @@ import styles from './WindDirectionIcon.module.css';
 
 type SvgWindDirectionIconProps = {
   windDirection: number;
+  component: 'current' | 'help';
 };
 
 const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
@@ -36,16 +37,12 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
     const lightThemeOutlineColor = '#000';
     const darkThemeOutlineColor = '#fff';
 
-    const widhtValue = '20';
-    const heightValue = '20';
-
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         xmlnsXlink='http://www.w3.org/1999/xlink'
         viewBox='0 0 326.1 429.1'
-        width={widhtValue}
-        height={heightValue}
+        className={styles[`wind-${props.component}-svg`]}
         style={{
           margin: 'auto 2px',
           padding: '2px',
@@ -75,7 +72,7 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
   };
 
   return (
-    <div className={styles['wind_direction-bundle']}>
+    <div className={styles[`wind_direction-${props.component}-bundle`]}>
       <p>{abbreviatedDirection(props.windDirection)}</p>
       {svgWindDirection(props.windDirection)}
     </div>

@@ -6,7 +6,7 @@ import ThemeContext from '../../../../store/theme-context';
 
 const WeatherIcon50 = (props: {
   description: string;
-  parentComponent: 'current' | 'hourly' | 'daily';
+  parentComponent: 'current' | 'hourly' | 'daily' | 'help';
 }) => {
   const mistG1Ref = useRef<SVGPathElement>(null);
   const mistG2Ref = useRef<SVGPathElement>(null);
@@ -18,7 +18,7 @@ const WeatherIcon50 = (props: {
 
   useEffect(() => {
     const mistAnimation = gsap.to([mistG1Ref.current, mistG2Ref.current], {
-      duration: 10,
+      duration: 5,
       x: 'random(-80,80)',
       scale: 'random(0.9, 1.1)',
       opacity: 'random(0.5,1)',

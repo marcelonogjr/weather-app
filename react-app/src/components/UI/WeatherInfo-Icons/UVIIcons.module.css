@@ -10,8 +10,14 @@
   height: calc(3 * var(--daily-font-size));
 }
 
+.uvi-icon_help {
+  height: calc(5 * var(--help-font-size));
+  margin: calc(0.5 * var(--help-font-size)) calc(0.5 * var(--help-font-size)) calc(1 * var(--help-font-size)) calc(0.5 * var(--help-font-size));
+}
+
 .uvi-icon_hourly:hover,
-.uvi-icon_daily:hover{
+.uvi-icon_daily:hover,
+.uvi-icon_help:hover{
   transform: scale(1.5);
   transition: all 0.5s linear;
   cursor: none;
