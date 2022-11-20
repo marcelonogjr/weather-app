@@ -57,10 +57,10 @@ const Pressure = () => {
         >
           sea level
         </a>{' '}
-        - it's often referred to
-        <span className={styles['bold']}>sea level pressure</span>, and the
+        - it's often referred to{' '}
+        <span className={styles['-italic']}>sea level pressure</span>, and the
         standard pressure at sea level is{' '}
-        <span className={styles['bold']}>1013.25 mb.</span> (or 1{' '}
+        <span className={styles['bold-italic']}>1013.25 mb.</span> (or 1{' '}
         <a
           href='https://en.wikipedia.org/wiki/Standard_atmosphere_(unit)'
           target='_blank'
@@ -95,7 +95,7 @@ const Pressure = () => {
         it influences the calculus of the{' '}
         <span className={styles['italic']}>rain probability</span>. If you are
         curious to know more about it's implications, I{' '}
-        <span className={styles['italic']}>highly recommend</span>
+        <span className={styles['italic']}>highly recommend</span>{' '}
         reading{' '}
         <a
           href='https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/pressure_winds/Pressure.htm'

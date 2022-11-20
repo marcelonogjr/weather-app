@@ -22,7 +22,7 @@ const HumidityAndDewPoint = () => {
         On cold days the maximum amount of water vapor the atmospheric air can
         "hold" is significantly smaller when compared to hot days. This
         information is particularly important when it comes to understanding the{' '}
-        <span className={styles['bold']}>Dew Point</span> temperature level.
+        <span className={styles['italic']}>Dew Point</span> temperature level.
       </p>
       <p>
         The <span className={styles['bold']}>Dew Point</span> is the temperature

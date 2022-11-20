@@ -14,7 +14,7 @@ const Wind = () => {
         There are two characteristics commonly associated with wind in weather
         forecasts, <span className={styles['italic']}>speed</span> (measurement
         on how fast, on average, the wind is moving - it{' '}
-        <span className={styles['bold']}>does not</span> take{' '}
+        <span className={styles['bold-italic']}>does not</span> take{' '}
         <a
           href='https://en.wikipedia.org/wiki/Wind_gust'
           target='_blank'

@@ -8,7 +8,7 @@ const WeatherConditions = () => {
         The <span className={styles['italic']}>weather condition</span> may be
         most essential information contained in the weather forecast, and it can
         be defined as{' '}
-        <span className={styles['bold']}>
+        <span className={styles['italic']}>
           a generalization of the state of the atmosphere in terms of
           temperature, wind, clouds and precipitation
         </span>{' '}
