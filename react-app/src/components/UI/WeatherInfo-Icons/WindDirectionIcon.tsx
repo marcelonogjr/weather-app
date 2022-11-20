@@ -44,8 +44,6 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
         viewBox='0 0 326.1 429.1'
         className={styles[`wind-${props.component}-svg`]}
         style={{
-          margin: 'auto 2px',
-          padding: '2px',
           transform: `rotate(${windDirection}deg)`,
         }}
       >

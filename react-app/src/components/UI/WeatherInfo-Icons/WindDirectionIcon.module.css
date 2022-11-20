@@ -4,19 +4,20 @@
   justify-content: flex-start;
   align-items: center;
   width: fit-content;
-  /* the height is set as: size of the vector (20px) * sqrt(2) + size of the p element (8px)  */
-  height: 36.284px;
+  height: calc(2 * var(--current-font-size) * 1.414213562373095);
   padding: 0 2px;
 }
 
 .wind_direction-current-bundle p{
-  font-size: 7px;
+  font-size: calc(0.75 * var(--current-font-size));
   margin: 0;
+  align-self: center;
 }
 
 .wind-current-svg {
-  width: 20px;
-  height: 20px;
+  height: calc(1.5 * var(--current-font-size));
+  padding: calc(0.1 * var(--current-font-size));
+  margin: auto;
 }
 
 .wind_direction-help-bundle{
@@ -25,7 +26,7 @@
   justify-content: flex-start;
   align-items: center;
   width: fit-content;
-  /* the height is set as: size of the vector (20px) * sqrt(2) + size of the p element (8px)  */
+  /* the height is set as: size of the vector * sqrt(2) + size of the p element  */
   height: calc(3 * var(--help-font-size) * 1.414213562373095);
   padding: 0 2px;
 }
@@ -33,6 +34,7 @@
 .wind_direction-help-bundle p{
   font-size: var(--help-font-size);
   margin: 0;
+  align-self: center;
 }
 
 .wind-help-svg {
