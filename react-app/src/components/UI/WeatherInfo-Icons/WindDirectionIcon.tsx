@@ -71,7 +71,7 @@ const SvgWindDirectionIcon = (props: SvgWindDirectionIconProps) => {
 
   return (
     <div className={styles[`wind_direction-${props.component}-bundle`]}>
-      <p>{abbreviatedDirection(props.windDirection)}</p>
+      <span>{abbreviatedDirection(props.windDirection)}</span>
       {svgWindDirection(props.windDirection)}
     </div>
   );
