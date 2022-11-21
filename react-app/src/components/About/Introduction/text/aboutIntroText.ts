@@ -22,6 +22,13 @@ export const aboutIntroText = `
   to write all the math formulas contained in them. The illustrations are all made by me and some images that are
   used as exemples comes from Mapbox and OpenWeatherMap - sometimes with the modifications made in the backend of this
   app (the details are inside the articles).
+
+  Another *major, crucial* element that helped me a *great* deal to complete this project was the feedback of my
+  closest friends. I would like to thank **Gerson** *"Gerso"* **Neves**, for having the patience to endure
+  countless feedbacks requests about every aspect of this app almost on a daily basis; **Bruno** *"Bruneca"*
+  **Nasciutti**, for giving me useful suggestions that encouraged me make further UX improvements; and
+  **Felipe** *"Fe"* **Gutierrez**, for providing an overall *feel* from a non-engineering point of view.
+  ***Thank you!***
   
   The entire code for this project is [publicly available on GitHub](https://github.com/marcelonogjr/weather-app), in
   there you can see exactly what I used and how I built everything you see here - and also what you don't see.
