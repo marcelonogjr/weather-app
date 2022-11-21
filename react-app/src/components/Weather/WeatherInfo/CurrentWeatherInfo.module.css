@@ -136,12 +136,6 @@
   align-items: center;
 }
 
-@media (max-width: 53rem) {
-  .wind_value {
-    padding-bottom: var(--current-font-size);
-  }
-}
-
 .wind_value > p {
   font-size: 150%;
 }
