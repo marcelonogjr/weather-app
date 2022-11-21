@@ -34,7 +34,7 @@
 .wind_direction-help-bundle p{
   font-size: var(--help-font-size);
   margin: 0;
-  align-self: center;
+  text-align: center;
 }
 
 .wind-help-svg {
