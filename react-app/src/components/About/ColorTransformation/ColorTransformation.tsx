@@ -273,12 +273,12 @@ const ColorTransformation = () => {
             <ColorTransformationImg14 />
             <img
               id={styles['color_problems_original']}
-              src={require('./images/orig-wind_layer-wb.png')}
+              src={require('./images/orig-wind_layer-wb.avif')}
               alt='Exemple of the original wind speed layer'
             />
             <img
               id={styles['color_problems_modified']}
-              src={require('./images/modf-wind_layer-wb.png')}
+              src={require('./images/modf-wind_layer-wb.avif')}
               alt='Exemple of the modified wind speed layer'
             />
           </div>

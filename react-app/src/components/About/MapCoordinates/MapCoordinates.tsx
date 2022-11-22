@@ -128,7 +128,7 @@ const MapCoordinates = () => {
             <MapCoordinatesImg2 />
             <img
               id={styles['tile_map_zoom_0']}
-              src={require('./images/tile_zoom_0_satellite.jpg')}
+              src={require('./images/tile_zoom_0_satellite.avif')}
               alt='Satellite view of the earth using the Web Mercator Projection'
             />
           </div>
@@ -147,12 +147,12 @@ const MapCoordinates = () => {
             <MapCoordinatesImg4 />
             <img
               id={styles['map_coordinates_comparison-1']}
-              src={require('./images/coordinates_comparison_traditional.png')}
+              src={require('./images/coordinates_comparison_traditional.avif')}
               alt='Map view of San Francisco using the tile coordinate system with zoom 10'
             />
             <img
               id={styles['map_coordinates_comparison-2']}
-              src={require('./images/coordinates_comparison_tiles.png')}
+              src={require('./images/coordinates_comparison_tiles.avif')}
               alt='Map view of San Francisco using traditional coordinate system with zoom 10'
             />
           </div>
@@ -195,22 +195,22 @@ const MapCoordinates = () => {
             <MapCoordinatesImg7 />
             <img
               id={styles['map_complementary_center']}
-              src={require('./images/coordinates_comparison_tiles.png')}
+              src={require('./images/coordinates_comparison_tiles.avif')}
               alt='Map view of San Francisco using the tile coordinate system with zoom 10'
             />
             <img
               id={styles['map_complementary_right']}
-              src={require('./images/san_francisco_complementary_right.png')}
+              src={require('./images/san_francisco_complementary_right.avif')}
               alt='Complementary tile of San Francisco located on the right of the original'
             />
             <img
               id={styles['map_complementary_bottom']}
-              src={require('./images/san_francisco_complementary_bottom.png')}
+              src={require('./images/san_francisco_complementary_bottom.avif')}
               alt='Complementary tile of San Francisco located on the bottom of the original'
             />
             <img
               id={styles['map_complementary_bottom_right']}
-              src={require('./images/san_francisco_complementary_bottom-right.png')}
+              src={require('./images/san_francisco_complementary_bottom-right.avif')}
               alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
             />
           </div>
@@ -222,22 +222,22 @@ const MapCoordinates = () => {
             <MapCoordinatesImg8 />
             <img
               id={styles['map_step_4_center']}
-              src={require('./images/coordinates_comparison_tiles.png')}
+              src={require('./images/coordinates_comparison_tiles.avif')}
               alt='Map view of San Francisco using the tile coordinate system with zoom 10'
             />
             <img
               id={styles['map_step_4_right']}
-              src={require('./images/san_francisco_complementary_right.png')}
+              src={require('./images/san_francisco_complementary_right.avif')}
               alt='Complementary tile of San Francisco located on the right of the original'
             />
             <img
               id={styles['map_step_4_bottom']}
-              src={require('./images/san_francisco_complementary_bottom.png')}
+              src={require('./images/san_francisco_complementary_bottom.avif')}
               alt='Complementary tile of San Francisco located on the bottom of the original'
             />
             <img
               id={styles['map_step_4_bottom_right']}
-              src={require('./images/san_francisco_complementary_bottom-right.png')}
+              src={require('./images/san_francisco_complementary_bottom-right.avif')}
               alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
             />
           </div>
@@ -252,7 +252,7 @@ const MapCoordinates = () => {
           <div className={styles['san_francisco_step_5-bundle']}>
             <img
               id={styles['map_step_5']}
-              src={require('./images/tile_zoom_0_satellite.jpg')}
+              src={require('./images/tile_zoom_0_satellite.avif')}
               alt='Satellite view of the earth using the Web Mercator Projection'
             />
             <MapCoordinatesImg11 />
@@ -267,22 +267,22 @@ const MapCoordinates = () => {
             <MapCoordinatesImg13 />
             <img
               id={styles['map_step_6_center']}
-              src={require('./images/coordinates_comparison_tiles.png')}
+              src={require('./images/coordinates_comparison_tiles.avif')}
               alt='Map view of San Francisco using the tile coordinate system with zoom 10'
             />
             <img
               id={styles['map_step_6_right']}
-              src={require('./images/san_francisco_complementary_right.png')}
+              src={require('./images/san_francisco_complementary_right.avif')}
               alt='Complementary tile of San Francisco located on the right of the original'
             />
             <img
               id={styles['map_step_6_bottom']}
-              src={require('./images/san_francisco_complementary_bottom.png')}
+              src={require('./images/san_francisco_complementary_bottom.avif')}
               alt='Complementary tile of San Francisco located on the bottom of the original'
             />
             <img
               id={styles['map_step_6_bottom_right']}
-              src={require('./images/san_francisco_complementary_bottom-right.png')}
+              src={require('./images/san_francisco_complementary_bottom-right.avif')}
               alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
             />
           </div>
@@ -295,17 +295,17 @@ const MapCoordinates = () => {
           <div className={styles['san_francisco_step_7-bundle']}>
             <img
               id={styles['map_step_7_street']}
-              src={require('./images/sf-street_layer.png')}
+              src={require('./images/sf-street_layer.avif')}
               alt='Complementary tile of San Francisco located on the right of the original'
             />
             <img
               id={styles['map_step_7_weather']}
-              src={require('./images/sf-weather_layer.png')}
+              src={require('./images/sf-weather_layer.avif')}
               alt='Complementary tile of San Francisco located on the bottom of the original'
             />
             <img
               id={styles['map_step_7_combined']}
-              src={require('./images/sf-combined_layers.png')}
+              src={require('./images/sf-combined_layers.avif')}
               alt='Complementary tile of San Francisco located on the bottom-right diagonal of the original'
             />
             <MapCoordinatesImg15 />
