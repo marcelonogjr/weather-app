@@ -209,8 +209,8 @@ const ColorTransformation = () => {
             >
               precipitation layer by looking at the graph
             </span>
-            , is it possible to use only the Blue channel as a paremeter to
-            track the correspondant precipitation value of any pixel color? The
+            , is it possible to use only the Blue channel as a parameter to
+            track the corresponding precipitation value of any pixel color? The
             answer is <span className={styles['span_italic']}>yes</span>. Since
             there's a single blue value associated with one, and only one,
             precipitation value, by only tracking the blue channel it's possible
@@ -240,14 +240,14 @@ const ColorTransformation = () => {
             >
               wind speed graph
             </span>
-            , you can see that the R, G and B channels have some values that are
+            , you can see that the R, G, and B channels have some values that are
             associated with three distinct wind speed values. For instance, if
             we imagine a horizontal line that represents the value{' '}
             <span className={styles['span_italic']}>70</span> for each channel,
-            it will "go through" the Red, Green and Blue lines three times. The
+            it will "go through" the Red, Green, and Blue lines three times. The
             function that represents the Alpha channel of this layer is also not
             injective, since it has the same value (255) when the wind speed is
-            equal or greater to 223.7 mph (100 m/s).
+            equal to or greater than 223.7 mph (100 m/s).
           </p>
           <ReactMdCustomPure text={colorTransformationText[15]} />
           <h4 ref={(element) => (headingElementsRefs.current[10] = element)}>

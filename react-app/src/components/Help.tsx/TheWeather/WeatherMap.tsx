@@ -6,7 +6,7 @@ const WeatherMap = () => {
       <p>
         This app's weather maps are visible on the{' '}
         <span className={styles['italic']}>current</span> forecast section, and
-        for each location it offers a few different settings on{' '}
+        for each location, it offers a few different settings on{' '}
         <span className={styles['italic']}>Zoom Level</span> and{' '}
         <span className={styles['italic']}>Map Layer</span>.
       </p>
@@ -18,20 +18,20 @@ const WeatherMap = () => {
         <li>
           <span>
             <span className={styles['bold']}>Far away</span> (x1) -{' '}
-            <span className={styles['italic']}>continental</span> like area;
+            <span className={styles['italic']}>continental</span>-like area;
           </span>
         </li>
         <li>
           <span>
             <span className={styles['bold']}>Medium</span> (x2) -{' '}
-            <span className={styles['italic']}>state/country</span> like area;
+            <span className={styles['italic']}>state/country</span>-like area;
             and
           </span>
         </li>
         <li>
           <span>
             <span className={styles['bold']}>Close</span> (x3) -{' '}
-            <span className={styles['italic']}>city</span> like area.
+            <span className={styles['italic']}>city</span>-like area.
           </span>
         </li>
       </ul>
@@ -49,7 +49,7 @@ const WeatherMap = () => {
         <li>
           <span>
             <span className={styles['bold']}>Precipitation</span> - shows the
-            places that had precipitation in the last 3 hours and it's total
+            places that had precipitation in the last 3 hours and its total
             aggregated intensity;
           </span>
         </li>
@@ -63,7 +63,7 @@ const WeatherMap = () => {
         <li>
           <span>
             <span className={styles['bold']}>Sea Level Pressure</span> - shows
-            the pressure map of the region, normalizing it's altitude to the{' '}
+            the pressure map of the region, normalizing its altitude to the{' '}
             <a
               href='https://en.wikipedia.org/wiki/Sea_level'
               target='_blank'
@@ -77,7 +77,7 @@ const WeatherMap = () => {
         <li>
           <span>
             <span className={styles['bold']}>Clouds</span> - shows the areas of
-            the region covered by clouds and it's intensity (percentage).
+            the region covered by clouds and its intensity (percentage).
           </span>
         </li>
       </ul>

@@ -27,7 +27,7 @@ const HumidityAndDewPoint = () => {
       <p>
         The <span className={styles['bold']}>Dew Point</span> is the temperature
         where, if the current air would be cooled down, the humidity would reach
-        100% - that is, the amount or water that is currently in the air would
+        100% - that is, the amount of water that is currently in the air would
         become fully saturated. So if the dew point is close to the current
         temperature, that means that the humidity is high, and cooling the air
         just a little bit would suffice to reach the saturation point - for cold
@@ -37,12 +37,13 @@ const HumidityAndDewPoint = () => {
       <p>
         The humidity level (and dew point) are closely related to human comfort
         and possible health issues. Too high or too low levels of humidity can
-        have a number of adverse effects in the human body, physical
-        psychological effects.
+        have a number of adverse effects on the human body, including physical
+        and psychological effects.
       </p>
       <p>
-        To know more on the <span className={styles['bold-italic']}>many</span>{' '}
-        possible effects that humidity has in our body, I suggest reading{' '}
+        To know more about the{' '}
+        <span className={styles['bold-italic']}>many</span> possible effects
+        that humidity has on our body, I suggest reading{' '}
         <a
           href='https://www.nbcnews.com/health/health-news/it-s-not-just-heat-it-really-humidity-know-risks-n629486'
           target='_blank'

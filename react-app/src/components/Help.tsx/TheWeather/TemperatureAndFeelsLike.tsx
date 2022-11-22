@@ -9,7 +9,7 @@ const TemperatureAndFeelsLike = () => {
         <span className={styles['italic']}>key</span> when trying to understand
         what the{' '}
         <span className={styles['italic']}>feels like temperature</span>,
-        present in a lot of weather forecast, means.
+        present in a lot of weather forecasts, means.
       </p>
       <p>
         <span className={styles['bold']}>Temperature</span> can be defined as{' '}
@@ -33,22 +33,22 @@ const TemperatureAndFeelsLike = () => {
       <p>
         <span className={styles['bold']}>Heat</span> is thermal energy that
         flows from a body with a higher temperature to a body with a lower
-        temperature. Heat transfer always occur when two bodies with different
+        temperature. Heat transfer always occurs when two bodies with different
         temperatures interact, but the transfer rate depends on the physical
         properties of those bodies and external inputs (or circumstances).
       </p>
       <p>
-        Humans have the perception of hot or cold as a consequence of the heat
+        Humans have the perception of hot or cold as a consequence of heat
         transfer when we interact with bodies with different temperatures. But
-        this perception can sometimes "trick our brain" into having a inaccurate
-        perception of temperature with those interactions, because of the
-        difference on the heat transfer rate possible even when exchanging heat
-        with bodies with the same temperature.
+        this perception can sometimes "trick our brain" into having an
+        inaccurate perception of temperature with those interactions, because of
+        the difference in the heat transfer rate possible even when exchanging
+        heat with bodies with the same temperature.
       </p>
       <p>
         The <span className={styles['bold']}>feels like</span> temperature is an
         estimate of our perception of the real atmospheric air temperature,
-        considering the relative humidity and wind speed influences on the heat
+        considering the relative humidity and wind speed influences the heat
         transfer between our body and the air.
       </p>
     </>

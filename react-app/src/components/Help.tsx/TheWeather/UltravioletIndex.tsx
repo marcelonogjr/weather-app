@@ -6,9 +6,9 @@ const UltravioletIndex = () => {
     <>
       <p>
         As a way to measure the ultraviolet radiation level caused by the sun in
-        a particular location and time, the UV Index purpose is to inform, using
-        a simple scale, about the possible skin and eye damage caused by the sun
-        and the necessity to adopt protective measures.
+        a particular location and time, the UV Index's purpose is to inform,
+        using a simple scale, about the possible skin and eye damage caused by
+        the sun and the necessity to adopt protective measures.
       </p>
       <p>
         The background of this app's UV index icons follows the international

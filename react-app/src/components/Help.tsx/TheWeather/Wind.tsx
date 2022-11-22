@@ -5,15 +5,15 @@ const Wind = () => {
   return (
     <>
       <p>
-        <span className={styles['italic']}>Wind</span> is the natural movement of
-        air relative to the earth's surface. It occurs when there is a
-        difference in atmospheric pressure, forcing air to move from region with
-        higher pressure to a region with lower atmospheric pressure.
+        The <span className={styles['italic']}>wind</span> is the natural
+        movement of air relative to the earth's surface. It occurs when there is
+        a difference in atmospheric pressure, forcing air to move from a region
+        with higher pressure to a region with lower atmospheric pressure.
       </p>
       <p>
         There are two characteristics commonly associated with wind in weather
         forecasts, <span className={styles['italic']}>speed</span> (measurement
-        on how fast, on average, the wind is moving - it{' '}
+        of how fast, on average, the wind is moving - it{' '}
         <span className={styles['bold-italic']}>does not</span> take{' '}
         <a
           href='https://en.wikipedia.org/wiki/Wind_gust'

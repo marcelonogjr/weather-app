@@ -49,7 +49,7 @@ const Pressure = () => {
       </ul>
       <p>
         The last one is ignored on most weather forecasts, including the one in
-        this app, since the pressure portrayed is relative to the{' '}
+        this app since the pressure portrayed is relative to the{' '}
         <a
           href='https://en.wikipedia.org/wiki/Sea_Level'
           target='_blank'
@@ -57,7 +57,7 @@ const Pressure = () => {
         >
           sea level
         </a>{' '}
-        - it's often referred to{' '}
+        - it's often referred to as{' '}
         <span className={styles['-italic']}>sea level pressure</span>, and the
         standard pressure at sea level is{' '}
         <span className={styles['bold-italic']}>1013.25 mb.</span> (or 1{' '}
@@ -80,23 +80,22 @@ const Pressure = () => {
           Mexico City
         </a>
         , that has an average altitude of 7615 ft (2321 m), the "default"
-        atmospheric pressure should be 764.78 mb, just correcting the standard
+        atmospheric pressure should be 764.78 mb., just correcting the standard
         pressure considering the average altitude. But when you search for
         Mexico City, the displayed value for pressure is closer to 1013 mb.
       </p>
       <p>
         That happens because there is a correction in the pressure value for
         every location to make it easier to analyze it and compare it with other
-        places that has different altitudes, and in that way, you don't need to
+        places that have different altitudes, and in that way, you don't need to
         know the "standard" pressure value for each region.
       </p>
       <p>
         Different pressure values can indicate a number of things. For example,
         it influences the calculus of the{' '}
         <span className={styles['italic']}>rain probability</span>. If you are
-        curious to know more about it's implications, I{' '}
-        <span className={styles['italic']}>highly recommend</span>{' '}
-        reading{' '}
+        curious to know more about its implications, I{' '}
+        <span className={styles['italic']}>highly recommend</span> reading{' '}
         <a
           href='https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/pressure_winds/Pressure.htm'
           target='_blank'
@@ -104,9 +103,9 @@ const Pressure = () => {
         >
           this series of articles
         </a>{' '}
-        from the U.S. National Weather Service - just a head's up, this can be a
-        heavy reading for most people, specially for those not very familiar
-        with basic physics, but it explain a lot of things related to pressure
+        from the U.S. National Weather Service - just a heads up, this can be
+        heavy reading for most people, especially for those not very familiar
+        with basic physics, but it explains a lot of things related to pressure
         and weather in general.
       </p>
     </>

@@ -4,7 +4,7 @@ const Cloudiness = () => {
   return (
     <>
       <p>
-        The cloudiness value is an estimation of the fraction of sky that is
+        The cloudiness value is an estimation of the fraction of the sky that is
         covered by clouds in a particular region. Cloud coverage is particularly
         important in aviation, and is often classified as such:
       </p>
@@ -46,8 +46,8 @@ const Cloudiness = () => {
         </li>
       </ul>
       <p>
-        Although this classification is universal, the percentage associated to
-        each one varies for different weather services, and the table above
+        Although this classification is universal, the percentage associated
+        with each one varies for different weather services, and the table above
         refers to the values used by this app - every time that the{' '}
         <span className={styles['italic']}>weather condition</span> is equal to
         "Clouds", in the <span className={styles['italic']}>current</span>{' '}

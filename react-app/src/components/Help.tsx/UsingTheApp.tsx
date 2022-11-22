@@ -34,7 +34,7 @@ const UsingTheApp = () => {
         alt='GIF showing how to change the map settings'
       />
       <p>
-        After a quick loading (with the clouds moving), the specified location
+        After a quick loading (with the clouds moving), the specified location's
         current time (taking into consideration the location's time zone) and
         weather information will appear to you. You can select convert all units
         to the metric system by a click of a switch - this will also change the
@@ -48,9 +48,9 @@ const UsingTheApp = () => {
       <p>
         You can also change the visualization of the forecast between{' '}
         <span className={styles['italic']}>Current</span> (default),{' '}
-        <span className={styles['italic']}>Hourly</span> or{' '}
+        <span className={styles['italic']}>Hourly</span>, or{' '}
         <span className={styles['italic']}>Daily</span> by clicking on each
-        correspondent buttons.
+        correspondent button.
       </p>
       <img
         id={styles['using-4-gif']}
@@ -60,7 +60,7 @@ const UsingTheApp = () => {
       <p>
         If you are using a mouse to navigate this app, you can scroll
         horizontally on the Hourly and Daily forecast list by placing the cursor
-        inside the designated visualization area and use the mouse wheel (or
+        inside the designated visualization area and using the mouse wheel (or
         scroll wheel) to scroll normally (vertically).
       </p>
       <img
@@ -79,7 +79,7 @@ const UsingTheApp = () => {
         The color theme of the entire app can also be changed between{' '}
         <span className={styles['italic']}>light</span> and{' '}
         <span className={styles['italic']}>dark</span> at any given moment by
-        clicking at the moon <MoonThemeSVG /> or sun <SunThemeSVG /> icons
+        clicking on the moon <MoonThemeSVG /> or sun <SunThemeSVG /> icons
         located on the top right region of the page (inside the navigation menu
         on smaller screens) - the default theme is chosen according to your
         browser preference settings.

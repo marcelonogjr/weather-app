@@ -6,7 +6,7 @@ const TheWeather = () => {
         since talking about the weather is the classic cliché when it comes to
         making small talk. But some concepts, although commonly presented when
         using a regular weather service, are not obvious and can have a major
-        impact in our daily lives.
+        impact on our daily lives.
       </p>
       <p>Below you'll find information on:</p>
       <ul>
