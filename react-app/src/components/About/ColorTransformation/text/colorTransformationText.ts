@@ -168,13 +168,13 @@ export const colorTransformationText = [
   Every channel of the _precipitation_ layer is described by _injective functions_, so it's possible to
   track what precipitation value is associated with the color of that pixel by analyzing any single channel. The
   same can not be said when analyzing the _wind speed_ layer.
-
+`,
+  `
   Conveniently, as I'll show in the next step, I limited the wind speed so its maximum value is 100 m/s, so I ended
   up using the Alpha channel to track the wind speed values after all. If I didn't, I would have to have used more
   than one channel as a parameter to do the same, leading to a more complex logic that could increase the possibility
   of problems with this solution - once again, more on that later.
-`,
-  `
+  
   Now that we have a deep understanding of all possible inputs, it's time to determine what the end result should be.
 `,
   // Third Step

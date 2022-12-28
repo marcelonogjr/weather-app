@@ -2200,13 +2200,13 @@ export const ColorTransformationImg10 = () => {
         d='M640.5 542.7h-1.6l6.2-14.4h1.4l6.2 14.4h-1.6l-1.6-3.8h-7.4l-1.6 3.8zm2.2-5.1h6.3l-3.2-7.6-3.1 7.6z'
       />
       <pattern
-        id='SVGID_9-1_'
+        id='SVGID_10-1_'
         xlinkHref='#New_Pattern-10'
         patternTransform='translate(47.994 -117.015) scale(.9963)'
       />
       <path
         style={{
-          fill: 'url(#SVGID_9-1_)',
+          fill: 'url(#SVGID_10-1_)',
         }}
         d='M57 631.5h898.6v51.8H57z'
       />
@@ -2215,7 +2215,7 @@ export const ColorTransformationImg10 = () => {
         d='M954.6 632.5v49.8H58v-49.8h896.6m2-2H56v53.8h900.6v-53.8z'
       />
       <linearGradient
-        id='SVGID_9-2_'
+        id='SVGID_10-2_'
         gradientUnits='userSpaceOnUse'
         x1={57.956}
         y1={657.439}
@@ -2273,7 +2273,7 @@ export const ColorTransformationImg10 = () => {
       </linearGradient>
       <path
         style={{
-          fill: 'url(#SVGID_9-2_)',
+          fill: 'url(#SVGID_10-2_)',
         }}
         d='M58 632.5h896.6v49.8H58z'
       />
