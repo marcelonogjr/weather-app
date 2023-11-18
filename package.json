@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev":"ts-node-dev --respawn ./src/app.ts",
+    "dev": "ts-node-dev --respawn ./src/app.ts",
     "watch": "nodemon dist/app.js",
     "build": "tsc -p . && cd react-app && npm install && npm run build",
     "react": "cd react-app && npm start"
@@ -15,17 +15,14 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "canvas": "^2.9.1",
+    "canvas": "^2.11.2",
     "express": "^4.18.0"
   },
   "devDependencies": {
-    "ts-node-dev": "^1.1.8",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.35",
     "nodemon": "^2.0.16",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
-  },
-  "engines": {
-    "node": "^16.13.2"
   }
 }
