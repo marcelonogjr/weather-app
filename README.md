@@ -36,7 +36,7 @@ To enable the calls to all to API endpoints created by the server you should:
 
 1. Create an account on [Mapbox](https://account.mapbox.com/auth/signup/) and get an [access token](https://docs.mapbox.com/help/glossary/access-token/) - it's free;
 2. Create an account on [OpenWeatherMap](https://home.openweathermap.org/users/sign_up) and get an API key - it's free;
-3. Create a file called `tokens.ts` on the `/weather-app/src` directory and type the following:
+3. Create a file called `tokens.ts` on the `/weather-app/src/dist` directory and type the following:
 
 ```ts
 export const geocodeToken: string = '<INSERT YOUR MAPBOX ACCESS TOKEN HERE>';
