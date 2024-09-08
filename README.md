@@ -52,7 +52,7 @@ from this
 
 ```ts
 // const serverUrl = 'http://localhost:5001'; -> UNCOMMENT THIS LINE
-const serverUrl = 'https://weather.marcelojr.tech'; // -> DELETE THIS LINE
+const serverUrl = 'https://weather.marcelojr.dev'; // -> DELETE THIS LINE
 ```
 
 to this
