@@ -11,7 +11,7 @@ type GetWeatherType = (
 ) => Promise<GetWeatherReturnType | {error: string}>;
 
 const getWeather: GetWeatherType = async (lat: number, lon: number) => {
-  const urlByCoordinates = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=imperial`;
+  const urlByCoordinates = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${openWeatherToken}&units=imperial`;
   try {
     const response = await axios.get<GetWeatherAPIType>(urlByCoordinates);
     const newCurrentDT =
