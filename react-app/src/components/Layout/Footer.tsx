@@ -20,7 +20,7 @@ const Footer = () => {
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://marcelojr.tech/'
+            href='https://marcelojr.dev/'
           >
             Marcelo Nogueira Jr.
           </a>
